@@ -6,10 +6,12 @@
 }
 
 /* Body and font setup */
-body, html {
+body {
   height: 100%;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  cursor: url("sparkle-cursor.png"),auto; / Specifies the image used */
+  background: linear-gradient(to bottom, white, #C19EEA); /* Background gradient */
+  color: #170B3B; /* Dark purple for text */
+  cursor: url("assets/cursors/sparkle-cursor.png"), auto; /* Custom cursor */
 }
 
 /* Hero section */
@@ -27,9 +29,8 @@ body, html {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: none; 
+  transform: none;
 }
-
 
 /* Dark overlay */
 .overlay {
@@ -38,17 +39,122 @@ body, html {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
 /* Hero content: positioned at bottom right */
 .hero-content {
   position: absolute;
-  bottom: 20px; /* Adjust the distance from the bottom */
-  right: 20px;  /* Adjust the distance from the right */
+  bottom: 20px;
+  right: 20px;
   z-index: 2;
-  text-align: right; /* Align the text to the right */
+  text-align: right;
   color: #fff;
+  font-size: 1.5rem;
 }
 
+/* Centered mission statement */
+.mission-statement {
+  position: cemter;
+  margin: 20px auto;
+  font-size: 1.4rem;
+  color: #51289C; 
+  max-width: 600px;
+  line-height: 1.6;
+  border-bottom: 2px solid #723ABF;
+  padding-bottom: 10px;
+  letter-spacing: 0.05em;
+  animation: fadeIn 1.5s ease-in;
+}
+
+/* Officer section */
+.officer-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 20px; 
+}
+
+/* Officer card (tarot-like) styling */
+.officer-card {
+  background: linear-gradient(145deg, #723ABF, #51289C);
+  border-radius: 15px;
+  width: 240px;
+  height: 380px;
+  margin: 15px;
+  position: relative;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+  opacity: 0.95;
+}
+
+/* Hover effect */
+.officer-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(145deg, #51289C, #2F1678); /* Darker gradient on hover */
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* Officer card image */
+.officer-card img {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Officer card image hover effect */
+.officer-card:hover img {
+  transform: rotate(5deg); 
+  opacity: 0.9;
+}
+
+/* Officer card heading */
+.officer-card h2 {
+  font-size: 1.1rem;
+  color: #fff;
+  background-color: #2F1678; 
+  width: 100%;
+  padding: 10px 0;
+  margin: 0;
+  border-top: 2px solid #723ABF;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for officer name */
+.officer-card:hover h2 {
+  background-color: #170B3B; 
+}
+
+/* General heading styling */
+h1, h2 {
+  text-align: center;
+  color: #170B3B;
+  margin-bottom: 15px;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+}
+
+/* Fade-in effect for mission statement */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
