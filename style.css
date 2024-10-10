@@ -32,6 +32,14 @@ body {
   transform: none;
 }
 
+@media only screen and (max-width: 768px) {
+  .hero-section video {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
 /* Dark overlay */
 .overlay {
   position: absolute;
