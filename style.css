@@ -29,13 +29,14 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: none;
+  z-index: 0;
 }
 
-
 @media only screen and (max-width: 768px) {
-  .hero-section {
-    height: 100vh;
+  .hero-section video {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 }
 
