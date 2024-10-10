@@ -9,7 +9,7 @@
 body {
   height: 100%;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  background: linear-gradient(to bottom, white, #C19EEA); /* Background gradient */
+  /* background: linear-gradient(to bottom, white, #C19EEA); /* Background gradient */
   color: #170B3B; /* Dark purple for text */
   cursor: url("assets/cursors/sparkle-cursor.png"), auto; /* Custom cursor */
 }
@@ -32,11 +32,10 @@ body {
   transform: none;
 }
 
+
 @media only screen and (max-width: 768px) {
-  .hero-section video {
-    display: block;
-    width: 100%;
-    height: auto;
+  .hero-section {
+    height: 100vh;
   }
 }
 
@@ -64,7 +63,7 @@ body {
 
 /* Centered mission statement */
 .mission-statement {
-  position: cemter;
+  position: center;
   margin: 20px auto;
   font-size: 1.4rem;
   color: #51289C; 
