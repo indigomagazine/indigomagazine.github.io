@@ -196,6 +196,7 @@ h1, h2 {
   }
 }
 
+
 .photo-container {
   position: relative;
   width: 100vw;
@@ -203,51 +204,46 @@ h1, h2 {
   overflow: hidden;
 }
 
-.floating-photo {
+.floating-photo-wrapper {
   position: absolute;
+}
+
+.floating-photo {
   width: 200px;
   height: 300px;
   background-size: cover;
   background-position: center;
-  animation: float 10s infinite ease-in-out alternate; /* Speed up the floating movement */
+  animation: float 10s infinite alternate ease-in-out;
+  will-change: transform; /* Optimize for performance */
 }
 
-/* Different starting positions for each image */
-.floating-photo:nth-child(1) {
+/* Different starting positions */
+.floating-photo-wrapper:nth-child(1) {
   top: 10%;
   left: 20%;
-  animation-duration: 12s;
 }
 
-.floating-photo:nth-child(2) {
+.floating-photo-wrapper:nth-child(2) {
   top: 40%;
   left: 60%;
-  animation-duration: 15s;
 }
 
-.floating-photo:nth-child(3) {
+.floating-photo-wrapper:nth-child(3) {
   top: 70%;
   left: 30%;
-  animation-duration: 13s;
 }
 
-.floating-photo:nth-child(4) {
+.floating-photo-wrapper:nth-child(4) {
   top: 50%;
   left: 10%;
-  animation-duration: 14s;
 }
 
-/* Faster floating animation */
+/* Animation for floating */
 @keyframes float {
   0% {
     transform: translate(0, 0);
   }
   100% {
-    transform: translate(150px, 100px); /* Moves more to make the movement more noticeable */
+    transform: translate(200px, 150px);
   }
-}
-
-.floating-photo:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s ease;
 }
