@@ -270,6 +270,38 @@ h1, h2 {
   overflow: hidden;
   z-index: 2;
   }
+
+  /* Taskbar styles */
+#Taskbar-container {
+  position: fixed;   
+  top: 0;
+  width: 100%;       
+  z-index: 9999;   
+  display: flex;     
+  justify-content: center; /* Center the links horizontally */
+  padding: 10px;     /* Add some space around the links */
+  background-color: rgba(255, 255, 255, 0); /* Transparent background */
+  transition: background-color 0.3s; /* Smooth transition for the background */
+}
+
+#Taskbar-container:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Slightly visible background when hovered */
+}
+
+/* Styles for the links in the taskbar */
+#Taskbar-container a {
+  margin: 0 15px;   /* Add spacing between the links */
+  text-decoration: none;  
+  font-size: 1.2em; 
+  color: white;      
+  font-family: 'Arial', sans-serif;  /* You can choose a different font here */
+  transition: color 0.3s; /* Smooth transition for the text color */
+}
+
+#Taskbar-container a:hover {
+  color: #ffcc00; /* Change the text color on hover */
+}
+
   
 
 @media only screen and (max-width: 768px) {
