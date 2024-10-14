@@ -8,7 +8,7 @@
 /* Body and font setup */
 body {
   height: 100%;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font: "Praktika";
   background: black; /* to test dark/light mode */
   color: #170B3B;
   cursor: url("assets/cursors/sparkle-cursor.png"), auto; /* Custom cursor */
@@ -257,4 +257,72 @@ h1, h2 {
 .change-mode:hover {
   background-color: #3700b3; /* Darker shade on hover */
   transform: scale(1.05); 
+}
+
+/* Aura effect (bg-wrap) */
+/* Aura effect (bg-wrap) */
+#aura-wrap {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 30vh; /* Desired height */
+  overflow: hidden;
+  z-index: 2;
+  }
+  
+
+@media only screen and (max-width: 768px) {
+  #aura-wrap {
+    height: 20vh; /* Smaller height for mobile */
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #bg-wrap {
+    height: 15vh; /* Make ripple effect more prominent on mobile */
+  }
+}
+
+
+#aura-wrap svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.editor-note {
+  position: absolute;
+  font-family: "Praktika";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1.8em; /* Slightly smaller text size */
+  color: #FFFFFF;
+  z-index: 3; /* Ensure this stays on top */
+  line-height: 1.5em;
+  background: none; /* Remove the background box */
+  padding: 0;
+}
+
+/* Make sure the background gradient flows properly */
+#bg-wrap {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+@font-face {
+  font-family: "Lemon Milk";
+  src: url(assets/fonts/LEMONMILK-Bold.otf); 
+
+  font-family: "Praktika";
+  src: url(assets/fonts/Praktika-Light.otf);
+
 }
