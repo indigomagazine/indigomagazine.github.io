@@ -10,8 +10,7 @@ body {
   height: 100%;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   background: black; /* to test dark/light mode */
-  /* background: linear-gradient(to bottom, white, #C19EEA); /* Background gradient */
-  color: #170B3B; /* Dark purple for text */
+  color: #170B3B;
   cursor: url("assets/cursors/sparkle-cursor.png"), auto; /* Custom cursor */
   transition: background-color 0.3s, color 0.3s; /* transition for dark/light mode */
 }
@@ -20,7 +19,7 @@ body {
 .hero-section {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100vh; /* Change height to 50% of the viewport */
   overflow: hidden;
 }
 
@@ -35,10 +34,14 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
-  .hero-section video {
-    display: block;
-    width: 100%;
-    height: auto;
+  .hero-section {
+    height: 45vh; /* Adjust for smaller screens */
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .hero-section {
+    height: 40vh; /* Further adjust for mobile */
   }
 }
 
@@ -53,42 +56,29 @@ body {
   z-index: 1;
 }
 
-/* Hero content: positioned at bottom right */
-.hero-content {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  z-index: 2;
-  text-align: right;
-  color: #fff;
-  font-size: 1.5rem;
+/* Ripple effect background */
+#bg-wrap {
+  position: relative;
+  width: 100%;
+  height: 50vh; /* Matches hero section height */
+  overflow: hidden;
 }
 
-/* Light/Dark mode settings */
-
-/* Stylizes "Change Mode" button - standard webpage apperance: dark mode */
-.change-mode {
-  background-color: black;
-  color: white;
-  border: 2px solid white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 14px;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-  /* cursor: Change to custom cursor image */
+#bg-wrap svg {
+  width: 100%;
+  height: 100%;
 }
 
-/* Stylizes "Change Mode" button for Light mode */
-.light-mode .change-mode {
-  background-color: white;
-  color: black;
-  border-color: black;
+@media only screen and (max-width: 768px) {
+  #bg-wrap {
+    height: 60vh; /* Make ripple effect take more space on smaller screens */
+  }
 }
 
-/* Changes webpage appearance for Light mode */
-.light-mode {
-  background-color: white;
-  color: black;
+@media only screen and (max-width: 480px) {
+  #bg-wrap {
+    height: 65vh; /* Make ripple effect more prominent on mobile */
+  }
 }
 
 /* Centered mission statement */
@@ -132,6 +122,10 @@ body {
   padding-top: 10px;
   opacity: 0.95;
 }
+
+/* Additional styling remains unchanged */
+
+/* Keyframe animations remain unchanged */
 
 /* Hover effect */
 .officer-card:hover {
@@ -246,4 +240,21 @@ h1, h2 {
   100% {
     transform: translate(200px, 150px);
   }
+}
+
+.change-mode {
+  margin: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #6200ea; /* Primary color */
+  color: white;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.change-mode:hover {
+  background-color: #3700b3; /* Darker shade on hover */
+  transform: scale(1.05); 
 }
