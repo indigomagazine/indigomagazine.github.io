@@ -5,11 +5,14 @@
   box-sizing: border-box;
 }
 
+html {
+    cursor: url(assets/cursors/sparkle-cursor.png), default; /* Custom cursor */
+}
+
 /* Body and font setup */
 body {
   height: 100%;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  cursor: url(assets/cursors/sparkle-cursor.png), default; /* Custom cursor */
   transition: background-color 0.3s, color 0.3s; /* transition for dark/light mode */
   background-color: #ffffff; /* Light background */
   color: #000000; /* Dark text */
