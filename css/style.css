@@ -9,7 +9,7 @@
 body {
   height: 100%;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  cursor: url("assets/cursors/sparkle-cursor.png"), auto; /* Custom cursor */
+  cursor: url(assets/cursors/sparkle-cursor.png), default; /* Custom cursor */
   transition: background-color 0.3s, color 0.3s; /* transition for dark/light mode */
   background-color: #ffffff; /* Light background */
   color: #000000; /* Dark text */
@@ -20,7 +20,7 @@ body.light-mode {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   background: black; /* to test dark/light mode */
   color: #170B3B;
-  cursor: url("assets/cursors/sparkle-cursor.png"), auto; /* Custom cursor */
+  cursor: url(assets/cursors/sparkle-cursor.png), default; /* Custom cursor */
   transition: background-color 0.3s, color 0.3s; /* transition for dark/light mode */
 }
 
