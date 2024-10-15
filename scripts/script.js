@@ -1,3 +1,5 @@
+// script.js
+
 let targetX = 0, targetY = 0; // Where the cursor/touch wants to go
 let currentX = 0, currentY = 0; // Current position of the movement
 
@@ -49,3 +51,56 @@ $(function() {
       $('#aura-section').ripples('updateSize');
   });
 });
+
+
+
+function changeColor() {
+  const body = document.body;
+  const changeModeBtn = document.querySelector(".change-mode"); /* Selects the button */
+
+  // Toggle the light mode class
+  body.classList.toggle("light-mode");
+
+  // Check the current mode and update the button text accordingly
+  if (body.classList.contains("light-mode")) {
+    changeModeBtn.textContent = "☾"; /* Show moon symbol when in light mode */
+    localStorage.setItem('theme', 'light'); // Save the light theme in localStorage
+  } else {
+    changeModeBtn.textContent = "☼"; /* Show sun symbol when in dark mode */
+    localStorage.setItem('theme', 'dark'); // Save the dark theme in localStorage
+  }
+}
+
+// On page load, apply saved theme
+window.onload = () => {
+  if (localStorage.getItem('theme') === 'light') {
+    document.body.classList.add("light-mode");
+    document.querySelector(".change-mode").textContent = "☾"; // Update to show moon symbol
+  } else {
+    document.querySelector(".change-mode").textContent = "☼"; // Default to dark mode button
+  }
+};
+
+
+let lastScrollTop = 0;
+const taskbar = document.getElementById("Taskbar-container");
+
+window.addEventListener('scroll', function () {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+  if (scrollTop > lastScrollTop) {
+    // Scrolling down: hide the taskbar or make it fully transparent
+    taskbar.classList.add('hidden');
+    taskbar.style.backgroundColor = 'rgba(255, 255, 255, 0)'; // Fully transparent
+  } else {
+    // Scrolling up: show the taskbar and make it slightly visible
+    taskbar.classList.remove('hidden');
+    taskbar.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'; // Slightly visible
+  }
+
+  lastScrollTop = scrollTop;
+});
+
+
+
+
