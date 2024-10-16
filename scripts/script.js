@@ -57,6 +57,7 @@ $(function() {
 function changeColor() {
   const body = document.body;
   const changeModeBtn = document.querySelector(".change-mode"); /* Selects the button */
+  const themeLogoImg = document.querySelector(".logo"); /* Selects the logo */
 
   // Toggle the light mode class
   body.classList.toggle("light-mode");
@@ -64,9 +65,11 @@ function changeColor() {
   // Check the current mode and update the button text accordingly
   if (body.classList.contains("light-mode")) {
     changeModeBtn.textContent = "☾"; /* Show moon symbol when in light mode */
+    themeLogoImg.src = "assets/logos/indigologoblack.png"; /* Show indigologoblack when in light mode */
     localStorage.setItem('theme', 'light'); // Save the light theme in localStorage
   } else {
     changeModeBtn.textContent = "☼"; /* Show sun symbol when in dark mode */
+    themeLogoImg.src = "assets/logos/indigologowhite.png"; /* Show indigologowhite when in dark mode */
     localStorage.setItem('theme', 'dark'); // Save the dark theme in localStorage
   }
 }
@@ -76,8 +79,10 @@ window.onload = () => {
   if (localStorage.getItem('theme') === 'light') {
     document.body.classList.add("light-mode");
     document.querySelector(".change-mode").textContent = "☾"; // Update to show moon symbol
+    document.querySelector(".logo") = "assets/logos/indigologoblack.png"; // Update to show black indigo logo
   } else {
     document.querySelector(".change-mode").textContent = "☼"; // Default to dark mode button
+    document.querySelector(".logo") = "assets/logo/indigologowhite.png"; // Default to white indigo logo
   }
 };
 
