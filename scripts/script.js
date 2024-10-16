@@ -84,23 +84,26 @@ window.onload = () => {
 
 let lastScrollTop = 0;
 const taskbar = document.getElementById("Taskbar-container");
+let ticking = false;
 
-window.addEventListener('scroll', function () {
+function handleScroll() {
   const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-  console.log("Scroll Top:", scrollTop, "Last Scroll Top:", lastScrollTop); // Debug output
-
+  
   if (scrollTop > lastScrollTop) {
-    // Scrolling down: hide the taskbar (slide it up)
-    console.log("Scrolling down: Hiding taskbar");
     taskbar.classList.add('hidden');
     taskbar.classList.remove('visible');
   } else {
-    // Scrolling up: show the taskbar (slide it down)
-    console.log("Scrolling up: Showing taskbar");
     taskbar.classList.remove('hidden');
     taskbar.classList.add('visible');
   }
+  
+  lastScrollTop = scrollTop;
+  ticking = false;
+}
 
-  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Prevent negative scroll values
+window.addEventListener('scroll', function () {
+  if (!ticking) {
+    window.requestAnimationFrame(handleScroll);
+    ticking = true;
+  }
 });
