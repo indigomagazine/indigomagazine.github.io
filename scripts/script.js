@@ -57,6 +57,7 @@ $(function() {
 function changeColor() {
   const body = document.body;
   const changeModeBtn = document.querySelector(".change-mode"); /* Selects the button */
+  const themeLogoImg = document.querySelector(".logo"); /* Selects the logo */
 
   // Toggle the light mode class
   body.classList.toggle("light-mode");
@@ -64,9 +65,11 @@ function changeColor() {
   // Check the current mode and update the button text accordingly
   if (body.classList.contains("light-mode")) {
     changeModeBtn.textContent = "☾"; /* Show moon symbol when in light mode */
+    themeLogoImg.src = "assets/logos/indigologoblack.png"; /* Show indigologoblack when in light mode */
     localStorage.setItem('theme', 'light'); // Save the light theme in localStorage
   } else {
     changeModeBtn.textContent = "☼"; /* Show sun symbol when in dark mode */
+    themeLogoImg.src = "assets/logos/indigologowhite.png"; /* Show indigologowhite when in dark mode */
     localStorage.setItem('theme', 'dark'); // Save the dark theme in localStorage
   }
 }
@@ -76,31 +79,36 @@ window.onload = () => {
   if (localStorage.getItem('theme') === 'light') {
     document.body.classList.add("light-mode");
     document.querySelector(".change-mode").textContent = "☾"; // Update to show moon symbol
+    document.querySelector(".logo") = "assets/logos/indigologoblack.png"; // Update to show black indigo logo
   } else {
     document.querySelector(".change-mode").textContent = "☼"; // Default to dark mode button
+    document.querySelector(".logo") = "assets/logo/indigologowhite.png"; // Default to white indigo logo
   }
 };
 
 
 let lastScrollTop = 0;
 const taskbar = document.getElementById("Taskbar-container");
+let ticking = false;
+
+function handleScroll() {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  
+  if (scrollTop > lastScrollTop) {
+    taskbar.classList.add('hidden');
+    taskbar.classList.remove('visible');
+  } else {
+    taskbar.classList.remove('hidden');
+    taskbar.classList.add('visible');
+  }
+  
+  lastScrollTop = scrollTop;
+  ticking = false;
+}
 
 window.addEventListener('scroll', function () {
-  const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-  if (scrollTop > lastScrollTop) {
-    // Scrolling down: hide the taskbar or make it fully transparent
-    taskbar.classList.add('hidden');
-    taskbar.style.backgroundColor = 'rgba(255, 255, 255, 0)'; // Fully transparent
-  } else {
-    // Scrolling up: show the taskbar and make it slightly visible
-    taskbar.classList.remove('hidden');
-    taskbar.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'; // Slightly visible
+  if (!ticking) {
+    window.requestAnimationFrame(handleScroll);
+    ticking = true;
   }
-
-  lastScrollTop = scrollTop;
 });
-
-
-
-
