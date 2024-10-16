@@ -56,33 +56,44 @@ $(function() {
 
 function changeColor() {
   const body = document.body;
-  const changeModeBtn = document.querySelector(".change-mode"); /* Selects the button */
-  const themeLogoImg = document.querySelector(".logo"); /* Selects the logo */
+  const changeModeBtn = document.querySelector(".change-mode"); // Select the button
+  const themeLogoImg = document.querySelector(".logo"); // Select the logo
+  const taskbarText = document.querySelectorAll(".taskbar-text"); // Select the taskbar text
 
   // Toggle the light mode class
   body.classList.toggle("light-mode");
 
-  // Check the current mode and update the button text accordingly
+  // Check the current mode and update the button, logo, and taskbar text accordingly
   if (body.classList.contains("light-mode")) {
-    changeModeBtn.textContent = "☾"; /* Show moon symbol when in light mode */
-    themeLogoImg.src = "assets/logos/indigologoblack.png"; /* Show indigologoblack when in light mode */
+    changeModeBtn.textContent = "☼"; // Show sun symbol for light mode
+    themeLogoImg.src = "assets/logos/indigologoblack.png"; // Show black logo in light mode
+    taskbarText.forEach(text => text.style.color = "black"); // Change text to black in light mode
+    body.style.backgroundColor = "white"; // Set background to white for light mode
     localStorage.setItem('theme', 'light'); // Save the light theme in localStorage
   } else {
-    changeModeBtn.textContent = "☼"; /* Show sun symbol when in dark mode */
-    themeLogoImg.src = "assets/logos/indigologowhite.png"; /* Show indigologowhite when in dark mode */
+    changeModeBtn.textContent = "☾"; // Show moon symbol for dark mode
+    themeLogoImg.src = "assets/logos/indigologowhite.png"; // Show white logo in dark mode
+    taskbarText.forEach(text => text.style.color = "white"); // Change text to white in dark mode
+    body.style.backgroundColor = "black"; // Set background to black for dark mode
     localStorage.setItem('theme', 'dark'); // Save the dark theme in localStorage
   }
 }
 
-// On page load, apply saved theme
+// On page load, apply the saved theme from localStorage
 window.onload = () => {
+  const taskbarText = document.querySelectorAll(".taskbar-text"); // Select the taskbar text
+
   if (localStorage.getItem('theme') === 'light') {
     document.body.classList.add("light-mode");
-    document.querySelector(".change-mode").textContent = "☾"; // Update to show moon symbol
-    document.querySelector(".logo") = "assets/logos/indigologoblack.png"; // Update to show black indigo logo
+    document.querySelector(".change-mode").textContent = "☼"; // Show sun symbol for light mode
+    document.querySelector(".logo").src = "assets/logos/indigologoblack.png"; // Show black logo in light mode
+    taskbarText.forEach(text => text.style.color = "black"); // Set text to black for light mode
+    document.body.style.backgroundColor = "white"; // Set background to white
   } else {
-    document.querySelector(".change-mode").textContent = "☼"; // Default to dark mode button
-    document.querySelector(".logo") = "assets/logo/indigologowhite.png"; // Default to white indigo logo
+    document.querySelector(".change-mode").textContent = "☾"; // Show moon symbol for dark mode
+    document.querySelector(".logo").src = "assets/logos/indigologowhite.png"; // Show white logo in dark mode
+    taskbarText.forEach(text => text.style.color = "white"); // Set text to white for dark mode
+    document.body.style.backgroundColor = "black"; // Set background to black
   }
 };
 
