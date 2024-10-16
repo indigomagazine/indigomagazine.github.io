@@ -5,11 +5,14 @@
   box-sizing: border-box;
 }
 
+html {
+    cursor: url(assets/cursors/sparkle-cursor.png), default; /* Custom cursor */
+}
+
 /* Body and font setup */
 body {
   height: 100%;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  cursor: url("assets/cursors/sparkle-cursor.png"), auto; /* Custom cursor */
   transition: background-color 0.3s, color 0.3s; /* transition for dark/light mode */
   background-color: #ffffff; /* Light background */
   color: #000000; /* Dark text */
@@ -20,7 +23,7 @@ body.light-mode {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   background: black; /* to test dark/light mode */
   color: #170B3B;
-  cursor: url("assets/cursors/sparkle-cursor.png"), auto; /* Custom cursor */
+  cursor: url(assets/cursors/sparkle-cursor.png), default; /* Custom cursor */
   transition: background-color 0.3s, color 0.3s; /* transition for dark/light mode */
 }
 
@@ -259,7 +262,7 @@ h1, h2 {
   position: fixed;
   bottom: 20px;
   left: 20px;
-  z-index: 10; /* Make sure it's on top of other elements */
+  z-index: 2000; /* Make sure it's on top of other elements */
   background-color: rgba(255, 255, 255, 0.8);
   border: none;
   padding: 10px;
@@ -283,7 +286,21 @@ h1, h2 {
   background-color: rgba(255, 255, 255, 0);               
   width: 100%;                    
   top: 0;                          
-  z-index: 1000;                   
+  z-index: 1000;  
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 10px 20px;              
+}
+
+/* When the user scrolls down, we can add a slight background color */
+.hidden {
+  transform: translateY(-100%); /* Move the taskbar off-screen when hidden */
+}
+
+.visible {
+  transform: translateY(0); /* Slide it back into view */
+  background-color: rgba(255, 255, 255, 0.2); /* Add a subtle background when visible */
+  transition: background-color 0.3s ease;
 }
 
 #Taskbar-container {
