@@ -6,7 +6,7 @@
 }
 
 html {
-    cursor: url(assets/cursors/sparkle-cursor.png), default; /* Custom cursor */
+    cursor: url(/assets/cursors/sparkle-cursor.png), default; /* Custom cursor */
 }
 
 /* Body and font setup */
@@ -19,12 +19,27 @@ body {
 }
 
 body.light-mode {
-  height: 100%;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  background: black; /* to test dark/light mode */
-  color: #170B3B;
-  cursor: url(assets/cursors/sparkle-cursor.png), default; /* Custom cursor */
   transition: background-color 0.3s, color 0.3s; /* transition for dark/light mode */
+}
+
+/* Styles for light and dark mode link colors */
+body.light-mode #Taskbar-container a {
+  color: black; /* Black text in light mode */
+}
+
+/* Hover effect for the links in light mode */
+body.light-mode #Taskbar-container a:hover {
+  color: #170B3B; /* Adjust hover color */
+}
+
+/* Default dark mode styles (already defined) */
+#Taskbar-container a {
+  color: white; /* White text in dark mode */
+}
+
+/* Hover effect for the links in dark mode */
+#Taskbar-container a:hover {
+  color: #170B3B; /* Adjust hover color */
 }
 
 
@@ -327,7 +342,7 @@ h1, h2 {
   text-decoration: none;
   font-size: 1.2em;
   color: white;
-  font-family: "LemonMilk", sans-serif;
+  font-family:"LemonMilk", sans-serif;
   transition: color 0.3s ease;
 }
 
