@@ -89,23 +89,26 @@ window.onload = () => {
 
 let lastScrollTop = 0;
 const taskbar = document.getElementById("Taskbar-container");
+let ticking = false;
+
+function handleScroll() {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  
+  if (scrollTop > lastScrollTop) {
+    taskbar.classList.add('hidden');
+    taskbar.classList.remove('visible');
+  } else {
+    taskbar.classList.remove('hidden');
+    taskbar.classList.add('visible');
+  }
+  
+  lastScrollTop = scrollTop;
+  ticking = false;
+}
 
 window.addEventListener('scroll', function () {
-  const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-  if (scrollTop > lastScrollTop) {
-    // Scrolling down: hide the taskbar or make it fully transparent
-    taskbar.classList.add('hidden');
-    taskbar.style.backgroundColor = 'rgba(255, 255, 255, 0)'; // Fully transparent
-  } else {
-    // Scrolling up: show the taskbar and make it slightly visible
-    taskbar.classList.remove('hidden');
-    taskbar.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'; // Slightly visible
+  if (!ticking) {
+    window.requestAnimationFrame(handleScroll);
+    ticking = true;
   }
-
-  lastScrollTop = scrollTop;
 });
-
-
-
-
