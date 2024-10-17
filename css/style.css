@@ -9,39 +9,30 @@ html {
     cursor: url(/assets/cursors/sparkle-cursor.png), default; /* Custom cursor */
 }
 
-/* Body and font setup */
 body {
   height: 100%;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  transition: background-color 0.3s, color 0.3s; /* transition for dark/light mode */
-  background-color: #ffffff; /* Light background */
-  color: #000000; /* Dark text */
+  font-family: 'Lucida Sans', sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+  background-color: black; /* Default dark mode background */
+  color: white; /* Default dark mode text */
 }
 
 body.light-mode {
-  transition: background-color 0.3s, color 0.3s; /* transition for dark/light mode */
+  background-color: white; /* Light mode background */
+  color: black; /* Light mode text */
 }
 
-/* Styles for light and dark mode link colors */
-body.light-mode #Taskbar-container a {
-  color: black; /* Black text in light mode */
-}
-
-/* Hover effect for the links in light mode */
-body.light-mode #Taskbar-container a:hover {
-  color: #170B3B; /* Adjust hover color */
-}
-
-/* Default dark mode styles (already defined) */
 #Taskbar-container a {
-  color: white; /* White text in dark mode */
+  color: white; /* Default dark mode text for links */
 }
 
-/* Hover effect for the links in dark mode */
+body.light-mode #Taskbar-container a {
+  color: black; /* Light mode text for links */
+}
+
 #Taskbar-container a:hover {
-  color: #170B3B; /* Adjust hover color */
+  color: #170B3B; /* Hover effect for both modes */
 }
-
 
 /* Hero section */
 .hero-section {
@@ -414,4 +405,44 @@ h1, h2 {
   font-family: "Praktika";
   src: url(assets/fonts/Praktika-Light.otf);
 
+}
+
+
+/* icons in .contact-us */
+.icons {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+}
+
+.icons a {
+  margin: 0 10px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.icons a img {
+  width: 30px; 
+  height: 30px;
+}
+
+
+.icons a:hover {
+  transform: scale(1.2); 
+  opacity: 0.8; 
+}
+
+#Featured-Article img {
+  display: block;
+  margin: 0 auto; 
+  height: auto;
+  width: 300px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+
+#Featured-Article{
+  font-family: "Lemon Milk",sans-serif;;
 }
