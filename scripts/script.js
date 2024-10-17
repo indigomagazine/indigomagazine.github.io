@@ -58,6 +58,10 @@ function changeColor() {
   const body = document.body;
   const changeModeBtn = document.querySelector(".change-mode"); // Select the button
   const themeLogoImg = document.querySelector(".logo"); // Select the logo
+  const h1Text = document.querySelectorAll("h1"); // Selects <h1> elements
+  // const paragraphText = document.querySelectorAll("p"); // Selects <p> elements
+  // create color changes for specific element classes
+  const missionStatementText = document.querySelector(".mission-statement");
   const taskbarText = document.querySelectorAll(".taskbar-text"); // Select the taskbar text
 
   // Toggle the light mode class
@@ -67,12 +71,18 @@ function changeColor() {
   if (body.classList.contains("light-mode")) {
     changeModeBtn.textContent = "☼"; // Show sun symbol for light mode
     themeLogoImg.src = "assets/logos/indigologoblack.png"; // Show black logo in light mode
+    h1Text.forEach(text => text.style.color = "black"); // Set <h1> text to black
+    // paragraphText.forEach(text => text.style.color = "#51289C"); // // Set <p> text to #51289C (Indigo Color Scheme)
+    missionStatementText.style.color = "#51289C";
     taskbarText.forEach(text => text.style.color = "black"); // Change text to black in light mode
     body.style.backgroundColor = "white"; // Set background to white for light mode
     localStorage.setItem('theme', 'light'); // Save the light theme in localStorage
   } else {
     changeModeBtn.textContent = "☾"; // Show moon symbol for dark mode
     themeLogoImg.src = "assets/logos/indigologowhite.png"; // Show white logo in dark mode
+    h1Text.forEach(text => text.style.color = "white"); // Set <h1> text to white
+    //paragraphText.forEach(text => text.style.color = "#C19EEA"); // // Set <p> text to #C19EEA (Indigo Color Scheme)
+    missionStatementText.style.color = "#C19EEA";
     taskbarText.forEach(text => text.style.color = "white"); // Change text to white in dark mode
     body.style.backgroundColor = "black"; // Set background to black for dark mode
     localStorage.setItem('theme', 'dark'); // Save the dark theme in localStorage
@@ -81,17 +91,25 @@ function changeColor() {
 
 // On page load, apply the saved theme from localStorage
 window.onload = () => {
+  const h1Text = document.querySelectorAll("h1"); // Selects h1 text
+  // const paragraphText = document.querySelectorAll("p") // Selects p text
   const taskbarText = document.querySelectorAll(".taskbar-text"); // Select the taskbar text
 
   if (localStorage.getItem('theme') === 'light') {
     document.body.classList.add("light-mode");
     document.querySelector(".change-mode").textContent = "☼"; // Show sun symbol for light mode
     document.querySelector(".logo").src = "assets/logos/indigologoblack.png"; // Show black logo in light mode
+    h1Text.forEach(text => text.style.color = "black"); // Set <h1> text to black
+    // paragraphText.forEach(text => text.style.color = "#51289C"); // // Set <p> text to #51289C (Indigo Color Scheme)
+    missionStatementText.style.color = "#51289C";
     taskbarText.forEach(text => text.style.color = "black"); // Set text to black for light mode
     document.body.style.backgroundColor = "white"; // Set background to white
   } else {
     document.querySelector(".change-mode").textContent = "☾"; // Show moon symbol for dark mode
     document.querySelector(".logo").src = "assets/logos/indigologowhite.png"; // Show white logo in dark mode
+    h1Text.forEach(text => text.style.color = "white"); // Set <h1> text to white
+    // paragraphText.forEach(text => text.style.color = "#C19EEA"); // // Set text to #C19EEA (Indigo Color Scheme)
+    missionStatementText.style.color = "#C19EEA";
     taskbarText.forEach(text => text.style.color = "white"); // Set text to white for dark mode
     document.body.style.backgroundColor = "black"; // Set background to black
   }
