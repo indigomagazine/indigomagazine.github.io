@@ -100,12 +100,16 @@ body.light-mode #Taskbar-container a {
   }
 }
 
+.mission-statement-header {
+  color: white; /* default color */
+}
+
 /* Centered mission statement */
 .mission-statement {
   position: center;
   margin: 20px auto;
   font-size: 1.4rem;
-  color: #51289C; 
+  color: #C19EEA; /* #51289C; */
   max-width: 600px;
   line-height: 1.6;
   border-bottom: 2px solid #723ABF;
@@ -115,6 +119,11 @@ body.light-mode #Taskbar-container a {
 }
 
 /* Officer section */
+
+.officer-heading {
+  color: white; /* default color */
+}
+
 .officer-section {
   display: flex;
   flex-wrap: wrap;
