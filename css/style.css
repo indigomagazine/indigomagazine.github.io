@@ -7,7 +7,8 @@
 
 html {
     cursor: url(/assets/cursors/sparkle-cursor.png), default; /* Custom cursor */
-}
+      overflow-x: hidden;
+  }
 
 body {
   height: 100%;
@@ -158,10 +159,10 @@ body.light-mode #Taskbar-container a {
   display: block;
   margin: 0 auto; 
   height: auto;
-  width: 80%;
+  width: 100%;
   max-width: 300px;
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 60px 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -171,6 +172,7 @@ body.light-mode #Taskbar-container a {
 }
 
 /* spotify section (index page)*/
+/* Default styling for larger screens */
 .spotify-section {
   display: flex;
   justify-content: center;
@@ -179,26 +181,40 @@ body.light-mode #Taskbar-container a {
   background-color: #51289C;
 }
 
-.spotify-section iframe {
-  margin-right: 20px;
+/* Media query for screens smaller than 768px */
+@media only screen and (max-width: 768px) {
+  .spotify-section {
+    flex-direction: column; /* Stack items vertically */
+    padding: 30px; /* Reduce padding for smaller screens */
+  }
+
+  .spotify-section iframe {
+    margin-right: 0; /* Remove right margin */
+    margin-bottom: 20px; /* Add bottom margin for spacing */
+    width: 100%; /* Make the iframe take full width of the section */
+    max-width: 400px; /* Optional: Set a max-width for better control */
+  }
+
+  .kismet-notes {
+    max-width: 100%; /* Allow the text to take up full width */
+    text-align: center; /* Center-align text */
+  }
 }
 
-.kismet-notes {
-  color: white;
-  max-width: 400px;
-}
+/* Media query for screens smaller than 480px */
+@media only screen and (max-width: 480px) {
+  .spotify-section {
+    padding: 20px; /* Further reduce padding for very small screens */
+  }
 
-.kismet-notes h2 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  font-family: "LemonMilk",sans-serif;
-}
+  .kismet-notes h2 {
+    font-size: 1.5rem; /* Reduce font size for better readability */
+  }
 
-.kismet-notes p {
-  line-height: 1.6;
-  font-size: 1.1rem;
+  .kismet-notes p {
+    font-size: 1rem; /* Adjust font size for mobile */
+  }
 }
-
 
 /* icons in .contact-us */
 .icons {
@@ -208,20 +224,42 @@ body.light-mode #Taskbar-container a {
   padding: 2%;
 }
 
-.icons a {
-  margin: 0 10px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+/* Media query for screens smaller than 768px */
+@media only screen and (max-width: 768px) {
+  .icons {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+  }
+  
+  .icons a {
+    margin: 0 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .icons a img {
+    width: 30px; 
+    height: 30px;
+  }
+  
+  .icons a:hover {
+    transform: scale(1.2); 
+    opacity: 0.8; 
+  }
+}
+/* Media query for screens smaller than 480px */
+@media only screen and (max-width: 480px) {
+  .icons {
+    padding: 1%; /* Further reduce padding for very small screens */
+  }
+
+  .icons a img {
+    width: 20px; /* Smaller icon size for better fit on small screens */
+    height: 20px;
+  }
 }
 
-.icons a img {
-  width: 30px; 
-  height: 30px;
-}
-
-.icons a:hover {
-  transform: scale(1.2); 
-  opacity: 0.8; 
-}
 
 
 
