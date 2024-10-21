@@ -224,6 +224,21 @@ body.light-mode #Taskbar-container a {
   padding: 2%;
 }
 
+.icons a {
+  margin: 0 20px; /* Adds horizontal spacing between icons */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.icons a img {
+  width: 30px; 
+  height: 30px;
+}
+
+.icons a:hover {
+  transform: scale(1.2); 
+  opacity: 0.8;
+}
+
 /* Media query for screens smaller than 768px */
 @media only screen and (max-width: 768px) {
   .icons {
@@ -259,8 +274,6 @@ body.light-mode #Taskbar-container a {
     height: 20px;
   }
 }
-
-
 
 
 /* mission statement (about page)*/
@@ -495,6 +508,155 @@ body.light-mode #Taskbar-container a {
 #Taskbar-container a:hover {
   color: #170B3B;
 }
+
+
+/* Container for the issue covers */
+.issues-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 images per row for larger screens */
+  gap: 0; /* No gap between images */
+  padding: 0;
+  height: 100vh; /* Full viewport height */
+}
+
+/* Styling for each issue cover */
+.issue {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  width: 100%;
+  height: 100%; /* Ensure covers take full height of the container */
+}
+
+/* Ensure all images cover their grid cell */
+.issue img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Makes sure the image covers the full area without distortion */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect for the image */
+.issue:hover img {
+  transform: scale(1.1); /* Zoom in slightly on hover */
+}
+
+/* Title overlay on hover */
+.issue-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2vw; /* Responsive font size */
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.issue:hover .issue-title {
+  opacity: 1;
+}
+
+/* Media Queries for smaller screens (tablets, mobile) */
+@media (max-width: 1024px) {
+  .issues-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 images per row for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .issues-container {
+    grid-template-columns: 1fr; /* 1 image per row for mobile screens */
+    height: auto; /* Remove fixed height to allow scrolling on mobile */
+  }
+
+  .issue {
+    height: 50vh; /* Adjust the height for mobile, making the image taller */
+  }
+
+  .issue-title {
+    font-size: 4vw; /* Make the title larger on mobile */
+  }
+}
+
+/* Container for the articles */
+.articles-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 articles per row for desktop */
+  gap: 40px; /* Spacing between articles */
+  padding: 40px; /* Padding around the container */
+  max-width: 1200px; /* Set a maximum width */
+  margin: 0 auto; /* Center the grid container */
+}
+
+/* Styling for each article */
+.article {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 10px; /* Optional: rounded corners for a modern look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+}
+
+/* Ensure all images cover their grid cell and maintain the same size */
+.article img {
+  width: 100%;
+  height: 300px; /* Set a fixed height for all images */
+  object-fit: cover; /* Ensures the image fills the area without distortion */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect for the image */
+.article:hover img {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Title overlay on hover */
+.article-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px; /* Adjust size as needed */
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.article:hover .article-title {
+  opacity: 1;
+}
+
+/* Media Queries for smaller screens (tablets and mobile) */
+@media (max-width: 1024px) {
+  .articles-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 articles per row for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .articles-container {
+    grid-template-columns: 1fr; /* 1 article per row for mobile screens */
+    padding: 20px; /* Adjust padding for smaller screens */
+  }
+
+  .article {
+    margin-bottom: 20px; /* Add space between articles for mobile */
+  }
+
+  .article-title {
+    font-size: 16px; /* Adjust title size for mobile */
+  }
+}
+
 
 
 @font-face {
