@@ -339,7 +339,8 @@ body.light-mode #Taskbar-container a {
 
 .officer-card img {
   width: 200px;
-  height: auto;
+  height: 250px; /* Set a fixed height */
+  object-fit: cover; /* Ensures the image scales to fill the box while keeping its aspect ratio */
   border-radius: 10px;
   margin-bottom: 10px;
   transition: transform 0.3s ease;
