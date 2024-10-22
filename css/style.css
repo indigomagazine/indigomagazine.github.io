@@ -12,7 +12,7 @@ html {
 
 body {
   height: 100%;
-  font-family: 'Lucida Sans', sans-serif;
+  font-family: "Inter";
   transition: background-color 0.3s, color 0.3s;
   background-color: black; /* Default dark mode background */
   color: white; /* Default dark mode text */
@@ -24,7 +24,7 @@ h1, h2 {
   margin-bottom: 15px;
   letter-spacing: 0.1em;
   font-weight: bold;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Inter";
 }
 
 body.light-mode {
@@ -101,7 +101,7 @@ body.light-mode #Taskbar-container a {
 
 .editor-note {
   position: absolute;
-  font-family: "Praktika";
+  font-family: "Inter";
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -120,6 +120,10 @@ body.light-mode #Taskbar-container a {
   overflow: hidden;
   width: 100vw;
   height: 100vh;
+}
+
+#bg-wrap:hover {
+  transform: scale(1.02); /* Slight zoom effect on hover */
 }
 
 #bg-wrap svg {
@@ -142,10 +146,10 @@ body.light-mode #Taskbar-container a {
 /* featured article (index page)*/
 
 #Featured-Article{
-  font-family: "Lemon Milk",sans-serif;
+  font-family: "Inter";
   padding: 50px 0;
   text-align: center;
-  background-color: #2F1678;
+  transition: transform 0.3s ease;
 }
 
 #Featured-Article h1 {
@@ -171,48 +175,77 @@ body.light-mode #Taskbar-container a {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* spotify section (index page)*/
-/* Default styling for larger screens */
+#Featured-Article:hover {
+  transform: scale(1.02); /* Slight zoom effect on hover */
+}
+
+/* spotify section (index page) */
 .spotify-section {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 50px;
-  background-color: #51289C;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
 }
 
-/* Media query for screens smaller than 768px */
+.kismet-notes {
+  position: relative; 
+  z-index: 2; 
+}
+
+.spotify-section iframe {
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+.spotify-section {
+  transition: transform 0.3s ease;
+}
+
+.spotify-section:hover {
+  transform: scale(1.02); /* Slight zoom effect on hover */
+}
+
+.kismet-notes h2 {
+  font-size: 2rem; 
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+}
+
+.kismet-notes p {
+  line-height: 1.5; 
+}
+
 @media only screen and (max-width: 768px) {
   .spotify-section {
-    flex-direction: column; /* Stack items vertically */
-    padding: 30px; /* Reduce padding for smaller screens */
+    flex-direction: column; 
+    padding: 30px; 
   }
 
   .spotify-section iframe {
-    margin-right: 0; /* Remove right margin */
-    margin-bottom: 20px; /* Add bottom margin for spacing */
-    width: 100%; /* Make the iframe take full width of the section */
-    max-width: 400px; /* Optional: Set a max-width for better control */
+    margin-right: 0; 
+    margin-bottom: 20px; 
+    width: 100%; 
+    max-width: 400px; 
   }
 
   .kismet-notes {
-    max-width: 100%; /* Allow the text to take up full width */
-    text-align: center; /* Center-align text */
+    max-width: 100%; 
+    text-align: center; 
   }
 }
 
-/* Media query for screens smaller than 480px */
 @media only screen and (max-width: 480px) {
   .spotify-section {
-    padding: 20px; /* Further reduce padding for very small screens */
+    padding: 20px;
   }
 
   .kismet-notes h2 {
-    font-size: 1.5rem; /* Reduce font size for better readability */
+    font-size: 1.5rem; 
   }
 
   .kismet-notes p {
-    font-size: 1rem; /* Adjust font size for mobile */
+    font-size: 1rem; 
   }
 }
 
@@ -222,16 +255,25 @@ body.light-mode #Taskbar-container a {
   display: flex;
   justify-content: center;
   padding: 2%;
+  border: none; /* Ensure no border is set */
 }
 
 .icons a {
-  margin: 0 20px; /* Adds horizontal spacing between icons */
+  margin: 0 10px; 
   transition: transform 0.3s ease, opacity 0.3s ease;
+  border: none; 
+  outline: none; 
 }
 
 .icons a img {
-  width: 30px; 
-  height: 30px;
+  width: 20px; 
+  height: 20px; 
+  filter: grayscale(100%); 
+  transition: filter 0.3s ease; 
+}
+
+.icons a:hover img {
+  filter: grayscale(0%); /* Colorful on hover */
 }
 
 .icons a:hover {
@@ -249,20 +291,29 @@ body.light-mode #Taskbar-container a {
   }
   
   .icons a {
-    margin: 0 10px;
+    margin: 0 10px; /* Maintain horizontal spacing */
     transition: transform 0.3s ease, opacity 0.3s ease;
+    border: none; /* Ensure no border is set on links */
+    outline: none; /* Remove focus outline for links */
   }
   
   .icons a img {
-    width: 30px; 
-    height: 30px;
+    width: 20px; /* Maintain smaller icon size */
+    height: 20px; /* Maintain smaller icon size */
+    filter: grayscale(100%); /* Black and white */
+    transition: filter 0.3s ease; /* Smooth transition */
   }
   
+  .icons a:hover img {
+    filter: grayscale(0%); /* Colorful on hover */
+  }
+
   .icons a:hover {
     transform: scale(1.2); 
     opacity: 0.8; 
   }
 }
+
 /* Media query for screens smaller than 480px */
 @media only screen and (max-width: 480px) {
   .icons {
@@ -270,21 +321,22 @@ body.light-mode #Taskbar-container a {
   }
 
   .icons a img {
-    width: 20px; /* Smaller icon size for better fit on small screens */
-    height: 20px;
+    width: 15px; /* Even smaller icon size for better fit on very small screens */
+    height: 15px; /* Even smaller icon size for better fit on very small screens */
   }
 }
-
 
 /* mission statement (about page)*/
 .mission-statement-header {
   color: white; /* default color */
+  font-family: 'Inter';
 }
 
 .mission-statement {
   position: center;
   margin: 20px auto;
   font-size: 1.4rem;
+  font-family: 'Inter';
   color: #C19EEA; /* #51289C; */
   max-width: 600px;
   line-height: 1.6;
@@ -306,7 +358,7 @@ body.light-mode #Taskbar-container a {
   justify-content: center;
   margin-top: 30px;
   gap: 20px; 
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Inter';
 }
 
 /* Officer card (tarot-like) styling */
@@ -326,7 +378,7 @@ body.light-mode #Taskbar-container a {
   align-items: center;
   padding-top: 10px;
   opacity: 0.95;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Inter';
 }
 
 .officer-card:hover {
@@ -353,6 +405,7 @@ body.light-mode #Taskbar-container a {
 
 .officer-card h2 {
   font-size: 1.1rem;
+  font-family: 'Inter';
   color: #fff;
   background-color: #2F1678; 
   width: 100%;
@@ -501,7 +554,7 @@ body.light-mode #Taskbar-container a {
   text-decoration: none;
   font-size: 1.2em;
   color: white;
-  font-family:"LemonMilk", sans-serif;
+  font-family: 'Inter';
   transition: color 0.3s ease;
 }
 
