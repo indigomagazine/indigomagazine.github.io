@@ -50,7 +50,7 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 0.8em;
     line-height: 30px;
     /*text-transform: capitalize;*/
     /*text-indent: 60px;*/
@@ -71,8 +71,10 @@
   }
   
   section img {
-    margin: 20px 0 20px 0;
+    margin: 20px 0 0;
     max-height: 50vmax;
+    max-width: 100%;
+    height: auto;
     
   }
 
@@ -128,24 +130,8 @@
     }
 }
 
-    @media(max-width: 600px) {
-      
-      
-  section.heading h1, section.heading h2, section.para p, div.img, div.img2, section.para2 p, section.paragraph p, section p{
-    grid-column: 1/span 12;
-  } 
-  section p  
-   {
-    font-size: 0.6em;
-  }
-    section.heading h1, section.heading h2{
-    }
-}
-
   @media (max-width: 500px){
     
-
-
   section.heading h1{
     line-height: 40px;
     font-size: 40px;
@@ -155,11 +141,40 @@
       max-height: none;
     }
 }
-   
+
+@media(max-width: 600px) {
+  section {
+    width: 100%; /* Ensure the section takes full screen width */
+    display: block; /* Switch to block display for mobile */
+  }
+
+  section img {
+    max-width: 100%;   /* Restrict image width to container */
+    height: auto;      /* Maintain aspect ratio */
+  }
+
+  div.img, div.img2, div.img3 {
+    grid-column: 1/span 12; /* Ensure images span full width */
+    display: flex;
+    justify-content: center;
+  }
+
+  div.img, div.img2 {
+    max-width: 80%; /* Only take up 80% of the width to avoid stretching */
+  }
+
+  section.heading h1, section.heading h2, section.para p, section.para2 p, section.p p {
+    grid-column: 1/span 12; /* Ensure full width */
+  }
+
+  section p {
+    font-size: 0.6em;
+  }
+}
+
+
 
 </style>
-
-
 
 </html>
 
