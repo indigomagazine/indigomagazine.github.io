@@ -147,6 +147,7 @@ body.light-mode #Taskbar-container a {
   text-align: center;
   transition: transform 0.3s ease;
   padding: 50px 20px; 
+  margin-bottom: 100px;
 }
 
 #Featured-Article h1 {
@@ -180,61 +181,90 @@ body.light-mode #Taskbar-container a {
 /* spotify section (index page) */
 .spotify-section {
   position: relative;
+  border-radius: 15px;
+  margin-top: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 50px 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .kismet-notes {
   position: relative; 
   z-index: 2; 
-}
-
-.spotify-section iframe {
-  border-radius: 12px; /* Rounded corners */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  margin-right: 30px;
-}
-
-.spotify-section {
-  transition: transform 0.3s ease;
-}
-
-.spotify-section:hover {
-  transform: scale(1.02); /* Slight zoom effect on hover */
+  font-family: 'Cursive', sans-serif; /* Whimsical font */
+  color: #333;
+  max-width: 500px;
+  padding: 20px;
+  border: none;
+  box-shadow: none;
+  border-radius: 15px; /* Rounded corners */
+  animation: fadeIn 2s ease-in-out;
 }
 
 .kismet-notes h2 {
-  font-size: 2rem; 
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+  font-size: 2rem;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .kismet-notes p {
   line-height: 1.5; 
   position: relative;
-  margin-top: 20px; /* Add margin to the top */
-  margin-bottom: 20px; /* Add margin to the bottom */
+  margin-top: 20px; 
+  margin-bottom: 20px;
+  font-size: 1.2rem; /* Larger font for emphasis */
+}
+
+.kismet-notes p em {
+  color: #666;
+  font-style: italic;
+  font-size: 1.1rem;
+  display: block;
+  text-align: center;
+}
+
+.kismet-notes p strong {
+  display: block;
+  margin-top: 20px;
+  font-size: 1.3rem;
+  color: #333;
+  text-align: center;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.spotify-section iframe {
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  margin-right: 30px;
+}
+
+.spotify-section:hover {
+  transform: scale(1.02); 
 }
 
 @media only screen and (max-width: 768px) {
   .spotify-section {
     flex-direction: column; 
-    padding: 30px; 
+    padding: 30px;
   }
 
   .spotify-section iframe {
     margin-right: 0; 
     margin-bottom: 20px; 
     width: 100%; 
-    max-width: 400px; 
+    max-width: 400px;
   }
 
   .kismet-notes {
     max-width: 100%; 
-    text-align: center; 
+    text-align: center;
   }
 }
 
@@ -244,11 +274,11 @@ body.light-mode #Taskbar-container a {
   }
 
   .kismet-notes h2 {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
   }
 
   .kismet-notes p {
-    font-size: 1rem; 
+    font-size: 1rem;
   }
 }
 
