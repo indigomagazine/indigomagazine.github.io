@@ -141,13 +141,16 @@ body.light-mode #Taskbar-container a {
 }
 /* featured article (index page)*/
 
-#Featured-Article{
+#Featured-Article {
   font-family: "Inter";
   padding: 50px 0;
   text-align: center;
   transition: transform 0.3s ease;
   padding: 50px 20px; 
   margin-bottom: 100px;
+  position: relative; /* Added to position the title over the image */
+  cursor: pointer;
+  overflow: hidden;
 }
 
 #Featured-Article h1 {
@@ -155,6 +158,8 @@ body.light-mode #Taskbar-container a {
   letter-spacing: 2px;
   margin-bottom: 20px;
   color: #ffffff;
+  z-index: 2; /* Keep the "Featured Article" title above the image */
+  position: relative;
 }
 
 #Featured-Article img {
@@ -162,7 +167,7 @@ body.light-mode #Taskbar-container a {
   margin: 0 auto; 
   height: auto;
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
   border-radius: 10px;
   margin-bottom: 60px 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -176,6 +181,25 @@ body.light-mode #Taskbar-container a {
 
 #Featured-Article:hover {
   transform: scale(1.02); /* Slight zoom effect on hover */
+}
+
+#Featured-Article .article-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px; /* Adjust size as needed */
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1; /* Ensure it's over the image */
+}
+
+#Featured-Article:hover .article-title {
+  opacity: 1;
 }
 
 /* spotify section (index page) */
