@@ -139,16 +139,17 @@ body.light-mode #Taskbar-container a {
     height: 40vh; /* Make ripple effect more prominent on mobile */
   }
 }
-/* featured article (index page)*/
 
 #Featured-Article {
   font-family: "Inter";
-  padding: 50px 0;
+  display: flex;
+  flex-direction: column; /* Stack the heading and image vertically */
+  padding: 50px;
   text-align: center;
-  transition: transform 0.3s ease;
-  padding: 50px 20px; 
+  justify-content: center;
+  align-items: center;
   margin-bottom: 100px;
-  position: relative; /* Added to position the title over the image */
+  position: relative; /* Keep for positioning the title over the image */
   cursor: pointer;
   overflow: hidden;
 }
@@ -156,9 +157,9 @@ body.light-mode #Taskbar-container a {
 #Featured-Article h1 {
   font-size: 2.5rem;
   letter-spacing: 2px;
-  margin-bottom: 20px;
+  margin-bottom: 30px; /* Increased space between heading and image */
   color: #ffffff;
-  z-index: 2; /* Keep the "Featured Article" title above the image */
+  z-index: 2; /* Title above the image */
   position: relative;
 }
 
@@ -167,39 +168,39 @@ body.light-mode #Taskbar-container a {
   margin: 0 auto; 
   height: auto;
   width: 100%;
-  max-width: 400px;
-  border-radius: 10px;
-  margin-bottom: 60px 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  max-width: 400px; /* Keep this to maintain the image size */
+  border-radius: 10px; /* You can remove this if you don't want rounded corners */
+  margin-bottom: 60px; /* Space below the image */
+  transition: transform 0.3s ease;
+  box-shadow: none; /* Remove box shadow */
 }
 
 #Featured-Article img:hover {
-  transform: scale(1.05); /* Slight zoom effect */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05); /* Slight zoom effect without shadow */
 }
+
 
 #Featured-Article:hover {
   transform: scale(1.02); /* Slight zoom effect on hover */
 }
 
 #Featured-Article .article-title {
-  position: absolute;
+  position: absolute; /* Keep this to overlay */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 24px; /* Adjust size as needed */
+  font-size: 24px;
   color: white;
   text-transform: uppercase;
   font-weight: bold;
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
-  z-index: 1; /* Ensure it's over the image */
+  z-index: 1; /* Ensure it's above the image */
 }
 
 #Featured-Article:hover .article-title {
-  opacity: 1;
+  opacity: 1; /* Make title visible on hover */
 }
 
 /* spotify section (index page) */
@@ -776,6 +777,9 @@ body.light-mode #Taskbar-container a {
 
   font-family: "Praktika";
   src: url(assets/fonts/Praktika-Light.otf);
+
+  font-family: "Cardinal";
+  src: url(assets/fonts/Cardinal.ttf)
 
 }
 
