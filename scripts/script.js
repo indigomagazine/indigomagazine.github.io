@@ -135,3 +135,13 @@ window.addEventListener('scroll', function () {
     ticking = true;
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const heroVideo = document.querySelector(".hero-section video");
+  if (heroVideo) {
+    heroVideo.play().catch(error => {
+      console.log("Autoplay prevented, attempting programmatic play:", error);
+      // Optional fallback action here
+    });
+  }
+});
