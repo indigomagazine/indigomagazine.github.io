@@ -71,6 +71,10 @@ body.light-mode #Taskbar-container a {
   display: none !important; /* Hides the play button for WebKit browsers */
 }
 
+video::-webkit-media-controls {
+  display: none !important;
+}
+
 .hero-section video {
   pointer-events: none; /* Disables interactions with the video */
 }
