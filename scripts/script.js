@@ -137,6 +137,19 @@ window.addEventListener('scroll', function () {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-  const video = document.querySelector("video");
+  const video = document.querySelector(".hero-section video");
+  video.muted = true;
+  video.autoplay = true;
+  video.loop = true;
   video.play().catch(error => console.log("Autoplay prevented:", error));
+});
+
+
+window.addEventListener("load", function() {
+  const video = document.querySelector(".hero-section video");
+  video.play().then(() => {
+      console.log("Autoplay successful");
+  }).catch(error => {
+      console.log("Autoplay error:", error);
+  });
 });

@@ -6,6 +6,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <style>
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: url(../../assets/backgrounds/parchmentpaper.png) no-repeat center center fixed;
   background-size: cover;
@@ -13,6 +19,14 @@ body {
   line-height: 1.6;
   margin: 0;
   padding: 0;
+  min-height: 100vh; 
+}
+
+@media (max-width: 600px) {
+  body {
+    background: url(../../assets/backgrounds/parchmentpaper.png) no-repeat center center fixed;
+    background-size: cover;
+  }
 }
 
 a {
