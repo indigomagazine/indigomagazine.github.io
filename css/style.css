@@ -46,10 +46,11 @@ body.light-mode #Taskbar-container a {
 
 /* Hero section */
 
+/* Hero section */
 .hero-section {
   position: relative;
   width: 100%;
-  height: 100vh; /* Change height to 50% of the viewport */
+  height: 100vh; /* Full height on larger screens */
   overflow: hidden;
 }
 
@@ -62,10 +63,19 @@ body.light-mode #Taskbar-container a {
   object-fit: cover;
   z-index: 0;
   filter: brightness(0.7);
-  object-fit: cover;
   animation: fadeIn 1.5s ease-in-out;
+  transition: opacity 0.5s ease; /* Smooth transition for poster image */
 }
 
+.hero-section video[poster] {
+  opacity: 1;
+}
+
+.hero-section video:playing {
+  opacity: 1; /* Ensure full opacity once video starts playing */
+}
+
+/* Fade in animation for the hero video */
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -75,17 +85,19 @@ body.light-mode #Taskbar-container a {
   }
 }
 
+/* Adjust hero section height on smaller screens */
 @media only screen and (max-width: 768px) {
   .hero-section {
-    height: 80vh; /* Adjust for smaller screens */
+    height: 80vh; /* Smaller height on medium screens */
   }
 }
 
 @media only screen and (max-width: 480px) {
   .hero-section {
-    height: 60vh; /* Further adjust for mobile */
+    height: 60vh; /* Further reduce height for mobile screens */
   }
 }
+
 
 .overlay {
   position: absolute;
