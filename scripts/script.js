@@ -138,14 +138,8 @@ window.addEventListener('scroll', function () {
 
 document.addEventListener("DOMContentLoaded", function() {
   const video = document.querySelector(".hero-section video");
-  video.muted = true;
   video.autoplay = true;
   video.loop = true;
   video.play().catch(error => console.log("Autoplay prevented:", error));
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-  const video = document.querySelector(".hero-section video");
-  video.muted = true; // Ensure it's muted to allow autoplay
-  video.play().catch(error => console.log("Autoplay prevented:", error));
-});
