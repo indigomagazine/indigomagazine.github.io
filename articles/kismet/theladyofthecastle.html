@@ -10,22 +10,27 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 body {
-  background: url(../../assets/backgrounds/parchmentpaper.png) no-repeat center center fixed;
-  background-size: cover;
+  background: url('../../assets/backgrounds/parchmentpaper.png') no-repeat center center;
+  background-size: cover; /* Default to cover */
   font-size: 1.5em;
   line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh; 
+  min-height: 100vh; /* Ensure background fills viewport */
 }
 
-@media (max-width: 600px) {
+@media (min-width: 768px) {
   body {
-    background: url(../../assets/backgrounds/parchmentpaper.png) no-repeat center center fixed;
-    background-size: cover;
+    background-attachment: fixed; /* Apply fixed only on larger screens */
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background-size: auto; /* Auto scales better on smaller screens */
+    background-position: center top; /* Adjust for mobile */
   }
 }
 
