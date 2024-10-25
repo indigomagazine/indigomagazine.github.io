@@ -67,6 +67,15 @@ body.light-mode #Taskbar-container a {
   transition: opacity 0.5s ease; /* Smooth transition for poster image */
 }
 
+.hero-section video::-webkit-media-controls {
+  display: none !important; /* Hides the play button for WebKit browsers */
+}
+
+.hero-section video {
+  pointer-events: none; /* Disables interactions with the video */
+}
+
+
 .hero-section video[poster] {
   opacity: 1;
 }
