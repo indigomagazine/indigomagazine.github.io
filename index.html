@@ -33,69 +33,75 @@
       <source src="assets/hero videos/kismetbts.mp4" type="video/mp4">
     </video>
 
-    <!-- Button for Light/Dark Mode -->
-    <button onclick="changeColor()" class="change-mode"> ☼ / ☾</button>
-  </div>
+ <!--Button for Light/Dark Mode -->
+<button onclick="changeColor()" class="change-mode"> ☼ / ☾</button>
+</div>
 
-  <div id="bg-wrap" style="background-color: #2F1678; width: 100vw; overflow: hidden;">
-    <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" style="width: 100%; height: 100%;">
-      <defs>
-        <radialGradient id="Gradient1" cx="50%" cy="50%" fx="0.441602%" fy="50%" r=".5">
-          <animate attributeName="fx" dur="30s" values="0%;3%;0%" repeatCount="indefinite"></animate>
-          <stop offset="0%" stop-color="#2F1678"></stop>
-          <stop offset="100%" stop-color="rgba(47, 22, 120, 0)"></stop>
-        </radialGradient>
-  
-        <radialGradient id="Gradient2" cx="50%" cy="50%" fx="2.68147%" fy="50%" r=".5">
-          <animate attributeName="fx" dur="35s" values="0%;3%;0%" repeatCount="indefinite"></animate>
-          <stop offset="0%" stop-color="#51289C"></stop>
-          <stop offset="100%" stop-color="rgba(81, 40, 156, 0)"></stop>
-        </radialGradient>
-  
-        <radialGradient id="Gradient3" cx="50%" cy="50%" fx="0.836536%" fy="50%" r=".5">
-          <animate attributeName="fx" dur="40s" values="0%;3%;0%" repeatCount="indefinite"></animate>
-          <stop offset="0%" stop-color="#723ABF"></stop>
-          <stop offset="100%" stop-color="rgba(114, 58, 191, 0)"></stop>
-        </radialGradient>
-  
-        <radialGradient id="Gradient4" cx="50%" cy="50%" fx="4.56417%" fy="50%" r=".5">
-          <animate attributeName="fx" dur="50s" values="0%;5%;0%" repeatCount="indefinite"></animate>
-          <stop offset="0%" stop-color="#C19EEA"></stop>
-          <stop offset="100%" stop-color="rgba(193, 158, 234, 0)"></stop>
-        </radialGradient>
-      </defs>
-  
-      <rect x="13.744%" y="1.18473%" width="100%" height="100%" fill="url(#Gradient1)" transform="rotate(334.41 50 50)">
-        <animate attributeName="x" dur="25s" values="0%;50%;0%" repeatCount="indefinite"></animate>
-        <animate attributeName="y" dur="25s" values="0%;50%;0%" repeatCount="indefinite"></animate>
-        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="45s" repeatCount="indefinite"></animateTransform>
-      </rect>
-  
-      <rect x="-2.17916%" y="35.4267%" width="100%" height="100%" fill="url(#Gradient2)" transform="rotate(255.072 50 50)">
-        <animate attributeName="x" dur="30s" values="0%;50%;0%" repeatCount="indefinite"></animate>
-        <animate attributeName="y" dur="30s" values="0%;50%;0%" repeatCount="indefinite"></animate>
-        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="50s" repeatCount="indefinite"></animateTransform>
-      </rect>
-  
-      <rect x="9.00483%" y="14.5733%" width="100%" height="100%" fill="url(#Gradient3)" transform="rotate(139.903 50 50)">
-        <animate attributeName="x" dur="35s" values="0%;50%;0%" repeatCount="indefinite"></animate>
-        <animate attributeName="y" dur="35s" values="0%;50%;0%" repeatCount="indefinite"></animate>
-        <animateTransform attributeName="transform" type="rotate" from="360 50 50" to="0 50 50" dur="55s" repeatCount="indefinite"></animateTransform>
-      </rect>
-  
-      <rect x="13.744%" y="1.18473%" width="100%" height="100%" fill="url(#Gradient4)" transform="rotate(334.41 50 50)">
-        <animate attributeName="x" dur="40s" values="0%;50%;0%" repeatCount="indefinite"></animate>
-        <animate attributeName="y" dur="40s" values="0%;50%;0%" repeatCount="indefinite"></animate>
-        <animateTransform attributeName="transform" type="rotate" from="360 50 50" to="0 50 50" dur="60s" repeatCount="indefinite"></animateTransform>
-      </rect>
-    </svg>
-  </div>
+<!--
+<div id="bg-wrap" style="background-color: #2F1678; width: 100vw; overflow: hidden;">
+  <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" style="width: 100%; height: 100%;">
+    <defs>
+      <radialGradient id="Gradient1" cx="50%" cy="50%" fx="0.441602%" fy="50%" r=".5">
+        <animate attributeName="fx" dur="30s" values="0%;3%;0%" repeatCount="indefinite"></animate>
+        <stop offset="0%" stop-color="#2F1678"></stop>
+        <stop offset="100%" stop-color="rgba(47, 22, 120, 0)"></stop>
+      </radialGradient>
+
+      <radialGradient id="Gradient2" cx="50%" cy="50%" fx="2.68147%" fy="50%" r=".5">
+        <animate attributeName="fx" dur="35s" values="0%;3%;0%" repeatCount="indefinite"></animate>
+        <stop offset="0%" stop-color="#51289C"></stop>
+        <stop offset="100%" stop-color="rgba(81, 40, 156, 0)"></stop>
+      </radialGradient>
+
+      <radialGradient id="Gradient3" cx="50%" cy="50%" fx="0.836536%" fy="50%" r=".5">
+        <animate attributeName="fx" dur="40s" values="0%;3%;0%" repeatCount="indefinite"></animate>
+        <stop offset="0%" stop-color="#723ABF"></stop>
+        <stop offset="100%" stop-color="rgba(114, 58, 191, 0)"></stop>
+      </radialGradient>
+
+      <radialGradient id="Gradient4" cx="50%" cy="50%" fx="4.56417%" fy="50%" r=".5">
+        <animate attributeName="fx" dur="50s" values="0%;5%;0%" repeatCount="indefinite"></animate>
+        <stop offset="0%" stop-color="#C19EEA"></stop>
+        <stop offset="100%" stop-color="rgba(193, 158, 234, 0)"></stop>
+      </radialGradient>
+    </defs>
+
+    <rect x="13.744%" y="1.18473%" width="100%" height="100%" fill="url(#Gradient1)" transform="rotate(334.41 50 50)">
+      <animate attributeName="x" dur="25s" values="0%;50%;0%" repeatCount="indefinite"></animate>
+      <animate attributeName="y" dur="25s" values="0%;50%;0%" repeatCount="indefinite"></animate>
+      <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="45s" repeatCount="indefinite"></animateTransform>
+    </rect>
+
+    <rect x="-2.17916%" y="35.4267%" width="100%" height="100%" fill="url(#Gradient2)" transform="rotate(255.072 50 50)">
+      <animate attributeName="x" dur="30s" values="0%;50%;0%" repeatCount="indefinite"></animate>
+      <animate attributeName="y" dur="30s" values="0%;50%;0%" repeatCount="indefinite"></animate>
+      <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="50s" repeatCount="indefinite"></animateTransform>
+    </rect>
+
+    <rect x="9.00483%" y="14.5733%" width="100%" height="100%" fill="url(#Gradient3)" transform="rotate(139.903 50 50)">
+      <animate attributeName="x" dur="35s" values="0%;50%;0%" repeatCount="indefinite"></animate>
+      <animate attributeName="y" dur="35s" values="0%;50%;0%" repeatCount="indefinite"></animate>
+      <animateTransform attributeName="transform" type="rotate" from="360 50 50" to="0 50 50" dur="55s" repeatCount="indefinite"></animateTransform>
+    </rect>
+
+    <rect x="13.744%" y="1.18473%" width="100%" height="100%" fill="url(#Gradient4)" transform="rotate(334.41 50 50)">
+      <animate attributeName="x" dur="40s" values="0%;50%;0%" repeatCount="indefinite"></animate>
+      <animate attributeName="y" dur="40s" values="0%;50%;0%" repeatCount="indefinite"></animate>
+      <animateTransform attributeName="transform" type="rotate" from="360 50 50" to="0 50 50" dur="60s" repeatCount="indefinite"></animateTransform>
+    </rect>
+  </svg>
+</div>
+-->
+    
 
 <!-- featured article section -->
 <div id="Featured-Article">
+  <br>
   <h1>FEATURED ARTICLE</h1>
-  <div class="article-title">Kismet</div> <!-- Add the title for the hover effect -->
-  <img src="photos/group2/floating5.jpg" alt="Featured Article Image">
+  <a href="articles/kismet/theladyofthecastle.html" class="article">
+    <img src="photos/group4/kismet.png" alt="Featured Article Image">
+    <div class="article-title">The Lady Of The Castle</div>
+  </a>
 </div>
 
 
