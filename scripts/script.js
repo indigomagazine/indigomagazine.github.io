@@ -136,12 +136,7 @@ window.addEventListener('scroll', function () {
   }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const heroVideo = document.querySelector(".hero-section video");
-  if (heroVideo) {
-    heroVideo.play().catch(error => {
-      console.log("Autoplay prevented, attempting programmatic play:", error);
-      // Optional fallback action here
-    });
-  }
+document.addEventListener("DOMContentLoaded", function() {
+  const video = document.querySelector("video");
+  video.play().catch(error => console.log("Autoplay prevented:", error));
 });
