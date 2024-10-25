@@ -135,3 +135,9 @@ window.addEventListener('scroll', function () {
     ticking = true;
   }
 });
+
+
+  window.addEventListener('load', function() {
+    var video = document.getElementById('hero-video');
+    video.play();
+  });
