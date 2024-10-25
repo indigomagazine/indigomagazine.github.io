@@ -135,11 +135,3 @@ window.addEventListener('scroll', function () {
     ticking = true;
   }
 });
-
-document.addEventListener("DOMContentLoaded", function() {
-  const video = document.querySelector(".hero-section video");
-  video.autoplay = true;
-  video.loop = true;
-  video.play().catch(error => console.log("Autoplay prevented:", error));
-});
-
