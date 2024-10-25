@@ -144,12 +144,8 @@ document.addEventListener("DOMContentLoaded", function() {
   video.play().catch(error => console.log("Autoplay prevented:", error));
 });
 
-
-window.addEventListener("load", function() {
+document.addEventListener("DOMContentLoaded", function() {
   const video = document.querySelector(".hero-section video");
-  video.play().then(() => {
-      console.log("Autoplay successful");
-  }).catch(error => {
-      console.log("Autoplay error:", error);
-  });
+  video.muted = true; // Ensure it's muted to allow autoplay
+  video.play().catch(error => console.log("Autoplay prevented:", error));
 });
