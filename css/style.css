@@ -44,7 +44,7 @@ body.light-mode #Taskbar-container a {
   color: #170B3B; /* Hover effect for both modes */
 }
 
-/* Hero section */
+
 
 /* Hero section */
 .hero-section {
@@ -117,6 +117,14 @@ video::-webkit-media-controls {
      object-fit: cover;
      width: 100%;
      height: 100%;
+     filter: none; 
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .overlay {
+     background: rgba(0, 0, 0, 0.3); /* Slightly lighter overlay for fallback image */
   }
 }
 
