@@ -108,21 +108,27 @@ section p {
   font-size: 0.8em;
   line-height: 30px;
   margin-bottom: 1em; /* Spacing between paragraphs */
+  text-align: justify; /* Justify text for a cleaner look around images */
 }
 
-/* Main style for wrapping images on larger screens */
 img.float-left {
   float: left;
   margin: 0 15px 10px 0; /* Space on the right and bottom */
-  max-width: 50%; /* Allow images to take half the width */
+  max-width: 45%; /* Allow images to take slightly less than half the width */
 }
 
 img.float-right {
   float: right;
   margin: 0 0 10px 15px; /* Space on the left and bottom */
-  max-width: 50%; /* Allow images to take half the width */
+  max-width: 45%; /* Allow images to take slightly less than half the width */
 }
 
+/* Clearfix for floated elements */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 /* Adjust image wrapping on smaller screens */
 @media (max-width: 40px) {
   img.float-left, img.float-right {
@@ -260,7 +266,7 @@ hr.author-line {
     <h1>The Lady Of The Castle </h1>
 </section>
 
-<section class="para">
+<section class="full-para clearfix">
     <p style="text-indent: 25px;">
       <img src="../../photos/group4/crest1.png" class="float-left">
   In the years before he turned seventeen, Domeric had grown
@@ -301,7 +307,7 @@ Domeric thought, no less full of ghosts and dead men.
 
 
 
-<section class="para">
+  <section class="full-para clearfix">
   <p style="text-indent: 25px;">
 They'd been in the distance from a large southern castle for
 some time, a looming weave of white stones that sat atop a green
@@ -388,7 +394,7 @@ loud as all terror.
 </section>
 
 
-<section class = "full-para">
+<section class="full-para clearfix">
   <p style="text-indent: 25px;">
 The sky was a deep, angry orange by the time they'd arrived
 at the castle. The bleached bricks that toppled either side of the front
@@ -445,7 +451,7 @@ evening outside of Rhys with a homely woman named Jovena.
 
 
 
-<section class ="para2">
+<section class="full-para clearfix">
   <p style="text-indent: 25px;">
     <img src="../../photos/group4/stamp cluster.png" class="float-right">
 According to Bello, she was a well built brunette who
@@ -535,7 +541,7 @@ to persist no matter the weather.
 
 
 
-  <section class ="para2">
+<section class="full-para clearfix">
 <p style="text-indent: 25px;">
 Too, by the wake of the morning, it was with little surprise
 he'd slept poorly as the weeks turned, on account of the deep
@@ -693,7 +699,7 @@ is."
 
 
 
-<section class = "full-para">
+  <section class="full-para clearfix">
 
   <p style="text-indent: 25px;">
 Though people often say things for a reason.
@@ -733,7 +739,7 @@ wonder what her life must’ve been like.
 
 
 
-<section class = "para">
+<section class="full-para clearfix">
   <p style="text-indent: 25px;">
     <img src="../../photos/group4/stamp1.png" class="float-left">
 For the most part, in the week to follow, Domeric had spent
@@ -777,7 +783,7 @@ histories.
   </section>
 
 
-  <section class = "para">
+  <section class="full-para clearfix">
     <p>
 Mynde Godfrey—1216 - 1244
     </p>
@@ -839,7 +845,7 @@ perfect arrow in his dreams.
 
 
 
-<section class ="full-para">
+  <section class="full-para clearfix">
   <p style="text-indent: 25px;">
 The next of the weeks at the castle passed slow. A tirade
 wakefulness and restless sleep that he'd attributed to the development
@@ -967,7 +973,7 @@ certainly lost it.
 
 
 
-<section class = "para2">
+<section class="full-para clearfix">
   <p style="text-indent: 25px;">
     <img src="../../photos/group4/stamp4.png" class="float-right">
 That evening, he dreamed he drowned in a sea of grass, and he'd
@@ -1029,7 +1035,7 @@ important to go all the way to the queen's city."
 
 
 
-<section class = "para2">
+<section class="full-para clearfix">
   <p style="text-indent: 25px;">
 Dinner was loud that evening. The hall, a buzz with
 excitement.
@@ -1080,7 +1086,7 @@ slipped off with little less than a word before the dinners end.
 
 
 
-<section class = "full-para">
+<section class="full-para clearfix">
   <p style="text-indent: 25px;">
 It was in his early leave that he ended up wandering down a
 large hall in one of the castle's wings. Comprised of deft pillars and
@@ -1269,7 +1275,7 @@ I'd be a fool not to believe in them."
 
 
 
-<section class = "para">
+<section class="full-para clearfix">
   <img src="../../photos/group4/under-theend.png" class="float-left">
   <p style="text-indent: 25px;">
 He'd spent most of the next two days in a sour mood. Toke
@@ -1310,7 +1316,7 @@ Domeric smile just a tad.
 
 
 
-<section class = "para">
+<section class="full-para clearfix">
   <p style="text-indent: 25px;">
 After dinner that next evening, one of the boys had stopped
 him as he left the hall. Bello's friend Wyket. He'd nodded towards the
@@ -1370,7 +1376,7 @@ Apelles when they took the city."
 
 
 
-<section class="full-para">
+<section class="full-para clearfix">
   <p style="text-indent: 25px;">
 He'd made his way to the room where Ser Dane had said to
 go not long after. It was a dim chamber in the upper east wing of the
@@ -1448,7 +1454,7 @@ And in a deep irony, he’d slept dreamlessly that night.
 
 
 
-<section class = "para2">
+<section class="full-para clearfix">
   <p style="text-indent: 25px;">
     <img src="../../photos/group4/crest1.png" class="float-right">
 In the day following, Wyket, gossip that he was, had told
@@ -1501,7 +1507,7 @@ winded.
 
 
 
-<section class = "para2">
+<section class="full-para clearfix">
   <p style="text-indent: 25px;">
 The rest of the day had been full of accosting questions, from
 Bello and a few others. No better through dinner, either. And
@@ -1613,7 +1619,7 @@ loud as all terror.
 
 
 
-<section class = "full-para">
+<section class="full-para clearfix">
   <p style="text-indent: 25px;">
 The summer had burned down into its hot middle season. The kind
 that commonly spelled for rain and monsoons rather than an
@@ -1662,7 +1668,7 @@ boys, hadn't left the castle since.
 
 
 
-<section class = "para">
+<section class="full-para clearfix">
   <p style="text-indent: 25px;">
     <img src="../../photos/group4/stamp cluster.png" class="float-left">
 Mostly, too, he'd begun to look forward to his evenings. His
@@ -1720,8 +1726,7 @@ whether or not he was being played for a fool.
 
 
 
-
-<section class ="para">
+<section class="full-para clearfix">
   <p style="text-indent: 25px;">
 By the midpoint of the summer swell, Domeric had gotten
 quite used to the normalcy of things. Even so much as to consider it
@@ -1818,7 +1823,7 @@ hair pinned neatly with a silver arrow.
 
 
 
-<section class = "full-para">
+<section class="full-para clearfix">
   <p style="text-indent: 25px;">
 He'd been called in for his leave later that evening. Ser
 Godwin was set to soon leave Somset, and though Domeric tried to
@@ -1923,7 +1928,7 @@ Domeric thought there were worse thing he could be.
 
 
 
-<section class = "para2">
+<section class="full-para clearfix">
   <p style="text-indent: 25px;">
     <img src="../../photos/group4/stamp1.png" class="float-right">
 The sun had risen to its high point along the skyline by the
