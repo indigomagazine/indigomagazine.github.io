@@ -143,24 +143,14 @@ window.addEventListener('scroll', function () {
   });
 
 
-  // Check if the screen width is less than 768px (typical mobile breakpoint)
-  function handleHeroVideo() {
-    const videoElement = document.getElementById('hero-video');
-    
-    if (window.innerWidth < 768) {
-      // Hide the video on mobile and display only the fallback image
-      videoElement.removeAttribute('autoplay');
-      videoElement.style.display = 'none';
-    } else {
-      // On larger screens, ensure video is shown and autoplayed
-      videoElement.style.display = 'block';
-      videoElement.setAttribute('autoplay', 'autoplay');
-    }
-  }
-
-  // Initial check when page loads
-  handleHeroVideo();
-
-  // Listen for window resize to adjust video display as needed
-  window.addEventListener('resize', handleHeroVideo);
-
+  document.addEventListener("DOMContentLoaded", function () {
+    const video = document.querySelector("video");
+    video.play().then(() => {
+      // If video plays, it will loop as intended
+      video.style.display = "block";
+    }).catch(() => {
+      // If video cannot autoplay, show fallback image
+      video.style.display = "none";
+    });
+  });
+  
