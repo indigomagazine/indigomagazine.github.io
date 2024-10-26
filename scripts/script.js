@@ -142,13 +142,25 @@ window.addEventListener('scroll', function () {
     video.play();
   });
 
-  // Check if video can autoplay; if not, play it on load
-document.addEventListener("DOMContentLoaded", () => {
-  const heroVideo = document.querySelector(".hero-section video");
-  if (heroVideo) {
-     heroVideo.play().catch(() => {
-        // If autoplay fails, video will still show poster image on mobile
-        console.log("Autoplay not supported.");
-     });
+
+  // Check if the screen width is less than 768px (typical mobile breakpoint)
+  function handleHeroVideo() {
+    const videoElement = document.getElementById('hero-video');
+    
+    if (window.innerWidth < 768) {
+      // Hide the video on mobile and display only the fallback image
+      videoElement.removeAttribute('autoplay');
+      videoElement.style.display = 'none';
+    } else {
+      // On larger screens, ensure video is shown and autoplayed
+      videoElement.style.display = 'block';
+      videoElement.setAttribute('autoplay', 'autoplay');
+    }
   }
-});
+
+  // Initial check when page loads
+  handleHeroVideo();
+
+  // Listen for window resize to adjust video display as needed
+  window.addEventListener('resize', handleHeroVideo);
+
