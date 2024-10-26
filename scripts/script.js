@@ -141,3 +141,14 @@ window.addEventListener('scroll', function () {
     var video = document.getElementById('hero-video');
     video.play();
   });
+
+  // Check if video can autoplay; if not, play it on load
+document.addEventListener("DOMContentLoaded", () => {
+  const heroVideo = document.querySelector(".hero-section video");
+  if (heroVideo) {
+     heroVideo.play().catch(() => {
+        // If autoplay fails, video will still show poster image on mobile
+        console.log("Autoplay not supported.");
+     });
+  }
+});
