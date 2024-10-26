@@ -111,6 +111,15 @@ video::-webkit-media-controls {
   }
 }
 
+/* Adjust hero section video for mobile */
+@media only screen and (max-width: 768px) {
+  .hero-section video {
+     object-fit: cover;
+     width: 100%;
+     height: 100%;
+  }
+}
+
 
 .overlay {
   position: absolute;
