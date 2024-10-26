@@ -101,6 +101,47 @@ section.full-para p {
   text-align: center;
 }
 
+section p {
+  font-family: "Gothicus Roman", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.8em;
+  line-height: 30px;
+  margin-bottom: 1em; /* Spacing between paragraphs */
+}
+
+/* Main style for wrapping images on larger screens */
+img.float-left {
+  float: left;
+  margin: 0 15px 10px 0; /* Space on the right and bottom */
+  max-width: 50%; /* Allow images to take half the width */
+}
+
+img.float-right {
+  float: right;
+  margin: 0 0 10px 15px; /* Space on the left and bottom */
+  max-width: 50%; /* Allow images to take half the width */
+}
+
+/* Adjust image wrapping on smaller screens */
+@media (max-width: 40px) {
+  img.float-left, img.float-right {
+    float: none; /* Remove float */
+    display: block; /* Make them block-level elements */
+    margin: 10px auto; /* Center images with margin */
+    max-width: 80%; /* Reduce size to prevent overlap with text */
+  }
+
+  section p {
+    text-align: justify; /* Justify text for a cleaner look around images */
+    line-height: 1.5; /* Increase line height for better readability */
+    margin: 0; /* Reset margin to prevent gaps */
+    padding: 0 10px; /* Add some horizontal padding */
+  }
+}
+
+
+
 section img {
   margin: 20px 0 0;
   max-height: 50vmax;
@@ -219,8 +260,9 @@ hr.author-line {
     <h1>The Lady Of The Castle </h1>
 </section>
 
-  <section class="para">
+<section class="para">
     <p style="text-indent: 25px;">
+      <img src="../../photos/group4/crest1.png" class="float-left">
   In the years before he turned seventeen, Domeric had grown
 up in the harder half of the country. Red marshes and thick groves of
 dirt and dead men that had wandered off an eye too far and foot too
@@ -259,7 +301,7 @@ Domeric thought, no less full of ghosts and dead men.
 
 
 
-<section class="para2">
+<section class="para">
   <p style="text-indent: 25px;">
 They'd been in the distance from a large southern castle for
 some time, a looming weave of white stones that sat atop a green
@@ -346,10 +388,6 @@ loud as all terror.
 </section>
 
 
-
-
-
-
 <section class = "full-para">
   <p style="text-indent: 25px;">
 The sky was a deep, angry orange by the time they'd arrived
@@ -406,8 +444,10 @@ evening outside of Rhys with a homely woman named Jovena.
 </section>
 
 
-<section class ="para">
+
+<section class ="para2">
   <p style="text-indent: 25px;">
+    <img src="../../photos/group4/stamp cluster.png" class="float-right">
 According to Bello, she was a well built brunette who
 frequented the local alehouse, though Domeric had his suspects that
 she didn’t spend her evenings waiting there for folks like Bello to
@@ -695,6 +735,7 @@ wonder what her life must’ve been like.
 
 <section class = "para">
   <p style="text-indent: 25px;">
+    <img src="../../photos/group4/stamp1.png" class="float-left">
 For the most part, in the week to follow, Domeric had spent
 most of his time at the small wooden desk shoved in the far corner of
 his room. Several shelves worth of books piled around in small
@@ -736,15 +777,7 @@ histories.
   </section>
 
 
-
-
-
-
-
-
-
-
-  <section class = "para2">
+  <section class = "para">
     <p>
 Mynde Godfrey—1216 - 1244
     </p>
@@ -934,8 +967,9 @@ certainly lost it.
 
 
 
-<section class = "para">
+<section class = "para2">
   <p style="text-indent: 25px;">
+    <img src="../../photos/group4/stamp4.png" class="float-right">
 That evening, he dreamed he drowned in a sea of grass, and he'd
 awoken to the cold light of the morning sun as it barely ran thin over
 the crossed glass of his chamber's window.
@@ -1236,6 +1270,7 @@ I'd be a fool not to believe in them."
 
 
 <section class = "para">
+  <img src="../../photos/group4/under-theend.png" class="float-left">
   <p style="text-indent: 25px;">
 He'd spent most of the next two days in a sour mood. Toke
 had asked him at breakfast what happened, but Bello just made to dig
@@ -1275,7 +1310,7 @@ Domeric smile just a tad.
 
 
 
-<section class = "para2">
+<section class = "para">
   <p style="text-indent: 25px;">
 After dinner that next evening, one of the boys had stopped
 him as he left the hall. Bello's friend Wyket. He'd nodded towards the
@@ -1413,8 +1448,9 @@ And in a deep irony, he’d slept dreamlessly that night.
 
 
 
-<section class = "para">
+<section class = "para2">
   <p style="text-indent: 25px;">
+    <img src="../../photos/group4/crest1.png" class="float-right">
 In the day following, Wyket, gossip that he was, had told
 nearly anyone in the calvary that would hear about Ser Dane calling
 him the dinner before. And judged by the expression on Wyket's face
@@ -1577,8 +1613,6 @@ loud as all terror.
 
 
 
-
-
 <section class = "full-para">
   <p style="text-indent: 25px;">
 The summer had burned down into its hot middle season. The kind
@@ -1630,6 +1664,7 @@ boys, hadn't left the castle since.
 
 <section class = "para">
   <p style="text-indent: 25px;">
+    <img src="../../photos/group4/stamp cluster.png" class="float-left">
 Mostly, too, he'd begun to look forward to his evenings. His
 guard duty less a dread and more a pass of the time. It was, in a way,
 exonerating to hear about what it might be like to live somewhere
@@ -1686,7 +1721,7 @@ whether or not he was being played for a fool.
 
 
 
-<section class ="para2">
+<section class ="para">
   <p style="text-indent: 25px;">
 By the midpoint of the summer swell, Domeric had gotten
 quite used to the normalcy of things. Even so much as to consider it
@@ -1888,8 +1923,9 @@ Domeric thought there were worse thing he could be.
 
 
 
-<section class = "para">
+<section class = "para2">
   <p style="text-indent: 25px;">
+    <img src="../../photos/group4/stamp1.png" class="float-right">
 The sun had risen to its high point along the skyline by the
 time Domeric had reached the caravan. A several hour long ride
 along the footpath, and Domeric had been driving them at a
