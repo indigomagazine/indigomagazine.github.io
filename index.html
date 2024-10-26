@@ -30,9 +30,11 @@
   <!-- Hero Section -->
   <div class="hero-section">
     <div class="overlay"></div>
-    <video id="hero-video" autoplay muted loop playsinline poster="assets/hero videos/kismetbtsfallback.png">
+    <video autoplay muted loop playsinline poster="assets/hero videos/kismetbtsfallback.png">
       <source src="assets/hero videos/kismetbts.mp4" type="video/mp4">
-  </video>  
+      <source src="assets/hero videos/kismetbts-mobile.mp4" type="video/mp4" media="(max-width: 480px)">
+    </video>
+    
 
     <!-- Button for Light/Dark Mode -->
     <button onclick="changeColor()" class="change-mode"> ☼ / ☾</button>
