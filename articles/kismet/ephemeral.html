@@ -1,15 +1,22 @@
+<!--ephemeral-->
+
 <link rel="stylesheet" href="css/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+
+html {
+    cursor: url(/assets/cursors/redstring.png),default; /* Custom cursor */
+      overflow-x: hidden;
+  }
 body {
-   background: url(../../assets/backgrounds/red\ sheer.jpg) no-repeat center center;
-   background-size: cover;
-   min-height: 100vh;
-   position: relative;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1),rgba(255, 255, 255, 0.5));
+  background-size: cover;
+  background-attachment: fixed;
 }
+
   
     a {
       text-decoration: none;
@@ -28,13 +35,18 @@ body {
     section.heading h1 {
       text-align: center;
       margin: none;
-      font-family: 'Inter';
+      font-family: 'Castego';
       font-weight: 700;
       font-size: 50px;
       line-height: 61px;
       text-transform: uppercase;
       grid-column: 1/span 12;
     }
+
+    @font-face{
+    font-family: "Castego";
+    src: url(../../assets/fonts/Castego.ttf);
+}
   
     section.heading h2 {
       text-align: center;
@@ -48,11 +60,11 @@ body {
     }
   
     section p {
-      font-family: 'Inter';
+      font-family:Helvetica;
       font-style: normal;
       font-weight: 400;
-      font-size: 0.8em;
-      line-height: 30px;
+      font-size: 1em;
+      line-height: 1.6;
       /*text-transform: capitalize;*/
       /*text-indent: 60px;*/
     }
@@ -76,8 +88,15 @@ body {
       max-height: 50vmax;
       max-width: 100%;
       height: auto;
-      
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
+    section img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
   
     div.img {
       grid-column: 8/span 5;
@@ -124,7 +143,7 @@ body {
       section p{
         text-indent: 0;
         line-height: 14px;
-        font-size: 0.6em;
+        font-size: 0.9em;
       }
       section.heading h1, section.heading h2{
         
@@ -142,6 +161,16 @@ body {
         max-height: none;
       }
   }
+
+  @media (max-width: 768px) {
+  section img {
+    margin: 10px auto;
+  }
+  section p {
+    padding: 0 10px;
+  }
+}
+
   
   @media(max-width: 600px) {
     section {
@@ -179,7 +208,7 @@ body {
   
 <body>
     <section class ="heading">
-        <h1>Group 6 ?</h1>
+        <h1>Ephemeral</h1>
     </section>
 
     <section class="para">
@@ -199,7 +228,7 @@ body {
           </div>
     </section>
 
-    <section class="para2">
+    <section class="para">
         <p>
         Things go together
         <br>
@@ -208,7 +237,7 @@ body {
         Yet things come apart, similarly
         <br><br>
         </p>
-        <div class="img2">
+        <div class="img">
             <img src="../../photos/group6/Group6_KISMET_Graphics2.jpeg">
         
           </div>
@@ -231,7 +260,7 @@ body {
           </div>
     </section>
 
-    <section class="para2">
+    <section class="para">
         <p>
         You and I, compatible
         <br>
@@ -242,17 +271,12 @@ body {
         Even if just for a day.
         <br><br>
         </p>
-        <div class="img2">
-            <img src="../../photos/group6/Group6_KISMET_Graphics5.jpeg">
+        <div class="img">
+            <img src="../../photos/group6/Group6_KISMET_Graphics3.jpeg">
         
           </div>
     </section>
 
-    <section class="horizontal pic">
-        <div class="img3">
-          <img class="para1" src="../../photos/group6/Group6_KISMET_Graphics3.jpeg">
-        </div>
-      </section>
       
 
 </body>  
