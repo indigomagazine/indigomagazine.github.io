@@ -1,39 +1,86 @@
 // script.js
+let targetX = 0, targetY = 0; // Target position based on cursor
+let currentX = 0, currentY = 0; // Current position of the animation
 
-let targetX = 0, targetY = 0; // Where the cursor/touch wants to go
-let currentX = 0, currentY = 0; // Current position of the movement
-
-// Function to smoothly animate the images
+// Smooth movement function
 function smoothMove() {
   const wrappers = document.querySelectorAll('.floating-photo-wrapper');
-  
-  // Lerp (Linear Interpolation) for smoother movement
-  currentX += (targetX - currentX) * 0.05; 
-  currentY += (targetY - currentY) * 0.05;
 
-  wrappers.forEach((wrapper) => {
-    // Apply smoother transform
-    wrapper.style.transform = `translate(${currentX}px, ${currentY}px)`;
+  // Smoothly interpolate to the target position
+  currentX += (targetX - currentX) * 0.2; 
+  currentY += (targetY - currentY) * 0.2;
+
+  wrappers.forEach((wrapper, index) => {
+    // Offset each wrapper slightly for a parallax effect
+    const offsetX = currentX / (6 + index);
+    const offsetY = currentY / (6 + index);
+
+    // Apply the transformation
+    wrapper.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
   });
 
-  requestAnimationFrame(smoothMove); // Continue the animation
+  // Continue the animation loop
+  requestAnimationFrame(smoothMove);
 }
 
-// Mouse move event for desktop
+// Update target position based on mouse movement
 document.addEventListener('mousemove', (event) => {
-  targetX = (event.clientX - window.innerWidth / 2) / 10; // Increase divisor for quicker movement
-  targetY = (event.clientY - window.innerHeight / 2) / 10;
+  targetX = event.clientX - window.innerWidth / 2; // Center alignment
+  targetY = event.clientY - window.innerHeight / 2;
 });
 
-// Touch move event for mobile
+// Update target position based on touch movement
 document.addEventListener('touchmove', (event) => {
   const touch = event.touches[0];
-  targetX = (touch.clientX - window.innerWidth / 2) / 10;
-  targetY = (touch.clientY - window.innerHeight / 2) / 10;
+  targetX = touch.clientX - window.innerWidth / 2;
+  targetY = touch.clientY - window.innerHeight / 2;
 });
 
-// Start the smooth movement loop
+// Start the smooth movement
 smoothMove();
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const floatingPhotos = document.querySelectorAll(".floating-photo-wrapper");
+
+  floatingPhotos.forEach((photo) => {
+    const randomX = Math.floor(Math.random() * window.innerWidth);
+    const randomY = Math.floor(Math.random() * window.innerHeight);
+    
+    // Set random position
+    photo.style.left = `${randomX}px`;
+    photo.style.top = `${randomY}px`;
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const floatingPhotos = document.querySelectorAll(".floating-photo-wrapper");
+  const positions = [];
+
+  const isOverlapping = (x, y, size) => {
+    return positions.some(
+      (pos) =>
+        x < pos.x + size &&
+        x + size > pos.x &&
+        y < pos.y + size &&
+        y + size > pos.y
+    );
+  };
+
+  floatingPhotos.forEach((photo) => {
+    let randomX, randomY;
+    const size = 150; // Assuming the photos are square-sized
+    
+    do {
+      randomX = Math.floor(Math.random() * (window.innerWidth - size));
+      randomY = Math.floor(Math.random() * (window.innerHeight - size));
+    } while (isOverlapping(randomX, randomY, size));
+
+    positions.push({ x: randomX, y: randomY });
+    photo.style.left = `${randomX}px`;
+    photo.style.top = `${randomY}px`;
+  });
+});
 
 
 "https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
