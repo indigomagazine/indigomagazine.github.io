@@ -533,36 +533,57 @@ video::-webkit-media-controls {
   }
 }
 
-/* floating photos (va page) */
 .photo-container {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  overflow: hidden;
+  overflow: hidden; /* Ensures images stay within the page view */
 }
 
 .floating-photo-wrapper {
   position: absolute;
+  animation: float 10s infinite; /* Floating animation */
+  z-index: 1;
+  transition: transform 0.1s ease-out;
 }
 
+/* Style for floating photos */
 .floating-photo {
-  width: 200px;
-  height: 300px;
+  width: 150px; /* Adjust size as needed */
+  height: 150px; /* Adjust size as needed */
   background-size: cover;
   background-position: center;
-  animation: float 10s infinite alternate ease-in-out;
-  will-change: transform; /* Optimize for performance */
+  transition: transform 0.3s ease, filter 0.3s ease;
+  will-change: transform, filter;
 }
 
-/* Animation for floating */
+.floating-photo:hover {
+  transform: scale(1.2) rotate(5deg);
+  filter: brightness(1.3);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+
+
+/* Keyframes for floating motion */
 @keyframes float {
   0% {
     transform: translate(0, 0);
   }
+  25% {
+    transform: translate(30px, -20px);
+  }
+  50% {
+    transform: translate(-30px, 20px);
+  }
+  75% {
+    transform: translate(20px, -30px);
+  }
   100% {
-    transform: translate(200px, 150px);
+    transform: translate(0, 0);
   }
 }
+
 
 /* dark/light mode*/
 .change-mode {
