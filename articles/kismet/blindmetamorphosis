@@ -1,0 +1,260 @@
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<title>Indigo Magazine - Blind Metamorphosis</title>
+
+<style>
+
+a {
+    text-decoration: none;
+    color: black;
+  }
+
+
+/*
+@font-face {
+  font-family: "Cardinal";
+  src: url(../../assets/fonts/Cardinal.ttf);
+}
+
+@font-face {
+  font-family: "Gothicus Roman";
+  src: url(../../assets/fonts/Gothicus\ Roman\ Regular.ttf);
+}
+*/
+
+section {
+    margin: auto;
+    width: 80%;
+    grid-template-columns: repeat(12, 1fr);
+    display: grid;
+    gap: 20px;
+    grid-auto-flow: dense;
+  }
+
+section.heading h1 {
+  text-align: center;
+  margin: none;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 61px;
+    text-transform: uppercase;
+    grid-column: 1/span 12;
+  }
+
+  section.heading h2 {
+    text-align: center;
+    margin: none;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    /* text-transform: uppercase; */
+    grid-column: 1/span 12;
+  }
+
+  section p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.8em;
+    line-height: 30px;
+    /*text-transform: capitalize;*/
+    /*text-indent: 60px;*/
+  }
+
+  section.para p {
+    grid-column: 1/span 6;
+  }
+
+  section.para2 p {
+    grid-column: 7/span 6;
+  }
+
+  section.full-para p{
+    grid-column: 1/span 12;
+    text-align: center;
+    
+  }
+  
+  section img {
+    margin: 20px 0 0;
+    max-height: 50vmax;
+    max-width: 100%;
+    height: auto;
+  }
+
+  
+  section p {
+    /* font-family: "Gothicus Roman", serif; */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.8em;
+    line-height: 30px;
+    margin-bottom: 1em; /* Spacing between paragraphs */
+    text-align: justify; /* Justify text for a cleaner look around images */
+  }
+
+
+  img.float-left {
+    float: left;
+    margin: 0 15px 10px 0; /* Space on the right and bottom */
+    max-width: 45%; /* Allow images to take slightly less than half the width */
+  }
+
+  img.float-right {
+    float: right;
+    margin: 0 0 10px 15px; /* Space on the left and bottom */
+    max-width: 45%; /* Allow images to take slightly less than half the width */
+  }
+
+  section img {
+  margin: 20px 0 0;
+  max-height: 50vmax;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Clearfix for floated elements */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+div.img {
+  grid-column: 8/span 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.img2 {
+  grid-column: 1/span 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.img3 {
+  grid-column: 1/span 12;
+  display: flex;
+  justify-content: center;
+}
+    
+
+</style>
+
+<body>
+    <section class="heading">
+        <h1>Blind Metamorphosis</h1>
+    </section>
+
+    <br><br>
+    <section class="heading">
+        <h2 style="text-align: left;">10/07/2009, Childhood Home #2, Age: 6</h2>
+    </section>
+
+    <section class="para">
+        <p> 
+            <img src="../../photos/group1/be_picture11.jpg" class="float-right">
+            When the acorns start to flood the sidewalk, I like to scoop up the very best and
+            collect them for fairy gardens.
+            <br><br>
+            I rub them against the pavement until it stains yellow, letting me know I 
+            begin to scrape out the paste-like pollen.
+            <br><br>
+            The hollowed-out shells represent anything my young mind sees; I create dining
+            room scenes, platonic picnic dates, and bunkbed sleepovers.
+            <br><br>
+            Wings sprouting from my cocoon. Picturing myself better. A life directed only
+            by the changing winds.
+            <br><br>
+            Will my childhood dreams play out like the movies?
+            Do I really end up by the sea? Will I learn to love how I live?
+            Esther Greenwood's fig tree has nothing on the acorn trees of my youth. </p>
+    </section>
+    <br><br>
+    <br><br>
+
+    <section class="heading">
+        <h2>5/17/2015, Mission Trip, Age: 12</h2>
+    </section>
+
+    <section class="full-para">
+        <p style="text-align: left;"> "Let God into your hearts," preached in unison to the strangers
+            we spend each day soliciting. I'm giving back to my community in the name of
+            Christ, but nothing in me believes in some higher power. I search their faces for a
+            hint of true faith; they must hold the same longing to confirm their deepest desire
+            - is any of it real? The pull-out couch in our too-full hotel room becomes my
+            haven. I plead at the water-stained ceiling to give me any sort of sign. The
+            incessant questioning with no real response forces my brain to sludge; a
+            caterpillar melting in its chrysalis. Wasps swarm my growing cocoon before I get
+            the chance to end the cycle. </p>
+    </section>
+    <br><br>
+    <br><br>
+
+    <section class="heading">
+        <h2 style="text-align: right;">09/28/2024, College Apartment #2, Age: 21</h2>
+    </section>
+
+    <section class="para2">
+        <p> Am I doomed to a life of mediocrity?
+            <br><br>
+            It’s senior year of college, and rather than looking to the future,
+            <br><br>
+            I can only manage to pick apart a past that doesn’t lead to my dreams.
+            <br><br>
+            Instead of new possibilities, I’m weighted by all those I have missed.
+            <br><br>
+            There is no rubric. No underlined rights and wrongs anymore.
+            <br><br>
+            God, it’s Me again. Is there a way to know it all works out in the end?
+            <br><br>
+            It is written, yes I know, but where, when is it written?
+            <br><br>
+            I’m scared, God, it’s Me again. </p>
+    </section>
+    <br><br>
+    <br><br>
+
+    <section class="heading">
+        <h2 style="text-align: left;">08/13/2027, Location Unknown, Age: 24</h2>
+    </section>
+
+    <section class="para">
+        <p> I wish her well. The girl with the eyes of lamb.
+            <br><br>
+            The one stuck between what has and what will.
+            <br><br>
+            <em>There’s nothing you can do. It’s already been done. </em>
+            <br><br>
+            Something can be done – blind faith in an already complete destiny
+            <br><br>
+            ensures a life of peace. I’ve never believed in God, and neither has she.
+            <br><br>
+            Yet, I feel a cracking of my exoskeleton.
+            <br><br>
+            There is not enough space to contain it anymore. </p>
+    </section>
+    <br><br>
+    <br><br>
+
+    <section class="heading">
+        <h2>04/17/2036, Location Unknown, Age: 33</h2>
+    </section>
+
+    <section class="full-para">
+        <p style="text-align: left;"> Lately, the skies have been filled with monarch butterflies as the end of migration
+            ears. Their deep orange hue like the setting sun on the horizon. I’ve always been
+            good at seeing the beauty in others, the beauty around me, but never in myself. I
+            was so preoccupied with my future, so blind, that I missed my own molting. The
+            end was my only goal; I never put any thought into the steps along the way.
+            I never did find where it was written, but that’s because I was never meant to find
+            it. </p>
+        </section>
+        <br><br>
+</body>
