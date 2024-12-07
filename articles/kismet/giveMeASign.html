@@ -10,7 +10,8 @@
     <title>Magazine Article</title>
     <style>
 
-        @font-face {
+@media (min-width: 1024px) {
+    @font-face {
             font-family: 'Love by the King';
             src: url('../../assets/fonts/LovedbytheKing.ttf') format('truetype'); /* Adjust the path to your font file */
             font-weight: normal;
@@ -195,13 +196,156 @@
             opacity: .98;
         }
 
-        
-        
 
+}
 
+/* Styles for Phones */
+@media (max-width: 768px) {
+    @font-face {
+    font-family: 'Love by the King';
+    src: url('../../assets/fonts/LovedbytheKing.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
-      
-        
+/* Reset styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    background-image: url('../../assets/backgrounds/GMAS_background-Photoroom2.png');
+    background-size: cover;
+    background-repeat: repeat-y;
+}
+
+/* Section 1: Red Box Background */
+.red-box-section {
+    background-image: url('../../assets/backgrounds/GMAS_background.png');
+    background-size: cover;
+    background-position: left top;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+/* Title Styling */
+.title {
+    color: #EFB3AF;
+    font-size: 10vw; /* Responsive font size */
+    position: absolute;
+    top: 28%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Love by the King', serif;
+}
+
+/* Subtitle (Creds) */
+.title creds {
+    color: #000000;
+    font-size: 10vw; /* Adjust font size for responsiveness */
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Love by the King', serif;
+}
+
+/* Top Cover Image */
+.top-cover {
+    position: absolute;
+    top: 75%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+}
+
+.top-cover img {
+    width: 140%; /* Responsive width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Section 2: Black Textured Background */
+.black-texture-section { }
+
+/* Content Styling */
+.content {
+    position: absolute;
+    top: 190%; /* Maintain placement */
+    left: 54%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    max-width: 60vw; /* Adjust max width for responsiveness */
+    color: #E6CBB7;
+    font-family: "Cormorant SC";
+    font-size: 1.5vw; /* Adjust font size */
+    line-height: 1.8;
+}
+
+/* Additional Content Block */
+.content2 {
+    position: absolute;
+    top: 420%;
+    left: 54%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    max-width: 80vw;
+    color: #E6CBB7;
+    font-family: "Cormorant SC";
+    font-size: 1.5vw;
+    line-height: 1.8;
+}
+
+/* Paragraph Spacing */
+.content p {
+    margin: 2vh 0;
+}
+
+/* Floating Images */
+.floating-image1 {
+    position: absolute;
+    top: 27%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    opacity: .98;
+}
+
+.floating-image1 img {
+    width: 300%; /* Responsive width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.floating-image2 {
+    position: absolute;
+    top: 59.3%;
+    left: -20%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    opacity: .98;
+}
+
+.floating-image2 img {
+    width: 120%; /* Adjusted for responsiveness */
+    height: auto;
+}
+
+.floating-image3 {
+    position: absolute;
+    top: 110%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    opacity: .98;
+}
+
+.floating-image3 img {
+    width: 200%; /* Adjusted for responsiveness */
+    height: auto;
+    
+}
+
+} 
     </style>
     
 </head>
@@ -210,7 +354,7 @@
      <div class="red-box-section">
         <div class="title">
             <p>Give me a sign</p>
-            <creds>Susan Natell</creds>
+            <creds>Susan Eltell</creds>
         </div>
 
         <div class="top-cover">
