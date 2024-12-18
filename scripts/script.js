@@ -1,58 +1,3 @@
-// script.js
-let targetX = 0, targetY = 0; // Target position based on cursor
-let currentX = 0, currentY = 0; // Current position of the animation
-
-// Smooth movement function
-function smoothMove() {
-  const wrappers = document.querySelectorAll('.floating-photo-wrapper');
-
-  // Smoothly interpolate to the target position
-  currentX += (targetX - currentX) * 0.2; 
-  currentY += (targetY - currentY) * 0.2;
-
-  wrappers.forEach((wrapper, index) => {
-    // Offset each wrapper slightly for a parallax effect
-    const offsetX = currentX / (6 + index);
-    const offsetY = currentY / (6 + index);
-
-    // Apply the transformation
-    wrapper.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-  });
-
-  // Continue the animation loop
-  requestAnimationFrame(smoothMove);
-}
-
-// Update target position based on mouse movement
-document.addEventListener('mousemove', (event) => {
-  targetX = event.clientX - window.innerWidth / 2; // Center alignment
-  targetY = event.clientY - window.innerHeight / 2;
-});
-
-// Update target position based on touch movement
-document.addEventListener('touchmove', (event) => {
-  const touch = event.touches[0];
-  targetX = touch.clientX - window.innerWidth / 2;
-  targetY = touch.clientY - window.innerHeight / 2;
-});
-
-// Start the smooth movement
-smoothMove();
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const floatingPhotos = document.querySelectorAll(".floating-photo-wrapper");
-
-  floatingPhotos.forEach((photo) => {
-    const randomX = Math.floor(Math.random() * window.innerWidth);
-    const randomY = Math.floor(Math.random() * window.innerHeight);
-    
-    // Set random position
-    photo.style.left = `${randomX}px`;
-    photo.style.top = `${randomY}px`;
-  });
-});
-
 document.addEventListener("DOMContentLoaded", () => {
   const floatingPhotos = document.querySelectorAll(".floating-photo-wrapper");
   const positions = [];
@@ -69,8 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   floatingPhotos.forEach((photo) => {
     let randomX, randomY;
-    const size = 150; // Assuming the photos are square-sized
+    const size = 150; // Assuming square-sized photos
     
+    // Generate random positions, avoiding overlap
     do {
       randomX = Math.floor(Math.random() * (window.innerWidth - size));
       randomY = Math.floor(Math.random() * (window.innerHeight - size));
@@ -79,9 +25,51 @@ document.addEventListener("DOMContentLoaded", () => {
     positions.push({ x: randomX, y: randomY });
     photo.style.left = `${randomX}px`;
     photo.style.top = `${randomY}px`;
+
+    // Add randomized animation delay for natural staggered motion
+    const randomDelay = Math.random() * 2; // Between 0-2 seconds
+    photo.style.animationDelay = `${randomDelay}s`;
   });
 });
 
+// Smooth mouse movement interaction
+let targetX = 0,
+  targetY = 0;
+let currentX = 0,
+  currentY = 0;
+
+// Smooth transition function
+function smoothMove() {
+  const wrappers = document.querySelectorAll(".floating-photo-wrapper");
+
+  // Gradual interpolation to target positions
+  currentX += (targetX - currentX) * 0.1;
+  currentY += (targetY - currentY) * 0.1;
+
+  wrappers.forEach((wrapper, index) => {
+    const offsetX = currentX / (10 + index); // Gradual movement scaling
+    const offsetY = currentY / (10 + index);
+
+    wrapper.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+  });
+
+  requestAnimationFrame(smoothMove);
+}
+
+// Capture mouse or touch movement
+document.addEventListener("mousemove", (event) => {
+  targetX = event.clientX - window.innerWidth / 2;
+  targetY = event.clientY - window.innerHeight / 2;
+});
+
+document.addEventListener("touchmove", (event) => {
+  const touch = event.touches[0];
+  targetX = touch.clientX - window.innerWidth / 2;
+  targetY = touch.clientY - window.innerHeight / 2;
+});
+
+// Start smooth movement loop
+smoothMove();
 
 "https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
 "https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js">
