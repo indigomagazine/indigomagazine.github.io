@@ -50,43 +50,95 @@
             font-size: 1em;
             margin-bottom: 20px;
         }
-
-        div.img {
-            grid-column: 7 / span 6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        div.img img {
+        section img {
+            margin: 20px 0 0;
+            max-height: 50vmax;
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        } 
+
+        div.img {
+            grid-column: 8/span 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        @media (max-width: 768px) {
-            section {
-                grid-template-columns: 1fr;
-                width: 100%;
-            }
+        div.img2 {
+            grid-column: 1/span 6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-            section p {
-                font-size: 0.9em;
-                grid-column: 1 / span 12;
-            }
+        div.img3 {
+            grid-column: 1/span 12;
+            display: flex;
+            justify-content: center;
+        }
 
-            div.img {
-                grid-column: 1 / span 12;
+        @media(max-width: 800px) {
+            body {
+            width: 100%;
+             }
+            section p{
+              text-indent: 0;
+              line-height: 14px;
+              font-size: 0.6em;
+            }
+            section.heading h1, section.heading h2{
             }
         }
+        
+        @media (max-width: 500px){
+    
+        section.heading h1{
+        line-height: 40px;
+        font-size: 40px;
+      }    
+        section img{
+            width: 100%;
+            max-height: none;
+        }
+    }
+
+    @media(max-width: 600px) {
+      section {
+        width: 100%; /* Ensure the section takes full screen width */
+        display: block; /* Switch to block display for mobile */
+      }
+
+      section img {
+        max-width: 100%;   /* Restrict image width to container */
+        height: auto;      /* Maintain aspect ratio */
+      }
+
+  div.img, div.img2, div.img3 {
+    grid-column: 1/span 12; /* Ensure images span full width */
+    display: flex;
+    justify-content: center;
+  }
+
+  div.img, div.img2 {
+    max-width: 80%; /* Only take up 80% of the width to avoid stretching */
+  }
+
+  section.heading h1, section.heading h2, section.para p, section.para2 p, section.p p {
+    grid-column: 1/span 12; /* Ensure full width */
+  }
+
+  section p {
+    font-size: 0.6em;
+  }
+}
+
 
     </style>
 </head>
 <body>
     <section class="heading">
         <h1>What Remains of a Star</h1>
-        <h3> Written by: Shravya Mahesh1</h3>
+        <h3> Written by Shravya Mahesh2</h3>
     </section>
 
     <section style="display: flex; align-items: center; gap: 20px;">
@@ -96,13 +148,11 @@
             wall, incessantly declaring a time that has long passed. And sitting in a lonely corner is a messy
             mop of hair tied to two heeled legs. Perhaps she drank too much and found herself in the most
             unsightly of areas. Or maybe she is just intoxicated by the deep blue of the night.
-        </p>
-        <p>
+       
             The night air is what she steps out into, hoisting herself up and out the trash-littered stairs. Only
             when she tilts her head up to face the stars is her beauty finally visible. Smudged mascara
             frames wide, expressive eyes, a deep blush tinting her high cheeks.
-        </p>
-        <p>
+       
             Before her cheeks became so sullen, they'd entranced millions on massive billboards and
             theater screens. Back then, her eyes had glittered with wonder and hope, looking up at the
             glitzy billboards that lined this very street. She had fought her battles to come this far, driven on
@@ -110,8 +160,8 @@
             they said. Back then, the voices were just noise. This was her destiny, her calling, what she was
             born to do.
         </p>
-        <div class="img">
-            <img src="../../photos/group7/Kismet - Shravya (2) edit 1-min.png" alt="image 1" style="flex: 1; display: flex; justify-content: center; align-items: center;">
+        <div class="img2">
+            <img src="../../photos/group7/Kismet - Shravya (2) edit 1-min.png">
         </div>
     </section>
 
@@ -144,8 +194,8 @@
             But when she reached up, the stars grew further. They faded into space, a dream she was
             slowly waking up from. And suddenly, she was on the ground. Cold, alone, and silent. Invisible.
         </p>
-        <div class="img">
-            <img src="../../photos/group7/kismet - Shravya (3) edit 1-min.png" alt="image 2" style="max-width: 70%; height: auto;">
+        <div class="img3">
+            <img src="../../photos/group7/kismet - Shravya (3) edit 1-min.png">
         </div>
     </section>
 
@@ -203,8 +253,8 @@
             hold wonder, and that mysterious, entrancing expression that won hearts. She's beautiful, she's
             unchanging. She's a ghost.
         </p>
-        <div class="img">
-            <img src="../../photos/group7/kismet - Shravya (5) edit 1-min.png" alt="image 3" style="max-width: 70%; height: auto;">
+        <div class="img2">
+            <img src="../../photos/group7/kismet - Shravya (5) edit 1-min.png" >
         </div>
     </section>
 
@@ -252,8 +302,8 @@
             She takes a step forward.<br>
             She's burning brightly.
         </p>
-        <div class="img">
-            <img src="../../photos/group7/kismet - Shravya (4) image edit-min.png" alt="image 4" style ="max-width: 70%; height: auto;">
+        <div class="img2">
+            <img src="../../photos/group7/kismet - Shravya (4) image edit-min.png" >
         </div>
     </section>
 
