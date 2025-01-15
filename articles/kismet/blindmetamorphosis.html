@@ -11,9 +11,16 @@
 
     <style>
 
+        /* Header font */
         @font-face{
           font-family: "Jenna Sue";
           src: url(../../assets/fonts/JennaSue.ttf);
+        }
+
+        /* Paragraph Font */
+        @font-face {
+            font-family: "Creato Display";
+            src: url(../../assets/fonts/CreatoDisplay-Regular.otf);
         }
 
         html {
@@ -22,14 +29,23 @@
         }
 
         body {
-            /* background-image: url('../../assets/backgrounds/be_background.png');
-            background-size: cover; */
-            margin: 0;
+            /* Gradient */
+            background: hsla(248, 66%, 77%, 1);
+            background: linear-gradient(90deg, hsla(248, 66%, 77%, 1) 50%, hsla(299, 66%, 78%, 1) 70%);
+            background: -moz-linear-gradient(90deg, hsla(248, 66%, 77%, 1) 50%, hsla(299, 66%, 78%, 1) 70%);
+            background: -webkit-linear-gradient(90deg, hsla(248, 66%, 77%, 1) 50%, hsla(299, 66%, 78%, 1) 70%);
+            filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#A89EEB", endColorstr="#EBA2EC", GradientType=1 );
             padding: 0;
             line-height: 1.8;
+            font-family: "Creato Display";
             color: #000000e7;
         }
 
+        h3 {
+            font-family: "Jenna Sue";
+            font-size: 45px;
+        }
+        
         section {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -50,20 +66,20 @@
         section.heading h1 {
             font-family: "Jenna Sue";
             font-weight: 700;
-            font-size: 100px;
+            font-size: 110px;
             margin-top: 20px;
             margin-bottom: 0px;
         }
 
         section.heading h3 {
-            margin-top: 0px;
             font-size: 20px;
             font-weight: 400;
+            margin-top: 0px;
         }
 
         section p {
             grid-column: 1 / span 6;
-            font-size: 1.1em;
+            font-size: 1.19em;
             margin: 20px 0;
         }
 
@@ -84,6 +100,7 @@
                 width: 90%;
             }
             section p, div.img {
+                display: block;
                 width: 100%;
                 margin-bottom: 20px;
             }
@@ -95,17 +112,16 @@
 <body>
     <section class="heading">
         <h1>Blind Metamorphosis</h1>
-        <h3>Written by Emma Lambert</h3>
     </section>
 
-    <div class = "img">
-        <img src="../../photos/group1/bm border 2.png" alt="border image" width="900" height="300">
+    <div class = "img" style="margin-bottom: 20px;">
+        <img src="../../photos/group1/bm border 2.png" width="900" height="300" alt="border image">
     </div>
 
     <br><br>
-    <section style="margin-bottom: 0px;">
-        <h3 style="margin-bottom: 0px;">10/07/2009, Childhood Home #2, Age: 6</h3>
-        <p style="line-height: 1.5;">
+    <h3 style="margin-left: 175px;">10/07/2009: Childhood Home #2, Age: 6</h3>
+    <section>
+        <p style="line-height: 1.45; margin-left: 40px;">
             When the acorns start to flood the sidewalk, I like to scoop up the very best and
             collect them for fairy gardens.<br></br>
             I rub them against the pavement until it stains yellow, letting me know I 
@@ -113,80 +129,79 @@
             The hollowed-out shells represent anything my young mind sees; I create dining
             room scenes, platonic picnic dates, and bunkbed sleepovers.
         </p>
+        <div class="img">
+            <img src="../../photos/group1/be_picture7.jpg" width="450px;" height="650px;" alt="Image 1">
+        </div>
     </section>
 
-    <section style="margin-bottom: 20px;">
-        <p style="line-height: 1.5;">
-            <br><br>
+    <section style="margin-top: 100px;">
+        <p style="line-height: 1.35; margin-left: 40px;">
             Wings sprouting from my cocoon. Picturing myself better. A life directed only
             by the changing winds.<br><br>
-            <br><br>
             Will my childhood dreams play out like the movies?<br><br>
             Do I really end up by the sea? Will I learn to love how I live?<br><br>
-            Esther Greenwood's fig tree has nothing on the acorn trees of my youth.<br><br>
+            Esther Greenwood's fig tree has nothing on the acorn trees of my youth.
         </p>
         <div class="img">
-            <img src="../../photos/group1/be_picture9.jpg" width="400px;" height="500px;" alt="Image 1">
+            <img src="../../photos/group1/be_picture9.jpg" width="450px;" height="650px;" alt="Image 1">
         </div>
     </section>
 
     <br><br>
-    <section style="margin-bottom: 0px;">
-        <p style="line-height: 1.5;">
+    <section style="margin-top: 100px;">
+        <p style="line-height: 1.3; margin-left: 40px;">
             "Let God into your hearts," preached in unison to the strangers we spend each day soliciting. <br></br>
             I'm giving back to my community in the name of Christ,<br></br>
             but nothing in me believes in some higher power.<br></br>
-            I search their faces for a hint of true faith; they must hold the same longing to confirm their deepest desire<br></br>
-            - is any of it real? The pull-out couch in our too-full hotel room becomes my haven<br></br>
+            I search their faces for a hint of true faith; they must hold the same longing to confirm their deepest desire - is any of it real?
         </p>
+        <div class="img">
+            <img src="../../photos/group1/be_picture6.jpg" width="450px;" height="650px;" alt="Image 1">
+        </div>
     </section>
 
-    <section>
-        <p style="line-height: 1.5;">
-          <br><br>
+    <section style="margin-top: 100px;">
+        <p style="line-height: 1.3; margin-left: 40px;">
+            The pull-out couch in our too-full hotel room becomes my haven.<br><br>
             I plead at the water-stained ceiling to give me any sort of sign.<br><br>
-            The incessant questioning with no real response forces my brain to sludge;<br></br>
-            a caterpillar melting in its chrysalis.<br></br>
+            The incessant questioning with no real response forces my brain to sludge; a caterpillar melting in its chrysalis.<br><br>
             Wasps swarm my growing cocoon<br><br>
             before I get the chance to end the cycle.
         </p>
         <div class="img">
-            <img src="../../photos/group1/be_picture12.jpg" width="400px;" height="500px;" alt="Image 2">
+            <img src="../../photos/group1/be_picture12.jpg" width="450px;" height="650px;" alt="Image 2">
         </div>
     </section>
 
     <br><br>
-    <section style="margin-bottom: 0px;">
-        <h3 style="margin-bottom: 0px;">09/28/2024, College Apartment #2, Age: 21</h3>
-        <p style="line-height: 1.5;">
-            I doomed to a life of mediocrity?<br><br>
+    <br><br>
+    <br><br>
+
+    <h3 style="margin-left: 133px;">09/28/2024: College Apartment #2, Age: 21</h3>
+    <section>
+        <p style="line-height: 1.3; margin-right: 80px;">
+            Am I doomed to a life of mediocrity?<br><br>
             It’s senior year of college, and rather than looking to the future,<br><br>
             I can only manage to pick apart a past that doesn’t lead to my dreams.<br><br>
             Instead of new possibilities, I’m weighted by all those I have missed.<br><br>
-            There is no rubric. No underlined rights and wrongs anymore.
-        </p>
-    </section>
-
-    <section>
-        <p style="line-height: 1.5;">
-            <br><br>
-            <br><br>
+            There is no rubric. No underlined rights and wrongs anymore.<br><br>
             God, it’s Me again. Is there a way to know it all works out in the end?<br><br>
             It is written, yes I know, but where, when is it written?<br><br>
             I’m scared, God, it’s Me again.
-            <br><br>
-            <br><br>
+
         </p>
         <div class = "img">
-            <img src="../../photos/group1/be_picture13.jpg" width="600px;" height="400px;" alt="Image 3">
+            <img src="../../photos/group1/be_picture13.jpg" width="580px;" height="400px;" alt="Image 3">
         </div>
     </section>
 
     <br><br>
-    <section style="margin-bottom: 0px;">
-        <h3 style="margin-bottom: 0px;">08/13/2027, Location Unknown, Age: 24</h3>
-        <p style="line-height: 1.5;">
-            <br><br>
+    <br><br>
+    <br><br>
+
+    <h3 style="margin-left: 172px;">08/13/2027: Location Unknown, Age: 24</h3>
+    <section>
+        <p style="line-height: 1.3; margin-left: 40px;">
             I wish her well. The girl with the eyes of lamb.<br><br>
             The one stuck between what has and what will.<br><br>
             <em>There’s nothing you can do. It’s already been done.</em><br><br>
@@ -196,15 +211,17 @@
             There is not enough space to contain it anymore.
         </p>
         <div class = "img">
-            <img src="../../photos/group1/be_picture10.jpg" width="400px;" height="600px;" alt="Image 4">
+            <img src="../../photos/group1/be_picture10.jpg" width="450px;" height="650px;" alt="Image 4">
         </div>
     </section>
 
     <br><br>
+    <br><br>
+    <br><br>
+
+    <h3 style="margin-left: 133px;">04/17/2036: Location Unknown, Age: 33</h3>
     <section>
-        <h3 style="margin-bottom: 0px;">04/17/2036, Location Unknown, Age: 33</h3>
-        <p style="line-height: 1.25;">
-            <br><br>
+        <p style="line-height: 1.3; margin-right: 45px;">
             Lately, the skies have been filled with monarch butterflies as the end of migration ears.<br></br>
             Their deep orange hue like the setting sun on the horizon.<br></br>
             I’ve always been good at seeing the beauty in others, the beauty around me, but never in myself.<br><br>
@@ -214,9 +231,10 @@
             it.
         </p>
         <div class = "img">
-            <img src="../../photos/group1/be_picture11.jpg" width="400px;" height="500px;" alt="Image 5">
+            <img src="../../photos/group1/be_picture11.jpg" width="540px;" height="650px;" alt="Image 5">
         </div>
     </section>
+
     <br><br>
 
 </body>
