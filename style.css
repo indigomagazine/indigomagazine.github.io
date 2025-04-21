@@ -20,7 +20,6 @@ body {
 
 h1, h2 {
   text-align: center;
-  color: #170B3B;
   margin-bottom: 15px;
   letter-spacing: 0.1em;
   font-weight: bold;
@@ -175,10 +174,6 @@ video::-webkit-media-controls {
   #bg-wrap {
     height: 60vh; /* Smaller height for mobile */
   }
-  #Issues-Section .article-row {
-    flex-direction: column;
-    align-items: center;
-  }
 
   #Issues-Section .article {
     max-width: 90%;
@@ -254,19 +249,21 @@ video::-webkit-media-controls {
   opacity: 1; /* Make title visible on hover */
 }
 
-#Issues-Section .article-row {
+/* #Issues-Section .article-row {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
   margin-top: 10px;
-}
+} */
 
-#Issues-Section .article {
-  flex: 1 1 calc(33.333% - 20px);
-  text-align: center;
-  text-decoration: none;
-  color: inherit;
+#Issues-Section h1 {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 #Issues-Section .article img {
@@ -279,6 +276,10 @@ video::-webkit-media-controls {
 #Issues-Section .article-title {
   margin-top: 10px;
   font-weight: bold;
+}
+
+#Issues-Section .articles-container {
+  margin-bottom: 40px;
 }
 
 
