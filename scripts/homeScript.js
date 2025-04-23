@@ -48,3 +48,16 @@ document.addEventListener('DOMContentLoaded', function() {
       return true;
     }
   });
+
+const btn = document.getElementById('themeToggle');
+btn.addEventListener('click', () => {
+  document.documentElement.classList.toggle('dark-theme');
+  // Optionally save to localStorage:
+  const isDark = document.documentElement.classList.contains('dark-theme');
+  localStorage.setItem('darkMode', isDark);
+});
+
+// On load, re-apply saved theme:
+if (localStorage.getItem('darkMode') === 'true') {
+  document.documentElement.classList.add('dark-theme');
+}
