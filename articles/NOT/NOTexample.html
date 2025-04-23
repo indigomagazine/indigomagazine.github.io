@@ -22,6 +22,7 @@
       --text-secondary: #c7c7c7;
       --blur-amount: 5px;
       --fade-opacity: 0.4;
+      --shadow-color: rgba(128, 128, 128, 0.5); /* Shadow color - changeable in code */
     }
     [data-theme="light"] {
       --background: #f8f8f8;
@@ -63,46 +64,119 @@
       padding: 2rem;
     }
     /* ===== Header Updates ===== */
-header {
-  position: relative;
-  margin-bottom: 4rem;
-}
-.article-header {
-  display: flex;
-  align-items: center;
-}
-.article-header h1 {
-  font-size: 2rem;        /* made smaller */
-  margin: 0;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-}
-.header-line {
-  flex: 1;
-  height: 2px;
-  background: var(--text-secondary);
-  margin-left: 1rem;
-}
-.article-meta {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-}
-.mode-toggle {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: none;
-  border: none;
-  color: var(--text);
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0.5rem;
-}
     header {
       position: relative;
-      text-align: center;
       margin-bottom: 4rem;
+    }
+    .article-header {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .article-header h1 {
+      font-size: 2rem;
+      margin: 0;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .header-line {
+      flex: 1;
+      height: 2px;
+      background: var(--text-secondary);
+      margin-left: 1rem;
+      position: relative;
+    }
+    
+    /* Home button styles */
+    .home-button {
+      position: absolute;
+      top: -38px;
+      left: 10px;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 10;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .home-button:hover {
+      transform: scale(1.2);
+    }
+
+    /* Mode toggle styles */
+    .mode-toggle-container {
+      position: relative;
+      height: 30px;
+      width: 100%;
+    }
+    .mode-toggle {
+      position: absolute;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 10;
+      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), top 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+    .sun-toggle {
+      top: -40px;
+      right: 0;
+    }
+    .moon-toggle {
+      top: -5px;
+      right: 0;
+    }
+    
+    /* Semi-circle shadow styles */
+    .toggle-shadow {
+      position: absolute;
+      width: 40px;
+      height: 20px; /* Half height for semi-circle */
+      background: var(--shadow-color);
+      border-radius: 20px 20px 0 0; /* Top semi-circle */
+      z-index: 5;
+      transition: top 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      right: 0;
+    }
+    .sun-shadow {
+      top: -20px;
+      transform: translateX(-10px);
+    }
+    .moon-shadow {
+      top: 0;
+      transform: translateX(-10px) ; /* Flip for bottom semi-circle */
+      border-radius: 0 0 20px 20px; /* Bottom semi-circle */
+    }
+    
+    [data-theme="dark"] .sun-toggle,
+    [data-theme="dark"] .sun-shadow {
+      opacity: 1;
+      transform: translateX(-10px);
+    }
+    [data-theme="dark"] .moon-toggle,
+    [data-theme="dark"] .moon-shadow {
+      opacity: 0;
+      transform: translateX(-10px) rotate(180deg) scale(0);
+    }
+    [data-theme="light"] .sun-toggle,
+    [data-theme="light"] .sun-shadow {
+      opacity: 0;
+      transform: translateX(-10px) scale(0);
+    }
+    [data-theme="light"] .moon-toggle,
+    [data-theme="light"] .moon-shadow {
+      opacity: 1;
+      transform: translateX(-10px) rotate(180deg);
+    }
+
+    .article-meta {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
     }
     h1 {
       font-size: 3.5rem;
@@ -115,17 +189,6 @@ header {
       font-weight: 400;
       margin-bottom: 2rem;
       text-align: center;
-    }
-    .mode-toggle {
-      position: absolute;
-      top: 0;
-      right: 0;
-      background: none;
-      border: none;
-      color: var(--text);
-      font-size: 1.5rem;
-      cursor: pointer;
-      padding: 0.5rem;
     }
     .section-divider {
       display: flex;
@@ -171,9 +234,16 @@ header {
     }
     .carousel-track {
       display: flex;
+      
       gap: 1.5rem;
       padding: 1rem 
     }
+
+    @keyframes scroll-left {
+      0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
     .carousel-item {
       min-width: 250px;
       height: 180px;
@@ -195,12 +265,20 @@ header {
       filter: blur();
       opacity: 1;
     }
+    
     @media (max-width: 768px) {
       .article-frame {
         padding: 3rem 1rem;
       }
       .content-wrapper {
         padding: 1rem;
+      }
+      .sun-toggle{
+        font-size: 1.5rem;
+
+      }
+      .moon-toggle{
+        font-size: 1.5rem;
       }
       h1 {
         font-size: 2.5rem;
@@ -232,17 +310,27 @@ header {
       <header>
         <div class="article-header">
           <h1>La Quinta</h1>
-          <div class="header-line"></div>
+          <div class="header-line">
+            <!-- Home button -->
+            <button id="home-button" class="home-button"><h1>home</h1></button>
+            
+            <!-- Mode toggle with animation -->
+            <div class="mode-toggle-container">
+              <button id="sun-toggle" class="mode-toggle sun-toggle">☀</button>
+              <button id="moon-toggle" class="mode-toggle moon-toggle">☾</button>
+              
+            </div>
+          </div>
         </div>
         <div class="article-meta">
           <span class="publication-date">April 23, 2025</span>
-          <span class="author">By Luis</span>
+          <span class="author">By ZA</span>
         </div>
-        <button id="night-mode-toggle" class="mode-toggle">☾</button>
       </header>
 
       <section class="poem-section">
-        <h2>A</h2>
+        <div class="section-divider"><span>-</span></div>
+
         <div class="poem-content">
           <p>on a bad Friday, i head towards La Quinta</p>
           <p><em>i keep trying to find someone</em></p>
@@ -298,7 +386,7 @@ header {
           <p>my head splits, my body is sensitive</p>
           <p>i have itches in my wrist, on the tops of my feet</p>
           <p>calluses in my jaw</p>
-          <p>he’s a god when he’s like this</p>
+          <p>he's a god when he's like this</p>
         </div>
       </section>
 
@@ -309,10 +397,10 @@ header {
           <p>in and out, front to back,</p>
           <p><em>let them take my word and my legs</em></p>
           <p>let them speak for me, Friday</p>
-          <p><em>you’ll get money in your hands</em></p>
-          <p>in my hands, there’s good religion</p>
+          <p><em>you'll get money in your hands</em></p>
+          <p>in my hands, there's good religion</p>
           <p><em>serve, serve it forward, serve</em></p>
-          <p>don’t blink, or you’ll miss</p>
+          <p>don't blink, or you'll miss</p>
           <p><em>the sun, the candle snuffed by</em></p>
           <p>body heat and bad porn</p>
           <p><em>two bodies intertwined</em></p>
@@ -326,10 +414,17 @@ header {
         </div>
       </section>
 
+      <div class="photo-section" data-group="3">
+        <div class="carousel-container">
+          <div class="carousel-track"></div>
+        </div>
+      </div>
+
+
       <div class="section-divider"><span>-</span></div>
 
       <section class="poem-section">
-        <h2>B</h2>
+     
         <div class="poem-content">
           <p>i wish i could take it all back</p>
           <p>i don't have sex anymore, just this lifeless thing</p>
@@ -341,7 +436,7 @@ header {
           <p>i remember when sex was life</p>
           <p>they don't talk about the habituation of stimulation</p>
           <p>the heat death in touch, entropy</p>
-          <p>on the worst days, i’m lit in a dark room like this</p>
+          <p>on the worst days, i'm lit in a dark room like this</p>
           <p>but most days its</p>
 
           <p>sitting around hoping not to be looked at</p>
@@ -360,7 +455,7 @@ header {
         <div class="poem-content">
           <p>sitting alone</p>
           <p>lonely beggar, wood pew</p>
-          <p>saying all the things i can’t say out loud</p>
+          <p>saying all the things i can't say out loud</p>
           <p>in subtle murmurs, with closed eyes</p>
           <p>bright light seeps through stained window</p>
 
@@ -392,31 +487,31 @@ header {
           <p>the thrill of being untouched, to be touched once</p>
           <p>to shimmer like gold</p>
 
-          <p>oh my god, i’m so scared</p>
+          <p>oh my god, i'm so scared</p>
           <p>i feel now like pig flesh and rot,</p>
           <p>and when i stare at this face real close</p>
-          <p>i don’t recognize him</p>
+          <p>i don't recognize him</p>
           <p>his nose and his mouth mesh together</p>
           <p>and his eyebrows extend towards his ears</p>
-          <p>i don’t recognize the pinpricks trickling</p>
+          <p>i don't recognize the pinpricks trickling</p>
           <p>in the places he presses his mouth</p>
           <p>where his fingernail-teeth scrape my ribs</p>
-          <p>i’m back in the crowds of figures and things</p>
+          <p>i'm back in the crowds of figures and things</p>
 
-          <p>i’m a child, creating and forgetting</p>
-          <p>i’m a dancer, about to slip the rope</p>
-          <p>i don’t know what he is</p>
+          <p>i'm a child, creating and forgetting</p>
+          <p>i'm a dancer, about to slip the rope</p>
+          <p>i don't know what he is</p>
 
-          <p>there’s only dark now, with the lights off</p>
+          <p>there's only dark now, with the lights off</p>
           <p>i want to leave the party, drive home</p>
           <p>and sit near the running water alone</p>
           <p>leave the party and find</p>
           <p>someone, something else to believe in</p>
           <p>besides the monotony of a day to day</p>
           <p>where the world kept spinning, it took me with it</p>
-          <p>back to where there’s music and lights engulfing the sea, to find</p>
+          <p>back to where there's music and lights engulfing the sea, to find</p>
           <p>a mind beyond a body, this earth</p>
-          <p>i’m done</p>
+          <p>i'm done</p>
         </div>
       </section>
     </div>
@@ -434,23 +529,41 @@ header {
     ];
 
     document.addEventListener('DOMContentLoaded', () => {
-      initializeNightMode();
+      initializeTheme();
       initializeCarousels();
+      enableInfiniteScroll();
       setupCarouselScrolling();
+      initializeHomeButton();
     });
 
-    function initializeNightMode() {
-      const btn = document.getElementById('night-mode-toggle');
+    function initializeTheme() {
+      const sunToggle = document.getElementById('sun-toggle');
+      const moonToggle = document.getElementById('moon-toggle');
       const htmlEl = document.documentElement;
       const saved = localStorage.getItem('theme') || 'dark';
+      
       htmlEl.setAttribute('data-theme', saved);
-      btn.textContent = saved === 'light' ? '☾' : '☼';
-      btn.addEventListener('click', () => {
-        const current = htmlEl.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
-        htmlEl.setAttribute('data-theme', next);
-        btn.textContent = next === 'light' ? '☾' : '☼';
-        localStorage.setItem('theme', next);
+      
+      sunToggle.addEventListener('click', () => {
+        htmlEl.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      });
+      
+      moonToggle.addEventListener('click', () => {
+        htmlEl.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      });
+      
+      // You can change the shadow color here
+      // const shadowColor = "rgba(128, 128, 128, 0.5)"; // Default gray shadow
+      // document.documentElement.style.setProperty('--shadow-color', shadowColor);
+    }
+    
+    function initializeHomeButton() {
+      const homeButton = document.getElementById('home-button');
+      homeButton.addEventListener('click', () => {
+        // Replace with your actual homepage URL
+        window.location.href =' /NOT.html';
       });
     }
 
@@ -458,6 +571,7 @@ header {
       document.querySelectorAll('.photo-section').forEach(sec => {
         const track = sec.querySelector('.carousel-track');
         const groupId = +sec.dataset.group;
+
         imageArray.forEach(({ src, alt, revealGroup }) => {
           const item = document.createElement('div');
           item.className = 'carousel-item';
@@ -468,7 +582,10 @@ header {
           item.appendChild(img);
           track.appendChild(item);
         });
+
+        track.innerHTML += track.innerHTML; // Duplicate the track for infinite scroll
       });
+
     }
 
     function setupCarouselScrolling() {
@@ -499,36 +616,32 @@ header {
           car.scrollLeft = scrollLeft - walk;
         });
       });
-
     }
 
-  function enableInfiniteScroll() {
-  document.querySelectorAll('.carousel-container').forEach(car => {
-    const speed = 0.5; // pixels per frame
-    let rafId;
+    function enableInfiniteScroll() {
+      document.querySelectorAll('.carousel-container').forEach(car => {
+        const speed = 0.5; // pixels per frame
+        let rafId;
 
-    function step() {
-      car.scrollLeft += speed;
-      // once we've scrolled past the half-track, jump back
-      if (car.scrollLeft >= car.scrollWidth / 2) {
-        car.scrollLeft = 0;
-      }
-      rafId = requestAnimationFrame(step);
+        function step() {
+          car.scrollLeft += speed;
+          // once we've scrolled past the half-track, jump back
+          if (car.scrollLeft >= car.scrollWidth / 2) {
+            car.scrollLeft = 0;
+          }
+          rafId = requestAnimationFrame(step);
+        }
+
+        // start after a brief delay
+        setTimeout(() => {
+          rafId = requestAnimationFrame(step);
+        }, 1000);
+
+        // pause on hover
+        car.addEventListener('mouseenter', () => cancelAnimationFrame(rafId));
+        car.addEventListener('mouseleave', () => { rafId = requestAnimationFrame(step); });
+      });
     }
-
-    // start after a brief delay
-    setTimeout(() => {
-      rafId = requestAnimationFrame(step);
-    }, 1000);
-
-    // pause on hover
-    car.addEventListener('mouseenter', () => cancelAnimationFrame(rafId));
-    car.addEventListener('mouseleave', () => { rafId = requestAnimationFrame(step); });
-  });
-}
   </script>
 </body>
 </html>
-
-
-
