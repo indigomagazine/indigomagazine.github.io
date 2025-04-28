@@ -17,17 +17,17 @@
   <!-- Inlined CSS -->
   <style>
     :root {
-      --background: #121212;
-      --text: #d8c3eb;
-      --text-secondary: #c7c7c7;
+      --background: #5e2e14;
+      --text: #f2d7f2;
+      --text-secondary: #bbc8ee;
       --blur-amount: 5px;
       --fade-opacity: 0.4;
       --shadow-color: rgba(128, 128, 128, 0.5); /* Shadow color - changeable in code */
     }
     [data-theme="light"] {
-      --background: #f8f8f8;
-      --text: #d6f0d6;
-      --text-secondary: #7f75cb;
+      --background: #bbc8ee;
+      --text: #fdfffe;
+      --text-secondary: #d9b8d9;
     }
     *,
     *::before,
@@ -50,12 +50,13 @@
       padding: 5rem 2rem;
       align-items: flex-start;
       background: conic-gradient(
-        from 162deg at 20.57% 14.31%,
-        rgba(8, 9, 9, 0.9) 69.23deg,
-        rgba(155, 213, 237, 0.46) 147.11deg,
+        from 162deg at 10.57% 21.31%,
+        hsla(180, 6%, 3%, 0.902) 69.23deg,
+        rgba(231, 234, 235, 0.877) 147.11deg,
+        rgb(222, 185, 64) 160.11deg,
         rgba(149, 212, 226, 0.62) 188.7deg,
         rgba(80, 126, 190, 0.767) 227.5deg,
-        #091d249f 280.38deg
+        #4c5c627d 280.38deg
       );
     }
     .content-wrapper {
@@ -101,6 +102,7 @@
       z-index: 10;
       transition: transform 0.3s ease, color 0.3s ease;
     }
+
     .home-button:hover {
       transform: scale(1.2);
     }
@@ -151,7 +153,19 @@
       transform: translateX(-10px) ; /* Flip for bottom semi-circle */
       border-radius: 0 0 20px 20px; /* Bottom semi-circle */
     }
+  [data-theme="dark"] .article-frame {
+    background: conic-gradient(from 223deg at 78.53% 28.34%,
+     #000 40.371534526348114deg,
+      rgba(71, 100, 144, 0.90) 81.2424749135971deg,
+       rgba(205, 222, 226, 0.46) 124.54536080360413deg,
+        rgba(22, 21, 17, 0.95) 167.54039883613586deg,
+         rgba(158, 131, 62, 0.92) 201.44325256347656deg,
+          rgba(144, 116, 71, 0.80) 263.14423084259033deg, 
+          rgba(29, 58, 55, 0.90) 334.3681025505066deg);
+  }
     
+    
+  
     [data-theme="dark"] .sun-toggle,
     [data-theme="dark"] .sun-shadow {
       opacity: 1;
@@ -179,7 +193,7 @@
       color: var(--text-secondary);
     }
     h1 {
-      font-size: 3.5rem;
+      font-size: 2rem;
       font-weight: 500;
       letter-spacing: 0.05em;
       margin-bottom: 1rem;
@@ -212,19 +226,23 @@
       gap: 1.2rem;
     }
     .poem-content p {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       line-height: 1.8;
+      
       letter-spacing: 0.03em;
     }
     .photo-section {
       margin:auto;
       width: 100vw;
       position: relative;
-
+      left: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
       overflow: hidden;
     }
     .carousel-container {
       display: flex;
+      background-color: #000000c5;
       width: 100%;
       overflow-x: auto;
       scrollbar-width: none;
@@ -245,12 +263,12 @@
   }
 
     .carousel-item {
-      min-width: 250px;
-      height: 180px;
+      min-width: 450px;
+      height: 300px;
       flex-shrink: 0;
       position: relative;
       overflow: hidden;
-      border-radius: 8px;
+      border-radius: 0;
       transition: all 0.5s ease;
     }
     .carousel-item img {
@@ -312,7 +330,12 @@
           <h1>La Quinta</h1>
           <div class="header-line">
             <!-- Home button -->
-            <button id="home-button" class="home-button"><h1>home</h1></button>
+            <button id="home-button" class="home-button"><h1>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon-home" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3l9 8h-3v10h-4V13H10v8H6V11H3z"/>
+              </svg>
+              
+            </h1></button>
             
             <!-- Mode toggle with animation -->
             <div class="mode-toggle-container">
@@ -341,12 +364,7 @@
         </div>
       </section>
 
-      <div class="photo-section" data-group="1">
-        <div class="carousel-container">
-          <div class="carousel-track"></div>
-        </div>
-      </div>
-
+      
       <section class="poem-section">
         <div class="poem-content">
           <p>i'm rubbing lube</p>
@@ -374,11 +392,14 @@
         </div>
       </section>
 
-      <div class="photo-section" data-group="2">
+      <div class="photo-section" data-group="1">
         <div class="carousel-container">
           <div class="carousel-track"></div>
         </div>
       </div>
+
+
+      
 
       <section class="poem-section">
         <div class="poem-content">
@@ -414,12 +435,11 @@
         </div>
       </section>
 
-      <div class="photo-section" data-group="3">
+      <div class="photo-section" data-group="2">
         <div class="carousel-container">
           <div class="carousel-track"></div>
         </div>
       </div>
-
 
       <div class="section-divider"><span>-</span></div>
 
@@ -471,12 +491,7 @@
         </div>
       </section>
 
-      <div class="photo-section" data-group="4">
-        <div class="carousel-container">
-          <div class="carousel-track"></div>
-        </div>
-      </div>
-
+    
       <section class="poem-section">
         <div class="poem-content">
           <p>i remember when sex was everything and nothing</p>
@@ -512,6 +527,14 @@
           <p>back to where there's music and lights engulfing the sea, to find</p>
           <p>a mind beyond a body, this earth</p>
           <p>i'm done</p>
+
+          <div class="photo-section" data-group="4">
+            <div class="carousel-container">
+              <div class="carousel-track"></div>
+            </div>
+          </div>
+
+          
         </div>
       </section>
     </div>
@@ -521,12 +544,26 @@
   <!-- Inlined JavaScript -->
   <script>
     const imageArray = [
-    { src: '../../article photos/laQuinta/image2.JPG', alt: 'Abstract art piece',     revealGroup: 1 },
-    { src: '../../article photos/laQuinta/image2.JPG', alt: 'Emotional portrait',     revealGroup: 2 },
-    { src: '../../article photos/laQuinta/image3.JPG', alt: 'Urban scene',            revealGroup: 1 },
-    { src: '../../article photos/laQuinta/image4.JPG', alt: 'Nature landscape',       revealGroup: 3 },
-    { src: '../../article photos/laQuinta/image5.JPG', alt: 'Abstract texture',       revealGroup: 2 },
+    { src: '../../article photos/laQuinta/F1-1.JPG', alt: 'Abstract art piece',     revealGroup: 1 },
+    { src: '../../article photos/laQuinta/F1-2.JPG', alt: 'Abstract art piece',     revealGroup: 1 },
+    { src: '../../article photos/laQuinta/F1-3.JPG', alt: 'Abstract art piece',     revealGroup: 1 },
+    { src: '../../article photos/laQuinta/F2-1.JPG', alt: 'Emotional portrait',     revealGroup: 2 },
+    { src: '../../article photos/laQuinta/F2-2.JPG', alt: 'Emotional portrait',     revealGroup: 2 },
+    { src: '../../article photos/laQuinta/F2-3.JPG', alt: 'Emotional portrait',     revealGroup: 2 },
+    { src: '../../article photos/laQuinta/F3-1.JPG', alt: 'Urban scene',            revealGroup: 3 },
+    { src: '../../article photos/laQuinta/F3-2.JPG', alt: 'Urban scene',            revealGroup: 3 },
+    { src: '../../article photos/laQuinta/F4-1.JPG', alt: 'Nature landscape',       revealGroup: 4 },
+    { src: '../../article photos/laQuinta/F4-2.JPG', alt: 'Abstract texture',       revealGroup: 4 },
     ];
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+    const shuffledImages = shuffleArray(imageArray);
 
     document.addEventListener('DOMContentLoaded', () => {
       initializeTheme();
@@ -572,7 +609,7 @@
         const track = sec.querySelector('.carousel-track');
         const groupId = +sec.dataset.group;
 
-        imageArray.forEach(({ src, alt, revealGroup }) => {
+        shuffledImages.forEach(({ src, alt, revealGroup }) => {
           const item = document.createElement('div');
           item.className = 'carousel-item';
           if (revealGroup === groupId) item.classList.add('revealed');
