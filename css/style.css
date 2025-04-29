@@ -187,14 +187,14 @@ video::-webkit-media-controls {
   font-family: "Inter";
   display: flex;
   flex-direction: column; /* Stack the heading and image vertically */
-  padding: 50px;
   text-align: center;
   justify-content: center;
   align-items: center;
-  margin-bottom: 100px;
   position: relative; /* Keep for positioning the title over the image */
   cursor: pointer;
   overflow: hidden;
+  gap: 40px; /* Spacing between articles */
+  margin: 0 auto; /* Center the grid container */
 }
 
 #Featured-Article h1 {
@@ -213,7 +213,6 @@ video::-webkit-media-controls {
   width: 100%;
   max-width: 400px; /* Keep this to maintain the image size */
   border-radius: 10px; /* You can remove this if you don't want rounded corners */
-  margin-bottom: 60px; /* Space below the image */
   transition: transform 0.3s ease;
   box-shadow: none; /* Remove box shadow */
 }
@@ -222,28 +221,8 @@ video::-webkit-media-controls {
   transform: scale(1.05); /* Slight zoom effect without shadow */
 }
 
-
 #Featured-Article:hover {
   transform: scale(1.02); /* Slight zoom effect on hover */
-}
-
-#Featured-Article .article-title {
-  position: absolute; /* Keep this to overlay */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 24px;
-  color: white;
-  text-transform: uppercase;
-  font-weight: bold;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: 1; /* Ensure it's above the image */
-}
-
-#Featured-Article:hover .article-title {
-  opacity: 1; /* Make title visible on hover */
 }
 
 /* spotify section (index page) */
@@ -691,7 +670,7 @@ video::-webkit-media-controls {
 /* Container for the issue covers */
 .issues-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 images per row for larger screens */
+  grid-template-columns: repeat(4, 1fr); /* 3 images per row for larger screens */
   gap: 0; /* No gap between images */
   padding: 0;
   height: 100vh; /* Full viewport height */
