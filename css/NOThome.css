@@ -1,6 +1,6 @@
 
   :root {
-    --background-color: #f0f0f0;
+    --background-color: #cbdcdc;
     --text-color: #151414;
     --accent-color: #6E6EFF;
     --hover-bg: #e0e0e0;
@@ -101,18 +101,17 @@
     gap: 4rem;
   }
   
-  .article-card {
-    position: relative;
-    overflow: hidden;
-  }
+
   
-  .article-card img,
-  .article-item .article-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: transform 0.4s ease, filter 0.4s ease;
-  }
+.article-card img,
+.article-card .article-image {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
   
   .article-card .article-content,
   .article-item .title {
@@ -132,12 +131,30 @@
   .article-item:hover .article-image {
     transform: scale(1.05);
     filter: brightness(40%);
+    filter:blur(3px)
   }
   
   .article-card:hover .article-content,
   .article-item:hover .title {
     opacity: 1;
   }
+
+  .article-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;               /* or whatever ratio you like */
+    background-size: cover;          /* fill & crop */
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform .4s ease, filter .4s ease;
+  }
+  
+  .cover-bg {
+    background-image: url("article photos/laQuinta/Rectangle 3.png");
+    background-position: center;
+    background-size: cover;
+  }
+  
   
 
   .credit-label {
