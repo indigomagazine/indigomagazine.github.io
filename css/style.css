@@ -107,7 +107,7 @@ video::-webkit-media-controls {
 
 @media only screen and (max-width: 480px) {
   .hero-section {
-    height: 60vh; /* Further reduce height for mobile screens */
+    height: 100vh; /* Further reduce height for mobile screens */
   }
 }
 
