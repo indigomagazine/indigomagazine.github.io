@@ -101,7 +101,7 @@ video::-webkit-media-controls {
 /* Adjust hero section height on smaller screens */
 @media only screen and (max-width: 768px) {
   .hero-section {
-    height: 80vh; /* Smaller height on medium screens */
+    height: 100vh; /* Smaller height on medium screens */
   }
 }
 
@@ -139,6 +139,27 @@ video::-webkit-media-controls {
   z-index: 1;
   pointer-events: none;
 }
+
+.hero-link {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2;
+  color: #fff;
+  font-family: "Inter";
+  font-size: 1rem;
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-family: sans-serif;
+}
+
+.hero-link:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
 
 /* Ripple effect background & editors note (index page)*/
 
