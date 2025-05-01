@@ -94,9 +94,10 @@
   
   .articles-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 4rem;
     margin: 0 auto;
+    justify-items: center;
   }
   
   .article-card {
@@ -110,6 +111,8 @@
     text-decoration: none;
     color: inherit;
     display: block;
+    width: 100%;
+    max-width: 300px;
   }
   
   .article-card img {
