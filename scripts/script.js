@@ -1,40 +1,75 @@
-// script.js
+document.addEventListener("DOMContentLoaded", () => {
+  const floatingPhotos = document.querySelectorAll(".floating-photo-wrapper");
+  const positions = [];
 
-let targetX = 0, targetY = 0; // Where the cursor/touch wants to go
-let currentX = 0, currentY = 0; // Current position of the movement
+  const isOverlapping = (x, y, size) => {
+    return positions.some(
+      (pos) =>
+        x < pos.x + size &&
+        x + size > pos.x &&
+        y < pos.y + size &&
+        y + size > pos.y
+    );
+  };
 
-// Function to smoothly animate the images
+  floatingPhotos.forEach((photo) => {
+    let randomX, randomY;
+    const size = 150; // Assuming square-sized photos
+    
+    // Generate random positions, avoiding overlap
+    do {
+      randomX = Math.floor(Math.random() * (window.innerWidth - size));
+      randomY = Math.floor(Math.random() * (window.innerHeight - size));
+    } while (isOverlapping(randomX, randomY, size));
+
+    positions.push({ x: randomX, y: randomY });
+    photo.style.left = `${randomX}px`;
+    photo.style.top = `${randomY}px`;
+
+    // Add randomized animation delay for natural staggered motion
+    const randomDelay = Math.random() * 2; // Between 0-2 seconds
+    photo.style.animationDelay = `${randomDelay}s`;
+  });
+});
+
+// Smooth mouse movement interaction
+let targetX = 0,
+  targetY = 0;
+let currentX = 0,
+  currentY = 0;
+
+// Smooth transition function
 function smoothMove() {
-  const wrappers = document.querySelectorAll('.floating-photo-wrapper');
-  
-  // Lerp (Linear Interpolation) for smoother movement
-  currentX += (targetX - currentX) * 0.05; 
-  currentY += (targetY - currentY) * 0.05;
+  const wrappers = document.querySelectorAll(".floating-photo-wrapper");
 
-  wrappers.forEach((wrapper) => {
-    // Apply smoother transform
-    wrapper.style.transform = `translate(${currentX}px, ${currentY}px)`;
+  // Gradual interpolation to target positions
+  currentX += (targetX - currentX) * 0.1;
+  currentY += (targetY - currentY) * 0.1;
+
+  wrappers.forEach((wrapper, index) => {
+    const offsetX = currentX / (10 + index); // Gradual movement scaling
+    const offsetY = currentY / (10 + index);
+
+    wrapper.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
   });
 
-  requestAnimationFrame(smoothMove); // Continue the animation
+  requestAnimationFrame(smoothMove);
 }
 
-// Mouse move event for desktop
-document.addEventListener('mousemove', (event) => {
-  targetX = (event.clientX - window.innerWidth / 2) / 10; // Increase divisor for quicker movement
-  targetY = (event.clientY - window.innerHeight / 2) / 10;
+// Capture mouse or touch movement
+document.addEventListener("mousemove", (event) => {
+  targetX = event.clientX - window.innerWidth / 2;
+  targetY = event.clientY - window.innerHeight / 2;
 });
 
-// Touch move event for mobile
-document.addEventListener('touchmove', (event) => {
+document.addEventListener("touchmove", (event) => {
   const touch = event.touches[0];
-  targetX = (touch.clientX - window.innerWidth / 2) / 10;
-  targetY = (touch.clientY - window.innerHeight / 2) / 10;
+  targetX = touch.clientX - window.innerWidth / 2;
+  targetY = touch.clientY - window.innerHeight / 2;
 });
 
-// Start the smooth movement loop
+// Start smooth movement loop
 smoothMove();
-
 
 "https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
 "https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js">
@@ -143,24 +178,14 @@ window.addEventListener('scroll', function () {
   });
 
 
-  // Check if the screen width is less than 768px (typical mobile breakpoint)
-  function handleHeroVideo() {
-    const videoElement = document.getElementById('hero-video');
-    
-    if (window.innerWidth < 768) {
-      // Hide the video on mobile and display only the fallback image
-      videoElement.removeAttribute('autoplay');
-      videoElement.style.display = 'none';
-    } else {
-      // On larger screens, ensure video is shown and autoplayed
-      videoElement.style.display = 'block';
-      videoElement.setAttribute('autoplay', 'autoplay');
-    }
-  }
-
-  // Initial check when page loads
-  handleHeroVideo();
-
-  // Listen for window resize to adjust video display as needed
-  window.addEventListener('resize', handleHeroVideo);
-
+  document.addEventListener("DOMContentLoaded", function () {
+    const video = document.querySelector("video");
+    video.play().then(() => {
+      // If video plays, it will loop as intended
+      video.style.display = "block";
+    }).catch(() => {
+      // If video cannot autoplay, show fallback image
+      video.style.display = "none";
+    });
+  });
+  
