@@ -91,30 +91,39 @@
   .not-heading {
     display: none;
   }
-
-  
   
   .articles-grid {
     display: grid;
-    margin: 5rem auto;
-    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 4rem;
+    margin: 0 auto;
+    justify-items: center;
   }
   
-
+  .article-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform .4s ease, filter .4s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+  }
   
-.article-card img,
-.article-card .article-image {
-  display: block;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.4s ease, filter 0.4s ease;
-}
-
+  .article-card img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s ease, filter 0.4s ease;
+  }
   
-  .article-card .article-content,
-  .article-item .title {
+  .article-card .article-content {
     position: absolute;
     inset: 0;
     background: rgba(0,0,0,0.2);
@@ -123,30 +132,35 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding: 1rem;
     transition: opacity 0.4s ease;
   }
   
-  .article-card:hover img,
-  .article-item:hover .article-image {
-    transform: scale(1.05);
-    filter: brightness(40%);
-    filter:blur(3px)
+  .article-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
   }
   
-  .article-card:hover .article-content,
-  .article-item:hover .title {
-    opacity: 1;
+  .article-credits {
+    text-align: center;
   }
-
-  .article-card {
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 3/4;               /* or whatever ratio you like */
-    background-size: cover;          /* fill & crop */
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: transform .4s ease, filter .4s ease;
+  
+  .credit-label {
+    font-weight: 600;
+    display: inline-block;
+    width: 80px;
+  }
+  
+  .article-card:hover img {
+    transform: scale(1.05);
+    filter: brightness(40%) blur(3px);
+  }
+  
+  .article-card:hover .article-content {
+    opacity: 1;
   }
   
   .cover-bg {
@@ -155,7 +169,7 @@
     background-size: cover;
   }
   
-  
+
 
   .credit-label {
     font-weight: 600;
@@ -174,10 +188,11 @@
   }
   
   .section-title {
-    font-size: 2rem;
-    font-weight: 300;
-    margin-bottom: 30rem auto;
-    letter-spacing: 2px;
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  text-align: center;
   }
   
   .editors-note p {
