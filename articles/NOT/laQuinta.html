@@ -251,8 +251,8 @@
     }
     .carousel-track {
       display: flex;
-
-      gap: 1.5rem;
+      align-items: center;
+      gap: clamp(1rem, 1vw, 1.5rem);
       padding: 1rem;
     }
 
@@ -262,12 +262,14 @@
   }
 
     .carousel-item {
-      min-width: 450px;
-      height: 300px;
+      width: 90vw;
+      height: auto;
+      max-width: 650px;
       flex-shrink: 0;
       position: relative;
       overflow: hidden;
-      border-radius: 0;
+      display: flex;
+      justify-content: center;
       transition: all 0.5s ease;
     }
     .carousel-item img {
@@ -591,7 +593,7 @@
   <script>
     const imageArray = [
     { src: '../../article photos/laQuinta/F1-1.JPG', alt: 'Abstract art piece',     revealGroup: 1 },
-    { src: '../../article photos/laQuinta/F1-2.JPG', alt: 'Abstract art piece',     revealGroup: 1 },
+    { src: '../../article photos/laQuinta/F1-2.jpg', alt: 'Abstract art piece',     revealGroup: 1 },
     { src: '../../article photos/laQuinta/F1-3.JPG', alt: 'Abstract art piece',     revealGroup: 1 },
     { src: '../../article photos/laQuinta/F2-1.JPG', alt: 'Emotional portrait',     revealGroup: 2 },
     { src: '../../article photos/laQuinta/F2-2.JPG', alt: 'Emotional portrait',     revealGroup: 2 },

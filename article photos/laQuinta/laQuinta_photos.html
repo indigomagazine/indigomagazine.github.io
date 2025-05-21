@@ -63,7 +63,12 @@
         // Generate image filenames
         for (let i = 1; i <= 4; i++) {
             for (let j = 1; j <= 3; j++) {
-                images.push(`F${i}-${j}.JPG`);
+                if( i === 1 && j === 2 ){
+                    images.push(`F${i}-${j}.jpg`);
+                }
+                else{
+                    images.push(`F${i}-${j}.JPG`);
+                }
             }
         }
 
