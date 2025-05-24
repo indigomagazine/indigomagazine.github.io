@@ -225,7 +225,7 @@ video::-webkit-media-controls {
   overflow: hidden;
   gap: 40px; /* Spacing between articles */
   margin: 0 auto; /* Center the grid container */
-  margin-bottom: 50px;
+  margin-bottom: 80px;
 }
 
 #Featured-Article h1 {
