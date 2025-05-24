@@ -20,11 +20,20 @@ body {
 
 h1, h2 {
   text-align: center;
-  color: #170B3B;
   margin-bottom: 15px;
   letter-spacing: 0.1em;
   font-weight: bold;
   font-family: "Inter", sans-serif;
+}
+
+body:not(.light-mode) h1,
+body:not(.light-mode) h2 {
+  color: white; /* White text in dark mode */
+}
+
+body.light-mode h1,
+body.light-mode h2 {
+  color: black; /* Black text in light mode */
 }
 
 body.light-mode {
@@ -216,6 +225,7 @@ video::-webkit-media-controls {
   overflow: hidden;
   gap: 40px; /* Spacing between articles */
   margin: 0 auto; /* Center the grid container */
+  margin-bottom: 50px;
 }
 
 #Featured-Article h1 {
