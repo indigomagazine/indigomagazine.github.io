@@ -225,7 +225,7 @@ video::-webkit-media-controls {
   overflow: hidden;
   gap: 40px; /* Spacing between articles */
   margin: 0 auto; /* Center the grid container */
-  margin-bottom: 80px;
+  margin-bottom: 120px;
 }
 
 #Featured-Article h1 {
@@ -260,7 +260,7 @@ video::-webkit-media-controls {
 .spotify-section {
   position: relative;
   border-radius: 15px;
-  margin-top: 100px;
+  margin-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -697,78 +697,31 @@ video::-webkit-media-controls {
   color: #170B3B;
 }
 
+.past-issues-title {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 80px;
+  color: #ffffff;
+}
 
-/* Container for the issue covers */
+.issues-section {
+  margin-bottom: 70px;
+}
+
+/* Container for the issues section */
 .issues-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 3 images per row for larger screens */
-  gap: 0; /* No gap between images */
-  padding: 0;
-  height: 100vh; /* Full viewport height */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 20px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Styling for each issue cover */
-.issue {
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-  width: 100%;
-  height: 100%; /* Ensure covers take full height of the container */
-}
-
-/* Ensure all images cover their grid cell */
-.issue img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Makes sure the image covers the full area without distortion */
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-/* Hover effect for the image */
-.issue:hover img {
-  transform: scale(1.1); /* Zoom in slightly on hover */
-}
-
-/* Title overlay on hover */
-.issue-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2vw; /* Responsive font size */
-  color: white;
-  text-transform: uppercase;
-  font-weight: bold;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.issue:hover .issue-title {
-  opacity: 1;
-}
-
-/* Media Queries for smaller screens (tablets, mobile) */
-@media (max-width: 1024px) {
-  .issues-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 images per row for tablets */
-  }
-}
-
-@media (max-width: 768px) {
-  .issues-container {
-    grid-template-columns: 1fr; /* 1 image per row for mobile screens */
-    height: auto; /* Remove fixed height to allow scrolling on mobile */
-  }
-
-  .issue {
-    height: 50vh; /* Adjust the height for mobile, making the image taller */
-  }
-
-  .issue-title {
-    font-size: 4vw; /* Make the title larger on mobile */
-  }
+/* Reduce spacing between section titles and article containers */
+h1 + .articles-container,
+h1 + .issues-container-v2 {
+  margin-top: 10px;
 }
 
 /* Container for the articles */
@@ -780,6 +733,7 @@ video::-webkit-media-controls {
   max-width: 1200px; /* Set a maximum width */
   margin: 0 auto; /* Center the grid container */
 }
+
 
 /* Styling for each article */
 .article {
@@ -821,6 +775,30 @@ video::-webkit-media-controls {
 
 .article:hover .article-title {
   opacity: 1;
+}
+
+
+.view-more-btn {
+  display: inline-block;
+  margin: 10px auto 10px auto; /* spacing above and below */
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #51289C;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.view-more-btn:hover {
+  background-color: #34196d;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 30px 0;
 }
 
 /* Media Queries for smaller screens (tablets and mobile) */
