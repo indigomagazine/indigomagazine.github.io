@@ -718,6 +718,83 @@ video::-webkit-media-controls {
   margin: 0 auto;
 }
 
+/* Container for the issue covers */
+.issues-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 3 images per row for larger screens */
+  gap: 0; /* No gap between images */
+  padding: 0;
+  height: 100vh; /* Full viewport height */
+}
+
+/* Styling for each issue cover */
+.issue {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  width: 100%;
+  height: 100%; /* Ensure covers take full height of the container */
+}
+
+/* Ensure all images cover their grid cell */
+.issue img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Makes sure the image covers the full area without distortion */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect for the image */
+.issue:hover img {
+  transform: scale(1.1); /* Zoom in slightly on hover */
+}
+
+/* Title overlay on hover */
+.issue-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2vw; /* Responsive font size */
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.issue:hover .issue-title {
+  opacity: 1;
+}
+
+/* Media Queries for smaller screens (tablets, mobile) */
+@media (max-width: 1024px) {
+  .issues-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 images per row for tablets */
+  }
+
+
+
+}
+
+@media (max-width: 768px) {
+  .issues-container {
+    grid-template-columns: 1fr; /* 1 image per row for mobile screens */
+    height: auto; /* Remove fixed height to allow scrolling on mobile */
+  }
+
+  .issue {
+    height: 50vh; /* Adjust the height for mobile, making the image taller */
+  }
+
+  .issue-title {
+    font-size: 4vw; /* Make the title larger on mobile */
+  }
+}
+
+
 /* Reduce spacing between section titles and article containers */
 h1 + .articles-container,
 h1 + .issues-container-v2 {
