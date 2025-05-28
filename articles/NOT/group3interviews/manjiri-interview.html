@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../../../assets/logos/indigologoblack.png">
+    <title>Indigo Magazine - Julia </title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="scripts/script.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            font-weight: 200px;
+            font-size: 16.5px;
+            /* background: linear-gradient(to bottom, #f5f7fa, #ffffff); */
+            background-color: #e5dba8;
+            margin: 60px auto;
+            max-width: 800px;
+            padding: 0 20px;
+            color: black;
+            line-height: 1.6;
+        }
+
+
+        h2 {
+            text-align: center;
+            font-family: "Playfair Display", serif;
+            font-size: 45px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #664229;
+            letter-spacing: 0.5px;
+        }
+
+        .meta {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: space-between;
+            border-top: 2px solid rgba(0, 0, 0, 0.5);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+            padding: 10px 0;
+            font-size: 15px;
+            color: black;
+        }
+
+        .article-body {
+            text-align: justify;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .article-text {
+            max-width: 1000px;
+            padding: 0 20px;
+            text-align: center;
+            line-height: 1.8;
+            margin: 0 auto;
+        }
+
+        .article-spacing {
+            margin: 0 auto;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .dashed-line {
+            border: none;
+            border-top: 3px dashed black;
+            margin: 60px auto;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .left-article,
+        .right-article {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .left-article {
+            flex-direction: row;
+        }
+
+        .right-article {
+            flex-direction: row-reverse;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+
+        }
+
+        .left-image-container img,
+        .right-image-container img {
+            width: 350px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .image-container img:hover,
+        .left-image-container img:hover,
+        .right-image-container img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+
+        @media (max-width: 600px) {
+            .meta {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .left-article,
+            .right-article {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+                margin: 30px 0;
+            }
+
+            .image-container img,
+            .left-image-container img,
+            .right-image-container img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="Taskbar-container">
+        <!-- Logo on the left side, linking to the homepage -->
+        <a href="../../../index.html" class="logo-link">
+            <img src="../../../assets/logos/indigologoblack.png" alt="Website Logo" class="logo">
+        </a>
+    </div>
+
+    <h2>Interview #2: Manjiri</h2>
+    <div class="meta">
+        <span>By <strong>Susan E.</strong></span>
+        <span>NOT ISSUE</span>
+    </div>
+
+    <br><br>
+
+    <div class="article-body">
+        <p>When did individualism become isolation? Success become seclusion? Has our society
+            become so focused on individual achievements that we’ve lost touch with our sense of
+            community? These questions are heavy, and the answers may never be found. It’s the
+            natural law for societies to morph as they go through their cycles, locked in an infinite
+            spiral and leaving all of us desperately grasping to the debris to keep upright. However,
+            recently, we’ve found ourselves void of any ground to stand on while our society spirals
+            into a deep-seated era of hyper-individualism, and I’m not the only one who thinks so.
+            Manjiri has noticed the hard shift to hyper-individualism that has taken over our
+            society, leaving lasting routines that threaten to define the 21st century</p>
+        <hr class="dashed-line">
+        <p>Susan Eltell: What aspect of our society do you wish you would clean up?</p>
+        <p>Manjiri Chacharkar: The main problem in our society that I would “clean up” is
+            hyper-individualism. I think the power of the internet has made everyone more
+            individualistic in general, to a point where, collectively, everyone is much more
+            self-centered. People are often only concerned with issues that directly affect them. In
+            the US especially, you’ll find people arguing with their life over more “first world
+            problems” which distracts us from broader issues that affect everyone. Things like
+            climate change, gun control, minimum wage, clean water, and America’s homeless crisis
+            have become topics that are talked about but quickly forgotten</p>
+        <p>SE: How would you associate this mindset and its implication on a societal level, such as
+            communicating with others and building communities?</p>
+        <p>MC: I definitely think that’s specifically where it all went wrong. It started with these
+            echo chambers of people yelling, “You don’t owe anyone anything”. People truly do not
+            want to look inward, leading to a culture of people unwilling to communicate,
+            compromise, sacrifice, or truly advocate for their friends, family, or loved ones without
+            thinking, “Do I owe them this?”or “What would I gain from this?”. As humans, we
+            physically and mentally cannot survive without human connection, so to sit here as an
+            individual and think “I don’t owe anyone anything” while every other person on Earth
+            echoes the same thought in their head, is inherently inhuman in my opinion. Frankly,
+            it’s probably a civilization-ending phrase.</p>
+        <hr class="dashed-line">
+        <p>Being an active member of society involves taking the initiative to educate yourself on
+            certain social and political issues that may not pertain to you personally. Have we fallen
+            so far from civilization that we’ve failed to abide by this? Of course, one simply cannot
+            be in twenty different places at once. This can take its toll and place internal pressure on
+            oneself to be the “perfect spokesperson”; to assume the role many want us to play,
+            leading to a level of activism that is, some may say, less authentic. Has the over
+            saturation of societal and political issues led to the downfall of interconnectedness?</p>
+        <hr class="dashed-line">
+        <p>SE: Would you say the people who briefly engage in these conversations but set them
+            aside are being performative?</p>
+        <p>MC: I don’t want to be a complete pessimist and say nobody cares because I truly do
+            believe people, especially our generation, are deeply concerned about these issues.
+            However, because most political discourse begins online now, everything has inherently
+            become performative. Folks will engage fervently in whatever the new “online
+            movement” is, such as BLM or #MeToo or even conversations about Palestine, and then
+            quickly forget and move on to the next. Everything feels like it’s for show even though,
+            for most people, it’s not intentional. People have forgotten that online advocacy isn’t
+            enough and they’ll draw the line at legitimate action.</p>
+        <p>SE: Why do you think people hold back from turning online advocacy into legitimate
+            action?</p>
+        <p>MC: I think it’s for a number of reasons. Younger people are concerned for their careers
+            or of cancel culture. Both are valid concerns, however, it’s also important to remember
+            that we are the future employers, CEOs, etc. By beginning to speak out, taking minor
+            action, going to protests, starting labor unions, and encouraging people to vote in their
+            local elections to try to tackle these “bread and butter” issues, we could build a
+            foundation for a future where we wouldn’t be scared into silence.</p>
+        <hr class="dashed-line">
+        <p>Hesitancy is a common companion to the dark, filthy aspects of our world. With an
+            administration set on dismantling the integrity of civilization and a society full of
+            hyper-individualistic people, it’s not far off to assume that even the most well-intentioned of us
+            struggle with the weight of taking action. The fear of consequences and the uncertainty of the
+            impact of our actions perpetuates a cycle of passive advocacy rather than real, tangible change.</p>
+        <hr class="dashed-line">
+        <p>SE: Would you say the fear of speaking out is more prevalent now than in previous years? And
+            if so, why is that the case for this new generation entering the workforce?</p>
+        <p>MC: Yeah, I definitely think there is much more fear. Politics have become black and
+            white, right or left. Social media has made everyone so concerned with how their
+            opinions represent them, and no one wants to have their own thoughts and opinions.
+            The fear of being wrong holds us back from creative thinking or wanting to state a new
+            or unpopular opinion. If we were more focused on having opinions on individual policies
+            rather than assigning them “left” or “right”, I believe we’d be less fearful and more open
+            to discussion between the “two sides.”</p>
+        <p>SE: Would you say we’ve reached a point where this mindset is so ingrained in our
+            society that clean up isn’t even an option anymore, or is in some ways being actively
+            restricted?</p>
+        <p>MC: I understand that people are tired and hopeless. I feel that way at times. But
+            nothing is impossible. Many want change, but politically, we need to focus on vital
+            issues: funding poorer neighborhoods and schools, establishing community gardens,
+            and tackling survival-based concerns. I always think about the Black Panther Party and
+            how they rallied minorities and low-income white folks for basic rights. They were
+            painted as dangerous but were in fact the opposite. I benefited from the Free Lunch
+            Program from kindergarten to high school, and only learned last year that the Black
+            Panther Party started it. I believe in returning to a collectivist mindset and working
+            within communities to create change at a base level before tackling broader issues.
+            Maslow’s Hierarchy of Needs comes to mind: once physiological and safety needs are
+            met, we can focus on deeper concerns. By then, theoretically, there’d be less to fix.</p>
+        <hr class="dashed-line">
+        <p>In order to accomplish this, we must understand that this is not an individual fight. We often
+            forget that society is built on the relationships we share with one another, and to get back to a
+            time where we saw each other as a community shouldn’t just be a dream; it should be a goal.</p>
+        <hr class="dashed-line">
+        <p>SE: If you could give one final message to the readers, what would that message be?</p>
+        <p>MC: Go outside, touch some grass, and hang out at third places. I think the feeling of
+            seeing everything online makes people feel connected in a weird way and makes them
+            feel like they’re taking action. If people picked up a book, went to an art class, brought
+            back book clubs, etc, then those tiny actions in their everyday life would make people
+            less fearful to take action on a larger scale. It’d feel less lonely to fight for a labor union
+            or to go to a protest because you would know that other people will be there, too. Reject
+            the individualistic mindset that society is pushing on you, and remember that, as
+            humans, we thrive on interconnectedness.</p>
+    </div>
+</body>
+
+</html>
