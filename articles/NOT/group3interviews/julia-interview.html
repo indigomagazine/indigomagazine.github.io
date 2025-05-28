@@ -12,11 +12,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <script src="../../../scripts/script.js"></script>
     <style>
+        html{
+            cursor:url(../../../assets/cursors/sparkle-cursor.png);
+            overflow-x: hidden;
+        }
+        
         body {
             font-family: 'Georgia', serif;
             font-weight: 400;
             font-size: 16.5px;
-            /* background: linear-gradient(to bottom, #f5f7fa, #ffffff); */
             background-color: #e5dba8;
             margin: 60px auto;
             max-width: 800px;
@@ -72,12 +76,20 @@
             width: 100%;
         }
 
-        .left-article {
+        .left-article,
+        .right-article {
             display: flex;
-            flex-direction: row;
             align-items: center;
             gap: 40px;
             margin: 40px 0;
+        }
+
+        .left-article {
+            flex-direction: row;
+        }
+
+        .right-article {
+            flex-direction: row-reverse;
         }
 
         .image-container {
@@ -109,9 +121,18 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
         }
 
+        .right-image-container img {
+            width: 350px;
+            height: 470px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
 
         .image-container img:hover,
-        .left-image-container img:hover {
+        .left-image-container img:hover,
+        .right-image-container img:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
@@ -132,7 +153,8 @@
                 text-align: center;
             }
 
-            .left-article {
+            .left-article,
+            .right-article {
                 flex-direction: column;
                 text-align: center;
                 gap: 20px;
@@ -140,7 +162,8 @@
             }
 
             .image-container img,
-            .left-image-container img {
+            .left-image-container img,
+            .right-image-container img {
                 width: 100%;
                 margin: 30px auto;
             }
@@ -181,7 +204,7 @@
                 cliff. But maybe some of us intended to take a leap, and these opinions actually serve as
                 barbed wire, fencing us in and limiting growth. </p>
             <div class="left-image-container">
-                <img src="../../../NOT photos/group3/1.jpg" alt="Image 1">
+                <img src="../../../NOT photos/group3/9.jpg" alt="Image 1">
             </div>
         </div>
 
@@ -213,7 +236,7 @@
 
         <hr class="dashed-line">
 
-        <div class="authors-note">
+        <div class="right-article">
             <p>It’s never easy letting go of something you’ve known your whole life, especially with it
                 being so tightly intertwined with personal relationships such as family members and a
                 community you grew up around. It almost forces you to question whether the worlds we
@@ -223,6 +246,9 @@
                 perceptions of it. It’s common for us to still consider the reactions of others when
                 embarking on different paths in life, even if their reactions don’t directly impact your
                 decision to move forward or not.</p>
+            <div class="right-image-container">
+                <img src="../../../NOT photos/group3/7.jpg" alt="Image 2">
+            </div>
         </div>
 
         <hr class="dashed-line">
@@ -239,9 +265,8 @@
             explore new opportunities. I also saw it as a way to be an advocate for curvy girls in the
             industry, making sure my work allowed them to see themselves on display and be proud
             of the representation.</p>
-        <div class="image-container">
-            <img src="../../../NOT photos/group3/9.jpg" alt="Image 2">
-        </div>
+        
+        <hr class="dashed-line">
 
         <div class="authors-note">
             <p>The piper always comes around to collect his debt. Julia takes great pride in her
@@ -292,7 +317,9 @@
                 take the risk?</p>
         </div>
 
-        <hr class="dashed-line">
+        <div class="image-container">
+            <img src="../../../NOT photos/group3/3.jpg" alt="Image 3">
+        </div>
 
         <p><span class="speaker"><strong>SE</strong></span>: What final message would you like to share with our
             readers?</p><br>
@@ -305,9 +332,6 @@
             gained emotional awareness and was able to accept the situations in life that led me to
             this moment without allowing them to define me. So that’s my message: fight for
             yourself and for what you believe is right.</p>
-        <div class="image-container">
-            <img src="../../../NOT photos/group3/3.jpg" alt="Image 3">
-        </div>
     </div>
 </body>
 

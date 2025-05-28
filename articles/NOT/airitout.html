@@ -12,10 +12,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <script src="scripts/script.js"></script>
     <style>
+        html {
+            cursor: url(../../assets/cursors/sparkle-cursor.png);
+            overflow-x: hidden;
+        }
+
         body {
             font-family: 'Georgia', serif;
             font-weight: 400;
-            font-size: 16.5px;
+            font-size: 17px;
             background-color: #e5dba8;
             margin: 60px auto;
             max-width: 800px;
@@ -25,19 +30,18 @@
         }
 
         h1 {
-            text-align: center;
-            font-family: "Playfair Display", serif;
             font-size: 70px;
-            font-weight: 700;
             margin-bottom: 20px;
-            color: #664229;
             letter-spacing: 0.5px;
         }
 
         h2 {
+            font-size: 40px;
+        }
+
+        h1, h2 {
             text-align: center;
             font-family: "Playfair Display", serif;
-            font-size: 40px;
             font-weight: 700;
             color: #664229;
         }
@@ -60,33 +64,24 @@
 
         .author-letter-title {
             text-align: center;
-            font-family: "Playfair Display", serif;
+            color: #664229;
             font-size: 35px;
             font-weight: 700;
-            color: #664229;
         }
 
         .author-letter-message {
-            text-align: center; 
-            font-weight: 500;
+            text-align: center;
             color: #664229;
+            font-weight: 500;
             margin: 10px auto;
-        }
-
-        .right-title {
-            text-align: right;
         }
 
         .left-title {
             text-align: left;
         }
 
-        .left-article,
-        .right-article {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            margin: 40px 0;
+        .right-title {
+            text-align: right;
         }
 
         .left-article {
@@ -103,14 +98,6 @@
             align-items: center;
             gap: 40px;
             margin: 40px 0;
-        }
-
-        .left-article {
-            flex-direction: row;
-        }
-
-        .right-article {
-            flex-direction: row-reverse;
         }
 
         .image-container {
@@ -121,30 +108,27 @@
         }
 
         .image-container img {
-            width: 100%;
-            height: auto;
-            max-width: 700px;
+            max-width: 750px;
             max-height: 600px;
-            object-fit: cover;
-            border-radius: 12px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
             margin: 70px auto;
             display: block;
         }
 
         .left-image-container img {
-            width: 350px;
-            height: 470px;
-            object-fit: cover;
-            border-radius: 12px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            max-width: 400px;
+            max-height: 500px;
         }
 
         .right-image-container img {
-            width: 350px;
-            height: 470px;
+            max-width: 500px;
+            max-height: 600px;
+        }
+
+        .image-container img,
+        .left-image-container img,
+        .right-image-container img {
+            width: 100%;
+            height: auto;
             object-fit: cover;
             border-radius: 12px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -160,12 +144,13 @@
 
         .read-more-button {
             display: inline-block;
-            font-family: "Altone", sans-serif;
+            font-family: 'Georgia', serif;
             background-color: transparent;
             color: black;
-            border: 2px solid black;
+            border: 2px solid #A77F2B;
             padding: 10px 20px;
-            margin-top: 20px;
+            margin-top: 25px;
+            margin-bottom: 75px;
             text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
@@ -173,13 +158,26 @@
         }
 
         .read-more-button:hover {
-            background-color: black;
+            font-weight: 700;
+            background-color: #A77F2B;
             color: white;
         }
 
-
-
         @media (max-width: 600px) {
+            body {
+                font-size: 16px;
+                margin: 30px auto;
+                padding: 0 15px;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            h2, .author-letter-title {
+                font-size: 28px;
+            }
+
             .meta {
                 flex-direction: column;
                 text-align: center;
@@ -193,10 +191,35 @@
                 margin: 30px 0;
             }
 
+            .image-container,
+            .left-image-container,
+            .right-image-container {
+                padding: 0;
+                margin: 40px auto;
+            }
+
             .image-container img,
             .left-image-container img,
             .right-image-container img {
                 width: 100%;
+                height: auto;
+                max-width: 100%;
+                max-height: none;
+            }
+
+            .read-more-button {
+                padding: 8px 16px;
+                font-size: 15px;
+            }
+
+            .logo {
+                width: 120px;
+                height: auto;
+            }
+
+            #Taskbar-container {
+                text-align: center;
+                margin-bottom: 20px;
             }
         }
     </style>
@@ -207,7 +230,7 @@
     <div id="Taskbar-container">
         <!-- Logo on the left side, linking to the homepage -->
         <a href="../../index.html" class="logo-link">
-          <img src="../../assets/logos/indigologoblack.png" alt="Website Logo" class="logo">
+            <img src="../../assets/logos/indigologoblack.png" alt="Website Logo" class="logo">
         </a>
     </div>
 
@@ -217,9 +240,10 @@
         <span>NOT ISSUE</span>
     </div>
 
-    <br><br>
+    <br>
 
     <div class="article-body">
+        <br>
         <h2 class="author-letter-title">A Letter From The Author</h2>
         <p>We are often told not to air out our dirty laundry and
             to preserve a certain image of ourselves. Controversial subjects are often deemed as
@@ -234,17 +258,14 @@
         <p class="author-letter-message"><strong><em>Well, what are you waiting for?</em></strong></em></p>
         <p style="text-align: center;">- Susan Eltell</p>
 
-    </div>
+        <div class="image-container">
+            <img src="../../NOT photos/group3/5.jpg" alt="Image 1">
+        </div>
 
-    <div class="image-container">
-        <img src="../../NOT photos/group3/5.jpg" alt="Image 1">
-    </div>
+        <br>
 
-    <br><br>
-
-    <div class="article-body">
         <h2 class="left-title">Interview #1: Julia</h2>
-        
+
         <p>Is the price of being yourself one you’re willing to pay? We often believe it is, holding
             steadfast in our conviction to transform into the best, most authentic versions of
             ourselves while simultaneously saying “screw them, this is my life” to those who would
@@ -257,22 +278,20 @@
             multicultural household; her mother is Mexican and her father is a white American from
             Texas. Julia often found it difficult to adhere to the strict teachings of the catholic
             church while also living up to the expectations that were placed on her.</p>
+
         <a href="../NOT/group3interviews/julia-interview.html" class="read-more-button">Unfold Julia’s Story ⤵</a>
-    </div>
 
-    <br><br>
+        <br>
 
-    <div class="right-article">
-        <div class="right-image-container">
-            <img src="../../NOT photos/group3/9.jpg" alt="Image 2"
-                style="width: auto; height: 400px;">
+        <div class="right-article">
+            <div class="right-image-container">
+                <img src="../../NOT photos/group3/9.jpg" alt="Image 2">
+            </div>
         </div>
-    </div>
 
-    <br><br>
+        <br>
 
-    <div class="article-body">
-        <h2 class="right-title">Interview #2: Manjiri</h2>
+        <h2 class="left-title">Interview #2: Manjiri</h2>
 
         <p>When did individualism become isolation? Success become seclusion? Has our society
             become so focused on individual achievements that we’ve lost touch with our sense of
@@ -283,21 +302,20 @@
             into a deep-seated era of hyper-individualism, and I’m not the only one who thinks so.
             Manjiri has noticed the hard shift to hyper-individualism that has taken over our
             society, leaving lasting routines that threaten to define the 21st century.</p>
-            <a href="../NOT/group3interviews/manjiri-interview.html" class="read-more-button">Inside The Spiral: Manjiri's Take ⤵</a>
-    </div>
 
-    <br><br>
+        <a href="../NOT/group3interviews/manjiri-interview.html" class="read-more-button">Inside The Spiral: Manjiri's
+            Take ⤵</a>
 
-    <div class="right-article">
-        <div class="right-image-container">
-            <img src="../../NOT photos/group3/7.jpg" alt="Image 3"
-            style="width: 350px; height: auto;">
+        <br>
+
+        <div class="left-article">
+            <div class="left-image-container">
+                <img src="../../NOT photos/group3/7.jpg" alt="Image 3">
+            </div>
         </div>
-    </div>
 
-    <br><br>
+        <br>
 
-    <div class="article-body">
         <h2 class="left-title">Interview #3: Noor</h2>
 
         <p>The fate of our society should be determined by the quality of the way we treat each
@@ -305,17 +323,16 @@
             us too apathetic towards serious societal issues and events? As a Palestinian American,
             this issue has certainly come to life for Noor, and this interview will include an open
             conversation about this topic in more detail from her perspective.</p>
-            <a href="../NOT/group3interviews/noor-interview.html" class="read-more-button">Witness Through Noor's Eyes ⤵</a>
-    </div>
 
-    <br><br>
+        <a href="../NOT/group3interviews/noor-interview.html" class="read-more-button">Witness Through Noor's Eyes ⤵</a>
 
-    <div class="left-article">
-        <div class="left-image-container">
-            <img src="../../NOT photos/group3/5.jpg" alt="Image 2"
-                style="width: auto; height: 350px;">
+        <br>
+
+        <div class="right-article">
+            <div class="right-image-container">
+                <img src="../../NOT photos/group3/1.jpg" alt="Image 2">
+            </div>
         </div>
-    </div>
 </body>
 
 </html>
