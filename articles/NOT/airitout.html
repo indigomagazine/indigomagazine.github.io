@@ -9,62 +9,92 @@
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <script src="scripts/script.js"></script>
     <style>
-        html {
-            cursor: url(../../assets/cursors/ascii-flower.png), default;
-            overflow-x: hidden;
-        }
-
-        @font-face {
-            font-family: "Altone";
-            src: url(../../assets/fonts/altone/Altone\ Trial-Regular.ttf);
-        }
-
         body {
-            font-family: "Altone", Arial;
+            font-family: 'Georgia', serif;
+            font-weight: 400;
+            font-size: 16.5px;
+            background-color: #e5dba8;
             margin: 60px auto;
             max-width: 800px;
             padding: 0 20px;
-            background-color: #fff;
             color: black;
-            line-height: 1.8;
-            font-size: 18px;
-
+            line-height: 1.6;
         }
 
         h1 {
             text-align: center;
-            font-family: "Altone", Arial;
+            font-family: "Playfair Display", serif;
             font-size: 70px;
             font-weight: 700;
             margin-bottom: 20px;
-            color: black;
+            color: #664229;
             letter-spacing: 0.5px;
         }
 
+        h2 {
+            text-align: center;
+            font-family: "Playfair Display", serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #664229;
+        }
+
         .meta {
-            font-family: "Altone", Arial;
+            font-family: 'Georgia', serif;
             display: flex;
             justify-content: space-between;
             border-top: 2px solid rgba(0, 0, 0, 0.5);
             border-bottom: 2px solid rgba(0, 0, 0, 0.5);
             padding: 10px 0;
-            margin-bottom: 30px;
-            font-size: 18px;
+            font-size: 15px;
             color: black;
         }
 
         .article-body {
             text-align: justify;
-            font-family: "Altone", sans-serif;
+            font-family: 'Georgia', serif;
         }
 
-        .article-text {
-            max-width: 600px;
-            padding: 0 20px;
-            font-family: "Altone", sans-serif;
+        .author-letter-title {
+            text-align: center;
+            font-family: "Playfair Display", serif;
+            font-size: 35px;
+            font-weight: 700;
+            color: #664229;
+        }
+
+        .author-letter-message {
+            text-align: center; 
+            font-weight: 500;
+            color: #664229;
+            margin: 10px auto;
+        }
+
+        .right-title {
+            text-align: right;
+        }
+
+        .left-title {
+            text-align: left;
+        }
+
+        .left-article,
+        .right-article {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .left-article {
+            flex-direction: row;
+        }
+
+        .right-article {
+            flex-direction: row-reverse;
         }
 
         .left-article,
@@ -84,31 +114,42 @@
         }
 
         .image-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            margin: 0px auto;
+            padding: 0 20px;
         }
 
         .image-container img {
             width: 100%;
-            height: 100%;
+            height: auto;
+            max-width: 700px;
+            max-height: 600px;
             object-fit: cover;
             border-radius: 12px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-
+            margin: 70px auto;
+            display: block;
         }
 
-        .left-image-container img,
+        .left-image-container img {
+            width: 350px;
+            height: 470px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
         .right-image-container img {
             width: 350px;
-            height: 350px;
+            height: 470px;
             object-fit: cover;
             border-radius: 12px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
         }
-
 
         .image-container img:hover,
         .left-image-container img:hover,
@@ -166,7 +207,7 @@
     <div id="Taskbar-container">
         <!-- Logo on the left side, linking to the homepage -->
         <a href="../../index.html" class="logo-link">
-          <img src="../../assets/logos/indigologowhite.png" alt="Website Logo" class="logo">
+          <img src="../../assets/logos/indigologoblack.png" alt="Website Logo" class="logo">
         </a>
     </div>
 
@@ -179,7 +220,7 @@
     <br><br>
 
     <div class="article-body">
-        <h2>A Letter From The Author</h2>
+        <h2 class="author-letter-title">A Letter From The Author</h2>
         <p>We are often told not to air out our dirty laundry and
             to preserve a certain image of ourselves. Controversial subjects are often deemed as
             unworthy of discussion, leading to a habit of silencing those who have something to
@@ -188,31 +229,22 @@
             about to embark on is a journey into the minds of your fellow UTD classmates as they
             air out their personal experiences and “hot takes” on our society today. These articles
             will highlight personal stories built on courage, an in-depth analysis of the path this
-            country is taking, and the fight against stereotypes.</p>
+            country is taking, and the fight against stereotypes.</p><br>
 
-        <p style="text-align: center;"><strong><em>Well, what are you waiting for?</em></strong></em></p>
+        <p class="author-letter-message"><strong><em>Well, what are you waiting for?</em></strong></em></p>
+        <p style="text-align: center;">- Susan Eltell</p>
 
-        <div class="right-article">
-            <p>- Susan Eltell</p>
-        </div>
     </div>
 
-    <br><br>
-
     <div class="image-container">
-        <img src="../../NOT photos/group3/6.jpg" alt="Image 1">
+        <img src="../../NOT photos/group3/5.jpg" alt="Image 1">
     </div>
 
     <br><br>
 
     <div class="article-body">
-        <div class="left-article">
-            <h2>Interview #1: Julia</h2>
-        </div>
+        <h2 class="left-title">Interview #1: Julia</h2>
         
-        <div class="right-article">
-            
-        </div>
         <p>Is the price of being yourself one you’re willing to pay? We often believe it is, holding
             steadfast in our conviction to transform into the best, most authentic versions of
             ourselves while simultaneously saying “screw them, this is my life” to those who would
@@ -220,7 +252,7 @@
             but this isn’t a perfect world. It’s human nature to absorb the opinions of others when
             going through life, often using them as guideposts that alert us if we’re about to fall off a
             cliff. But maybe some of us intended to take a leap, and these opinions actually serve as
-            barbed wire, fencing us in and limiting growth.</p>
+            barbed wire, fencing us in and limiting growth.</p><br>
         <p>Julia understands this feeling all too well, having grown up Catholic and born into a
             multicultural household; her mother is Mexican and her father is a white American from
             Texas. Julia often found it difficult to adhere to the strict teachings of the catholic
@@ -240,9 +272,7 @@
     <br><br>
 
     <div class="article-body">
-        <div class="left-article">
-            <h2>Interview #2: Manjiri</h2>
-        </div>
+        <h2 class="right-title">Interview #2: Manjiri</h2>
 
         <p>When did individualism become isolation? Success become seclusion? Has our society
             become so focused on individual achievements that we’ve lost touch with our sense of
@@ -268,9 +298,7 @@
     <br><br>
 
     <div class="article-body">
-        <div class="left-article">
-            <h2>Interview #3: Noor</h2>
-        </div>
+        <h2 class="left-title">Interview #3: Noor</h2>
 
         <p>The fate of our society should be determined by the quality of the way we treat each
             other in the smallest acts of daily life, but has the avalanche of daily media cycles made
