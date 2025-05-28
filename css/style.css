@@ -45,7 +45,6 @@ body.light-mode #Taskbar-container a {
 }
 
 
-
 /* Hero section */
 .hero-section {
   position: relative;
@@ -695,7 +694,6 @@ video::-webkit-media-controls {
   color: #ffffff;
 }
 
-
 /* Container for the issue covers */
 .issues-container {
   display: grid;
@@ -881,11 +879,19 @@ video::-webkit-media-controls {
 }
 
 .header-link {
+  color: white;
   text-decoration: none;
-  color: inherit;
   transition: color 0.3s ease;
 }
 
 .header-link:hover {
   color: #4B0082; 
+}
+
+body.light-mode .header-link {
+  color: black;
+}
+
+body.light-mode .header-link:hover {
+  color: #51289C;
 }
