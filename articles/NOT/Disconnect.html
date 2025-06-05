@@ -12,23 +12,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <script src="scripts/script.js"></script>
   <style>
-    html {
-      cursor: url(../../assets/cursors/sparkle-cursor.png);
-      overflow-x: hidden;
-      background-color: #fce4ec;
-      background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-    }
+    html, body {
+  background-color: #fce4ec;
+  background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  background-repeat: repeat;
+  background-attachment: fixed;
+  cursor: url(../../assets/cursors/sparkle-cursor.png);
+  overflow-x: hidden;
+}
 
-    body {
-      font-family: 'Georgia', serif;
-      font-weight: 400;
-      font-size: 17px;
-      margin: 60px auto;
-      max-width: 800px;
-      padding: 0 20px;
-      color: black;
-      line-height: 1.6;
-    }
+  body {
+    font-family: 'Georgia', serif;
+    font-weight: 400;
+    font-size: 17px;
+    margin: 60px auto;
+    max-width: 800px;
+    padding: 0 20px;
+    color: black;
+    line-height: 1.6;
+    background-color: transparent; /* make sure html's background shows behind */
+  }
+
 
     h1 {
       font-size: 70px;
@@ -163,8 +167,7 @@
       background-color: #A77F2B;
       color: white;
     }
-
-    /* ✂️ Collage word effect */
+    
     .collage-paragraph span {
       background-color: rgba(255, 255, 255, 0.85);
       display: inline-block;
