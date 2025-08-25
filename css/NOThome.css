@@ -1,6 +1,6 @@
 
   :root {
-    --background-color: #cbdcdc;
+    --background-color: white;
     --text-color: #151414;
     --accent-color: #6E6EFF;
     --hover-bg: #e0e0e0;
@@ -19,7 +19,7 @@
 }
 
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter';
     background-color: var(--background-color);
     color: var(--text-color);
     transition: var(--transition);
