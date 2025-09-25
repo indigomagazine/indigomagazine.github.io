@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e8e99c  ; 
+        }
+
+        #gallery-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem; 
+            padding: 2rem 1rem;
+        }
+
+        img {
+            max-width: 650px; /* Limit image width on desktop */
+            width: 90%; /* Responsive width for mobile */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 2px; /* Optional: rounded corners for images */
+            box-shadow: 0 4px 6px rgba(21, 22, 24, 0.123); /* Subtle shadow for depth */
+        }
+
+        .tabfont {
+            font-family: sans-serif;
+            font-size: 1.5rem;
+            color: #000000;
+            text-decoration: none;
+            left: 20%;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            img {
+                width: 85%; /* Slightly smaller width for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+ <a href="/articles/NOT/laQuinta.html" class="logo-link">
+       <p class="tabfont">La Quinta</p>
+    </a>
+
+
+    <div id="gallery-container"></div>
+   
+    
+
+    <script>
+        const galleryContainer = document.getElementById('gallery-container');
+        const imageCount = 12; // Total number of images
+        const images = [];
+
+        // Generate image filenames
+        for (let i = 1; i <= 4; i++) {
+            for (let j = 1; j <= 3; j++) {
+                if( i === 1 && j === 2 ){
+                    images.push(`F${i}-${j}.jpg`);
+                }
+                else{
+                    images.push(`F${i}-${j}.JPG`);
+                }
+            }
+        }
+
+        // Function to create image elements
+        function createImageElement(src, alt) {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = alt;
+            return img;
+        }
+
+        // Function to load images into the gallery
+        function loadImages() {
+            images.forEach((src, index) => {
+                const img = createImageElement(src, `Image ${index + 1}`);
+                galleryContainer.appendChild(img);
+            });
+        }
+
+        // Infinite scroll functionality
+        function handleScroll() {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+                images.forEach((src, index) => {
+                    const img = createImageElement(src, `Image ${index + 1}`);
+                    galleryContainer.appendChild(img);
+                });
+            }
+        }
+
+        // Initial load
+        loadImages();
+
+        // Attach scroll event listener
+        window.addEventListener('scroll', handleScroll);
+    </script>
+</body>
+</html>
