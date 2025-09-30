@@ -64,21 +64,21 @@ body {
 }
 
 .cryptic-message.warning {
-  color: #ffaa00;
-  text-shadow: 0 0 8px #ffaa00;
-  border-color: #ffaa00;
+  color: #d1a4f0;
+  text-shadow: 0 0 8px #d1a4f0;
+  border-color: #d1a4f0;
 }
 
 .cryptic-message.error {
-  color: #ff0000;
-  text-shadow: 0 0 8px #ff0000;
-  border-color: #ff0000;
+  color: #f39da3;
+  text-shadow: 0 0 8px #f39da3;
+  border-color: #f39da3;
 }
 
 .cryptic-message.system {
-  color: #00ff00;
-  text-shadow: 0 0 8px #00ff00;
-  border-color: #00ff00;
+  color: #79d2eb;
+  text-shadow: 0 0 8px #79d2eb;
+  border-color: #79d2eb;
 }
 
 @keyframes glitch-text {
@@ -118,7 +118,7 @@ body {
 
 /* Album post styling */
 .album-post {
-  background: rgba(10, 10, 10, 0.9); /* MORE OPAQUE for readability over animated background */
+  background: rgba(227, 227, 221, 0.9); /* MORE OPAQUE for readability over animated background */
   border: 1px solid #333; /* Harsher border */
   border-radius: 0; /* Sharp corners */
   margin-bottom: 40px;
@@ -128,7 +128,7 @@ body {
 
 .album-post:hover {
   transform: translate(-2px, -2px); /* Abrupt jump instead of smooth lift */
-  box-shadow: 0 0 15px rgba(0, 255, 70, 0.2), 0 0 5px rgba(255, 255, 255, 0.3), inset 0 0 3px rgba(0, 255, 70, 0.1); /*glow intensity */
+  box-shadow: 0 0 15px rgba(249, 183, 240, 0.298), 0 0 5px rgba(255, 255, 255, 0.3), inset 0 0 3px rgba(0, 255, 70, 0.1); /*glow intensity */
 }
 
 
@@ -136,9 +136,9 @@ body {
 .carousel-container {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 600px;
   overflow: hidden;
-  background: #000;
+  background: #b7b3db;
 }
 
 .carousel-track {
@@ -188,10 +188,10 @@ body {
 }
 
 .nav-button:hover {
-  background: #008800; /* Darker CRT green for hover */
+  background: #8dc5f6; /* Darker CRT green for hover */
   color: #000;
   text-shadow: none;
-  border-color: #008800;
+  border-color: #8dc5f6;
 }
 
 .nav-button.prev {
@@ -301,7 +301,7 @@ body {
   }
 
   .carousel-container {
-    height: 300px;
+    height: 700px;
   }
 
   .nav-button {
@@ -643,26 +643,21 @@ body {
 
   // --- CRYPTIC MESSAGES SYSTEM ---
   const crypticMessages = [
-    { text: "CONNECTION_UNSTABLE", type: "error" },
-    { text: "OBSERVER DETECTED", type: "warning" },
-    { text: "DATA CORRUPTION IMMINENT", type: "error" },
-    { text: "SYSTEM_BREACH_0x4A2", type: "error" },
-    { text: "UNAUTHORIZED ACCESS", type: "warning" },
-    { text: "MEMORY LEAK DETECTED", type: "system" },
-    { text: "SIGNAL DEGRADED", type: "warning" },
-    { text: "NEURAL LINK COMPROMISED", type: "error" },
-    { text: "FIREWALL_STATUS: FAILING", type: "warning" },
-    { text: "INTRUSION_ALERT_7F3E", type: "error" },
-    { text: "BACKUP_SYSTEMS_OFFLINE", type: "warning" },
-    { text: "ENCRYPTION_KEY_LOST", type: "error" },
-    { text: "GHOST_IN_THE_SHELL", type: "system" },
-    { text: "REALITY.EXE_NOT_FOUND", type: "error" },
-    { text: "USER_AUTHENTICATION_FAILED", type: "warning" },
-    { text: "PHANTOM_DATA_DETECTED", type: "system" },
-    { text: "TRACE_ROUTE_CORRUPTED", type: "warning" },
-    { text: "MAINFRAME_COMPROMISED", type: "error" },
-    { text: "DIGITAL_SHADOWS_FOUND", type: "system" },
-    { text: "VIRUS_SIGNATURE_UNKNOWN", type: "error" }
+    { text: "DAMN IM HUNGYY", type: "error" },
+    { text: "NIGHTMARE NIGHTMARE NIGHTMARE", type: "warning" },
+    { text: "CONSUME EVERYTHING", type: "error" },
+    { text: "FATTY", type: "error" },
+    { text: "YOU DONT SEEM TO STOP HUH", type: "warning" },
+    { text: "TBHIDCYLAH", type: "system" },
+    { text: "AGAIN AND AGAIN AND AGAIN", type: "warning" },
+    { text: "GOT OFF THAT PHONE", type: "error" },
+    { text: "GET ME TF OUTTT", type: "error" },
+    { text: "SELL EVEYTHING", type: "system" },
+    { text: "INVEST IN IPOS BRO TRUST", type: "system" },
+    { text: "HE CANT DO THAT..RIGHT?", type: "warning" },
+    
+
+    
   ];
 
   // Array to hold active message elements
@@ -756,8 +751,8 @@ body {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
-  const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*()_+-=,./;\'[]`~'; // Mixed characters for serial vibe
-  const fontSize = 16;
+  const characters = 'ceral'; // Mixed characters for serial vibe
+  const fontSize = 20;
   const columns = canvas.width / fontSize; // Number of columns for the characters
 
   // An array to store the y-position of each character drop
@@ -766,19 +761,23 @@ body {
       drops[i] = 1; // Start at the top of the canvas
   }
 
+  // Add a palette of colors
+  const matrixColors = ['#e28df6', '#a6f3f5', '#756344', '#e7eda4']; // Add/adjust colors as desired
+
   function drawMatrix() {
       // Semi-transparent black rectangle over the old characters to fade them out
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // Adjust alpha for fade speed
+      ctx.fillStyle = 'rgba(252, 251, 242, 0.2)'; // Adjust alpha for fade speed
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Set text style for the new characters
-      ctx.fillStyle = '#006600'; // Darker green color
       ctx.font = `${fontSize}px VT323`; // Use your grunge font
 
       // Loop through each drop
       for (let i = 0; i < drops.length; i++) {
           // Randomly select a character
           const text = characters.charAt(Math.floor(Math.random() * characters.length));
+          // Pick a random color for each character
+          ctx.fillStyle = matrixColors[Math.floor(Math.random() * matrixColors.length)];
           // Draw the character
           ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
