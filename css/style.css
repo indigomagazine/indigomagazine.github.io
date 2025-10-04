@@ -627,7 +627,6 @@ video::-webkit-media-controls {
   transform: scale(1.05); 
 }
 
-/* Taskbar container styling with transparent background */
 #Taskbar-container {
   display: flex;
   align-items: center;
@@ -645,7 +644,7 @@ video::-webkit-media-controls {
 
 /* When the user scrolls down, we can add a slight background color */
 .hidden {
-  transform: translateY(-100%); /* Move the taskbar off-screen when hidden */
+  transform: translateY(-100%); /* Move the off-screen when hidden */
 }
 
 .visible {
@@ -672,7 +671,6 @@ video::-webkit-media-controls {
   opacity: 0.8; 
 }
 
-/* Styles for the links in the taskbar */
 #Taskbar-container a {
   margin: 0 15px;
   text-decoration: none;
