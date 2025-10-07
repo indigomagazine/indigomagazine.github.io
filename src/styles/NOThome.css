@@ -1,0 +1,305 @@
+
+  :root {
+    --background-color: white;
+    --text-color: #151414;
+    --accent-color: #6E6EFF;
+    --hover-bg: #e0e0e0;
+    --card-bg: #ffffff;
+    --transition: all 0.3s ease-in-out;
+  }
+
+  /* Dark mode overrides */
+.dark-theme {
+  --background-color: #101412ee;
+  --text-color:       #f0f0f0;
+  --accent-color:     #b2e6e8;
+  --hover-bg:         #2c2c2c;
+  --card-bg:          #1e1e1e;
+  --behind-text:       #8c5555;
+}
+
+  body {
+    font-family: 'Inter';
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: var(--transition);
+    line-height: 1.6;
+  }
+
+ 
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Taskbar */
+  #Taskbar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: transparent;
+    z-index: 1000;
+  }
+  
+  .logo-link {
+    display: block;
+  }
+  
+  .logo {
+    height: 40px;
+    width: auto;
+    transition: var(--transition);
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+    overflow: hidden;
+  }
+  
+  .hero-section video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    filter:blur(4px);
+    opacity: 0.8;
+  }
+  .behind-text {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    font-size: 20vw;
+    font-weight: 300;
+    letter-spacing: 3vw;
+    color:#d6afedf0;
+    z-index: 1;
+    text-align: center;
+  }
+  
+  /* NOT Text Below Video */
+  .not-heading {
+    display: none;
+  }
+  
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    margin: 0 auto;
+    justify-items: center;
+  }
+  
+  .article-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform .4s ease, filter .4s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .article-card img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s ease, filter 0.4s ease;
+  }
+  
+  .article-card .article-content {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.2);
+    color: #fff;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    transition: opacity 0.4s ease;
+  }
+  
+  .article-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .article-credits {
+    text-align: center;
+  }
+  
+  .credit-label {
+    font-weight: 600;
+    display: inline-block;
+    width: 80px;
+  }
+  
+  .article-card:hover img {
+    transform: scale(1.05);
+    filter: brightness(40%) blur(3px);
+  }
+  
+  .article-card:hover .article-content {
+    opacity: 1;
+  }
+  
+  .cover-bg {
+    background-image: url("article photos/laQuinta/Rectangle 3.png");
+    background-position: center;
+    background-size: cover;
+  }
+  
+
+
+  .credit-label {
+    font-weight: 600;
+    display: inline-block;
+    width: 80px;
+  }
+  
+  /* Editor's Note */
+  .editors-note {
+    max-width: 800px;
+    
+    margin: 30rem auto; 
+    margin-bottom: 1rem auto; 
+    align-items: center;
+    padding: 0 100px;
+  }
+  
+  .section-title {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  text-align: center;
+  }
+  
+  .editors-note p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+  
+  /* Team Section */
+  .team-section {
+    max-width: 800px;
+    margin: 5rem auto;
+    padding: 0 20px;
+  }
+  
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 2rem;
+  }
+  
+  .team-group {
+    margin-bottom: 2rem;
+  }
+  
+  .team-role {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .team-members {
+    margin-left: 1rem;
+  }
+  
+  /* Change Mode Button */
+  .change-mode {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 1000;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .change-mode:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .not-heading {
+      font-size: 12vw;
+      letter-spacing: 1vw;
+      margin: 2rem 0;
+    }
+  
+    .hero-section {
+      height: 60vh;
+    }
+  
+    .articles-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+  
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #Taskbar-container {
+      padding: 10px 15px;
+    }
+  
+    .logo {
+      height: 30px;
+    }
+  
+    .hero-section {
+      height: 40vh;
+    }
+  
+    .not-heading {
+      font-size: 15vw;
+    }
+  
+    .section-title {
+      font-size: 1.5rem;
+    }
+  
+    .change-mode {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+      bottom: 20px;
+      right: 20px;
+    }
+  }
