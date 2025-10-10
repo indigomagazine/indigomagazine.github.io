@@ -29,7 +29,6 @@ h2{
     color: #000;
     letter-spacing: 0.5px;
 }
-/* Meta section (author, date) */
 .meta {
     font-family: "Altone", Arial, sans-serif;
     display: flex;
@@ -42,14 +41,12 @@ h2{
     color: #555;
 }
 
-/* Article body text */
 .article-body {
     text-align: left;
     font-size: 14px;
     line-height: 1.9;
 }
 
-/* Images with left/right alignment */
 .left-article, .right-article {
     display: flex;
     align-items: flex-start;
@@ -65,6 +62,14 @@ h2{
     flex-direction: row-reverse;
 }
 
+.left-article,
+.right-article {
+    display: flex;
+    align-items: stretch; 
+    gap: 30px;
+    margin: 40px 0;
+}
+
 .italicpara{
     font-style: italic;
     text-align: left;
@@ -78,9 +83,13 @@ h2{
     width: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: 12px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.right-image-container,
+.left-image-container {
+    display: flex;
 }
 
 .image-container img:hover,
@@ -90,7 +99,8 @@ h2{
     box-shadow: 0 4px 18px rgba(0,0,0,0.15);
 }
 
-/* Mobile responsiveness */
+
+
 @media (max-width: 600px) {
     h1 {
         font-size: 24px;
@@ -175,6 +185,63 @@ h2{
   }
   
   body.light-mode #Taskbar-container a:hover {
+    color: #51289C;
+  }
+  
+
+
+
+  body.light-mode {
+    background-color: white; /* Light mode background */
+    color: black; /* Light mode text */
+  }
+  
+  #Taskbar-container a {
+    color: white; /* Default dark mode text for links */
+  }
+  
+  body.light-mode #Taskbar-container a {
+    color: black; /* Light mode text for links */
+  }
+  
+  #Taskbar-container a:hover {
+    color: #170B3B; /* Hover effect for both modes */
+  }
+
+  /* dark/light mode*/
+.change-mode {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 2; /* Make sure it's on top of other elements */
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  
+  .change-mode:hover {
+    background-color: #3700b3; /* Darker shade on hover */
+    transform: scale(1.05); 
+  }
+
+  .header-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .header-link:hover {
+    color: #4B0082; 
+  }
+  
+  body.light-mode .header-link {
+    color: black;
+  }
+  
+  body.light-mode .header-link:hover {
     color: #51289C;
   }
   
