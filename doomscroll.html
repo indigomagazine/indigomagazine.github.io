@@ -97,11 +97,14 @@ body {
 /* Main container */
 .doomscroll-container {
   margin-top: 80px;
+  position: relative;
+  display: grid;
   padding: 20px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative; /* Ensure it stacks above the canvas */
+  width: 100%;
+  max-width: 1200px;
+  height:fit-content;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   z-index: 1;
 }
 
@@ -766,7 +769,7 @@ body {
 
   function drawMatrix() {
       // Semi-transparent black rectangle over the old characters to fade them out
-      ctx.fillStyle = 'rgba(252, 251, 242, 0.2)'; // Adjust alpha for fade speed
+      ctx.fillStyle = 'rgba(252, 251, 242, 0.5)'; // Adjust alpha for fade speed
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Set text style for the new characters
