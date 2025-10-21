@@ -1,6 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import App from "../pages/homepage/App";
+import { useEffect } from "react";
 
 export const Route = createFileRoute("/")({
-  component: App,
+  component: RouteComponent,
 });
+
+function RouteComponent() {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.location.replace("/legacy/index.html");
+    }
+  }, []);
+
+  return <></>;
+}
