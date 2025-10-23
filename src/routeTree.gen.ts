@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VisualartsRouteImport } from './routes/visualarts'
 import { Route as ReminiscenceRouteImport } from './routes/reminiscence'
 import { Route as KismetRouteImport } from './routes/kismet'
+import { Route as Group6RouteImport } from './routes/group6'
 import { Route as CreativeRouteImport } from './routes/creative'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as NOTRouteImport } from './routes/NOT'
@@ -40,6 +41,11 @@ const ReminiscenceRoute = ReminiscenceRouteImport.update({
 const KismetRoute = KismetRouteImport.update({
   id: '/kismet',
   path: '/kismet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Group6Route = Group6RouteImport.update({
+  id: '/group6',
+  path: '/group6',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CreativeRoute = CreativeRouteImport.update({
@@ -124,6 +130,7 @@ export interface FileRoutesByFullPath {
   '/NOT': typeof NOTRoute
   '/about': typeof AboutRoute
   '/creative': typeof CreativeRoute
+  '/group6': typeof Group6Route
   '/kismet': typeof KismetRoute
   '/reminiscence': typeof ReminiscenceRoute
   '/visualarts': typeof VisualartsRoute
@@ -143,6 +150,7 @@ export interface FileRoutesByTo {
   '/NOT': typeof NOTRoute
   '/about': typeof AboutRoute
   '/creative': typeof CreativeRoute
+  '/group6': typeof Group6Route
   '/kismet': typeof KismetRoute
   '/reminiscence': typeof ReminiscenceRoute
   '/visualarts': typeof VisualartsRoute
@@ -163,6 +171,7 @@ export interface FileRoutesById {
   '/NOT': typeof NOTRoute
   '/about': typeof AboutRoute
   '/creative': typeof CreativeRoute
+  '/group6': typeof Group6Route
   '/kismet': typeof KismetRoute
   '/reminiscence': typeof ReminiscenceRoute
   '/visualarts': typeof VisualartsRoute
@@ -184,6 +193,7 @@ export interface FileRouteTypes {
     | '/NOT'
     | '/about'
     | '/creative'
+    | '/group6'
     | '/kismet'
     | '/reminiscence'
     | '/visualarts'
@@ -203,6 +213,7 @@ export interface FileRouteTypes {
     | '/NOT'
     | '/about'
     | '/creative'
+    | '/group6'
     | '/kismet'
     | '/reminiscence'
     | '/visualarts'
@@ -222,6 +233,7 @@ export interface FileRouteTypes {
     | '/NOT'
     | '/about'
     | '/creative'
+    | '/group6'
     | '/kismet'
     | '/reminiscence'
     | '/visualarts'
@@ -242,6 +254,7 @@ export interface RootRouteChildren {
   NOTRoute: typeof NOTRoute
   AboutRoute: typeof AboutRoute
   CreativeRoute: typeof CreativeRoute
+  Group6Route: typeof Group6Route
   KismetRoute: typeof KismetRoute
   ReminiscenceRoute: typeof ReminiscenceRoute
   VisualartsRoute: typeof VisualartsRoute
@@ -278,6 +291,13 @@ declare module '@tanstack/react-router' {
       path: '/kismet'
       fullPath: '/kismet'
       preLoaderRoute: typeof KismetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/group6': {
+      id: '/group6'
+      path: '/group6'
+      fullPath: '/group6'
+      preLoaderRoute: typeof Group6RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/creative': {
@@ -386,6 +406,7 @@ const rootRouteChildren: RootRouteChildren = {
   NOTRoute: NOTRoute,
   AboutRoute: AboutRoute,
   CreativeRoute: CreativeRoute,
+  Group6Route: Group6Route,
   KismetRoute: KismetRoute,
   ReminiscenceRoute: ReminiscenceRoute,
   VisualartsRoute: VisualartsRoute,

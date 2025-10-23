@@ -1,3 +1,4 @@
+import { createFileRoute} from "@tanstack/react-router"
 import { useEffect, useRef, useState } from "react";
 import heroVideo from "../../assets/hero videos/NOTgroup2vid.mp4";
 import heroFallback from "../../assets/hero videos/fallback.jpg";
