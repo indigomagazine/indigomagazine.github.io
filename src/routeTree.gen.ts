@@ -9,58 +9,12 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as VisualartsRouteImport } from './routes/visualarts'
-import { Route as ReminiscenceRouteImport } from './routes/reminiscence'
-import { Route as KismetRouteImport } from './routes/kismet'
 import { Route as Group6RouteImport } from './routes/group6'
-import { Route as CreativeRouteImport } from './routes/creative'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as NOTRouteImport } from './routes/NOT'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ArticlesReminiscenceTherestaurantRouteImport } from './routes/articles/reminiscence/therestaurant'
-import { Route as ArticlesReminiscenceHelovesmeRouteImport } from './routes/articles/reminiscence/helovesme'
-import { Route as ArticlesReminiscenceAmsterdamRouteImport } from './routes/articles/reminiscence/amsterdam'
-import { Route as ArticlesKismetTheladyofthecastleRouteImport } from './routes/articles/kismet/theladyofthecastle'
-import { Route as ArticlesKismetJudasRouteImport } from './routes/articles/kismet/judas'
-import { Route as ArticlesKismetGiveMeASignRouteImport } from './routes/articles/kismet/giveMeASign'
-import { Route as ArticlesNOTQuietdevourmentRouteImport } from './routes/articles/NOT/quietdevourment'
-import { Route as ArticlesNOTInthewindRouteImport } from './routes/articles/NOT/inthewind'
-import { Route as ArticlesNOTDisconnectRouteImport } from './routes/articles/NOT/disconnect'
-import { Route as ArticlesNOTAiritoutRouteImport } from './routes/articles/NOT/airitout'
 
-const VisualartsRoute = VisualartsRouteImport.update({
-  id: '/visualarts',
-  path: '/visualarts',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ReminiscenceRoute = ReminiscenceRouteImport.update({
-  id: '/reminiscence',
-  path: '/reminiscence',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const KismetRoute = KismetRouteImport.update({
-  id: '/kismet',
-  path: '/kismet',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const Group6Route = Group6RouteImport.update({
   id: '/group6',
   path: '/group6',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CreativeRoute = CreativeRouteImport.update({
-  id: '/creative',
-  path: '/creative',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NOTRoute = NOTRouteImport.update({
-  id: '/NOT',
-  path: '/NOT',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -71,198 +25,37 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/NOT': typeof NOTRoute
-  '/about': typeof AboutRoute
-  '/creative': typeof CreativeRoute
   '/group6': typeof Group6Route
-  '/kismet': typeof KismetRoute
-  '/reminiscence': typeof ReminiscenceRoute
-  '/visualarts': typeof VisualartsRoute
-  '/articles/NOT/airitout': typeof ArticlesNOTAiritoutRoute
-  '/articles/NOT/disconnect': typeof ArticlesNOTDisconnectRoute
-  '/articles/NOT/inthewind': typeof ArticlesNOTInthewindRoute
-  '/articles/NOT/quietdevourment': typeof ArticlesNOTQuietdevourmentRoute
-  '/articles/kismet/giveMeASign': typeof ArticlesKismetGiveMeASignRoute
-  '/articles/kismet/judas': typeof ArticlesKismetJudasRoute
-  '/articles/kismet/theladyofthecastle': typeof ArticlesKismetTheladyofthecastleRoute
-  '/articles/reminiscence/amsterdam': typeof ArticlesReminiscenceAmsterdamRoute
-  '/articles/reminiscence/helovesme': typeof ArticlesReminiscenceHelovesmeRoute
-  '/articles/reminiscence/therestaurant': typeof ArticlesReminiscenceTherestaurantRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/NOT': typeof NOTRoute
-  '/about': typeof AboutRoute
-  '/creative': typeof CreativeRoute
   '/group6': typeof Group6Route
-  '/kismet': typeof KismetRoute
-  '/reminiscence': typeof ReminiscenceRoute
-  '/visualarts': typeof VisualartsRoute
-  '/articles/NOT/airitout': typeof ArticlesNOTAiritoutRoute
-  '/articles/NOT/disconnect': typeof ArticlesNOTDisconnectRoute
-  '/articles/NOT/inthewind': typeof ArticlesNOTInthewindRoute
-  '/articles/NOT/quietdevourment': typeof ArticlesNOTQuietdevourmentRoute
-  '/articles/kismet/giveMeASign': typeof ArticlesKismetGiveMeASignRoute
-  '/articles/kismet/judas': typeof ArticlesKismetJudasRoute
-  '/articles/kismet/theladyofthecastle': typeof ArticlesKismetTheladyofthecastleRoute
-  '/articles/reminiscence/amsterdam': typeof ArticlesReminiscenceAmsterdamRoute
-  '/articles/reminiscence/helovesme': typeof ArticlesReminiscenceHelovesmeRoute
-  '/articles/reminiscence/therestaurant': typeof ArticlesReminiscenceTherestaurantRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/NOT': typeof NOTRoute
-  '/about': typeof AboutRoute
-  '/creative': typeof CreativeRoute
   '/group6': typeof Group6Route
-  '/kismet': typeof KismetRoute
-  '/reminiscence': typeof ReminiscenceRoute
-  '/visualarts': typeof VisualartsRoute
-  '/articles/NOT/airitout': typeof ArticlesNOTAiritoutRoute
-  '/articles/NOT/disconnect': typeof ArticlesNOTDisconnectRoute
-  '/articles/NOT/inthewind': typeof ArticlesNOTInthewindRoute
-  '/articles/NOT/quietdevourment': typeof ArticlesNOTQuietdevourmentRoute
-  '/articles/kismet/giveMeASign': typeof ArticlesKismetGiveMeASignRoute
-  '/articles/kismet/judas': typeof ArticlesKismetJudasRoute
-  '/articles/kismet/theladyofthecastle': typeof ArticlesKismetTheladyofthecastleRoute
-  '/articles/reminiscence/amsterdam': typeof ArticlesReminiscenceAmsterdamRoute
-  '/articles/reminiscence/helovesme': typeof ArticlesReminiscenceHelovesmeRoute
-  '/articles/reminiscence/therestaurant': typeof ArticlesReminiscenceTherestaurantRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/NOT'
-    | '/about'
-    | '/creative'
-    | '/group6'
-    | '/kismet'
-    | '/reminiscence'
-    | '/visualarts'
-    | '/articles/NOT/airitout'
-    | '/articles/NOT/disconnect'
-    | '/articles/NOT/inthewind'
-    | '/articles/NOT/quietdevourment'
-    | '/articles/kismet/giveMeASign'
-    | '/articles/kismet/judas'
-    | '/articles/kismet/theladyofthecastle'
-    | '/articles/reminiscence/amsterdam'
-    | '/articles/reminiscence/helovesme'
-    | '/articles/reminiscence/therestaurant'
+  fullPaths: '/' | '/group6'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/NOT'
-    | '/about'
-    | '/creative'
-    | '/group6'
-    | '/kismet'
-    | '/reminiscence'
-    | '/visualarts'
-    | '/articles/NOT/airitout'
-    | '/articles/NOT/disconnect'
-    | '/articles/NOT/inthewind'
-    | '/articles/NOT/quietdevourment'
-    | '/articles/kismet/giveMeASign'
-    | '/articles/kismet/judas'
-    | '/articles/kismet/theladyofthecastle'
-    | '/articles/reminiscence/amsterdam'
-    | '/articles/reminiscence/helovesme'
-    | '/articles/reminiscence/therestaurant'
-  id:
-    | '__root__'
-    | '/'
-    | '/NOT'
-    | '/about'
-    | '/creative'
-    | '/group6'
-    | '/kismet'
-    | '/reminiscence'
-    | '/visualarts'
-    | '/articles/NOT/airitout'
-    | '/articles/NOT/disconnect'
-    | '/articles/NOT/inthewind'
-    | '/articles/NOT/quietdevourment'
-    | '/articles/kismet/giveMeASign'
-    | '/articles/kismet/judas'
-    | '/articles/kismet/theladyofthecastle'
-    | '/articles/reminiscence/amsterdam'
-    | '/articles/reminiscence/helovesme'
-    | '/articles/reminiscence/therestaurant'
+  to: '/' | '/group6'
+  id: '__root__' | '/' | '/group6'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  NOTRoute: typeof NOTRoute
-  AboutRoute: typeof AboutRoute
-  CreativeRoute: typeof CreativeRoute
   Group6Route: typeof Group6Route
-  KismetRoute: typeof KismetRoute
-  ReminiscenceRoute: typeof ReminiscenceRoute
-  VisualartsRoute: typeof VisualartsRoute
-  ArticlesNOTAiritoutRoute: typeof ArticlesNOTAiritoutRoute
-  ArticlesNOTDisconnectRoute: typeof ArticlesNOTDisconnectRoute
-  ArticlesNOTInthewindRoute: typeof ArticlesNOTInthewindRoute
-  ArticlesNOTQuietdevourmentRoute: typeof ArticlesNOTQuietdevourmentRoute
-  ArticlesKismetGiveMeASignRoute: typeof ArticlesKismetGiveMeASignRoute
-  ArticlesKismetJudasRoute: typeof ArticlesKismetJudasRoute
-  ArticlesKismetTheladyofthecastleRoute: typeof ArticlesKismetTheladyofthecastleRoute
-  ArticlesReminiscenceAmsterdamRoute: typeof ArticlesReminiscenceAmsterdamRoute
-  ArticlesReminiscenceHelovesmeRoute: typeof ArticlesReminiscenceHelovesmeRoute
-  ArticlesReminiscenceTherestaurantRoute: typeof ArticlesReminiscenceTherestaurantRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/visualarts': {
-      id: '/visualarts'
-      path: '/visualarts'
-      fullPath: '/visualarts'
-      preLoaderRoute: typeof VisualartsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/reminiscence': {
-      id: '/reminiscence'
-      path: '/reminiscence'
-      fullPath: '/reminiscence'
-      preLoaderRoute: typeof ReminiscenceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/kismet': {
-      id: '/kismet'
-      path: '/kismet'
-      fullPath: '/kismet'
-      preLoaderRoute: typeof KismetRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/group6': {
       id: '/group6'
       path: '/group6'
       fullPath: '/group6'
       preLoaderRoute: typeof Group6RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/creative': {
-      id: '/creative'
-      path: '/creative'
-      fullPath: '/creative'
-      preLoaderRoute: typeof CreativeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/NOT': {
-      id: '/NOT'
-      path: '/NOT'
-      fullPath: '/NOT'
-      preLoaderRoute: typeof NOTRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -277,24 +70,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  NOTRoute: NOTRoute,
-  AboutRoute: AboutRoute,
-  CreativeRoute: CreativeRoute,
   Group6Route: Group6Route,
-  KismetRoute: KismetRoute,
-  ReminiscenceRoute: ReminiscenceRoute,
-  VisualartsRoute: VisualartsRoute,
-  ArticlesNOTAiritoutRoute: ArticlesNOTAiritoutRoute,
-  ArticlesNOTDisconnectRoute: ArticlesNOTDisconnectRoute,
-  ArticlesNOTInthewindRoute: ArticlesNOTInthewindRoute,
-  ArticlesNOTQuietdevourmentRoute: ArticlesNOTQuietdevourmentRoute,
-  ArticlesKismetGiveMeASignRoute: ArticlesKismetGiveMeASignRoute,
-  ArticlesKismetJudasRoute: ArticlesKismetJudasRoute,
-  ArticlesKismetTheladyofthecastleRoute: ArticlesKismetTheladyofthecastleRoute,
-  ArticlesReminiscenceAmsterdamRoute: ArticlesReminiscenceAmsterdamRoute,
-  ArticlesReminiscenceHelovesmeRoute: ArticlesReminiscenceHelovesmeRoute,
-  ArticlesReminiscenceTherestaurantRoute:
-    ArticlesReminiscenceTherestaurantRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
