@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ArticlesSerialKeyboardsRouteImport } from './routes/articles/serial/keyboards'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArticlesSerialKeyboardsRoute = ArticlesSerialKeyboardsRouteImport.update({
+  id: '/articles/serial/keyboards',
+  path: '/articles/serial/keyboards',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/articles/serial/keyboards'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/articles/serial/keyboards'
+  id: '__root__' | '/' | '/articles/serial/keyboards'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ArticlesSerialKeyboardsRoute: typeof ArticlesSerialKeyboardsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/articles/serial/keyboards': {
+      id: '/articles/serial/keyboards'
+      path: '/articles/serial/keyboards'
+      fullPath: '/articles/serial/keyboards'
+      preLoaderRoute: typeof ArticlesSerialKeyboardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ArticlesSerialKeyboardsRoute: ArticlesSerialKeyboardsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
