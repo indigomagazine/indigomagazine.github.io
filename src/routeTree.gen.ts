@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArticlesSerialKeyboardsRouteImport } from './routes/articles/serial/keyboards'
 import { Route as ArticlesSerialCovetRouteImport } from './routes/articles/serial/covet'
+import { Route as ArticlesSerialSerialRouteImport } from './routes/articles/serial/Serial'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,33 +29,55 @@ const ArticlesSerialCovetRoute = ArticlesSerialCovetRouteImport.update({
   path: '/articles/serial/covet',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArticlesSerialSerialRoute = ArticlesSerialSerialRouteImport.update({
+  id: '/articles/serial/Serial',
+  path: '/articles/serial/Serial',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/articles/serial/Serial': typeof ArticlesSerialSerialRoute
   '/articles/serial/covet': typeof ArticlesSerialCovetRoute
   '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/articles/serial/Serial': typeof ArticlesSerialSerialRoute
   '/articles/serial/covet': typeof ArticlesSerialCovetRoute
   '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/articles/serial/Serial': typeof ArticlesSerialSerialRoute
   '/articles/serial/covet': typeof ArticlesSerialCovetRoute
   '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/articles/serial/covet' | '/articles/serial/keyboards'
+  fullPaths:
+    | '/'
+    | '/articles/serial/Serial'
+    | '/articles/serial/covet'
+    | '/articles/serial/keyboards'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/articles/serial/covet' | '/articles/serial/keyboards'
-  id: '__root__' | '/' | '/articles/serial/covet' | '/articles/serial/keyboards'
+  to:
+    | '/'
+    | '/articles/serial/Serial'
+    | '/articles/serial/covet'
+    | '/articles/serial/keyboards'
+  id:
+    | '__root__'
+    | '/'
+    | '/articles/serial/Serial'
+    | '/articles/serial/covet'
+    | '/articles/serial/keyboards'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ArticlesSerialSerialRoute: typeof ArticlesSerialSerialRoute
   ArticlesSerialCovetRoute: typeof ArticlesSerialCovetRoute
   ArticlesSerialKeyboardsRoute: typeof ArticlesSerialKeyboardsRoute
 }
@@ -82,11 +105,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArticlesSerialCovetRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/articles/serial/Serial': {
+      id: '/articles/serial/Serial'
+      path: '/articles/serial/Serial'
+      fullPath: '/articles/serial/Serial'
+      preLoaderRoute: typeof ArticlesSerialSerialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ArticlesSerialSerialRoute: ArticlesSerialSerialRoute,
   ArticlesSerialCovetRoute: ArticlesSerialCovetRoute,
   ArticlesSerialKeyboardsRoute: ArticlesSerialKeyboardsRoute,
 }

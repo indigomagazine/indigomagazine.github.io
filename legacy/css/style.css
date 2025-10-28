@@ -697,7 +697,8 @@ video::-webkit-media-controls {
 /* Container for the issue covers */
 .issues-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 3 images per row for larger screens */
+  grid-template-columns: repeat(4, 1fr); /*3 images per row for larger screens */
+
   gap: 0; /* No gap between images */
   padding: 0;
   height: 100vh; /* Full viewport height */
