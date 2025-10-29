@@ -14,13 +14,14 @@ import { useState, useMemo} from "react";
 const items = [
   {
     id: "article-1",
-    title: "Article ",
-    description: "By:.. ",
-    tags: ["LOVE", "AUGUST"],
+    title: "I Love Shopping ",
+    description: "By: Zayeed A. ",
+    tags: ["FASHION", "NOVEMBER"],
     // Replace with your local asset paths or URLs
     image: "../../legacy/article photos/ILoveShopping/love is.jpg",
-    to: "",// path to article
+    to: "/articles/serial/iloveshopping", // path to article
   },
+  /*
   {
     id: "article-2",
     title: "QUIET DEVOURMENT",
@@ -89,6 +90,7 @@ const items = [
     image: "../../legacy/assets/backgrounds/placeHolder.png",
     to: "",// path to article
   },
+  */
 ];
 
 

@@ -11,7 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArticlesSerialKeyboardsRouteImport } from './routes/articles/serial/keyboards'
+import { Route as ArticlesSerialIloveshoppingRouteImport } from './routes/articles/serial/iloveshopping'
 import { Route as ArticlesSerialCovetRouteImport } from './routes/articles/serial/covet'
+import { Route as ArticlesSerialAnumberoutofplaceRouteImport } from './routes/articles/serial/anumberoutofplace'
 import { Route as ArticlesSerialSerialRouteImport } from './routes/articles/serial/Serial'
 
 const IndexRoute = IndexRouteImport.update({
@@ -24,11 +26,23 @@ const ArticlesSerialKeyboardsRoute = ArticlesSerialKeyboardsRouteImport.update({
   path: '/articles/serial/keyboards',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArticlesSerialIloveshoppingRoute =
+  ArticlesSerialIloveshoppingRouteImport.update({
+    id: '/articles/serial/iloveshopping',
+    path: '/articles/serial/iloveshopping',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ArticlesSerialCovetRoute = ArticlesSerialCovetRouteImport.update({
   id: '/articles/serial/covet',
   path: '/articles/serial/covet',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArticlesSerialAnumberoutofplaceRoute =
+  ArticlesSerialAnumberoutofplaceRouteImport.update({
+    id: '/articles/serial/anumberoutofplace',
+    path: '/articles/serial/anumberoutofplace',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ArticlesSerialSerialRoute = ArticlesSerialSerialRouteImport.update({
   id: '/articles/serial/Serial',
   path: '/articles/serial/Serial',
@@ -38,20 +52,26 @@ const ArticlesSerialSerialRoute = ArticlesSerialSerialRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/articles/serial/Serial': typeof ArticlesSerialSerialRoute
+  '/articles/serial/anumberoutofplace': typeof ArticlesSerialAnumberoutofplaceRoute
   '/articles/serial/covet': typeof ArticlesSerialCovetRoute
+  '/articles/serial/iloveshopping': typeof ArticlesSerialIloveshoppingRoute
   '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/articles/serial/Serial': typeof ArticlesSerialSerialRoute
+  '/articles/serial/anumberoutofplace': typeof ArticlesSerialAnumberoutofplaceRoute
   '/articles/serial/covet': typeof ArticlesSerialCovetRoute
+  '/articles/serial/iloveshopping': typeof ArticlesSerialIloveshoppingRoute
   '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/articles/serial/Serial': typeof ArticlesSerialSerialRoute
+  '/articles/serial/anumberoutofplace': typeof ArticlesSerialAnumberoutofplaceRoute
   '/articles/serial/covet': typeof ArticlesSerialCovetRoute
+  '/articles/serial/iloveshopping': typeof ArticlesSerialIloveshoppingRoute
   '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
 }
 export interface FileRouteTypes {
@@ -59,26 +79,34 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/articles/serial/Serial'
+    | '/articles/serial/anumberoutofplace'
     | '/articles/serial/covet'
+    | '/articles/serial/iloveshopping'
     | '/articles/serial/keyboards'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/articles/serial/Serial'
+    | '/articles/serial/anumberoutofplace'
     | '/articles/serial/covet'
+    | '/articles/serial/iloveshopping'
     | '/articles/serial/keyboards'
   id:
     | '__root__'
     | '/'
     | '/articles/serial/Serial'
+    | '/articles/serial/anumberoutofplace'
     | '/articles/serial/covet'
+    | '/articles/serial/iloveshopping'
     | '/articles/serial/keyboards'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ArticlesSerialSerialRoute: typeof ArticlesSerialSerialRoute
+  ArticlesSerialAnumberoutofplaceRoute: typeof ArticlesSerialAnumberoutofplaceRoute
   ArticlesSerialCovetRoute: typeof ArticlesSerialCovetRoute
+  ArticlesSerialIloveshoppingRoute: typeof ArticlesSerialIloveshoppingRoute
   ArticlesSerialKeyboardsRoute: typeof ArticlesSerialKeyboardsRoute
 }
 
@@ -98,11 +126,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArticlesSerialKeyboardsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/articles/serial/iloveshopping': {
+      id: '/articles/serial/iloveshopping'
+      path: '/articles/serial/iloveshopping'
+      fullPath: '/articles/serial/iloveshopping'
+      preLoaderRoute: typeof ArticlesSerialIloveshoppingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/articles/serial/covet': {
       id: '/articles/serial/covet'
       path: '/articles/serial/covet'
       fullPath: '/articles/serial/covet'
       preLoaderRoute: typeof ArticlesSerialCovetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/articles/serial/anumberoutofplace': {
+      id: '/articles/serial/anumberoutofplace'
+      path: '/articles/serial/anumberoutofplace'
+      fullPath: '/articles/serial/anumberoutofplace'
+      preLoaderRoute: typeof ArticlesSerialAnumberoutofplaceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/articles/serial/Serial': {
@@ -118,7 +160,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ArticlesSerialSerialRoute: ArticlesSerialSerialRoute,
+  ArticlesSerialAnumberoutofplaceRoute: ArticlesSerialAnumberoutofplaceRoute,
   ArticlesSerialCovetRoute: ArticlesSerialCovetRoute,
+  ArticlesSerialIloveshoppingRoute: ArticlesSerialIloveshoppingRoute,
   ArticlesSerialKeyboardsRoute: ArticlesSerialKeyboardsRoute,
 }
 export const routeTree = rootRouteImport
