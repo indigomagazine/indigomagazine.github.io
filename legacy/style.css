@@ -6,7 +6,7 @@
 }
 
 html {
-    cursor: url(assets/cursors/sparkle-cursor.png), default; /* Custom cursor */
+    cursor: url(legacy/assets/cursors/sparkle-cursor.png), default; /* Custom cursor */
       overflow-x: hidden;
   }
 
