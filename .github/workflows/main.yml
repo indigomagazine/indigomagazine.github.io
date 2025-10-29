@@ -55,6 +55,11 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+        - name: Include legacy folder
+        run: |
+          mkdir -p dist/legacy
+          cp -r legacy/* dist/legacy/
+
       - name: Check output
         run: ls -R dist
 
