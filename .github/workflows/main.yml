@@ -55,6 +55,9 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      - name: Check output
+        run: ls -R dist
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
