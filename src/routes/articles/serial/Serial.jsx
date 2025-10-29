@@ -1,9 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
+import Serial from "../../../components/serialPage"
 
 export const Route = createFileRoute('/articles/serial/Serial')({
-  component: RouteComponent,
+  component: Serial,
 })
 
-function RouteComponent() {
-  return <div>Hello "/articles/serial/Serial"!</div>
+function serialPage() {
+  return <Serial />;
 }
