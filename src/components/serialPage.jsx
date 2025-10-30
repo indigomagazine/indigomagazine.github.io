@@ -15,6 +15,7 @@ import './serial.css';
 
 
 /* Where you will add article data */
+/* Make sure to add new item at the top of the list so it appears first */
 const items = [
   {
     id: "article-1",
@@ -26,7 +27,7 @@ const items = [
     to: "/articles/serial/iloveshopping", // path to article
     coverPos: " left 25% top 10%",
   },
-  
+  /*
   {
     id: "article-2",
     title: "QUIET DEVOURMENT",
@@ -34,7 +35,10 @@ const items = [
     tags: ["PHOTO", "ESSAY"],
     image: "../../legacy/assets/backgrounds/placeHolder.png",
     to: "",
+    blur: true,
+    
   },
+  
   {
     id: "article-3",
     title: "ECHOES IN THE WIND",
@@ -95,7 +99,7 @@ const items = [
     image: "../../legacy/assets/backgrounds/placeHolder.png",
     to: "",// path to article
   },
-  
+  */
 ];
 
 
