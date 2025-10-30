@@ -1,7 +1,12 @@
 import { useMemo } from "react";
 
-import './covet.css';
+import floating4 from "../../../../../assets/photos/group2/floating4.jpg";
+import floating1 from "../../../../../assets/photos/group2/floating1.JPG";
+import floating5 from "../../../../../assets/photos/group2/floating5.jpg";
+import floating2 from "../../../../../assets/photos/group2/floating2.JPG";
+import floating3 from "../../../../../assets/photos/group2/floating3.JPG";
 
+import "./covet.css";
 
 const HeroTitle = ({ title, subtitle, kicker, alignment = "center" }) => (
   <header className={`hero hero--${alignment}`}>
@@ -37,7 +42,9 @@ const TextImageRow = ({
   textAlign = "left",
 }) => (
   <section
-    className={`text-image text-image--${theme} ${reverse ? "text-image--reverse" : ""}`}
+    className={`text-image text-image--${theme} ${
+      reverse ? "text-image--reverse" : ""
+    }`}
   >
     <div className={`text-image__text text-image__text--${textAlign}`}>
       {text.map((paragraph, index) => (
@@ -157,7 +164,7 @@ export default function ArticlePage() {
           "but later swelled like tides when I was alone.",
         ],
         image: {
-          src: "../photos/group2/floating4.jpg",
+          src: floating4,
           alt: "Two friends sharing a moment on the boardwalk",
         },
         caption: "Photographed by the Indigo Collective",
@@ -191,7 +198,7 @@ export default function ArticlePage() {
           "Our footsteps synced with the rotating lights, choreographed by chance.",
         ],
         image: {
-          src: "../photos/group2/floating1.JPG",
+          src: floating1,
           alt: "Carousel lights reflecting on a lake",
         },
         layout: "image-left",
@@ -203,17 +210,17 @@ export default function ArticlePage() {
         id: "gallery-1",
         images: [
           {
-            src: "../photos/group2/floating5.jpg",
+            src: floating5,
             alt: "Close up of intertwined hands",
             caption: "The moment in between",
           },
           {
-            src: "../photos/group2/floating2.JPG",
+            src: floating2,
             alt: "Soft focus portrait at dusk",
             caption: "Blushing hour",
           },
           {
-            src: "../photos/group2/floating3.JPG",
+            src: floating3,
             alt: "Friends leaning on railing",
             caption: "Secrets at the shoreline",
           },
@@ -230,5 +237,4 @@ export default function ArticlePage() {
       <SectionComposer blocks={blocks} />
     </main>
   );
-};
-
+}
