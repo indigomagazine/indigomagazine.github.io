@@ -59,7 +59,7 @@ jobs:
         run: |
           mkdir -p dist/legacy
           cp -r legacy/* dist/legacy/
-          cp index.html dist/404.html
+          cp dist/index.html dist/404.html
 
 
       - name: Upload artifact
