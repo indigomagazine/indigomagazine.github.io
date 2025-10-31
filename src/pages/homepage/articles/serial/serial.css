@@ -12,6 +12,64 @@
 
 body.body--lock-scroll, body.body--lock-scroll #root { overflow: hidden; }
 
+.serial-launcher {
+ position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 60; /* above header & content */
+  width: 42px;
+  height: 42px;
+  border-radius: 20px;
+  border: 1px solid rgba(159, 92, 157, 0.812);
+  background: #cf85c582;
+  color: #fff;
+  backdrop-filter: blur(4px);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.serial-taskbar {
+    position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 55;
+  transform: translateY(-100%);
+  transition: transform 260ms ease;
+  will-change: transform;
+  /* glassy look */
+  background: rgba(10,10,10,0.60);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+}
+
+.serial-taskbar.open {
+  transform: translateY(0);
+}
+
+.serial-taskbar_inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px var(--accent);
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+  color: hwb(228 64% 13% / 0.877);
+}
+
+.serial-taskbar .taskbar-actions {
+  display: flex;
+  gap: 14px;
+}
+
+.serial-taskbar .taskbar-actions a {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.9;
+}
+.serial-taskbar .taskbar-actions a:hover { opacity: 1; }
+
+
 
 .mg-root {
   min-height: 100vh;
@@ -300,3 +358,95 @@ body.body--lock-scroll, body.body--lock-scroll #root { overflow: hidden; }
 /* (Optional) hide desc/tags in grid if you want pure image + title */
 .grid-card .desc,
 .grid-card .tags { display: none; }
+
+
+/* ---------- Left Drawer ---------- */
+.serial-drawer {
+  --w: var(--drawer-w, 150px);
+  --h: var(--drawer-h, 100vh);
+  --bg: var(--drawer-bg, #030b3125);
+  --fg: var(--drawer-color, #ffffff);
+  --acc: var(--drawer-accent, rgba(255, 255, 255, 0.2));
+  --spd: var(--drawer-speed, 260ms);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--w);
+  height: var(--h);
+  transform: translateX(calc(-1 * var(--w))); /* hidden to the left */
+  transition: transform var(--spd) ease;
+  z-index: 70;
+
+  background: var(--bg);
+  color: var(--fg);
+  backdrop-filter: blur(8px);
+  border-right: 1px solid var(--acc);
+  border-top-right-radius: 1px;
+  border-bottom-right-radius: 1px;
+
+  display: flex;
+  flex-direction: column;
+}
+.serial-drawer.is-open { transform: translateX(0); }
+
+/* inner content area */
+.serial-drawer__inner {
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* vertical nav: spaced short texts */
+.drawer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 125px;
+  /* center in the middle of the drawer */
+  justify-content: flex-start;
+  padding-top: 120px;
+  align-items: center;
+  
+}
+.drawer-nav a {
+  color: rgb(238, 210, 243);
+  text-decoration: underline  white ;
+  font-weight: 600;
+  font-size: 25px;
+  letter-spacing: .2px;
+  opacity: 0.92;
+}
+.drawer-nav a:hover { opacity: 1; }
+
+/* ---------- Tab/Asset that rides with the drawer edge ---------- */
+.drawer-tab {
+  --w: var(--drawer-w, 30px);
+  --spd: var(--drawer-speed, 260ms);
+
+  position: fixed;
+  top: 12px;
+  left: 10px;
+  z-index: 75;                 /* above drawer */
+  transform: translateX(0);    /* at far-left when closed */
+  transition: transform var(--spd) ease;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0);
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(4px);
+
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.drawer-tab img { width: 65px; height: 65spx; }
+
+.drawer-tab.is-open {
+  /* When open, “dock” to the drawer’s right edge */
+  transform: translateX(var(--w));
+}
+
+/* Optional: keep your existing top-right header/toggle as-is */

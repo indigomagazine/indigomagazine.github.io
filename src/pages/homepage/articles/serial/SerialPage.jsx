@@ -54,6 +54,8 @@ const scrollerRef = useRef(null);
 const isSnappingRef = useRef(false);
 const sectionHRef = useRef(0);
 
+const [barOpen, setBarOpen] = useState(false);
+
 useEffect(() => {
   const prev = document.body.style.margin;
   document.documentElement.style.height = '100%';
@@ -129,32 +131,67 @@ const handleToggle = (checked) => {
 
 
   return (
-    <div className="mg-root">
-      <header className="mg-header">
-        <div className="mg-toggle">
-          <label className="toggle">
-            <input
-              type="checkbox"
-              checked={view === "grid"}
-              onChange={(e) => handleToggle(e.target.checked)}
-            />
-            <span className="slider" />
-            <span className="label">{view === "grid" ? "Grid" : "Scroll"}</span>
-          </label>
-        </div>
-      </header>
+  <div className="mg-root"
+    styles= {{
+          "--drawer-w": "300px",
+    "--drawer-h": "80vh",
+    "--drawer-bg": "rgba(10,10,10,0.70)",
+    "--drawer-color": "#f8d254ff",
+    "--drawer-accent": "rgba(255,255,255,0.18)",
+    "--drawer-speed": "280ms"
+    }}
+  >
 
-        <div className={`content-stage ${animClass}`}>
-            {view === "scroll" ? (
-                    <ScrollSections ref={scrollerRef} items={data} />
-                ) : (
-                    <GridGallery items={data} />
-            )}
-        </div>
-
-      {/* Local styles to keep this self-contained */}
-
+  <aside className={`serial-drawer ${barOpen ? "is-open" : ""}`} role="complementary" aria-label="Tools">
+    <div className="serial-drawer__inner">
+      <nav className="drawer-nav" aria-label="Section">
+        <a href="/legacy/index.html">Home</a>
+        <a href="/legacy/creative.html">Issues</a>
+        <a href="/legacy/about.html">About</a>
+        <a href="/legacy/visualarts.html">VisualArts</a>
+      </nav>
     </div>
+  </aside>
+
+  {/* Tab / Asset that rides with the drawer edge */}
+  <button
+    className={`drawer-tab ${barOpen ? "is-open" : ""}`}
+    aria-label={barOpen ? "Close tools" : "Open tools"}
+    aria-expanded={barOpen}
+    onClick={() => setBarOpen(v => !v)}
+  >
+    {/* replace with your SVG/PNG */}
+    <img src="../../legacy/assets/logos/indigologowhite.png" alt="" />
+  </button>
+
+    {/* Existing header (your Grid/Scroll toggle lives here) 
+    <header className="mg-header">
+      <div className="mg-toggle">
+        <label className="toggle">
+          <input
+            type="checkbox"
+            checked={view === "grid"}
+            onChange={(e) => handleToggle(e.target.checked)}
+          />
+          <span className="slider" />
+          <span className="label">{view === "grid" ? "Grid" : "Scroll"}</span>
+        </label>
+      </div>
+    </header>
+
+    */}
+
+   
+
+    {/* Your existing view switcher */}
+    <div className={`content-stage ${animClass}`}>
+      {view === "scroll" ? (
+        <ScrollSections ref={scrollerRef} items={data} />
+      ) : (
+        <GridGallery items={data} />
+      )}
+    </div>
+  </div>
   );
 }
 
