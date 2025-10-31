@@ -218,7 +218,7 @@ function RouteComponent() {
             spoons like size{" "}
             <span style={{ fontFamily: "Times New Roman, serif" }}>0</span>'s i
             like silver spoon fun. <br />
-            i like consuming and eating and shopping and fucking like no one
+            i like consuming and eating and shopping like no one
             else. <br />
             liking is a lifestyle, love is… <br />
           </p>
