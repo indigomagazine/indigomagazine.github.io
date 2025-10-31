@@ -28,6 +28,7 @@ function RouteComponent() {
         to { opacity: 1; transform: scale(1); }
       }
 
+      /* ✅ Responsive title/subtitle spacing */
       @media (max-width: 768px) {
         .title-section p {
           margin-top: -2rem !important;
@@ -42,7 +43,6 @@ function RouteComponent() {
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
   }, []);
-  
 
   const cerealImages = [
     "https://github.com/indigomagazine/website_images/blob/main/SERIAL%20PHOTOS/group%201/BF5T7721.jpg?raw=true",
@@ -65,7 +65,7 @@ function RouteComponent() {
   return (
     <div
       style={{
-        minHeight: "100dvh", 
+        minHeight: "100dvh", // ✅ covers full screen including mobile UI
         width: "100%",
         margin: 0,
         padding: 0,
@@ -84,31 +84,27 @@ function RouteComponent() {
           'url("https://github.com/indigomagazine/website_images/blob/main/SERIAL%20PHOTOS/group%201/daintyspoonresized.png?raw=true") 16 16, auto',
       }}
     >
-{randomPositions.map((pos, i) => (
-  <img
-    key={i}
-    src={cerealImages[i % cerealImages.length].replace("?raw=true", "?raw=true&s=400")}
-    alt="Cereal spill"
-    loading="lazy"          
-    decoding="async"        
-    style={{
-      position: "absolute",
-      top: pos.top,
-      left: pos.left,
-      right: pos.right,
-      width: pos.size,
-      height: pos.size,
-      objectFit: "cover",
-      transform: `rotate(${pos.rotate})`,
-      opacity: 0.9,
-      zIndex: 1,
-      pointerEvents: "none",
-      animation: `float ${pos.duration} ease-in-out infinite, fadeIn 1s ease-out`,
-      transition: "opacity 0.4s ease-out",
-    }}
-  />
-))}
-
+      {randomPositions.map((pos, i) => (
+        <img
+          key={i}
+          src={cerealImages[i % cerealImages.length]}
+          alt="Cereal spill"
+          style={{
+            position: "absolute",
+            top: pos.top,
+            left: pos.left,
+            right: pos.right,
+            width: pos.size,
+            height: pos.size,
+            objectFit: "cover",
+            transform: `rotate(${pos.rotate})`,
+            opacity: 0.9,
+            zIndex: 1,
+            pointerEvents: "none",
+            animation: `float ${pos.duration} ease-in-out infinite, fadeIn 1s ease-out`,
+          }}
+        />
+      ))}
 
       <div
         style={{
@@ -131,6 +127,7 @@ function RouteComponent() {
           }}
         />
 
+        {/* ✅ Title & subtitle spacing fixed */}
         <div
           className="title-section"
           style={{
@@ -212,3 +209,4 @@ function RouteComponent() {
     </div>
   );
 }
+
