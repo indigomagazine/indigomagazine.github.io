@@ -13,4 +13,6 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  assetsInclude: ['**/*.otf', '**/*.ttf']
 });
+
