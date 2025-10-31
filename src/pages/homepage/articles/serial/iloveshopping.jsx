@@ -8,16 +8,17 @@ export const Route = createFileRoute("/articles/serial/iloveshopping")({
 });
 
 function RouteComponent() {
+function RouteComponent() {
   React.useEffect(() => {
     const style = document.createElement("style");
     style.textContent = `
       @font-face {
         font-family: "Intrapersonal";
-        src: url(${IntrapersonalFont}) format('opentype');
+        src: url('${IntrapersonalFont}') format('opentype');
       }
       @font-face {
         font-family: "Sinoreta";
-        src: url(${SinoretaFont}) format('opentype');
+        src: url('${SinoretaFont}') format('opentype');
       }
       @keyframes float {
         0%, 100% { transform: translateY(0); }
@@ -28,7 +29,6 @@ function RouteComponent() {
         to { opacity: 1; transform: scale(1); }
       }
 
-      /* ✅ Responsive title/subtitle spacing */
       @media (max-width: 768px) {
         .title-section p {
           margin-top: -2rem !important;
@@ -43,6 +43,7 @@ function RouteComponent() {
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
   }, []);
+}
 
   const cerealImages = [
     "https://github.com/indigomagazine/website_images/blob/main/SERIAL%20PHOTOS/group%201/BF5T7721.jpg?raw=true",
