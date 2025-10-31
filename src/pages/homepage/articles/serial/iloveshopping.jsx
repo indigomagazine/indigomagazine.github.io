@@ -1,5 +1,7 @@
+import React from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import Article from "../../../pages/homepage/articles/serial/iloveshopping";
+import IntrapersonalFont from "../../../assets/fonts/Intrapersonal.otf";
+import SinoretaFont from "../../../assets/fonts/Sinoreta.otf";
 
 export const Route = createFileRoute("/articles/serial/iloveshopping")({
   component: RouteComponent,
@@ -82,32 +84,27 @@ function RouteComponent() {
           'url("https://github.com/indigomagazine/website_images/blob/main/SERIAL%20PHOTOS/group%201/daintyspoonresized.png?raw=true") 16 16, auto',
       }}
     >
-{randomPositions.map((pos, i) => (
-  <img
-    key={i}
-    // ✅ smaller GitHub image + lazy loading
-    src={cerealImages[i % cerealImages.length].replace("?raw=true", "?raw=true&s=400")}
-    alt="Cereal spill"
-    loading="lazy"          
-    decoding="async"        
-    style={{
-      position: "absolute",
-      top: pos.top,
-      left: pos.left,
-      right: pos.right,
-      width: pos.size,
-      height: pos.size,
-      objectFit: "cover",
-      transform: `rotate(${pos.rotate})`,
-      opacity: 0.9,
-      zIndex: 1,
-      pointerEvents: "none",
-      animation: `float ${pos.duration} ease-in-out infinite, fadeIn 1s ease-out`,
-      transition: "opacity 0.4s ease-out",
-    }}
-  />
-))}
-
+      {randomPositions.map((pos, i) => (
+        <img
+          key={i}
+          src={cerealImages[i % cerealImages.length]}
+          alt="Cereal spill"
+          style={{
+            position: "absolute",
+            top: pos.top,
+            left: pos.left,
+            right: pos.right,
+            width: pos.size,
+            height: pos.size,
+            objectFit: "cover",
+            transform: `rotate(${pos.rotate})`,
+            opacity: 0.9,
+            zIndex: 1,
+            pointerEvents: "none",
+            animation: `float ${pos.duration} ease-in-out infinite, fadeIn 1s ease-out`,
+          }}
+        />
+      ))}
 
       <div
         style={{
@@ -211,5 +208,5 @@ function RouteComponent() {
       </div>
     </div>
   );
-  return <Article />;
 }
+

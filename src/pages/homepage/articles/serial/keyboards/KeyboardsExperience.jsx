@@ -1,39 +1,40 @@
-import { useState, useEffect } from 'react';
-import styles from './keyboards.module.css';
-import DialogueBox from './DialogueBox';
-import ChoiceButtons from './ChoiceButtons';
-import { scenes, eyeColors, imageMap } from './storyFlow';
+import { useState } from "react";
+import styles from "./keyboards.module.css";
+import DialogueBox from "./DialogueBox";
+import ChoiceButtons from "./ChoiceButtons";
+import { scenes, eyeColors } from "./storyFlow";
 
 // Import images
-import image1 from '../../../../assets/serial photos/group 3/tentative final 1.png';
-import image2 from '../../../../assets/serial photos/group 3/tentative final 2.1.png';
-import image3 from '../../../../assets/serial photos/group 3/tentative final 2.2.png';
+import image1 from "../../../../../assets/serial photos/group 3/tentative final 1.png";
+import image2 from "../../../../../assets/serial photos/group 3/tentative final 2.1.png";
+import image3 from "../../../../../assets/serial photos/group 3/tentative final 2.2.png";
 
 const images = {
-  'image1': image1,
-  'image2': image2,
-  'image3': image3
+  image1: image1,
+  image2: image2,
+  image3: image3,
 };
 
 // Generate random character string
 const generateRandomText = (length = 200) => {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?/~`';
-  let result = '';
+  const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?/~`";
+  let result = "";
   for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length)) + ' ';
+    result += chars.charAt(Math.floor(Math.random() * chars.length)) + " ";
   }
   return result;
 };
 
 export default function KeyboardsExperience() {
-  const [currentScene, setCurrentScene] = useState('intro');
-  const [username, setUsername] = useState('user');
-  const [eyeColor, setEyeColor] = useState('blue');
+  const [currentScene, setCurrentScene] = useState("intro");
+  const [username, setUsername] = useState("user");
+  const [eyeColor, setEyeColor] = useState("blue");
   const [showUserInput, setShowUserInput] = useState(true);
   const [showLoading, setShowLoading] = useState(false);
   const [showLovePrompt, setShowLovePrompt] = useState(false);
   const [glitch, setGlitch] = useState(false);
-  const [loveInput, setLoveInput] = useState('');
+  const [loveInput, setLoveInput] = useState("");
   const [isError, setIsError] = useState(false);
   const [errorShake, setErrorShake] = useState(false);
   const [isShuttingDown, setIsShuttingDown] = useState(false);
@@ -61,29 +62,29 @@ export default function KeyboardsExperience() {
   // Handle loading sequence
   const startLoadingSequence = () => {
     setLoadingProgress(0);
-    
+
     // Simulate loading progress
     let progress = 0;
     const interval = setInterval(() => {
       const increment = Math.random() * 15 + 5; // Random increment between 5-20
       progress += increment;
-      
+
       // Clamp to 100 max
       if (progress > 100) {
         progress = 100;
       }
-      
+
       // Random glitches during loading
       if (Math.random() > 0.7 && progress < 100) {
         setLoadingGlitch(true);
         setTimeout(() => setLoadingGlitch(false), 150);
       }
-      
+
       setLoadingProgress(progress);
-      
+
       if (progress >= 100) {
         clearInterval(interval);
-        
+
         // Transition to love prompt after completion
         setTimeout(() => {
           setShowLoading(false);
@@ -97,8 +98,8 @@ export default function KeyboardsExperience() {
   const handleLoveSubmit = (e) => {
     e.preventDefault();
     const normalizedInput = loveInput.trim().toLowerCase();
-    const expectedInput = 'i love you';
-    
+    const expectedInput = "i love you";
+
     if (normalizedInput === expectedInput) {
       // Correct input - proceed to story
       setShowLovePrompt(false);
@@ -110,7 +111,7 @@ export default function KeyboardsExperience() {
       setTimeout(() => {
         setErrorShake(false);
         setIsError(false);
-        setLoveInput('');
+        setLoveInput("");
       }, 1500);
     }
   };
@@ -118,7 +119,7 @@ export default function KeyboardsExperience() {
   // Handle choice selection
   const handleChoice = (choiceValue) => {
     // Check if user selected force shutdown
-    if (choiceValue === 'force_shutdown') {
+    if (choiceValue === "force_shutdown") {
       triggerShutdown();
     } else {
       triggerGlitch();
@@ -131,14 +132,14 @@ export default function KeyboardsExperience() {
   // Handle shutdown sequence
   const triggerShutdown = () => {
     setIsShuttingDown(true);
-    
+
     // Flash red 5 times (2.5 seconds total)
     setScreenFlashing(true);
-    
+
     setTimeout(() => {
       setScreenFlashing(false);
       setScreenPoweredOff(true);
-      
+
       // After fade to black (3s), show images in sequence
       setTimeout(() => {
         showImageSequence();
@@ -148,7 +149,7 @@ export default function KeyboardsExperience() {
 
   // Show images in sequence
   const showImageSequence = () => {
-    const images = ['image1', 'image2', 'image3'];
+    const images = ["image1", "image2", "image3"];
     let currentIndex = 0;
 
     const showNextImage = () => {
@@ -156,19 +157,19 @@ export default function KeyboardsExperience() {
         // Fade in image
         setCurrentShutdownImage(images[currentIndex]);
         setImageFading(true);
-        
+
         setTimeout(() => {
           setImageFading(false);
-          
+
           // Wait a bit then fade out
           setTimeout(() => {
             setImageFading(true);
-            
+
             setTimeout(() => {
               setCurrentShutdownImage(null);
               setImageFading(false);
               currentIndex++;
-              
+
               // Small pause before next image
               setTimeout(() => {
                 showNextImage();
@@ -198,10 +199,10 @@ export default function KeyboardsExperience() {
     setImageFading(false);
     setShowUserInput(true);
     setShowLovePrompt(false);
-    setCurrentScene('intro');
-    setLoveInput('');
-    setUsername('user');
-    setEyeColor('blue');
+    setCurrentScene("intro");
+    setLoveInput("");
+    setUsername("user");
+    setEyeColor("blue");
     triggerGlitch();
   };
 
@@ -237,18 +238,28 @@ export default function KeyboardsExperience() {
     if (currentShutdownImage) {
       return (
         <div className={styles.shutdownContainer}>
-          <img 
-            src={images[currentShutdownImage]} 
+          <img
+            src={images[currentShutdownImage]}
             alt="Memory"
-            className={`${styles.shutdownImage} ${!imageFading ? styles.shutdownImageVisible : ''}`}
+            className={`${styles.shutdownImage} ${
+              !imageFading ? styles.shutdownImageVisible : ""
+            }`}
           />
         </div>
       );
     }
-    
+
     return (
-      <div className={`${styles.container} ${screenPoweredOff ? styles.containerFadeOut : ''}`}>
-        <div className={`${styles.textLinesContainer} ${screenFlashing ? styles.textLinesFlashing : ''}`}>
+      <div
+        className={`${styles.container} ${
+          screenPoweredOff ? styles.containerFadeOut : ""
+        }`}
+      >
+        <div
+          className={`${styles.textLinesContainer} ${
+            screenFlashing ? styles.textLinesFlashing : ""
+          }`}
+        >
           <div className={styles.textLine}>{generateRandomText(150)}</div>
           <div className={styles.textLine}>{generateRandomText(150)}</div>
           <div className={styles.textLine}>{generateRandomText(150)}</div>
@@ -266,16 +277,18 @@ export default function KeyboardsExperience() {
           <div className={styles.textLine}>{generateRandomText(150)}</div>
         </div>
 
-        <div className={`${styles.screen} ${screenFlashing ? styles.screenFlashing : ''} ${screenPoweredOff ? styles.screenPowerOff : ''}`}>
+        <div
+          className={`${styles.screen} ${
+            screenFlashing ? styles.screenFlashing : ""
+          } ${screenPoweredOff ? styles.screenPowerOff : ""}`}
+        >
           <div className={styles.content}>
             <div className={styles.asciiBorder}>
               ⌈ ═══════════════════════════════ ⌉
             </div>
-            
+
             <div className={styles.dialogueBox}>
-              <div className={styles.errorText}>
-                [SYSTEM TERMINATED]
-              </div>
+              <div className={styles.errorText}>[SYSTEM TERMINATED]</div>
             </div>
 
             <div className={styles.asciiBorder}>
@@ -315,9 +328,9 @@ export default function KeyboardsExperience() {
             <div className={styles.asciiBorder}>
               ⌈ ═══════════════════════════════ ⌉
             </div>
-            
-            <DialogueBox 
-              text="SYSTEM INITIALIZATION..." 
+
+            <DialogueBox
+              text="SYSTEM INITIALIZATION..."
               type="code"
               showCursor={true}
             />
@@ -334,14 +347,14 @@ export default function KeyboardsExperience() {
                   autoFocus
                 />
               </div>
-              
+
               <div className={styles.inputContainer}>
                 <select
                   className={styles.textInput}
                   value={eyeColor}
                   onChange={(e) => setEyeColor(e.target.value)}
                 >
-                  {eyeColors.map(color => (
+                  {eyeColors.map((color) => (
                     <option key={color} value={color}>
                       Eye color: {color}
                     </option>
@@ -349,9 +362,11 @@ export default function KeyboardsExperience() {
                 </select>
               </div>
 
-              <ChoiceButtons 
-                choices={[{ text: 'INITIALIZE', value: 'submit' }]}
-                onChoice={() => handleUsernameSubmit({ preventDefault: () => {} })}
+              <ChoiceButtons
+                choices={[{ text: "INITIALIZE", value: "submit" }]}
+                onChoice={() =>
+                  handleUsernameSubmit({ preventDefault: () => {} })
+                }
               />
             </form>
 
@@ -387,30 +402,38 @@ export default function KeyboardsExperience() {
           <div className={styles.textLine}>{generateRandomText(150)}</div>
         </div>
 
-        <div className={`${styles.screen} ${loadingGlitch ? styles.glitch : ''}`}>
+        <div
+          className={`${styles.screen} ${loadingGlitch ? styles.glitch : ""}`}
+        >
           <div className={styles.content}>
             <div className={styles.asciiBorder}>
               ⌈ ═══════════════════════════════ ⌉
             </div>
-            
+
             <div className={styles.loadingContainer}>
-              <div className={styles.loadingTitle}>
-                LOADING ILOVEYOU.EXE...
-              </div>
-              
-              <div className={`${styles.loadingBarContainer} ${loadingGlitch ? styles.loadingBarGlitch : ''}`}>
+              <div className={styles.loadingTitle}>LOADING ILOVEYOU.EXE...</div>
+
+              <div
+                className={`${styles.loadingBarContainer} ${
+                  loadingGlitch ? styles.loadingBarGlitch : ""
+                }`}
+              >
                 {Array.from({ length: 20 }).map((_, index) => {
                   const blockThreshold = (index + 1) * 5; // Each block represents 5%
                   const isFilled = loadingProgress >= blockThreshold;
                   return (
                     <div
                       key={index}
-                      className={isFilled ? styles.loadingBlock : styles.loadingBlockEmpty}
+                      className={
+                        isFilled
+                          ? styles.loadingBlock
+                          : styles.loadingBlockEmpty
+                      }
                     />
                   );
                 })}
               </div>
-              
+
               <div className={styles.loadingPercent}>
                 {Math.floor(loadingProgress)}%
               </div>
@@ -448,21 +471,25 @@ export default function KeyboardsExperience() {
           <div className={styles.textLine}>{generateRandomText(150)}</div>
         </div>
 
-        <div className={`${styles.screen} ${errorShake ? styles.shake : ''}`}>
+        <div className={`${styles.screen} ${errorShake ? styles.shake : ""}`}>
           <div className={styles.content}>
             <div className={styles.asciiBorder}>
               ⌈ ═══════════════════════════════ ⌉
             </div>
-            
-            <div className={`${styles.promptText} ${isError ? styles.error : ''}`}>
-              {isError ? 'TRY AGAIN' : 'TYPE I LOVE YOU'}
+
+            <div
+              className={`${styles.promptText} ${isError ? styles.error : ""}`}
+            >
+              {isError ? "TRY AGAIN" : "TYPE I LOVE YOU"}
             </div>
 
             <form onSubmit={handleLoveSubmit}>
               <div className={styles.inputContainer}>
                 <input
                   type="text"
-                  className={`${styles.textInput} ${isError ? styles.errorInput : ''}`}
+                  className={`${styles.textInput} ${
+                    isError ? styles.errorInput : ""
+                  }`}
                   placeholder=""
                   value={loveInput}
                   onChange={(e) => setLoveInput(e.target.value)}
@@ -503,13 +530,13 @@ export default function KeyboardsExperience() {
         <div className={styles.textLine}>{generateRandomText(150)}</div>
       </div>
 
-      <div className={`${styles.screen} ${glitch ? styles.glitch : ''}`}>
+      <div className={`${styles.screen} ${glitch ? styles.glitch : ""}`}>
         <div className={styles.content}>
           <div className={styles.asciiBorder}>
             ⌈ ═══════════════════════════════ ⌉
           </div>
 
-          <DialogueBox 
+          <DialogueBox
             text={getProcessedText(scene.text)}
             type={scene.type}
             showCursor={false}
@@ -517,18 +544,15 @@ export default function KeyboardsExperience() {
 
           {scene.image && images[scene.image] && (
             <div className={styles.imageContainer}>
-              <img 
-                src={images[scene.image]} 
+              <img
+                src={images[scene.image]}
                 alt="Scene visual"
                 className={styles.image}
               />
             </div>
           )}
 
-          <ChoiceButtons 
-            choices={scene.choices}
-            onChoice={handleChoice}
-          />
+          <ChoiceButtons choices={scene.choices} onChoice={handleChoice} />
 
           <div className={styles.asciiBorder}>
             ⌊ ═══════════════════════════════ ⌋
