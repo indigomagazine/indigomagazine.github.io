@@ -1,11 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router'
-import KeyboardsExperience from './keyboards/KeyboardsExperience'
+import { createFileRoute } from "@tanstack/react-router";
+import KeyboardsExperience from "../../../pages/homepage/articles/serial/keyboards/KeyboardsExperience";
 
-export const Route = createFileRoute('/articles/serial/keyboards')({
-  component: KeyboardsArticle,
-})
+export const Route = createFileRoute("/articles/serial/keyboards")({
+  component: RouteComponent,
+});
 
-function KeyboardsArticle() {
-  return <KeyboardsExperience />
+function RouteComponent() {
+  return <KeyboardsExperience />;
 }
-

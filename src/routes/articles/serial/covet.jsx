@@ -1,11 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import ArticlePage from "./covet/covetPage";
+import ArticlePage from "../../../pages/homepage/articles/serial/covet/CovetPage";
 
 export const Route = createFileRoute("/articles/serial/covet")({
-  component: ArticlePage
-})
+  component: RouteComponent,
+});
 
-function covetArticle() {
-  return <ArticlePage />
+function RouteComponent() {
+  return <ArticlePage />;
 }
-

@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 /*css/style.css*/
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,6 +24,12 @@ body {
   background-color: black; /* Default dark mode background */
   color: white; /* Default dark mode text */
 }
+
+/* while using the Serial page */
+body, #root {
+  overflow: hidden; /* only the inner scroller should scroll */
+}
+
 
 h1,
 h2 {

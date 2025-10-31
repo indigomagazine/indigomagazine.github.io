@@ -9,13 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SerialRouteImport } from './routes/serial'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArticlesSerialKeyboardsRouteImport } from './routes/articles/serial/keyboards'
 import { Route as ArticlesSerialIloveshoppingRouteImport } from './routes/articles/serial/iloveshopping'
 import { Route as ArticlesSerialCovetRouteImport } from './routes/articles/serial/covet'
 import { Route as ArticlesSerialAnumberoutofplaceRouteImport } from './routes/articles/serial/anumberoutofplace'
-import { Route as ArticlesSerialSerialRouteImport } from './routes/articles/serial/Serial'
 
+const SerialRoute = SerialRouteImport.update({
+  id: '/serial',
+  path: '/serial',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,15 +48,10 @@ const ArticlesSerialAnumberoutofplaceRoute =
     path: '/articles/serial/anumberoutofplace',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ArticlesSerialSerialRoute = ArticlesSerialSerialRouteImport.update({
-  id: '/articles/serial/Serial',
-  path: '/articles/serial/Serial',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/articles/serial/Serial': typeof ArticlesSerialSerialRoute
+  '/serial': typeof SerialRoute
   '/articles/serial/anumberoutofplace': typeof ArticlesSerialAnumberoutofplaceRoute
   '/articles/serial/covet': typeof ArticlesSerialCovetRoute
   '/articles/serial/iloveshopping': typeof ArticlesSerialIloveshoppingRoute
@@ -59,7 +59,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/articles/serial/Serial': typeof ArticlesSerialSerialRoute
+  '/serial': typeof SerialRoute
   '/articles/serial/anumberoutofplace': typeof ArticlesSerialAnumberoutofplaceRoute
   '/articles/serial/covet': typeof ArticlesSerialCovetRoute
   '/articles/serial/iloveshopping': typeof ArticlesSerialIloveshoppingRoute
@@ -68,7 +68,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/articles/serial/Serial': typeof ArticlesSerialSerialRoute
+  '/serial': typeof SerialRoute
   '/articles/serial/anumberoutofplace': typeof ArticlesSerialAnumberoutofplaceRoute
   '/articles/serial/covet': typeof ArticlesSerialCovetRoute
   '/articles/serial/iloveshopping': typeof ArticlesSerialIloveshoppingRoute
@@ -78,7 +78,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/articles/serial/Serial'
+    | '/serial'
     | '/articles/serial/anumberoutofplace'
     | '/articles/serial/covet'
     | '/articles/serial/iloveshopping'
@@ -86,7 +86,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/articles/serial/Serial'
+    | '/serial'
     | '/articles/serial/anumberoutofplace'
     | '/articles/serial/covet'
     | '/articles/serial/iloveshopping'
@@ -94,7 +94,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/articles/serial/Serial'
+    | '/serial'
     | '/articles/serial/anumberoutofplace'
     | '/articles/serial/covet'
     | '/articles/serial/iloveshopping'
@@ -103,7 +103,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ArticlesSerialSerialRoute: typeof ArticlesSerialSerialRoute
+  SerialRoute: typeof SerialRoute
   ArticlesSerialAnumberoutofplaceRoute: typeof ArticlesSerialAnumberoutofplaceRoute
   ArticlesSerialCovetRoute: typeof ArticlesSerialCovetRoute
   ArticlesSerialIloveshoppingRoute: typeof ArticlesSerialIloveshoppingRoute
@@ -112,6 +112,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/serial': {
+      id: '/serial'
+      path: '/serial'
+      fullPath: '/serial'
+      preLoaderRoute: typeof SerialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -147,19 +154,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArticlesSerialAnumberoutofplaceRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/articles/serial/Serial': {
-      id: '/articles/serial/Serial'
-      path: '/articles/serial/Serial'
-      fullPath: '/articles/serial/Serial'
-      preLoaderRoute: typeof ArticlesSerialSerialRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ArticlesSerialSerialRoute: ArticlesSerialSerialRoute,
+  SerialRoute: SerialRoute,
   ArticlesSerialAnumberoutofplaceRoute: ArticlesSerialAnumberoutofplaceRoute,
   ArticlesSerialCovetRoute: ArticlesSerialCovetRoute,
   ArticlesSerialIloveshoppingRoute: ArticlesSerialIloveshoppingRoute,
