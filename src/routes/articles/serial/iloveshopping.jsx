@@ -1,6 +1,7 @@
+import React from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import IntrapersonalFont from "../../../assets/fonts/Intrapersonal.otf";
-import SinoretaFont from "../../../assets/fonts/Sinoreta.otf";
+const IntrapersonalFont = "/fonts/Intrapersonal.otf";
+const SinoretaFont = "/fonts/Sinoreta.otf";
 
 export const Route = createFileRoute("/articles/serial/iloveshopping")({
   component: RouteComponent,
@@ -225,5 +226,4 @@ function RouteComponent() {
       </div>
     </div>
   );
-  return <Article />;
 }
