@@ -1,5 +1,6 @@
 import React from "react";
 import { createFileRoute } from "@tanstack/react-router";
+
 const IntrapersonalFont = "/fonts/Intrapersonal.otf";
 const SinoretaFont = "/fonts/Sinoreta.otf";
 
@@ -31,25 +32,45 @@ function RouteComponent() {
         to { opacity: 1; transform: scale(1); }
       }
 
+      /* Tablet breakpoint */
       @media (max-width: 768px) {
-        .title-container svg text {
-          font-size: 22px !important;
+        .title-container {
+          top: 10% !important;
         }
 
-        .title-container p {
-          margin-top: -1.5rem !important;
-          font-size: 0.9rem !important;
-        }
-      }
-
-      @media (max-width: 480px) {
         .title-container svg text {
-          font-size: 18px !important;
+          font-size: 20px !important;
         }
 
         .title-container p {
           margin-top: -1rem !important;
+          font-size: 0.9rem !important;
+        }
+
+        .article-text {
+          width: 70% !important;
+          top: 54% !important;
+        }
+      }
+
+      /* iPhone + small screen */
+      @media (max-width: 480px) {
+        .title-container {
+          top: 8% !important;
+        }
+
+        .title-container svg text {
+          font-size: 16px !important;
+        }
+
+        .title-container p {
+          margin-top: -0.5rem !important;
           font-size: 0.8rem !important;
+        }
+
+        .article-text {
+          width: 80% !important;
+          top: 56% !important;
         }
       }
     `;
@@ -194,6 +215,7 @@ function RouteComponent() {
 
         {/* Article text */}
         <div
+          className="article-text"
           style={{
             position: "absolute",
             top: "50%",
@@ -218,8 +240,7 @@ function RouteComponent() {
             spoons like size{" "}
             <span style={{ fontFamily: "Times New Roman, serif" }}>0</span>'s i
             like silver spoon fun. <br />
-            i like consuming and eating and shopping like no one
-            else. <br />
+            i like consuming and eating and shopping like no one else. <br />
             liking is a lifestyle, love is… <br />
           </p>
         </div>
@@ -227,3 +248,5 @@ function RouteComponent() {
     </div>
   );
 }
+
+export default RouteComponent;
