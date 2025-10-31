@@ -442,7 +442,7 @@ body.body--lock-scroll, body.body--lock-scroll #root { overflow: hidden; }
   place-items: center;
   cursor: pointer;
 }
-.drawer-tab img { width: 65px; height: 65spx; }
+.drawer-tab img { width: 55px; height: 55px; }
 
 .drawer-tab.is-open {
   /* When open, “dock” to the drawer’s right edge */
