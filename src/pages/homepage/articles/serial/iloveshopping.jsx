@@ -42,6 +42,7 @@ function RouteComponent() {
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
   }, []);
+  
 
   const cerealImages = [
     "https://github.com/indigomagazine/website_images/blob/main/SERIAL%20PHOTOS/group%201/BF5T7721.jpg?raw=true",
