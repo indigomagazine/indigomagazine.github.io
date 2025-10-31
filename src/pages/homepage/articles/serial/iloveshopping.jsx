@@ -227,8 +227,7 @@ export default function Article() {
             spoons like size{" "}
             <span style={{ fontFamily: "Times New Roman, serif" }}>0</span>'s i
             like silver spoon fun.
-            <br></br>i like consuming and eating and shopping and fucking like
-            no one else.
+            <br></br>i like consuming and eating and shopping like no one else.
             <br></br>
             liking is a lifestyle, love is…
             <br></br>
