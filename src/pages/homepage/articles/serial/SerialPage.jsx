@@ -23,6 +23,19 @@ const items = [
     // gridPosL optional: "center center",
   },
 
+  {
+    id: "article-2",
+    title: "A Number Out of Place ",
+    description: "By: Nicole C. ",
+    tags: ["MATRIX", "NOVEMBER"],
+    // Replace with your local asset paths or URLs
+    image: "../../legacy/article photos/anumberoutofplace/serial poster (text).png",
+    // Optional: imageGird for grid view (else uses `image`)
+    to: "/articles/serial/anumberoutofplace", // path to article
+    coverPos: " left 25% top 10%",
+    // gridPosL optional: "center center",
+  },
+
   /* Coming soon item*/
   {
     id: "commingSoon",

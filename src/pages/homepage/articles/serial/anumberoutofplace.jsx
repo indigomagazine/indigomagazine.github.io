@@ -18,6 +18,7 @@ React.useEffect(() => {
   };
 }, []);
 
+
   React.useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
