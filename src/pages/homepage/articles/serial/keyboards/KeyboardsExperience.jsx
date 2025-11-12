@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./keyboards.module.css";
 import DialogueBox from "./DialogueBox";
 import ChoiceButtons from "./ChoiceButtons";
@@ -8,6 +8,9 @@ import { scenes, eyeColors } from "./storyFlow";
 import image1 from "../../../../../assets/serial photos/group 3/tentative final 1.png";
 import image2 from "../../../../../assets/serial photos/group 3/tentative final 2.1.png";
 import image3 from "../../../../../assets/serial photos/group 3/tentative final 2.2.png";
+
+// Import background music
+import backgroundMusic from "./audio/Yaka-anima (Sábila Orbe) - Creepy Tears.mp3";
 
 const images = {
   image1: image1,
@@ -28,8 +31,8 @@ const generateRandomText = (length = 200) => {
 
 export default function KeyboardsExperience() {
   const [currentScene, setCurrentScene] = useState("intro");
-  const [username, setUsername] = useState("user");
-  const [eyeColor, setEyeColor] = useState("blue");
+  const [username, setUsername] = useState("");
+  const [eyeColor, setEyeColor] = useState("");
   const [showUserInput, setShowUserInput] = useState(true);
   const [showLoading, setShowLoading] = useState(false);
   const [showLovePrompt, setShowLovePrompt] = useState(false);
@@ -37,6 +40,8 @@ export default function KeyboardsExperience() {
   const [loveInput, setLoveInput] = useState("");
   const [isError, setIsError] = useState(false);
   const [errorShake, setErrorShake] = useState(false);
+  const [usernameError, setUsernameError] = useState(false);
+  const [usernameErrorShake, setUsernameErrorShake] = useState(false);
   const [isShuttingDown, setIsShuttingDown] = useState(false);
   const [showRestart, setShowRestart] = useState(false);
   const [screenFlashing, setScreenFlashing] = useState(false);
@@ -45,17 +50,64 @@ export default function KeyboardsExperience() {
   const [loadingGlitch, setLoadingGlitch] = useState(false);
   const [currentShutdownImage, setCurrentShutdownImage] = useState(null);
   const [imageFading, setImageFading] = useState(false);
+  const [showPoem, setShowPoem] = useState(false);
+  
+  // Audio ref for background music
+  const audioRef = useRef(null);
+
+  // Function to start audio playback
+  const startAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.3;
+      audioRef.current.loop = true;
+      
+      const playPromise = audioRef.current.play();
+      
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            console.log("Background music started");
+          })
+          .catch((error) => {
+            console.log("Audio play failed:", error);
+          });
+      }
+    }
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      startAudio();
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+    };
+  }, []);
 
   // Handle username/eye color input
   const handleUsernameSubmit = (e) => {
     e.preventDefault();
-    if (username.trim()) {
+    if (username.trim() && eyeColor.trim()) {
+      startAudio();
       triggerGlitch();
       setTimeout(() => {
         setShowUserInput(false);
         setShowLoading(true);
         startLoadingSequence();
       }, 300);
+    } else {
+      // Show error if validation fails
+      setUsernameError(true);
+      setUsernameErrorShake(true);
+      setTimeout(() => {
+        setUsernameErrorShake(false);
+        setUsernameError(false);
+      }, 1500);
     }
   };
 
@@ -132,6 +184,9 @@ export default function KeyboardsExperience() {
   // Handle shutdown sequence
   const triggerShutdown = () => {
     setIsShuttingDown(true);
+    setShowPoem(false);
+    setShowRestart(false);
+    setCurrentShutdownImage(null);
 
     // Flash red 5 times (2.5 seconds total)
     setScreenFlashing(true);
@@ -147,15 +202,23 @@ export default function KeyboardsExperience() {
     }, 2500);
   };
 
+  const startPoemSequence = () => {
+    setShowPoem(true);
+    // Show restart button after text scrolls off screen (around 90% of animation)
+    setTimeout(() => {
+      setShowRestart(true);
+    }, 58500); // 58.5 seconds (90% of 65s animation)
+  };
+
   // Show images in sequence
   const showImageSequence = () => {
-    const images = ["image1", "image2", "image3"];
+    const shutdownImageOrder = ["image1", "image2", "image3"];
     let currentIndex = 0;
 
     const showNextImage = () => {
-      if (currentIndex < images.length) {
+      if (currentIndex < shutdownImageOrder.length) {
         // Fade in image
-        setCurrentShutdownImage(images[currentIndex]);
+        setCurrentShutdownImage(shutdownImageOrder[currentIndex]);
         setImageFading(true);
 
         setTimeout(() => {
@@ -178,10 +241,10 @@ export default function KeyboardsExperience() {
           }, 2000); // Display duration
         }, 1500); // Fade in duration
       } else {
-        // All images shown, show restart button
+        // All images shown, transition to poem sequence
         setTimeout(() => {
-          setShowRestart(true);
-        }, 500);
+          startPoemSequence();
+        }, 200);
       }
     };
 
@@ -197,12 +260,13 @@ export default function KeyboardsExperience() {
     setScreenPoweredOff(false);
     setCurrentShutdownImage(null);
     setImageFading(false);
+    setShowPoem(false);
     setShowUserInput(true);
     setShowLovePrompt(false);
     setCurrentScene("intro");
     setLoveInput("");
-    setUsername("user");
-    setEyeColor("blue");
+    setUsername("");
+    setEyeColor("");
     triggerGlitch();
   };
 
@@ -222,29 +286,125 @@ export default function KeyboardsExperience() {
       .replace(/{eye_color}/g, eyeColor);
   };
 
-  // Shutdown screen
-  if (isShuttingDown) {
-    if (showRestart) {
-      return (
-        <div className={styles.shutdownContainer}>
-          <button className={styles.restartButton} onClick={handleRestart}>
-            Restart?
-          </button>
-        </div>
-      );
-    }
+  // Render content - audio element is included once at the top level
+  const renderContent = () => {
+    // Shutdown screen
+    if (isShuttingDown) {
+      if (showRestart) {
+        return (
+          <div className={styles.shutdownContainer}>
+            <button className={styles.restartButton} onClick={handleRestart}>
+              Restart?
+            </button>
+          </div>
+        );
+      }
 
-    // Show image sequence
-    if (currentShutdownImage) {
-      return (
-        <div className={styles.shutdownContainer}>
-          <img
-            src={images[currentShutdownImage]}
-            alt="Memory"
-            className={`${styles.shutdownImage} ${
-              !imageFading ? styles.shutdownImageVisible : ""
-            }`}
-          />
+      // Show image sequence
+      if (currentShutdownImage) {
+        return (
+          <div className={styles.shutdownContainer}>
+            <img
+              src={images[currentShutdownImage]}
+              alt="Memory"
+              className={`${styles.shutdownImage} ${
+                !imageFading ? styles.shutdownImageVisible : ""
+              }`}
+            />
+          </div>
+        );
+      }
+
+      if (showPoem) {
+        return (
+          <div className={styles.shutdownContainer}>
+          <div className={styles.poemScrollWrapper}>
+            <div className={styles.poemScrollContent}>
+              <div className={styles.poemSpread}>
+                <div className={styles.poemColumn}>
+                  <div className={styles.poemSection}>
+                    <div className={styles.poemSectionTitle}>ACETYLCHOLINE.</div>
+                    <p className={styles.poemLine}>Hand moves to meet your waist.</p>
+                    <p className={styles.poemLine}>Lips move to catch your lips.</p>
+                    <p className={styles.poemLine}>I move to you.</p>
+                  </div>
+
+                  <div className={styles.poemSection}>
+                    <div className={styles.poemSectionTitle}>SEROTONIN.</div>
+                    <p className={styles.poemLine}>Joy when I see you smile.</p>
+                    <p className={styles.poemLine}>It&apos;s as simple as that.</p>
+                    <p className={styles.poemLine}>I feel with you.</p>
+                  </div>
+
+                  <div className={styles.poemSection}>
+                    <div className={styles.poemSectionTitle}>OXYTOCIN.</div>
+                    <p className={styles.poemLine}>I love you.</p>
+                    <p className={styles.poemLine}>Do you?</p>
+                    <p className={styles.poemLine}>I do.</p>
+                  </div>
+
+                  <div className={styles.poemSection}>
+                    <div className={styles.poemSectionTitle}>ADRENALINE.</div>
+                    <p className={styles.poemLine}>I see you across the room.</p>
+                    <p className={styles.poemLine}>Your green eyes captivate me.</p>
+                    <p className={styles.poemLine}>Your green eyes captivate me.</p>
+                  </div>
+                </div>
+
+                <div className={styles.poemCenterNote}>
+                  <p>Have I already said that?</p>
+                  <p>Sorry. I get so lost in you.</p>
+                </div>
+
+                <div className={`${styles.poemColumn} ${styles.poemColumnRight}`}>
+                  <div className={styles.poemSection}>
+                    <div className={styles.poemSectionTitle}>ACETYLCHOLINE.</div>
+                    <p className={styles.poemLine}>My hands won&apos;t move to you.</p>
+                    <p className={styles.poemLine}>
+                      My lips haven&apos;t met yours in weeks.
+                    </p>
+                    <p className={styles.poemLine}>You move from me.</p>
+                  </div>
+
+                  <div className={styles.poemSection}>
+                    <div className={styles.poemSectionTitle}>SEROTONIN.</div>
+                    <p className={styles.poemLine}>Numbness when I see you smile.</p>
+                    <p className={styles.poemLine}>It&apos;s not so simple anymore.</p>
+                    <p className={styles.poemLine}>You feel in spite of me.</p>
+                  </div>
+
+                  <div className={styles.poemSection}>
+                    <div className={styles.poemSectionTitle}>OXYTOCIN.</div>
+                    <p className={styles.poemLine}>I hate you.</p>
+                    <p className={styles.poemLine}>Do you?</p>
+                    <p className={styles.poemLine}>You don&apos;t.</p>
+                  </div>
+
+                  <div className={styles.poemSection}>
+                    <div className={styles.poemSectionTitle}>ADRENALINE.</div>
+                    <p className={styles.poemLine}>
+                      I wish you were across the fucking room.
+                    </p>
+                    <p className={styles.poemLine}>My eyes are seeing red.</p>
+                    <p className={styles.poemLine}>My eyes are seeing red.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.poemBottomNote}>
+                <p>Have you already left me?</p>
+                <p>Tell me you love me again.</p>
+              </div>
+
+              <div className={styles.poemAuthor}>
+                Written by: Manogna Bedhu
+              </div>
+
+              <div className={styles.musicCredit}>
+                Music: "Creepy Tears" by Yaka-anima (Sábila Orbe) | Source: Free Music Archive | License: CC BY-NC-ND
+              </div>
+            </div>
+          </div>
         </div>
       );
     }
@@ -255,11 +415,11 @@ export default function KeyboardsExperience() {
           screenPoweredOff ? styles.containerFadeOut : ""
         }`}
       >
-        <div
-          className={`${styles.textLinesContainer} ${
-            screenFlashing ? styles.textLinesFlashing : ""
-          }`}
-        >
+          <div
+            className={`${styles.textLinesContainer} ${
+              screenFlashing ? styles.textLinesFlashing : ""
+            }`}
+          >
           <div className={styles.textLine}>{generateRandomText(150)}</div>
           <div className={styles.textLine}>{generateRandomText(150)}</div>
           <div className={styles.textLine}>{generateRandomText(150)}</div>
@@ -298,13 +458,219 @@ export default function KeyboardsExperience() {
         </div>
       </div>
     );
-  }
+    }
 
-  // Username/eye color input screen
-  if (showUserInput) {
+    // Username/eye color input screen
+    if (showUserInput) {
+      return (
+        <div className={styles.container}>
+          <div className={styles.textLinesContainer}>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+          </div>
+
+          <div className={`${styles.screen} ${usernameErrorShake ? styles.shake : ""}`}>
+            <div className={styles.content}>
+              <div className={styles.asciiBorder}>
+                ⌈ ═══════════════════════════════ ⌉
+              </div>
+
+              <DialogueBox
+                text={usernameError ? "PLEASE COMPLETE ALL FIELDS" : "SYSTEM INITIALIZATION..."}
+                type="code"
+                showCursor={true}
+              />
+
+              <form onSubmit={handleUsernameSubmit}>
+                <div className={styles.inputContainer}>
+                  <input
+                    type="text"
+                    className={`${styles.textInput} ${usernameError ? styles.errorInput : ""}`}
+                    placeholder="Enter username..."
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    maxLength={20}
+                    autoFocus
+                    disabled={usernameError}
+                  />
+                </div>
+
+                <div className={styles.inputContainer}>
+                  <select
+                    className={`${styles.textInput} ${usernameError ? styles.errorInput : ""}`}
+                    value={eyeColor}
+                    onChange={(e) => setEyeColor(e.target.value)}
+                    disabled={usernameError}
+                  >
+                    <option value="">Select eye color...</option>
+                    {eyeColors.map((color) => (
+                      <option key={color} value={color}>
+                        Eye color: {color}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <ChoiceButtons
+                  choices={[{ text: "INITIALIZE", value: "submit" }]}
+                  onChoice={() =>
+                    handleUsernameSubmit({ preventDefault: () => {} })
+                  }
+                />
+              </form>
+
+              <div className={styles.asciiBorder}>
+                ⌊ ═══════════════════════════════ ⌋
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Loading screen
+    if (showLoading) {
+      return (
+        <div className={styles.container}>
+          <div className={styles.textLinesContainer}>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+          </div>
+
+          <div
+            className={`${styles.screen} ${loadingGlitch ? styles.glitch : ""}`}
+          >
+            <div className={styles.content}>
+              <div className={styles.asciiBorder}>
+                ⌈ ═══════════════════════════════ ⌉
+              </div>
+
+              <div className={styles.loadingContainer}>
+                <div className={styles.loadingTitle}>LOADING ILOVEYOU.EXE...</div>
+
+                <div
+                  className={`${styles.loadingBarContainer} ${
+                    loadingGlitch ? styles.loadingBarGlitch : ""
+                  }`}
+                >
+                  {Array.from({ length: 20 }).map((_, index) => {
+                    const blockThreshold = (index + 1) * 5;
+                    const isFilled = loadingProgress >= blockThreshold;
+                    return (
+                      <div
+                        key={index}
+                        className={
+                          isFilled
+                            ? styles.loadingBlock
+                            : styles.loadingBlockEmpty
+                        }
+                      />
+                    );
+                  })}
+                </div>
+
+                <div className={styles.loadingPercent}>
+                  {Math.floor(loadingProgress)}%
+                </div>
+              </div>
+
+              <div className={styles.asciiBorder}>
+                ⌊ ═══════════════════════════════ ⌋
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Love input prompt screen
+    if (showLovePrompt) {
+      return (
+        <div className={styles.container}>
+          <div className={styles.textLinesContainer}>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+            <div className={styles.textLine}>{generateRandomText(150)}</div>
+          </div>
+
+          <div className={`${styles.screen} ${errorShake ? styles.shake : ""}`}>
+            <div className={styles.content}>
+              <div className={styles.asciiBorder}>
+                ⌈ ═══════════════════════════════ ⌉
+              </div>
+
+              <div
+                className={`${styles.promptText} ${isError ? styles.error : ""}`}
+              >
+                {isError ? "TRY AGAIN" : "TYPE I LOVE YOU"}
+              </div>
+
+              <form onSubmit={handleLoveSubmit}>
+                <div className={styles.inputContainer}>
+                  <input
+                    type="text"
+                    className={`${styles.textInput} ${
+                      isError ? styles.errorInput : ""
+                    }`}
+                    placeholder=""
+                    value={loveInput}
+                    onChange={(e) => setLoveInput(e.target.value)}
+                    autoFocus
+                    disabled={isError}
+                  />
+                </div>
+              </form>
+
+              <div className={styles.asciiBorder}>
+                ⌊ ═══════════════════════════════ ⌋
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Main experience
     return (
       <div className={styles.container}>
-        {/* Background text lines */}
         <div className={styles.textLinesContainer}>
           <div className={styles.textLine}>{generateRandomText(150)}</div>
           <div className={styles.textLine}>{generateRandomText(150)}</div>
@@ -323,52 +689,29 @@ export default function KeyboardsExperience() {
           <div className={styles.textLine}>{generateRandomText(150)}</div>
         </div>
 
-        <div className={styles.screen}>
+        <div className={`${styles.screen} ${glitch ? styles.glitch : ""}`}>
           <div className={styles.content}>
             <div className={styles.asciiBorder}>
               ⌈ ═══════════════════════════════ ⌉
             </div>
 
             <DialogueBox
-              text="SYSTEM INITIALIZATION..."
-              type="code"
-              showCursor={true}
+              text={getProcessedText(scene.text)}
+              type={scene.type}
+              showCursor={false}
             />
 
-            <form onSubmit={handleUsernameSubmit}>
-              <div className={styles.inputContainer}>
-                <input
-                  type="text"
-                  className={styles.textInput}
-                  placeholder="Enter username..."
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  maxLength={20}
-                  autoFocus
+            {scene.image && images[scene.image] && (
+              <div className={styles.imageContainer}>
+                <img
+                  src={images[scene.image]}
+                  alt="Scene visual"
+                  className={styles.image}
                 />
               </div>
+            )}
 
-              <div className={styles.inputContainer}>
-                <select
-                  className={styles.textInput}
-                  value={eyeColor}
-                  onChange={(e) => setEyeColor(e.target.value)}
-                >
-                  {eyeColors.map((color) => (
-                    <option key={color} value={color}>
-                      Eye color: {color}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <ChoiceButtons
-                choices={[{ text: "INITIALIZE", value: "submit" }]}
-                onChoice={() =>
-                  handleUsernameSubmit({ preventDefault: () => {} })
-                }
-              />
-            </form>
+            <ChoiceButtons choices={scene.choices} onChoice={handleChoice} />
 
             <div className={styles.asciiBorder}>
               ⌊ ═══════════════════════════════ ⌋
@@ -377,188 +720,24 @@ export default function KeyboardsExperience() {
         </div>
       </div>
     );
-  }
+  };
 
-  // Loading screen
-  if (showLoading) {
-    return (
-      <div className={styles.container}>
-        {/* Background text lines */}
-        <div className={styles.textLinesContainer}>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-        </div>
-
-        <div
-          className={`${styles.screen} ${loadingGlitch ? styles.glitch : ""}`}
-        >
-          <div className={styles.content}>
-            <div className={styles.asciiBorder}>
-              ⌈ ═══════════════════════════════ ⌉
-            </div>
-
-            <div className={styles.loadingContainer}>
-              <div className={styles.loadingTitle}>LOADING ILOVEYOU.EXE...</div>
-
-              <div
-                className={`${styles.loadingBarContainer} ${
-                  loadingGlitch ? styles.loadingBarGlitch : ""
-                }`}
-              >
-                {Array.from({ length: 20 }).map((_, index) => {
-                  const blockThreshold = (index + 1) * 5; // Each block represents 5%
-                  const isFilled = loadingProgress >= blockThreshold;
-                  return (
-                    <div
-                      key={index}
-                      className={
-                        isFilled
-                          ? styles.loadingBlock
-                          : styles.loadingBlockEmpty
-                      }
-                    />
-                  );
-                })}
-              </div>
-
-              <div className={styles.loadingPercent}>
-                {Math.floor(loadingProgress)}%
-              </div>
-            </div>
-
-            <div className={styles.asciiBorder}>
-              ⌊ ═══════════════════════════════ ⌋
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Love input prompt screen
-  if (showLovePrompt) {
-    return (
-      <div className={styles.container}>
-        {/* Background text lines */}
-        <div className={styles.textLinesContainer}>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-          <div className={styles.textLine}>{generateRandomText(150)}</div>
-        </div>
-
-        <div className={`${styles.screen} ${errorShake ? styles.shake : ""}`}>
-          <div className={styles.content}>
-            <div className={styles.asciiBorder}>
-              ⌈ ═══════════════════════════════ ⌉
-            </div>
-
-            <div
-              className={`${styles.promptText} ${isError ? styles.error : ""}`}
-            >
-              {isError ? "TRY AGAIN" : "TYPE I LOVE YOU"}
-            </div>
-
-            <form onSubmit={handleLoveSubmit}>
-              <div className={styles.inputContainer}>
-                <input
-                  type="text"
-                  className={`${styles.textInput} ${
-                    isError ? styles.errorInput : ""
-                  }`}
-                  placeholder=""
-                  value={loveInput}
-                  onChange={(e) => setLoveInput(e.target.value)}
-                  autoFocus
-                  disabled={isError}
-                />
-              </div>
-            </form>
-
-            <div className={styles.asciiBorder}>
-              ⌊ ═══════════════════════════════ ⌋
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Main experience
   return (
-    <div className={styles.container}>
-      {/* Background text lines */}
-      <div className={styles.textLinesContainer}>
-        <div className={styles.textLine}>{generateRandomText(150)}</div>
-        <div className={styles.textLine}>{generateRandomText(150)}</div>
-        <div className={styles.textLine}>{generateRandomText(150)}</div>
-        <div className={styles.textLine}>{generateRandomText(150)}</div>
-        <div className={styles.textLine}>{generateRandomText(150)}</div>
-        <div className={styles.textLine}>{generateRandomText(150)}</div>
-        <div className={styles.textLine}>{generateRandomText(150)}</div>
-        <div className={styles.textLine}>{generateRandomText(150)}</div>
-        <div className={styles.textLine}>{generateRandomText(150)}</div>
-        <div className={styles.textLine}>{generateRandomText(150)}</div>
-        <div className={styles.textLine}>{generateRandomText(150)}</div>
-        <div className={styles.textLine}>{generateRandomText(150)}</div>
-        <div className={styles.textLine}>{generateRandomText(150)}</div>
-        <div className={styles.textLine}>{generateRandomText(150)}</div>
-        <div className={styles.textLine}>{generateRandomText(150)}</div>
-      </div>
-
-      <div className={`${styles.screen} ${glitch ? styles.glitch : ""}`}>
-        <div className={styles.content}>
-          <div className={styles.asciiBorder}>
-            ⌈ ═══════════════════════════════ ⌉
-          </div>
-
-          <DialogueBox
-            text={getProcessedText(scene.text)}
-            type={scene.type}
-            showCursor={false}
-          />
-
-          {scene.image && images[scene.image] && (
-            <div className={styles.imageContainer}>
-              <img
-                src={images[scene.image]}
-                alt="Scene visual"
-                className={styles.image}
-              />
-            </div>
-          )}
-
-          <ChoiceButtons choices={scene.choices} onChoice={handleChoice} />
-
-          <div className={styles.asciiBorder}>
-            ⌊ ═══════════════════════════════ ⌋
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      <audio 
+        ref={audioRef} 
+        src={backgroundMusic}
+        preload="auto"
+        onLoadedData={() => {
+          // Try to play when audio is loaded
+          if (audioRef.current) {
+            audioRef.current.play().catch(() => {
+              // Autoplay blocked, will play on user interaction
+            });
+          }
+        }}
+      />
+      {renderContent()}
+    </>
   );
 }
