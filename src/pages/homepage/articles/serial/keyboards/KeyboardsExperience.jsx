@@ -428,8 +428,12 @@ export default function KeyboardsExperience() {
                 ))}
               </div>
 
-              <div className={styles.poemAuthor}>
-                Written by: Manogna Bedhu
+              <div className={styles.poemCredits}>
+                <div>Written by: Manogna Bedhu</div>
+                <div>Graphics: Sreya Iyer, Sahasra</div>
+                <div>Web Development: Ethan Scherwitz</div>
+                <div>Photography: Sruja Peruka</div>
+                <div>Behind the Scenes: Dorlinda</div>
               </div>
 
               <div className={styles.musicCredit}>

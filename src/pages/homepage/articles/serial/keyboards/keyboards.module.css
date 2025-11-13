@@ -633,13 +633,17 @@
   animation: poemScroll 65s linear forwards;
 }
 
+.poemScrollContent > .poemSpread {
+  margin-bottom: -80px;
+}
+
 .poemSpread {
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 120px;
-  min-height: 620px;
+  min-height: 560px;
 }
 
 .poemColumn {
@@ -677,13 +681,17 @@
 .poemCenterNote {
   position: absolute;
   left: 50%;
-  top: 52%;
+  top: 51%;
   transform: translate(-50%, -50%);
   text-align: center;
   font-size: 16px;
   line-height: 1.7;
   font-style: italic;
   max-width: 220px;
+}
+
+.poemCenterNote p {
+  white-space: nowrap;
 }
 
 .poemBottomNote {
@@ -693,7 +701,7 @@
   font-style: italic;
   max-width: 300px;
   margin: 0 auto;
-  padding-top: 60px;
+  padding-top: 0px;
 }
 
 .poemBottomNote p:first-child {
@@ -706,8 +714,8 @@
   gap: 20px;
   width: 80%;
   max-width: 1200px;
-  margin: 80px auto;
-  padding-top: 60px;
+  margin: 40px auto;
+  padding-top: 20px;
 }
 
 .poemEditorialName {
@@ -716,7 +724,7 @@
   max-width: 600px;
   height: auto;
   object-fit: contain;
-  margin: 0 auto 40px;
+  margin: 0 auto 160px;
   opacity: 0.9;
   transition: opacity 0.3s ease;
 }
@@ -756,13 +764,21 @@
   opacity: 1;
 }
 
-.poemAuthor {
+.poemCredits {
   text-align: center;
   font-size: 24px;
   font-weight: 600;
   color: #f5f5f5;
   margin: 60px auto 0;
   padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 1;
+}
+
+.poemCredits > div {
+  line-height: 1;
 }
 
 .musicCredit {
@@ -777,7 +793,7 @@
 
 @keyframes poemScroll {
   0% {
-    transform: translateY(50%);
+    transform: translateY(57%);
     opacity: 0;
   }
 
