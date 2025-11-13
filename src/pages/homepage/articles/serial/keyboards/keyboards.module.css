@@ -82,6 +82,7 @@
   padding: 30px;
   position: relative;
   z-index: 10;
+  overflow: visible;
 }
 
 /* Blue glow on screen */
@@ -128,6 +129,7 @@
 .content {
   position: relative;
   z-index: 20;
+  overflow: visible;
 }
 
 /* Animated moving text lines */
@@ -218,6 +220,7 @@
   background: rgba(0, 20, 40, 0.5);
   border: 1px solid #00d4ff;
   box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+  overflow: visible;
 }
 
 /* Center error text vertically and horizontally */
@@ -311,6 +314,14 @@
   width: 100%;
   box-sizing: border-box;
   box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure select dropdown appears correctly */
+select.textInput {
+  position: relative;
+  z-index: 10;
 }
 
 .textInput:focus {

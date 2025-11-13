@@ -224,7 +224,9 @@ export default function KeyboardsExperience() {
     // Check if mobile (screen width <= 768px) and adjust timing accordingly
     const isMobile = window.innerWidth <= 768;
     const animationDuration = isMobile ? 90000 : 65000; // 90s mobile, 65s desktop
-    const restartDelay = Math.floor(animationDuration * 0.95); // 95% of animation duration
+    const restartDelay = isMobile 
+      ? Math.floor(animationDuration * 0.90) - 5000 // 90% minus 5 seconds for mobile
+      : Math.floor(animationDuration * 0.90) - 5000; // 90% minus 5 seconds for desktop
     
     setTimeout(() => {
       setShowRestart(true);
