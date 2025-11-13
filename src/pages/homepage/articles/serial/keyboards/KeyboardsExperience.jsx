@@ -8,6 +8,14 @@ import { scenes, eyeColors } from "./storyFlow";
 import image1 from "../../../../../assets/serial photos/group 3/tentative final 1.png";
 import image2 from "../../../../../assets/serial photos/group 3/tentative final 2.1.png";
 import image3 from "../../../../../assets/serial photos/group 3/tentative final 2.2.png";
+import image4 from "../../../../../assets/serial photos/group 3/both models.png";
+import image5 from "../../../../../assets/serial photos/group 3/chrome.png";
+import image6 from "../../../../../assets/serial photos/group 3/nolan.png";
+import image7 from "../../../../../assets/serial photos/group 3/keyboard.png";
+import image8 from "../../../../../assets/serial photos/group 3/nolan 2.png";
+import image9 from "../../../../../assets/serial photos/group 3/tomiwa 1.png";
+import image10 from "../../../../../assets/serial photos/group 3/tomiwa 2.png";
+import image11 from "../../../../../assets/serial photos/group 3/anotha one.png";
 
 // Import background music
 import backgroundMusic from "./audio/Yaka-anima (Sábila Orbe) - Creepy Tears.mp3";
@@ -16,6 +24,14 @@ const images = {
   image1: image1,
   image2: image2,
   image3: image3,
+  image4: image4,
+  image5: image5,
+  image6: image6,
+  image7: image7,
+  image8: image8,
+  image9: image9,
+  image10: image10,
+  image11: image11,
 };
 
 // Generate random character string
@@ -394,6 +410,22 @@ export default function KeyboardsExperience() {
               <div className={styles.poemBottomNote}>
                 <p>Have you already left me?</p>
                 <p>Tell me you love me again.</p>
+              </div>
+
+              <div className={styles.poemImageGallery}>
+                <img
+                  src={images.image5}
+                  alt="Editorial Name"
+                  className={styles.poemEditorialName}
+                />
+                {["image4", "image11", "image6", "image7", "image8", "image9", "image10"].map((imgKey) => (
+                  <img
+                    key={imgKey}
+                    src={images[imgKey]}
+                    alt="Memory"
+                    className={styles.poemGalleryImage}
+                  />
+                ))}
               </div>
 
               <div className={styles.poemAuthor}>

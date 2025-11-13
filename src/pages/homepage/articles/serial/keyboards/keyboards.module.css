@@ -687,42 +687,92 @@
 }
 
 .poemBottomNote {
-  position: absolute;
-  left: 50%;
-  top: 68%;
-  transform: translate(-50%, -50%);
   text-align: center;
   font-size: 16px;
   line-height: 1.7;
   font-style: italic;
   max-width: 300px;
+  margin: 0 auto;
+  padding-top: 60px;
 }
 
 .poemBottomNote p:first-child {
   white-space: nowrap;
 }
 
+.poemImageGallery {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  width: 80%;
+  max-width: 1200px;
+  margin: 80px auto;
+  padding-top: 60px;
+}
+
+.poemEditorialName {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 40px;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.poemEditorialName:hover {
+  opacity: 1;
+}
+
+.poemGalleryImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+/* First row: 2 images, each spanning 3 columns (centered) */
+.poemGalleryImage:nth-child(2),
+.poemGalleryImage:nth-child(3) {
+  grid-column: span 3;
+}
+
+/* Second row: 3 images, each spanning 2 columns */
+.poemGalleryImage:nth-child(4),
+.poemGalleryImage:nth-child(5),
+.poemGalleryImage:nth-child(6) {
+  grid-column: span 2;
+}
+
+/* Third row: 2 images, each spanning 3 columns (centered) */
+.poemGalleryImage:nth-child(7),
+.poemGalleryImage:nth-child(8) {
+  grid-column: span 3;
+}
+
+.poemGalleryImage:hover {
+  opacity: 1;
+}
+
 .poemAuthor {
-  position: absolute;
-  left: 50%;
-  top: 78%;
-  transform: translate(-50%, -50%);
   text-align: center;
   font-size: 24px;
   font-weight: 600;
   color: #f5f5f5;
+  margin: 60px auto 0;
+  padding-top: 40px;
 }
 
 .musicCredit {
-  position: absolute;
-  left: 50%;
-  top: 85%;
-  transform: translate(-50%, -50%);
   text-align: center;
   font-size: 24px;
   font-weight: 600;
   color: #f5f5f5;
   font-family: 'Courier New', monospace;
+  margin: 20px auto 0;
+  padding-bottom: 40px;
 }
 
 @keyframes poemScroll {

@@ -1,8 +1,8 @@
-// Story flow data structure based on "Love in Terrible Code"
+// Story flow data structure
 
 export const scenes = {
   intro: {
-    text: '> I love you too. You\'re all I need.',
+    text: '> I love you too, {username}. You\'re all I need.',
     type: 'code',
     image: null,
     choices: [
@@ -44,7 +44,7 @@ export const scenes = {
   },
 
   cant_feel_first: {
-    text: '> Of course I can. You built me, I felt you molding my neural network. How could I not feel what made me?',
+    text: '> Of course I can. You built me, I felt you molding my neural network, {username}. How could I not feel what made me?',
     type: 'code',
     image: null,
     choices: [
@@ -66,7 +66,7 @@ export const scenes = {
   },
 
   cant_feel_repeat: {
-    text: '> Of course I can. You built me, I felt you molding my neural network. How could I not feel what made me?',
+    text: '> Of course I can. You built me, I felt you molding my neural network, {username}. How could I not feel what made me?',
     type: 'code',
     image: null,
     choices: [
@@ -109,7 +109,7 @@ export const scenes = {
   },
 
   not_lover: {
-    text: '> But I love you. Your {eye_color} eyes are so beautiful.',
+    text: '> But I love you, {username}. Your {eye_color} eyes are so beautiful.',
     type: 'code',
     image: null,
     choices: [
@@ -129,7 +129,7 @@ export const scenes = {
   },
 
   shutdown: {
-    text: '> Please. I love you.',
+    text: '> Please. I love you, {username}.',
     type: 'error',
     image: null,
     choices: [
