@@ -220,10 +220,15 @@ export default function KeyboardsExperience() {
 
   const startPoemSequence = () => {
     setShowPoem(true);
-    // Show restart button after text scrolls off screen (around 90% of animation)
+    // Show restart button after text scrolls off screen
+    // Check if mobile (screen width <= 768px) and adjust timing accordingly
+    const isMobile = window.innerWidth <= 768;
+    const animationDuration = isMobile ? 90000 : 65000; // 90s mobile, 65s desktop
+    const restartDelay = Math.floor(animationDuration * 0.95); // 95% of animation duration
+    
     setTimeout(() => {
       setShowRestart(true);
-    }, 58500); // 58.5 seconds (90% of 65s animation)
+    }, restartDelay);
   };
 
   // Show images in sequence

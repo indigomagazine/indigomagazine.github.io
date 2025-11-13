@@ -201,6 +201,13 @@
   text-shadow: 
     0 0 5px rgba(0, 212, 255, 0.8),
     0 0 10px rgba(0, 128, 255, 0.6);
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+/* Add spacing for bottom border after content (form inputs, choice buttons, etc.) */
+.content > .asciiBorder:last-of-type {
+  margin-top: 30px;
 }
 
 /* Dialogue Box */
@@ -211,6 +218,14 @@
   background: rgba(0, 20, 40, 0.5);
   border: 1px solid #00d4ff;
   box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+}
+
+/* Center error text vertically and horizontally */
+.dialogueBox .errorText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px;
 }
 
 .dialogueText {
@@ -230,6 +245,7 @@
 .errorText {
   color: #ff0066;
   font-family: 'Courier New', monospace;
+  text-align: center;
 }
 
 /* Choice Buttons Container */
@@ -704,6 +720,10 @@
   padding-top: 0px;
 }
 
+.poemBottomNote p {
+  margin: 0;
+}
+
 .poemBottomNote p:first-child {
   white-space: nowrap;
 }
@@ -797,7 +817,7 @@
     opacity: 0;
   }
 
-  1% {
+  0.5% {
     opacity: 1;
   }
 
@@ -844,12 +864,40 @@
   .poemScrollContent {
     gap: 80px;
     padding: 100vh 5% 100vh;
+    animation: poemScrollMobile 90s linear forwards; /* Custom animation for mobile */
+  }
+
+  /* Mobile-specific animation that starts earlier and scrolls further */
+  @keyframes poemScrollMobile {
+    0% {
+      transform: translateY(50%);
+      opacity: 0;
+    }
+
+    0.5% {
+      opacity: 1;
+    }
+
+    95% {
+      transform: translateY(-70%);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateY(-75%);
+      opacity: 0;
+    }
   }
 
   .poemSpread {
     flex-direction: column;
     align-items: center;
-    gap: 60px;
+    gap: 30px; /* Reduced spacing between center note and columns on mobile */
+  }
+
+  /* Reduce spacing after center note on mobile */
+  .poemCenterNote {
+    margin-bottom: 20px;
   }
 
   .poemColumn,
@@ -870,6 +918,49 @@
     position: static;
     transform: none;
     max-width: none;
+  }
+
+  .asciiBorder {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  /* Add top margin to bottom note on mobile */
+  .poemBottomNote {
+    margin-top: 40px;
+  }
+
+  /* Ensure prompt text is centered on mobile */
+  .promptText {
+    text-align: center;
+  }
+
+  /* Change image gallery to single column (1 by 1) on mobile */
+  .poemImageGallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+    margin: 40px auto;
+    padding: 0;
+  }
+
+  .poemImageGallery img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .poemEditorialName {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 20px;
+    display: block;
   }
 }
 
