@@ -105,6 +105,16 @@ export default function KeyboardsExperience() {
     };
   }, []);
 
+  // Preload shutdown sequence images so they're ready when needed
+  useEffect(() => {
+    const shutdownImages = [images.image1, images.image2, images.image3];
+    
+    shutdownImages.forEach((imageSrc) => {
+      const img = new Image();
+      img.src = imageSrc;
+    });
+  }, []);
+
   // Handle username/eye color input
   const handleUsernameSubmit = (e) => {
     e.preventDefault();
@@ -437,10 +447,10 @@ export default function KeyboardsExperience() {
 
               <div className={styles.poemCredits}>
                 <div>Written by: Manogna Bedhu</div>
-                <div>Graphics: Sreya Iyer, Sahasra</div>
+                <div>Graphics: Sreya Iyer, Sahasra, Manjiri</div>
                 <div>Web Development: Ethan Scherwitz</div>
                 <div>Photography: Sruja Peruka</div>
-                <div>Behind the Scenes: Dorlinda</div>
+                <div>Behind the Scenes: Dorlinda Hickerson</div>
               </div>
 
               <div className={styles.musicCredit}>
