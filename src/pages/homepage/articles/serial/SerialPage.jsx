@@ -3,6 +3,7 @@ import React from 'react';
 import { useEffect,useRef, forwardRef } from 'react';
 import { useState, useMemo} from "react";
 import './serial.css';
+import keyboardsImage from "../../../../assets/serial photos/group 3/nolan.png";
 
 
 
@@ -33,6 +34,19 @@ const items = [
     // Optional: imageGird for grid view (else uses `image`)
     to: "/articles/serial/anumberoutofplace", // path to article
     coverPos: " left 25% top 10%",
+    // gridPosL optional: "center center",
+  },
+
+  {
+    id: "article-3",
+    title: "Keyboards",
+    description: "By: Manogna Bedhu",
+    tags: ["INTERACTIVE", "NOVEMBER"],
+    // Replace with your local asset paths or URLs
+    image: keyboardsImage,
+    // Optional: imageGird for grid view (else uses `image`)
+    to: "/articles/serial/keyboards", // path to article
+    coverPos: "center center",
     // gridPosL optional: "center center",
   },
 
