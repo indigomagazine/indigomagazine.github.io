@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SerialRouteImport } from './routes/serial'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ArticlesSerialYoucantwisttimeRouteImport } from './routes/articles/serial/youcantwisttime'
 import { Route as ArticlesSerialKeyboardsRouteImport } from './routes/articles/serial/keyboards'
 import { Route as ArticlesSerialIloveshoppingRouteImport } from './routes/articles/serial/iloveshopping'
 import { Route as ArticlesSerialCovetRouteImport } from './routes/articles/serial/covet'
@@ -26,6 +27,12 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArticlesSerialYoucantwisttimeRoute =
+  ArticlesSerialYoucantwisttimeRouteImport.update({
+    id: '/articles/serial/youcantwisttime',
+    path: '/articles/serial/youcantwisttime',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ArticlesSerialKeyboardsRoute = ArticlesSerialKeyboardsRouteImport.update({
   id: '/articles/serial/keyboards',
   path: '/articles/serial/keyboards',
@@ -56,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/articles/serial/covet': typeof ArticlesSerialCovetRoute
   '/articles/serial/iloveshopping': typeof ArticlesSerialIloveshoppingRoute
   '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
+  '/articles/serial/youcantwisttime': typeof ArticlesSerialYoucantwisttimeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -64,6 +72,7 @@ export interface FileRoutesByTo {
   '/articles/serial/covet': typeof ArticlesSerialCovetRoute
   '/articles/serial/iloveshopping': typeof ArticlesSerialIloveshoppingRoute
   '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
+  '/articles/serial/youcantwisttime': typeof ArticlesSerialYoucantwisttimeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -73,6 +82,7 @@ export interface FileRoutesById {
   '/articles/serial/covet': typeof ArticlesSerialCovetRoute
   '/articles/serial/iloveshopping': typeof ArticlesSerialIloveshoppingRoute
   '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
+  '/articles/serial/youcantwisttime': typeof ArticlesSerialYoucantwisttimeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -83,6 +93,7 @@ export interface FileRouteTypes {
     | '/articles/serial/covet'
     | '/articles/serial/iloveshopping'
     | '/articles/serial/keyboards'
+    | '/articles/serial/youcantwisttime'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -91,6 +102,7 @@ export interface FileRouteTypes {
     | '/articles/serial/covet'
     | '/articles/serial/iloveshopping'
     | '/articles/serial/keyboards'
+    | '/articles/serial/youcantwisttime'
   id:
     | '__root__'
     | '/'
@@ -99,6 +111,7 @@ export interface FileRouteTypes {
     | '/articles/serial/covet'
     | '/articles/serial/iloveshopping'
     | '/articles/serial/keyboards'
+    | '/articles/serial/youcantwisttime'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -108,6 +121,7 @@ export interface RootRouteChildren {
   ArticlesSerialCovetRoute: typeof ArticlesSerialCovetRoute
   ArticlesSerialIloveshoppingRoute: typeof ArticlesSerialIloveshoppingRoute
   ArticlesSerialKeyboardsRoute: typeof ArticlesSerialKeyboardsRoute
+  ArticlesSerialYoucantwisttimeRoute: typeof ArticlesSerialYoucantwisttimeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -124,6 +138,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/articles/serial/youcantwisttime': {
+      id: '/articles/serial/youcantwisttime'
+      path: '/articles/serial/youcantwisttime'
+      fullPath: '/articles/serial/youcantwisttime'
+      preLoaderRoute: typeof ArticlesSerialYoucantwisttimeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/articles/serial/keyboards': {
@@ -164,6 +185,7 @@ const rootRouteChildren: RootRouteChildren = {
   ArticlesSerialCovetRoute: ArticlesSerialCovetRoute,
   ArticlesSerialIloveshoppingRoute: ArticlesSerialIloveshoppingRoute,
   ArticlesSerialKeyboardsRoute: ArticlesSerialKeyboardsRoute,
+  ArticlesSerialYoucantwisttimeRoute: ArticlesSerialYoucantwisttimeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

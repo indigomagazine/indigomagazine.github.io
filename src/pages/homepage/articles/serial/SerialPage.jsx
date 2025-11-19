@@ -50,6 +50,19 @@ const items = [
     // gridPosL optional: "center center",
   },
 
+    {
+    id: "article-8",
+    title: "You Can Twist Time",
+    description: "By: Jiya Gupta",
+    tags: ["SCROLLABLE", "NOVEMBER"],
+    // Replace with your local asset paths or URLs
+    image: "../../legacy/serial photos/final.png",
+    // Optional: imageGird for grid view (else uses `image`)
+    to: "/articles/serial/youcantwisttime", // path to article
+    coverPos: "center center",
+    // gridPosL optional: "center center",
+  },
+
   /* Coming soon item*/
   {
     id: "commingSoon",
