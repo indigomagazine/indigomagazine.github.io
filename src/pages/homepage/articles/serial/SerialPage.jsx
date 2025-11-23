@@ -11,6 +11,18 @@ import keyboardsImage from "../../../../assets/serial photos/group 3/nolan.png";
 /* Make sure to add new item at the top of the list so it appears first */
 /* Will add more feilds to allow custom colors for titles and tags.  */
 const items = [
+  {
+    id: "article-9",
+    title: "Covet",
+    description: "By: Jiya Gupta",
+    tags: ["LOVELOVELOVE", "Frendship"],
+    // Replace with your local asset paths or URLs
+    image: "../../legacy/article photos/covet/9-clothes-2.jpg",
+    // Optional: imageGird for grid view (else uses `image`)
+    to: "/articles/serial/covet", // path to article
+    coverPos: "center center",
+    // gridPosL optional: "center center",
+  },
    {
     id: "article-8",
     title: "You Can Twist Time",
