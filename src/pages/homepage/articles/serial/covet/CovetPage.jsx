@@ -1,240 +1,388 @@
-import { useMemo } from "react";
+// src/articles/CovetArticle.jsx
+import React, { useRef, useEffect, useMemo } from "react";
+import "../covet/covet.css"; // we’ll write skeleton CSS next
 
-import floating4 from "../../../../../assets/photos/group2/floating4.jpg";
-import floating1 from "../../../../../assets/photos/group2/floating1.JPG";
-import floating5 from "../../../../../assets/photos/group2/floating5.jpg";
-import floating2 from "../../../../../assets/photos/group2/floating2.JPG";
-import floating3 from "../../../../../assets/photos/group2/floating3.JPG";
 
-import "./covet.css";
+// Example data for each spread/page of the article
+const spreads = [
+   {
+    id: "title",
+    layout: "title-page",
+    title: "Covet",
+    created: "Writen by - ",
+    writer: "name",
+    imageSrc: "../../legacy/article photos/covet/1-cereal.jpg",
+    imageSrc2: "../../legacy/article photos/covet/1-cereal.jpg",
+    accentColor: "#ff7ecf",
+  },
+  {
+    id: "page-1",
+    layout: "image-left-text-right",
+    imageSrc: "../../legacy/article photos/covet/2-cereal.jpg",
+    rightTextLines: [
+      "Greeting in open arms",
+      "The same familiar smile between us",
+      "Your light and mine",
+      "Woven tightly as threads",
+      "No beginning no end",
+    ],
+    accentColor: "#ff7ecf",
+  },
+  {
+    id: "page-2",
+    layout: "image-left-text-right",
+    imageSrc: "../../legacy/article photos/covet/9-clothes-2.jpg",
+    imageAlt: "Two friends sharing a secret",
+    rightTextLines: [
+      "We exchanged secrets, glances",
+      "Like they were nothing",
+      "But meant everything",
+      "",
+      "A glimmer caught my eye",
+      "Your ring.",
+      "More polished, more jeweled",
+      "Mine feeling more a choker.",
+      "Dread creeps out from the light",
+    ],
+  },
+  {
+    id: "page-3",
+    layout: "text-left-image-right",
+    imageSrc: "../../legacy/article photos/covet/11-flick.jpg",
+    imageAlt: "Jewelry flick caught in motion",
+    leftTextLines: [
+      "Idiosyncrasy that was left unnoticed",
+      "subtle discord treads the air",
+      "If our hearts are truly united,",
+      "why is your light brighter?",
+      "Stronger,",
+      "Sharper,",
+      "Better.",
+    ],
+  },
+  {
+    id: "page-4",
+    layout: "image-left-text-right",
+    imageSrc: "../../legacy/article photos/covet/8-final.jpg",
+    imageAlt: "Coat and shoes swapped between friends",
+    rightTextLines: [
+      "You point out my necklace,",
+      "Clutching tightly at your own",
+      "Your pristine, polished nails clawing at my nape",
+      "You're the same as me aren’t you?",
+      "",
+      "Bracelets slip, tangled between wrists",
+      "We pull, we tear, we swap, we steal",
+      "Your coat draped over me, a conquest",
+      "My shoes on your feet, stomping out my shadow",
+    ],
+  },
+  {
+    id: "page-5",
+    layout: "text-left-image-right",
+    imageSrc: "../../legacy/article photos/covet/6-hair.jpg",
+    imageAlt: "Jewelry being adjusted in hair",
+    leftTextLines: [
+      "I drape your shawl across my shoulders",
+      "You slip my earrings into your ears",
+      "Each exchange a theft, a gift, a wound",
+      "Shadows lengthen in our laughter",
+    ],
+  },
+  {
+    id: "page-6",
+    layout: "image-left-text-right",
+    imageSrc: "../../legacy/article photos/covet/5-final.jpg",
+    imageAlt: "Two figures pulling away from each other",
+    rightTextLines: [
+      "We struggle to escape from each other",
+      "Left in a disgraceful manner",
+      "I tore my gaze away and fell silent",
+      "I've become lost in my feelings",
+      "how pathetic",
+    ],
+  },
+  {
+    id: "page-7",
+    layout: "text-left-image-right",
+    imageSrc: "../../legacy/article photos/covet/3-punch.jpg",
+    imageAlt: "Punch frozen between two adorned figures",
+    leftTextLines: [
+      "Gilded strangers in borrowed skins",
+      "When your jewels glitter on my hands",
+      "And mine sparkle against your throat,",
+      "We do not soften.",
+      "We stare.",
+      "Jealous still,",
+      "Hungry still,",
+      "Clothed in each other’s stolen light.",
+    ],
+    
+  },
+  {
+    id: "page-3-images",
+    layout: "image-only",
+    imageSrc: "../../legacy/article photos/covet/4-punch.jpg",
+  }, {
+    id: "page-3-images",
+    layout: "image-only",
+    imageSrc: "../../legacy/article photos/covet/Damn i love cereal.png",
+  },
 
-const HeroTitle = ({ title, subtitle, kicker, alignment = "center" }) => (
-  <header className={`hero hero--${alignment}`}>
-    {kicker && <span className="hero__kicker">{kicker}</span>}
-    <h1 className="hero__title">{title}</h1>
-    {subtitle && <p className="hero__subtitle">{subtitle}</p>}
-  </header>
-);
+];
 
-const StanzaBlock = ({ text, align = "left", padTop, padBottom }) => {
-  const paddingClass = [
-    padTop ? `stanza--pt-${padTop}` : "",
-    padBottom ? `stanza--pb-${padBottom}` : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
+
+export default function CovetArticle() {
+  const trackRef = useRef(null);
+  const isSnappingRef = useRef(false);
+  const slideWRef = useRef(0);
+
+  const data = useMemo(() => spreads, []);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+
+    const slides = Array.from(el.querySelectorAll(".covet-spread"));
+    const getIndex = () => Math.round(el.scrollLeft / slideWRef.current);
+
+    const onResize = () => {
+      slideWRef.current = el.clientWidth;
+    };
+    onResize();
+    window.addEventListener("resize", onResize);
+
+    const onWheel = (e) => {
+      // map vertical wheel → horizontal “page” moves
+      if (isSnappingRef.current) {
+        e.preventDefault();
+        return;
+      }
+
+      const delta = e.deltaY;
+      const threshold = 25;
+      if (Math.abs(delta) < threshold) return;
+
+      e.preventDefault();
+      isSnappingRef.current = true;
+
+      const cur = getIndex();
+      const next = Math.min(
+        slides.length - 1,
+        Math.max(0, cur + (delta > 0 ? 1 : -1))
+      );
+
+      el.scrollTo({
+        left: next * slideWRef.current,
+        behavior: "smooth",
+      });
+
+      const release = () => {
+        isSnappingRef.current = false;
+        el.removeEventListener("scrollend", release);
+      };
+      el.addEventListener?.("scrollend", release);
+
+      // fallback if scrollend not supported
+      setTimeout(() => {
+        isSnappingRef.current = false;
+      }, 420);
+    };
+
+    el.addEventListener("wheel", onWheel, { passive: false });
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+      el.removeEventListener("wheel", onWheel);
+    };
+  }, []);
 
   return (
-    <section className={`stanza stanza--${align} ${paddingClass}`}>
-      {text.map((line, index) => (
-        <p key={index}>{line}</p>
-      ))}
+    <div className="covet-root">
+      {/* main horizontal track */}
+      <div className="covet-track" ref={trackRef}>
+        {data.map((spread) => (
+          <Spread key={spread.id} {...spread} />
+        ))}
+      </div>
+
+      {/* Optional little page indicator */}
+      <PageDots count={data.length} containerRef={trackRef} />
+    </div>
+  );
+}
+
+function Spread(props) {
+  const {
+    layout,
+    title,
+    created,
+    writer,
+    poemLines,
+    rightTextLines,
+    leftTextLines,
+    imageSrc,
+    imageSrc2,
+    imageAlt,
+    accentColor,
+  } = props;
+ // NEW: title page (no poem)
+  if (layout === "title-page") {
+    return (
+      <section className="covet-spread covet-spread--title-page">
+        <div className="covet-inner covet-cover">
+          <div className="covet-cover-text">
+            <h1
+              className="covet-title covet-title--cover"
+              style={accentColor ? { color: accentColor } : undefined}
+            >
+              {title}
+            </h1>
+            <div className="covet-cover-meta">
+              {created && <span className="covet-cover-created">{created}</span>}
+              {writer && <span className="covet-cover-writer">{writer}</span>}
+            </div>
+          </div>
+
+          <div className="covet-cover-images">
+            {imageSrc && (
+              <img
+                src={imageSrc}
+                alt={imageAlt || `${title} cover`}
+                className="covet-cover-image primary"
+              />
+            )}
+            {imageSrc2 && (
+              <img
+                src={imageSrc2}
+                alt={imageAlt || `${title} secondary`}
+                className="covet-cover-image secondary"
+              />
+            )}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // NEW: image-only layout
+  if (layout === "image-only") {
+    return (
+      <section className="covet-spread covet-spread--image-only">
+        <div className="covet-inner covet-image-only">
+          {imageSrc && (
+            <img
+              src={imageSrc}
+              alt={imageAlt || "Article image"}
+              className="covet-image-only-img main"
+            />
+          )}
+        
+        </div>
+      </section>
+    );
+  }
+
+  // existing layouts below
+  if (layout === "title-poem") {
+    return (
+      <section className="covet-spread covet-spread--title-poem">
+        <div className="covet-inner">
+          <h1
+            className="covet-title"
+            style={accentColor ? { color: accentColor } : undefined}
+          >
+            {title}
+          </h1>
+          <div className="covet-poem">
+            {poemLines?.map((line, i) => (
+              <p key={i}>{line}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (layout === "image-left-text-right") {
+    return (
+      <section className="covet-spread covet-spread--image-left">
+        <div className="covet-inner covet-two-col">
+          <div className="covet-col">
+            <img src={imageSrc} alt={imageAlt} className="covet-image" />
+          </div>
+          <div className="covet-col covet-text-block">
+            {rightTextLines?.map((line, i) => (
+              <p key={i}>{line}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (layout === "text-left-image-right") {
+    return (
+      <section className="covet-spread covet-spread--text-left">
+        <div className="covet-inner covet-two-col">
+          <div className="covet-col covet-text-block">
+            {leftTextLines?.map((line, i) => (
+              <p key={i}>{line}</p>
+            ))}
+          </div>
+          <div className="covet-col">
+            <img src={imageSrc} alt={imageAlt} className="covet-image" />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // fallback
+  return (
+    <section className="covet-spread">
+      <div className="covet-inner">
+        {imageSrc && <img src={imageSrc} alt={imageAlt} className="covet-image" />}
+      </div>
     </section>
   );
-};
+}
 
-const TextImageRow = ({
-  text,
-  image,
-  caption,
-  reverse = false,
-  theme = "default",
-  textAlign = "left",
-}) => (
-  <section
-    className={`text-image text-image--${theme} ${
-      reverse ? "text-image--reverse" : ""
-    }`}
-  >
-    <div className={`text-image__text text-image__text--${textAlign}`}>
-      {text.map((paragraph, index) => (
-        <p key={index}>{paragraph}</p>
-      ))}
-    </div>
-    <figure className="text-image__media">
-      <img src={image.src} alt={image.alt} loading="lazy" />
-      {caption && <figcaption>{caption}</figcaption>}
-    </figure>
-  </section>
-);
+/**
+ * Simple page dots that track scroll position (optional)
+ */
+function PageDots({ count, containerRef }) {
+  const [active, setActive] = React.useState(0);
 
-const PullQuote = ({ quote, attribution, align = "left" }) => (
-  <blockquote className={`pull-quote pull-quote--${align}`}>
-    <p>“{quote}”</p>
-    {attribution && <cite>— {attribution}</cite>}
-  </blockquote>
-);
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
 
-const PolaroidStrip = ({ images, gutter = 24, frame = "pearl" }) => (
-  <section className="polaroid-strip" style={{ gap: `${gutter}px` }}>
-    {images.map((image) => (
-      <figure key={image.src} className={`polaroid polaroid--${frame}`}>
-        <div className="polaroid__image-wrapper">
-          <img src={image.src} alt={image.alt} loading="lazy" />
-        </div>
-        {image.caption && <figcaption>{image.caption}</figcaption>}
-      </figure>
-    ))}
-  </section>
-);
+    const onScroll = () => {
+      const w = el.clientWidth || 1;
+      const idx = Math.round(el.scrollLeft / w);
+      setActive(idx);
+    };
 
-const SectionComposer = ({ blocks }) => {
-  const renderers = {
-    hero: (block) => (
-      <HeroTitle
-        key={block.id}
-        title={block.title}
-        subtitle={block.subtitle}
-        kicker={block.kicker}
-        alignment={block.align}
-      />
-    ),
-    stanza: (block) => (
-      <StanzaBlock
-        key={block.id}
-        text={block.text}
-        align={block.align}
-        padTop={block.padTop}
-        padBottom={block.padBottom}
-      />
-    ),
-    textImage: (block) => (
-      <TextImageRow
-        key={block.id}
-        text={block.text}
-        image={block.image}
-        caption={block.caption}
-        reverse={block.layout === "image-left"}
-        theme={block.theme}
-        textAlign={block.textAlign}
-      />
-    ),
-    pullQuote: (block) => (
-      <PullQuote
-        key={block.id}
-        quote={block.quote}
-        attribution={block.attribution}
-        align={block.align}
-      />
-    ),
-    gallery: (block) => (
-      <PolaroidStrip
-        key={block.id}
-        images={block.images}
-        gutter={block.gutter}
-        frame={block.frame}
-      />
-    ),
-  };
-
-  return blocks.map((block, index) => {
-    const renderer = renderers[block.kind];
-    const key = block.id || `${block.kind}-${index}`;
-    return renderer ? renderer({ ...block, id: key }) : null;
-  });
-};
-
-export default function ArticlePage() {
-  const blocks = useMemo(
-    () => [
-      {
-        kind: "hero",
-        id: "hero",
-        title: "Covet",
-        subtitle: "An embrace woven with pastel dreams",
-        kicker: "Issue 04",
-        align: "center",
-      },
-      {
-        kind: "stanza",
-        id: "stanza-1",
-        text: [
-          "Greeting in open arms",
-          "The same familiar smile between us",
-          "Staying a little longer than before",
-        ],
-        align: "center",
-        padBottom: "lg",
-      },
-      {
-        kind: "textImage",
-        id: "ti-1",
-        text: [
-          "We exchanged secrets that felt small in the moment,",
-          "but later swelled like tides when I was alone.",
-        ],
-        image: {
-          src: floating4,
-          alt: "Two friends sharing a moment on the boardwalk",
-        },
-        caption: "Photographed by the Indigo Collective",
-        layout: "image-right",
-        theme: "sunset",
-      },
-      {
-        kind: "stanza",
-        id: "stanza-2",
-        text: [
-          "A glimmer caught my eye",
-          "Your ring rested where my thoughts lingered",
-          "How could I not notice sooner?",
-        ],
-        align: "left",
-        padTop: "xl",
-      },
-      {
-        kind: "pullQuote",
-        id: "quote-1",
-        quote:
-          "Desire is a slow bloom, unfolding in the pauses between sentences.",
-        attribution: "Covet, Issue 04",
-        align: "right",
-      },
-      {
-        kind: "textImage",
-        id: "ti-2",
-        text: [
-          "We drifted toward the carousel, letting the music score the moment.",
-          "Our footsteps synced with the rotating lights, choreographed by chance.",
-        ],
-        image: {
-          src: floating1,
-          alt: "Carousel lights reflecting on a lake",
-        },
-        layout: "image-left",
-        theme: "dusk",
-        textAlign: "justify",
-      },
-      {
-        kind: "gallery",
-        id: "gallery-1",
-        images: [
-          {
-            src: floating5,
-            alt: "Close up of intertwined hands",
-            caption: "The moment in between",
-          },
-          {
-            src: floating2,
-            alt: "Soft focus portrait at dusk",
-            caption: "Blushing hour",
-          },
-          {
-            src: floating3,
-            alt: "Friends leaning on railing",
-            caption: "Secrets at the shoreline",
-          },
-        ],
-        gutter: 32,
-        frame: "pearl",
-      },
-    ],
-    []
-  );
+    el.addEventListener("scroll", onScroll);
+    return () => el.removeEventListener("scroll", onScroll);
+  }, [containerRef]);
 
   return (
-    <main className="article-shell">
-      <SectionComposer blocks={blocks} />
-    </main>
+    <div className="covet-dots">
+      {Array.from({ length: count }).map((_, i) => (
+        <button
+          key={i}
+          className={`covet-dot ${i === active ? "is-active" : ""}`}
+          aria-label={`Go to page ${i + 1}`}
+          onClick={() => {
+            const el = containerRef.current;
+            if (!el) return;
+            const w = el.clientWidth;
+            el.scrollTo({ left: i * w, behavior: "smooth" });
+          }}
+        />
+      ))}
+    </div>
   );
 }

@@ -11,6 +11,45 @@ import keyboardsImage from "../../../../assets/serial photos/group 3/nolan.png";
 /* Make sure to add new item at the top of the list so it appears first */
 /* Will add more feilds to allow custom colors for titles and tags.  */
 const items = [
+   {
+    id: "article-8",
+    title: "You Can Twist Time",
+    description: "By: Jiya Gupta",
+    tags: ["SCROLLABLE", "NOVEMBER"],
+    // Replace with your local asset paths or URLs
+    image: "../../legacy/serial photos/final.png",
+    // Optional: imageGird for grid view (else uses `image`)
+    to: "/articles/serial/youcantwisttime", // path to article
+    coverPos: "center center",
+    // gridPosL optional: "center center",
+  },
+
+   {
+    id: "article-3",
+    title: "Keyboards",
+    description: "By: Manogna Bedhu",
+    tags: ["INTERACTIVE", "NOVEMBER"],
+    // Replace with your local asset paths or URLs
+    image: keyboardsImage,
+    // Optional: imageGird for grid view (else uses `image`)
+    to: "/articles/serial/keyboards", // path to article
+    coverPos: "center center",
+    // gridPosL optional: "center center",
+  },
+    {
+    id: "article-2",
+    title: "A Number Out of Place ",
+    description: "By: Nicole C. ",
+    tags: ["MATRIX", "NOVEMBER"],
+    // Replace with your local asset paths or URLs
+    image: "../../legacy/article photos/anumberoutofplace/serial poster (text).png",
+    // Optional: imageGird for grid view (else uses `image`)
+    to: "/articles/serial/anumberoutofplace", // path to article
+    coverPos: " left 25% top 10%",
+    // gridPosL optional: "center center",
+  },
+
+ 
   {
     id: "article-1",
     title: "I Love Shopping ",
@@ -24,44 +63,6 @@ const items = [
     // gridPosL optional: "center center",
   },
 
-  {
-    id: "article-2",
-    title: "A Number Out of Place ",
-    description: "By: Nicole C. ",
-    tags: ["MATRIX", "NOVEMBER"],
-    // Replace with your local asset paths or URLs
-    image: "../../legacy/article photos/anumberoutofplace/serial poster (text).png",
-    // Optional: imageGird for grid view (else uses `image`)
-    to: "/articles/serial/anumberoutofplace", // path to article
-    coverPos: " left 25% top 10%",
-    // gridPosL optional: "center center",
-  },
-
-  {
-    id: "article-3",
-    title: "Keyboards",
-    description: "By: Manogna Bedhu",
-    tags: ["INTERACTIVE", "NOVEMBER"],
-    // Replace with your local asset paths or URLs
-    image: keyboardsImage,
-    // Optional: imageGird for grid view (else uses `image`)
-    to: "/articles/serial/keyboards", // path to article
-    coverPos: "center center",
-    // gridPosL optional: "center center",
-  },
-
-    {
-    id: "article-8",
-    title: "You Can Twist Time",
-    description: "By: Jiya Gupta",
-    tags: ["SCROLLABLE", "NOVEMBER"],
-    // Replace with your local asset paths or URLs
-    image: "../../legacy/serial photos/final.png",
-    // Optional: imageGird for grid view (else uses `image`)
-    to: "/articles/serial/youcantwisttime", // path to article
-    coverPos: "center center",
-    // gridPosL optional: "center center",
-  },
 
   /* Coming soon item*/
   {
@@ -202,9 +203,7 @@ const handleToggle = (checked) => {
   >
     {/* replace with your SVG/PNG */}
     <img src="../../legacy/assets/logos/indigologowhite.png" alt="" />
-  </button>
-
-    {/* Existing header (your Grid/Scroll toggle lives here) 
+  </button> 
     <header className="mg-header">
       <div className="mg-toggle">
         <label className="toggle">
@@ -219,7 +218,7 @@ const handleToggle = (checked) => {
       </div>
     </header>
 
-    */}
+    
 
    
 
