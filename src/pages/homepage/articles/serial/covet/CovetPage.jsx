@@ -10,15 +10,15 @@ const spreads = [
     layout: "title-page",
     title: "Covet",
     created: "Writen by - ",
-    writer: "name",
-    imageSrc: "../../legacy/article photos/covet/1-cereal.jpg",
-    imageSrc2: "../../legacy/article photos/covet/1-cereal.jpg",
+    writer: "Joanna Virippil",
+    imageSrc: "../../legacy/article photos/covet/cereal-1.jpg",
+  
     accentColor: "#ff7ecf",
   },
   {
     id: "page-1",
     layout: "image-left-text-right",
-    imageSrc: "../../legacy/article photos/covet/2-cereal.jpg",
+    imageSrc: "../../legacy/article photos/covet/cereal-2.jpg",
     rightTextLines: [
       "Greeting in open arms",
       "The same familiar smile between us",
@@ -31,7 +31,7 @@ const spreads = [
   {
     id: "page-2",
     layout: "image-left-text-right",
-    imageSrc: "../../legacy/article photos/covet/9-clothes-2.jpg",
+    imageSrc: "../../legacy/article photos/covet/12-beforeFlick.jpg",
     imageAlt: "Two friends sharing a secret",
     rightTextLines: [
       "We exchanged secrets, glances",
@@ -72,10 +72,23 @@ const spreads = [
       "You're the same as me aren’t you?",
       "",
       "Bracelets slip, tangled between wrists",
-      "We pull, we tear, we swap, we steal",
+    
+    ],
+  },
+   {
+    id: "page-1-images",
+    layout: "image-only",
+    imageSrc: "../../legacy/article photos/covet/text.png"
+  },
+  {
+    id: "page-6",
+    layout: "text-only-l",
+    imageAlt: "Two figures pulling away from each other",
+    leftTextLines: [
       "Your coat draped over me, a conquest",
       "My shoes on your feet, stomping out my shadow",
     ],
+    
   },
   {
     id: "page-5",
@@ -91,20 +104,25 @@ const spreads = [
   },
   {
     id: "page-6",
-    layout: "image-left-text-right",
-    imageSrc: "../../legacy/article photos/covet/5-final.jpg",
+    layout: "text-only-l",
     imageAlt: "Two figures pulling away from each other",
-    rightTextLines: [
+    leftTextLines: [
       "We struggle to escape from each other",
       "Left in a disgraceful manner",
       "I tore my gaze away and fell silent",
       "I've become lost in my feelings",
       "how pathetic",
     ],
+    
+  },
+  {
+    id: "page-2-images",
+    layout: "image-only",
+    imageSrc: "../../legacy/article photos/covet/5-final.jpg"
   },
   {
     id: "page-7",
-    layout: "text-left-image-right",
+    layout: "text-only-r",
     imageSrc: "../../legacy/article photos/covet/3-punch.jpg",
     imageAlt: "Punch frozen between two adorned figures",
     leftTextLines: [
@@ -118,16 +136,21 @@ const spreads = [
       "Clothed in each other’s stolen light.",
     ],
     
-  },
-  {
-    id: "page-3-images",
-    layout: "image-only",
-    imageSrc: "../../legacy/article photos/covet/4-punch.jpg",
   }, {
     id: "page-3-images",
     layout: "image-only",
+    imageSrc: "../../legacy/article photos/covet/3-punch.jpg",
+  },
+  {
+    id: "page-4-images",
+    layout: "image-only",
+    imageSrc: "../../legacy/article photos/covet/4-punch.jpg",
+  }, {
+    id: "page-5-images",
+    layout: "image-only",
     imageSrc: "../../legacy/article photos/covet/Damn i love cereal.png",
   },
+ 
 
 ];
 
@@ -316,6 +339,36 @@ function Spread(props) {
               <p key={i}>{line}</p>
             ))}
           </div>
+        </div>
+      </section>
+    );
+  }
+
+   if (layout === "text-only-r") {
+   return (
+      <section className="covet-spread covet-spread--text-left">
+        <div className="covet-inner covet-two-col">
+          <div className="covet-col covet-text-block">
+            {leftTextLines?.map((line, i) => (
+              <p key={i}>{line}</p>
+            ))}
+          </div>
+
+        </div>
+      </section>
+    );
+  }
+
+  if (layout === "text-only-l") {
+    return (
+      <section className="covet-spread covet-spread--text-left">
+        <div className="covet-inner covet-two-col">
+          <div className="covet-col covet-text-block">
+            {leftTextLines?.map((line, i) => (
+              <p key={i}>{line}</p>
+            ))}
+          </div>
+        
         </div>
       </section>
     );
