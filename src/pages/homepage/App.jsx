@@ -4,6 +4,7 @@ import heroFallback from "../../assets/hero videos/fallback.jpg";
 import logoDark from "../../assets/logos/indigologowhite.png";
 import logoLight from "../../assets/logos/indigologoblack.png";
 import featuredImage from "../../assets/serial photos/group 3/nolan.png";
+import covetImage from "../../../legacy/article photos/covet/1-cereal.jpg"
 import notAirItOutImage from "../../assets/NOT photos/group3/3.jpg";
 import notQuietDevourmentImage from "../../assets/NOT photos/group 6/cover.jpg";
 import notInTheWindImage from "../../assets/NOT photos/group 4/Sarah_Rizvi_Final_Graphic_3.jpeg";
@@ -28,9 +29,9 @@ const NAV_LINKS = [
 ];
 
 const FEATURED_ARTICLE = {
-  title: "Keyboards",
-  href: "/articles/serial/keyboards",
-  image: featuredImage,
+  title: "Covet",
+  href: "/articles/serial/covet",
+  image: covetImage,
 };
 
 const ISSUE_SECTIONS = [
