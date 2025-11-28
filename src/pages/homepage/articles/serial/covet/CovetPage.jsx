@@ -174,7 +174,7 @@ const spreads = [
   }, {
     id: "page-5-images",
     layout: "image-only",
-    imageSrc: "../../legacy/article photos/covet/Damn i love cereal.png",
+    imageSrc: "../../legacy/article photos/covet/DILC.png",
   },
  
 
