@@ -38,13 +38,24 @@ const spreads = [
       "Like they were nothing",
       "But meant everything",
       "",
-      "A glimmer caught my eye",
-      "Your ring.",
-      "More polished, more jeweled",
+    ],
+  },
+     {
+    id: "page-1-images",
+    layout: "image-only",
+    imageSrc: "../../legacy/article photos/covet/text2.png"
+  },
+    {
+    id: "page-2",
+    layout: "image-left-text-right",
+    imageSrc: "../../legacy/article photos/covet/12-beforeFlick.jpg",
+    imageAlt: "Two friends sharing a secret",
+    rightTextLines: [
       "Mine feeling more a choker.",
       "Dread creeps out from the light",
     ],
   },
+  
   {
     id: "page-3",
     layout: "text-left-image-right",
@@ -58,6 +69,21 @@ const spreads = [
       "Stronger,",
       "Sharper,",
       "Better.",
+    ],
+  },
+  {
+    id: "page-4",
+    layout: "image-left-text-right",
+    imageSrc: "../../legacy/article photos/covet/8-final.jpg",
+    imageAlt: "Coat and shoes swapped between friends",
+    rightTextLines: [
+      "You point out my necklace,",
+      "Clutching tightly at your own",
+      "Your pristine, polished nails clawing at my nape",
+      "You're the same as me aren’t you?",
+      "",
+      "Bracelets slip, tangled between wrists",
+    
     ],
   },
   {

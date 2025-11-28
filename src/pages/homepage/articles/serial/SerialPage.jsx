@@ -14,8 +14,8 @@ const items = [
   {
     id: "article-9",
     title: "Covet",
-    description: "By: Jiya Gupta",
-    tags: ["LOVELOVELOVE", "Frendship"],
+    description: "By: Joanna Virippil",
+    tags: ["Hate", "Friendship"],
     // Replace with your local asset paths or URLs
     image: "../../legacy/article photos/covet/9-clothes-2.jpg",
     // Optional: imageGird for grid view (else uses `image`)
@@ -216,21 +216,6 @@ const handleToggle = (checked) => {
     {/* replace with your SVG/PNG */}
     <img src="../../legacy/assets/logos/indigologowhite.png" alt="" />
   </button> 
-    <header className="mg-header">
-      <div className="mg-toggle">
-        <label className="toggle">
-          <input
-            type="checkbox"
-            checked={view === "grid"}
-            onChange={(e) => handleToggle(e.target.checked)}
-          />
-          <span className="slider" />
-          <span className="label">{view === "grid" ? "Grid" : "Scroll"}</span>
-        </label>
-      </div>
-    </header>
-
-    
 
    
 
