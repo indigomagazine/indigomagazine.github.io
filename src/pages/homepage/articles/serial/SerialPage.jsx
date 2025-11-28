@@ -22,6 +22,7 @@ const items = [
     to: "/articles/serial/covet", // path to article
     coverPos: "center center",
     // gridPosL optional: "center center",
+
   },
    {
     id: "article-8",
