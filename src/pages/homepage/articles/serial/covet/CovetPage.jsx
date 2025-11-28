@@ -86,21 +86,6 @@ const spreads = [
     
     ],
   },
-  {
-    id: "page-4",
-    layout: "image-left-text-right",
-    imageSrc: "../../legacy/article photos/covet/8-final.jpg",
-    imageAlt: "Coat and shoes swapped between friends",
-    rightTextLines: [
-      "You point out my necklace,",
-      "Clutching tightly at your own",
-      "Your pristine, polished nails clawing at my nape",
-      "You're the same as me aren’t you?",
-      "",
-      "Bracelets slip, tangled between wrists",
-    
-    ],
-  },
    {
     id: "page-1-images",
     layout: "image-only",
