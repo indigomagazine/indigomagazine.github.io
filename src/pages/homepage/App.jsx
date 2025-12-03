@@ -30,7 +30,7 @@ const NAV_LINKS = [
 
 const FEATURED_ARTICLE = {
   title: "Covet",
-  href: "/articles/serial/covet",
+  href: "/articles/serial/western",
   image: covetImage,
 };
 
