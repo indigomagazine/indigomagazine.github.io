@@ -355,7 +355,7 @@ export default function WesternNewspaper() {
           
           <h1>The Indigo Dispatch</h1>
           
-          <p className="motto">"Truth and Justice on the Western Frontier"</p>
+          <p className="motto">"From the Desk of Karishma Pilla"</p>
           
           <div className="info-line">
             <span>Vol. XXIII, No. 294</span>
