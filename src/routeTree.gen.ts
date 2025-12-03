@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SerialRouteImport } from './routes/serial'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArticlesSerialYoucantwisttimeRouteImport } from './routes/articles/serial/youcantwisttime'
+import { Route as ArticlesSerialWesternRouteImport } from './routes/articles/serial/western'
 import { Route as ArticlesSerialKeyboardsRouteImport } from './routes/articles/serial/keyboards'
 import { Route as ArticlesSerialIloveshoppingRouteImport } from './routes/articles/serial/iloveshopping'
 import { Route as ArticlesSerialCovetRouteImport } from './routes/articles/serial/covet'
@@ -33,6 +34,11 @@ const ArticlesSerialYoucantwisttimeRoute =
     path: '/articles/serial/youcantwisttime',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ArticlesSerialWesternRoute = ArticlesSerialWesternRouteImport.update({
+  id: '/articles/serial/western',
+  path: '/articles/serial/western',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ArticlesSerialKeyboardsRoute = ArticlesSerialKeyboardsRouteImport.update({
   id: '/articles/serial/keyboards',
   path: '/articles/serial/keyboards',
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/articles/serial/covet': typeof ArticlesSerialCovetRoute
   '/articles/serial/iloveshopping': typeof ArticlesSerialIloveshoppingRoute
   '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
+  '/articles/serial/western': typeof ArticlesSerialWesternRoute
   '/articles/serial/youcantwisttime': typeof ArticlesSerialYoucantwisttimeRoute
 }
 export interface FileRoutesByTo {
@@ -72,6 +79,7 @@ export interface FileRoutesByTo {
   '/articles/serial/covet': typeof ArticlesSerialCovetRoute
   '/articles/serial/iloveshopping': typeof ArticlesSerialIloveshoppingRoute
   '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
+  '/articles/serial/western': typeof ArticlesSerialWesternRoute
   '/articles/serial/youcantwisttime': typeof ArticlesSerialYoucantwisttimeRoute
 }
 export interface FileRoutesById {
@@ -82,6 +90,7 @@ export interface FileRoutesById {
   '/articles/serial/covet': typeof ArticlesSerialCovetRoute
   '/articles/serial/iloveshopping': typeof ArticlesSerialIloveshoppingRoute
   '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
+  '/articles/serial/western': typeof ArticlesSerialWesternRoute
   '/articles/serial/youcantwisttime': typeof ArticlesSerialYoucantwisttimeRoute
 }
 export interface FileRouteTypes {
@@ -93,6 +102,7 @@ export interface FileRouteTypes {
     | '/articles/serial/covet'
     | '/articles/serial/iloveshopping'
     | '/articles/serial/keyboards'
+    | '/articles/serial/western'
     | '/articles/serial/youcantwisttime'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -102,6 +112,7 @@ export interface FileRouteTypes {
     | '/articles/serial/covet'
     | '/articles/serial/iloveshopping'
     | '/articles/serial/keyboards'
+    | '/articles/serial/western'
     | '/articles/serial/youcantwisttime'
   id:
     | '__root__'
@@ -111,6 +122,7 @@ export interface FileRouteTypes {
     | '/articles/serial/covet'
     | '/articles/serial/iloveshopping'
     | '/articles/serial/keyboards'
+    | '/articles/serial/western'
     | '/articles/serial/youcantwisttime'
   fileRoutesById: FileRoutesById
 }
@@ -121,6 +133,7 @@ export interface RootRouteChildren {
   ArticlesSerialCovetRoute: typeof ArticlesSerialCovetRoute
   ArticlesSerialIloveshoppingRoute: typeof ArticlesSerialIloveshoppingRoute
   ArticlesSerialKeyboardsRoute: typeof ArticlesSerialKeyboardsRoute
+  ArticlesSerialWesternRoute: typeof ArticlesSerialWesternRoute
   ArticlesSerialYoucantwisttimeRoute: typeof ArticlesSerialYoucantwisttimeRoute
 }
 
@@ -145,6 +158,13 @@ declare module '@tanstack/react-router' {
       path: '/articles/serial/youcantwisttime'
       fullPath: '/articles/serial/youcantwisttime'
       preLoaderRoute: typeof ArticlesSerialYoucantwisttimeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/articles/serial/western': {
+      id: '/articles/serial/western'
+      path: '/articles/serial/western'
+      fullPath: '/articles/serial/western'
+      preLoaderRoute: typeof ArticlesSerialWesternRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/articles/serial/keyboards': {
@@ -185,6 +205,7 @@ const rootRouteChildren: RootRouteChildren = {
   ArticlesSerialCovetRoute: ArticlesSerialCovetRoute,
   ArticlesSerialIloveshoppingRoute: ArticlesSerialIloveshoppingRoute,
   ArticlesSerialKeyboardsRoute: ArticlesSerialKeyboardsRoute,
+  ArticlesSerialWesternRoute: ArticlesSerialWesternRoute,
   ArticlesSerialYoucantwisttimeRoute: ArticlesSerialYoucantwisttimeRoute,
 }
 export const routeTree = rootRouteImport

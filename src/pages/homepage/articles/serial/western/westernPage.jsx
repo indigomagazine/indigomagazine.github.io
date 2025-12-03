@@ -1,17 +1,29 @@
 import React, { useState, useEffect } from 'react';
 
+// Importing images from the legacy folder
+import background from "../../../../../../legacy/article photos/western/group4Background.jpg";
+import paper from "../../../../../../legacy/article photos/western/group4Paper.jpg";
+import hat from "../../../../../../legacy/article photos/western/hat.png";
+import both from "../../../../../../legacy/article photos/western/both.png";
+import malePose from "../../../../../../legacy/article photos/western/malePose.png";
+import moneyShot from "../../../../../../legacy/article photos/western/moneyShot.png";
+import table from "../../../../../../legacy/article photos/western/table.png";
+import wantedPoster from "../../../../../../legacy/article photos/western/wantedPoster.png";
+import moviePoster from "../../../../../../legacy/article photos/western/moviePoster.png";
+
 export default function WesternNewspaper() {
   const [modalOpen, setModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   
+  // UPDATED: Now using the imported variables instead of string paths
   const images = [
-    { src: 'images/wantedPoster.png', alt: 'wanted poster' },
-    { src: 'images/table.png', alt: 'table' },
-    { src: 'images/malePose.png', alt: 'male pose' },
-    { src: 'images/moneyShot.png', alt: 'money shot' },
-    { src: 'images/both.png', alt: 'both' },
-    { src: 'images/hat.png', alt: 'Sheriff in Hat' },
-    { src: 'images/moviePoster.png', alt: 'Movie Poster' }
+    { src: wantedPoster, alt: 'wanted poster' },
+    { src: table, alt: 'table' },
+    { src: malePose, alt: 'male pose' },
+    { src: moneyShot, alt: 'money shot' },
+    { src: both, alt: 'both' },
+    { src: hat, alt: 'Sheriff in Hat' },
+    { src: moviePoster, alt: 'Movie Poster' }
   ];
 
   const openModal = (index) => {
@@ -50,7 +62,7 @@ export default function WesternNewspaper() {
         @import url('https://fonts.googleapis.com/css2?family=Rye&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700&family=IM+Fell+English:ital@0;1&display=swap');
         
         body {
-          background-image: url('images/group4Background.jpg');
+          background-image: url('${background}');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
@@ -61,7 +73,7 @@ export default function WesternNewspaper() {
         }
 
         .newspaper-container {
-          background-image: url('images/group4Paper.jpg');
+          background-image: url('${paper}');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
