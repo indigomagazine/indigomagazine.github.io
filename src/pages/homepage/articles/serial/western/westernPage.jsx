@@ -58,7 +58,7 @@ export default function WesternNewspaper() {
 
   return (
     <>
-      <style>{`
+<style>{`
         @import url('https://fonts.googleapis.com/css2?family=Rye&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700&family=IM+Fell+English:ital@0;1&display=swap');
         
         body {
@@ -81,6 +81,7 @@ export default function WesternNewspaper() {
           max-width: 1000px;
           margin: 20px auto;
           padding: 25px;
+          filter: sepia(0.3) brightness(1.0) contrast(1.05);
           border: none;
           box-shadow: 
             0 8px 16px rgba(0, 0, 0, 0.6),
@@ -106,82 +107,75 @@ export default function WesternNewspaper() {
           );
         }
 
+        .newspaper-container::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(232, 220, 192, 0.2);
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        header,
+        .story-content {
+          position: relative;
+          z-index: 1;
+        }
+
         header {
           text-align: center;
-          border-bottom: 4px double #222;
-          margin-bottom: 20px;
-          padding-bottom: 20px;
-        }
-
-        .decorative-border {
-          border-top: 2px solid #333;
           border-bottom: 2px solid #333;
-          padding: 8px 0;
-          margin-bottom: 15px;
+          margin-bottom: 20px;
+          padding-bottom: 10px;
         }
 
-        .border-stars {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 0 20px;
-          font-size: 0.75em;
-        }
-
-        .established {
-          letter-spacing: 3px;
-          font-weight: 600;
-        }
-
-        h1 {
+        .header-line {
           font-family: 'IM Fell English', serif;
           font-weight: 700;
           font-size: 1.5em;
           letter-spacing: 3px;
           text-transform: uppercase;
-          color: #222;
-          margin: 0;
-        }
-
-        .motto {
-          font-size: 0.9em;
-          letter-spacing: 3px;
-          text-transform: uppercase;
           color: #333;
-          margin: 15px 0;
-          font-style: italic;
         }
 
-        .info-line {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          font-size: 0.75em;
+        hr.header-rule {
+          border: 0;
+          height: 1px;
+          background: #333;
+          margin: 10px 0;
+        }
+
+        hr.double {
+          height: 3px;
           border-top: 1px solid #333;
           border-bottom: 1px solid #333;
-          padding: 8px 20px;
-          margin-top: 15px;
         }
 
-        .location {
-          font-weight: 600;
-          letter-spacing: 2px;
-        }
-
-        .story-title {
+        h1 {
           font-family: 'Rye', cursive;
-          font-size: 5em;
+          font-size: 6em;
           color: #222;
-          margin: 20px 0;
+          margin: 0;
           line-height: 1;
           text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-          text-align: center;
+        }
+
+        .sub-header {
+          display: flex;
+          justify-content: space-between;
+          font-size: 0.9em;
+          color: #444;
+          padding: 5px 10px;
+          text-transform: uppercase;
         }
 
         .story-content {
           column-count: 3;
           column-gap: 25px;
-          column-rule: 1px solid #444;
+          column-rule: 1px solid #8c6d4f;
           font-size: 13pt;
           line-height: 1.4;
           color: #222;
@@ -214,8 +208,9 @@ export default function WesternNewspaper() {
           display: block;
           margin: 0 auto;
           opacity: 0.8;
+          mix-blend-mode: multiply;
           cursor: pointer;
-          transition: transform 0.2s ease, filter 0.2s ease;
+          transition: transform 0.2s ease, opacity 0.2s ease;
         }
 
         .image-container img:hover {
@@ -322,7 +317,7 @@ export default function WesternNewspaper() {
           .story-content {
             column-count: 2;
           }
-          .story-title {
+          h1 {
             font-size: 4.5em;
           }
         }
@@ -331,8 +326,13 @@ export default function WesternNewspaper() {
           .story-content {
             column-count: 1;
           }
-          .story-title {
+          h1 {
             font-size: 3.5em;
+          }
+          .sub-header {
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
           }
           body {
             padding: 10px;
@@ -345,27 +345,17 @@ export default function WesternNewspaper() {
 
       <div className="newspaper-container">
         <header>
-          <div className="decorative-border">
-            <div className="border-stars">
-              <span>☆ ☆ ☆</span>
-              <span className="established">EST. 1875</span>
-              <span>☆ ☆ ☆</span>
-            </div>
+          <div className="header-line">The Indigo Dispatch</div>
+          <hr className="header-rule double" />
+          <h1>Vengeance of the West</h1>
+          <hr className="header-rule double" />
+          <div className="sub-header">
+            <span className="author">By Karishma Pilla</span>
+            <span className="date">October 21, 1888</span>
           </div>
-          
-          <h1>The Indigo Dispatch</h1>
-          
-          <p className="motto">"From the Desk of Karishma Pilla"</p>
-          
-          <div className="info-line">
-            <span>Vol. XXIII, No. 294</span>
-            <span className="location">Dallas, Queen City of the Southwest</span>
-            <span>Sunday, October 21, 1888</span>
-          </div>
+          <hr className="header-rule single" />
         </header>
 
-        <h2 className="story-title">Vengeance of the West</h2>
-        
         <main className="story-content">
           <div className="image-container">
             <img src={images[0].src} alt={images[0].alt} onClick={() => openModal(0)} />
