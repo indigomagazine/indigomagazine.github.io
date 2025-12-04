@@ -17,7 +17,7 @@ const items = [
     description: "By: Karishma Pilla",
     tags: ["Western", "Serial Killer"],
     // Replace with your local asset paths or URLs
-    image: "../../legacy/article photos/Western/teaser.jpg",
+    image: "../../legacy/article photos/western/teaser.jpg",
     // Optional: imageGird for grid view (else uses `image`)
     to: "/articles/serial/western", // path to article
     coverPos: "center center",
