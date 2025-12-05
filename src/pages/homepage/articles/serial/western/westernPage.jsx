@@ -386,7 +386,7 @@ export default function WesternNewspaper() {
           <p>The sun hung low and red, casting long shadows that clung to the dirt like stains that wouldn't wash out. The sheriff's boots crunched against gravel as he walked down the narrow street behind the bank, where the sun couldn't reach. That's where the real business of the town was done. Out of sight, out of law.</p>
 
           <div className="image-container">
-            <img src={images[2].src} alt={images[2].alt} onClick={() => openModal(2)} />
+            <img src={images[4].src} alt={images[4].alt} onClick={() => openModal(4)} />
           </div>
 
           <p>A man was already waiting there, face hidden under a broad-brimmed hat. As the sheriff approached him, the man withdrew a thick envelope, and just by the sweet smell, the sheriff could tell what it was.</p>
