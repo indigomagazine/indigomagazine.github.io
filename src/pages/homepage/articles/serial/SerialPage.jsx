@@ -12,6 +12,19 @@ import keyboardsImage from "../../../../assets/serial photos/group 3/nolan.png";
 /* Will add more feilds to allow custom colors for titles and tags.  */
 const items = [
   {
+    id: "article-5",
+    title: "Stomachache",
+    description: "By: Sanhita Perkari",
+    tags: ["Eating"],
+    // Replace with your local asset paths or URLs
+    image: "../../legacy/article photos/western/teaser.jpg",
+    // Optional: imageGird for grid view (else uses `image`)
+    to: "/articles/serial/stomachache", // path to article
+    coverPos: "center center",
+    // gridPosL optional: "center center",
+
+  },
+  {
     id: "article-4",
     title: "Vengeance of the West",
     description: "By: Karishma Pilla",
