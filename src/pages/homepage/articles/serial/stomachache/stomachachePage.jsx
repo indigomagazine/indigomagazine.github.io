@@ -33,7 +33,7 @@ export default function StomachachePage() {
       bg: firstsection,
       texts: [
         {
-          content: `I’m fighting the fatigue of feeling full\n\nThe sunlight at the dining tablehas melted away\nAnd I’m left licking the last of my fudge\nas it pours itself slowly into the creases of my hands`,
+          content: `I’m fighting the fatigue of feeling full\n\nThe sunlight at the dining table has melted away\nAnd I’m left licking the last of my fudge\nas it pours itself slowly into the creases of my hands`,
           className: "tilted",
         },
       ],
