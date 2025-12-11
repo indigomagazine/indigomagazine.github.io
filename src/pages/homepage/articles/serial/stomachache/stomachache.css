@@ -193,69 +193,45 @@ html, body {
 }
 
 @media (max-width: 768px) {
-  .crossfade-section.center,
-  .crossfade-section.left,
-  .crossfade-section.right {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
-    height: auto;
-    min-height: 100vh;
+  .crossfade-container {
     position: relative;
+    top: 0;
+    height: auto;
+    overflow: visible;
   }
 
-  .crossfade-section .section-text {
-    width: 90%;
-    font-size: 1.2rem;
-    line-height: 1.5;
-    transform: rotate(0deg);
-    text-align: center;
-    margin: 0 auto;
-  }
-
-  .crossfade-section .section-text.title-text {
-    font-size: 3rem;
-  }
-
-  .crossfade-section .section-text.subtitle-text {
-    font-size: 1.5rem;
+  .crossfade-section {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: column !important;
+    opacity: 1 !important;
+    padding: 20px;
+    gap: 20px;
   }
 
   .crossfade-section .section-image {
-    width: 90%;
+    width: 100%;
     height: auto;
-    transform: none;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
-  }
-
-  .crossfade-section .float-text,
-  .crossfade-section .float-image {
-    animation: none;
-  }
-
-  .crossfade-section.center:first-child {
-    justify-content: center;
-    text-align: center;
-    height: 100vh;
-    padding: 0 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .crossfade-section .section-text.title-text {
-    font-size: 2rem;
-  }
-
-  .crossfade-section .section-text.subtitle-text {
-    font-size: 1.2rem;
   }
 
   .crossfade-section .section-text {
+    width: 100%;
     font-size: 1rem;
     line-height: 1.4;
+    text-align: center;
+    transform: none;
+    margin: 10px 0;
+  }
+
+  .page-background {
+    background-attachment: scroll;
+  }
+
+  .float-text,
+  .float-image {
+    animation: none;
   }
 }
+
+

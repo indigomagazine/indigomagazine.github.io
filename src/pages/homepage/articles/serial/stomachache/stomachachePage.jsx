@@ -138,6 +138,7 @@ export default function StomachachePage() {
   const refs = useRef([]);
 
   useEffect(() => {
+    if (window.innerWidth <= 768) return;
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const viewportH = window.innerHeight;
