@@ -17,7 +17,7 @@ const items = [
     description: "By: Sanhita Perkari",
     tags: ["INTERACTIVE"],
     // Replace with your local asset paths or URLs
-    image: "../../legacy/article photos/stomachache/serialpicture.jpg",
+    image: "../../../../../legacy/article photos/stomachache/serialpicture.JPG",
     // Optional: imageGird for grid view (else uses `image`)
     to: "/articles/serial/stomachache", // path to article
     coverPos: "center center",
@@ -106,7 +106,6 @@ const items = [
   /* Coming soon item*/
   {
     id: "commingSoon",
-    title: "",
     description: "",
     image: "../../legacy/assets/backgrounds/More.png",
     imageGrid: "../../legacy/assets/backgrounds/dott.svg",

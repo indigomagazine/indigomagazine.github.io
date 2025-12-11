@@ -4,12 +4,12 @@ import "./stomachache.css";
 import background from "../../../../../../legacy/article photos/stomachache/background.jpg";
 import firstsection from "../../../../../../legacy/article photos/stomachache/firstsection.jpg";
 import secondsection from "../../../../../../legacy/article photos/stomachache/secondsection.jpg";
-import image1 from "../../../../../../legacy/article photos/stomachache/image1.jpg"
-import image2 from "../../../../../../legacy/article photos/stomachache/image2.jpg"
-import image3 from "../../../../../../legacy/article photos/stomachache/image3.jpg";
-import image4 from "../../../../../../legacy/article photos/stomachache/image4.jpg"
-import image5 from "../../../../../../legacy/article photos/stomachache/image5.jpg";
-import image6 from "../../../../../../legacy/article photos/stomachache/image6.jpg"
+import image1 from "../../../../../../legacy/article photos/stomachache/image1.JPG";
+import image2 from "../../../../../../legacy/article photos/stomachache/image2.JPG";
+import image3 from "../../../../../../legacy/article photos/stomachache/image3.JPG";
+import image4 from "../../../../../../legacy/article photos/stomachache/image4.JPG";
+import image5 from "../../../../../../legacy/article photos/stomachache/image5.JPG";
+import image6 from "../../../../../../legacy/article photos/stomachache/image6.JPG";
 
 
 export default function StomachachePage() {
