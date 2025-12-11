@@ -4,6 +4,7 @@ import heroFallback from "../../assets/hero videos/fallback.jpg";
 import logoDark from "../../assets/logos/indigologowhite.png";
 import logoLight from "../../assets/logos/indigologoblack.png";
 import featuredImage from "../../legacy/article photos/western/moviePoster.png";
+import stomachacheImage from "../../../legacy/article photos/stomachache/stomachacheImage"
 import covetImage from "../../../legacy/article photos/covet/1-cereal.jpg"
 import notAirItOutImage from "../../assets/NOT photos/group3/3.jpg";
 import notQuietDevourmentImage from "../../assets/NOT photos/group 6/cover.jpg";
@@ -29,9 +30,9 @@ const NAV_LINKS = [
 ];
 
 const FEATURED_ARTICLE = {
-  title: "Western",
-  href: "/articles/serial/western",
-  image: featuredImage,
+  title: "Stomach Ache",
+  href: "/articles/serial/stomachache",
+  image: stomachacheImage,
 };
 
 const ISSUE_SECTIONS = [

@@ -13,11 +13,11 @@ import keyboardsImage from "../../../../assets/serial photos/group 3/nolan.png";
 const items = [
   {
     id: "article-5",
-    title: "Stomachache",
+    title: "Stomach Ache",
     description: "By: Sanhita Perkari",
-    tags: ["Eating"],
+    tags: ["INTERACTIVE"],
     // Replace with your local asset paths or URLs
-    image: "../../legacy/article photos/western/teaser.jpg",
+    image: "../../legacy/article photos/stomachache/serialpicture.jpg",
     // Optional: imageGird for grid view (else uses `image`)
     to: "/articles/serial/stomachache", // path to article
     coverPos: "center center",
