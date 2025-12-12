@@ -204,8 +204,8 @@ html, body {
     position: relative;
     width: 100%;
     height: auto;
-    flex-direction: column !important;
-    opacity: 1 !important;
+    flex-direction: column;
+    opacity: 1;
     padding: 20px;
     gap: 20px;
   }
