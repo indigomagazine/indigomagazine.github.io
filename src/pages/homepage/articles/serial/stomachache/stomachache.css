@@ -193,45 +193,58 @@ html, body {
 }
 
 @media (max-width: 768px) {
-  .crossfade-container {
-    position: relative;
-    top: 0;
-    height: auto;
-    overflow: visible;
-  }
 
   .crossfade-section {
+    background-image: none;
     position: relative;
     width: 100%;
     height: auto;
     flex-direction: column;
     opacity: 1;
-    padding: 20px;
-    gap: 20px;
+    padding: 24px 16px;
+    gap: 22px;
+  }
+
+  .page-background {
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    min-height: 100vh;
   }
 
   .crossfade-section .section-image {
-    width: 100%;
+    width: 85%;
+    max-width: 380px;
     height: auto;
+    margin: 0 auto 10px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+    transform: none;
+  }
+
+  .float-image,
+  .float-text {
+    animation: none;
   }
 
   .crossfade-section .section-text {
     width: 100%;
-    font-size: 1rem;
-    line-height: 1.4;
+    font-size: 1.25rem;
+    line-height: 1.55;
     text-align: center;
     transform: none;
-    margin: 10px 0;
+    margin: 0 auto 8px auto;
   }
 
-  .page-background {
-    background-attachment: scroll;
+  .crossfade-section .section-text.title-text {
+    font-size: 3.2rem;
+    line-height: 1.1;
   }
 
-  .float-text,
-  .float-image {
-    animation: none;
+  .crossfade-section .section-text.subtitle-text {
+    font-size: 1.6rem;
   }
 }
+
 
 
