@@ -193,22 +193,21 @@ html, body {
 }
 
 @media (max-width: 768px) {
-
   .crossfade-section {
-    background-image: none;
+    background-image: none !important; /* remove section backgrounds */
     position: relative;
     width: 100%;
     height: auto;
     flex-direction: column;
     opacity: 1;
     padding: 24px 16px;
-    gap: 22px;
+    gap: 20px;
   }
 
   .page-background {
     background-size: cover;
     background-position: center;
-    background-attachment: scroll;
+    background-attachment: fixed;
     min-height: 100vh;
   }
 
@@ -216,15 +215,15 @@ html, body {
     width: 85%;
     max-width: 380px;
     height: auto;
-    margin: 0 auto 10px auto;
+    margin: 0 auto 16px auto;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
-    transform: none;
+    transform: none; /* no rotation */
   }
 
   .float-image,
   .float-text {
-    animation: none;
+    animation: none !important;
   }
 
   .crossfade-section .section-text {
@@ -233,7 +232,7 @@ html, body {
     line-height: 1.55;
     text-align: center;
     transform: none;
-    margin: 0 auto 8px auto;
+    margin: 0 auto 12px auto;
   }
 
   .crossfade-section .section-text.title-text {
