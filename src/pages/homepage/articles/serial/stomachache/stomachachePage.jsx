@@ -138,7 +138,12 @@ export default function StomachachePage() {
   const refs = useRef([]);
 
   useEffect(() => {
-    if (window.innerWidth <= 768) return;
+    if (window.innerWidth <= 768) {
+      refs.current.forEach((el) => {
+        if (el) el.style.opacity = 1;
+      });
+      return;
+    }
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const viewportH = window.innerHeight;
@@ -205,7 +210,9 @@ export default function StomachachePage() {
           </div>
         ))}
       </div>
-      <div style={{ height: `${sections.length * 100}vh` }} />
+      {window.innerWidth > 768 && (
+        <div style={{ height: `${sections.length * 100}vh` }} />
+      )}
     </div>
   );
 }
