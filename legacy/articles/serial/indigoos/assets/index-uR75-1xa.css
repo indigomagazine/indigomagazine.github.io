@@ -1,0 +1,26 @@
+._terminal_1v14y_1 {
+  background-color: #fff !important;
+  color: #000 !important;
+  border-radius: 0 !important;
+}
+._text_1v14y_13 {
+  color: #000 !important;
+  font-family:
+    Fixedsys Excelsior,
+    monospace !important;
+}
+._content_1v14y_23,
+._promptLabel_1v14y_23,
+._input_1v14y_23 {
+  color: #000 !important;
+  font-size: 0.75rem !important;
+}
+._inputArea_1v14y_33 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+._message_1v14y_45 {
+  color: #000 !important;
+  font-size: 0.75rem !important;
+}
