@@ -1,16 +1,26 @@
-
-import React from 'react';
-import { useEffect,useRef, forwardRef } from 'react';
-import { useState, useMemo} from "react";
-import './serial.css';
+import React from "react";
+import { useEffect, useRef, forwardRef } from "react";
+import { useState, useMemo } from "react";
+import "./serial.css";
 import keyboardsImage from "../../../../assets/serial photos/group 3/nolan.png";
-
-
 
 /* Where you will add article data */
 /* Make sure to add new item at the top of the list so it appears first */
 /* Will add more feilds to allow custom colors for titles and tags.  */
 const items = [
+  {
+    id: "article-7",
+    title: "ctrl + c",
+    description: "By: Zenah I.",
+    tags: ["immersive"],
+    // Replace with your local asset paths or URLs
+    image:
+      "https://res.cloudinary.com/dyj46skdc/image/upload/v1765339839/facestretch_sadc29.png",
+    // Optional: imageGird for grid view (else uses `image`)
+    to: "/articles/serial/indigoos", // path to article
+    coverPos: " left 25% top 10%",
+    // gridPosL optional: "center center",
+  },
   {
     id: "article-5",
     title: "Stomach Ache",
@@ -22,7 +32,6 @@ const items = [
     to: "/articles/serial/stomachache", // path to article
     coverPos: "center center",
     // gridPosL optional: "center center",
-
   },
   {
     id: "article-4",
@@ -35,9 +44,8 @@ const items = [
     to: "/articles/serial/western", // path to article
     coverPos: "center center",
     // gridPosL optional: "center center",
-
   },
-    {
+  {
     id: "article-9",
     title: "Covet",
     description: "By: Joanna Virippil",
@@ -48,9 +56,8 @@ const items = [
     to: "/articles/serial/covet", // path to article
     coverPos: "center center",
     // gridPosL optional: "center center",
-
   },
-   {
+  {
     id: "article-8",
     title: "You Can Twist Time",
     description: "By: Jiya Gupta",
@@ -63,7 +70,7 @@ const items = [
     // gridPosL optional: "center center",
   },
 
-   {
+  {
     id: "article-3",
     title: "Keyboards",
     description: "By: Manogna Bedhu",
@@ -75,20 +82,20 @@ const items = [
     coverPos: "center center",
     // gridPosL optional: "center center",
   },
-    {
+  {
     id: "article-2",
     title: "A Number Out of Place ",
     description: "By: Nicole C. ",
     tags: ["MATRIX", "NOVEMBER"],
     // Replace with your local asset paths or URLs
-    image: "../../legacy/article photos/anumberoutofplace/serial poster (text).png",
+    image:
+      "../../legacy/article photos/anumberoutofplace/serial poster (text).png",
     // Optional: imageGird for grid view (else uses `image`)
     to: "/articles/serial/anumberoutofplace", // path to article
     coverPos: " left 25% top 10%",
     // gridPosL optional: "center center",
   },
 
- 
   {
     id: "article-1",
     title: "I Love Shopping ",
@@ -102,7 +109,6 @@ const items = [
     // gridPosL optional: "center center",
   },
 
-
   /* Coming soon item*/
   {
     id: "commingSoon",
@@ -113,52 +119,55 @@ const items = [
     title: "More Coming Soon",
     to: "",
     blur: true,
-
-  }, 
+  },
   /*
   
   */
 ];
-
 
 export default function Serial() {
   const [view, setView] = useState("scroll"); // 'scroll' | 'grid'
   const data = useMemo(() => items, []);
 
   // ADD: place right after your existing useState/useMemo in Serial()
-const [prevView, setPrevView] = useState("scroll");
-const [animClass, setAnimClass] = useState(""); // "slide-in-left" | "slide-in-right" | ""
+  const [prevView, setPrevView] = useState("scroll");
+  const [animClass, setAnimClass] = useState(""); // "slide-in-left" | "slide-in-right" | ""
 
-const scrollerRef = useRef(null);
-const isSnappingRef = useRef(false);
-const sectionHRef = useRef(0);
+  const scrollerRef = useRef(null);
+  const isSnappingRef = useRef(false);
+  const sectionHRef = useRef(0);
 
-const [barOpen, setBarOpen] = useState(false);
+  const [barOpen, setBarOpen] = useState(false);
 
-useEffect(() => {
-  const prev = document.body.style.margin;
-  document.documentElement.style.height = '100%';
-  document.body.style.height = '100%';
-  document.body.style.margin = '0';
-  return () => { document.body.style.margin = prev; };
-}, []);
+  useEffect(() => {
+    const prev = document.body.style.margin;
+    document.documentElement.style.height = "100%";
+    document.body.style.height = "100%";
+    document.body.style.margin = "0";
+    return () => {
+      document.body.style.margin = prev;
+    };
+  }, []);
 
-
-
-useEffect(()=> {
-      const el = scrollerRef.current;
+  useEffect(() => {
+    const el = scrollerRef.current;
     if (!el || view !== "scroll") return;
 
     const sections = Array.from(el.querySelectorAll(".snap-section"));
     const getIndex = () => Math.round(el.scrollTop / sectionHRef.current);
 
-    const onResize = () => { sectionHRef.current = el.clientHeight; };
+    const onResize = () => {
+      sectionHRef.current = el.clientHeight;
+    };
     onResize();
     window.addEventListener("resize", onResize);
 
     const onWheel = (e) => {
       // normalize and gate the scroll
-      if (isSnappingRef.current) { e.preventDefault(); return; }
+      if (isSnappingRef.current) {
+        e.preventDefault();
+        return;
+      }
 
       const delta = e.deltaY;
       const threshold = 25; // ignore micro-scrolls / jitters
@@ -176,10 +185,15 @@ useEffect(()=> {
       el.scrollTo({ top: next * sectionHRef.current, behavior: "smooth" });
 
       // release the lock after the smooth scroll finishes
-      const release = () => { isSnappingRef.current = false; el.removeEventListener("scrollend", release); };
+      const release = () => {
+        isSnappingRef.current = false;
+        el.removeEventListener("scrollend", release);
+      };
       el.addEventListener?.("scrollend", release); // supported in modern Chromium
       // fallback timer if scrollend isn’t supported:
-      setTimeout(() => { isSnappingRef.current = false; }, 420);
+      setTimeout(() => {
+        isSnappingRef.current = false;
+      }, 420);
     };
 
     el.addEventListener("wheel", onWheel, { passive: false });
@@ -187,76 +201,77 @@ useEffect(()=> {
       window.removeEventListener("resize", onResize);
       el.removeEventListener("wheel", onWheel);
     };
-}, [view]);
+  }, [view]);
 
-const handleToggle = (checked) => {
-  const next = checked ? "grid" : "scroll";
-  // decide direction based on previous view
-  const dir = prevView === "scroll" && next === "grid"
-    ? "slide-in-right"
-    : prevView === "grid" && next === "scroll"
-    ? "slide-in-left"
-    : "";
+  const handleToggle = (checked) => {
+    const next = checked ? "grid" : "scroll";
+    // decide direction based on previous view
+    const dir =
+      prevView === "scroll" && next === "grid"
+        ? "slide-in-right"
+        : prevView === "grid" && next === "scroll"
+        ? "slide-in-left"
+        : "";
 
-  setPrevView(next);
-  setAnimClass(dir);
-  setView(next);
+    setPrevView(next);
+    setAnimClass(dir);
+    setView(next);
 
-  // clear the animation class after it plays
-  window.requestAnimationFrame(() => {
-    setTimeout(() => setAnimClass(""), 420); // keep slightly longer than CSS duration
-  });
-};
-
+    // clear the animation class after it plays
+    window.requestAnimationFrame(() => {
+      setTimeout(() => setAnimClass(""), 420); // keep slightly longer than CSS duration
+    });
+  };
 
   return (
-  <div className="mg-root"
-    styles= {{
-          "--drawer-w": "300px",
-    "--drawer-h": "80vh",
-    "--drawer-bg": "rgba(10,10,10,0.70)",
-    "--drawer-color": "#f8d254ff",
-    "--drawer-accent": "rgba(255,255,255,0.18)",
-    "--drawer-speed": "280ms"
-    }}
-  >
+    <div
+      className="mg-root"
+      styles={{
+        "--drawer-w": "300px",
+        "--drawer-h": "80vh",
+        "--drawer-bg": "rgba(10,10,10,0.70)",
+        "--drawer-color": "#f8d254ff",
+        "--drawer-accent": "rgba(255,255,255,0.18)",
+        "--drawer-speed": "280ms",
+      }}
+    >
+      <aside
+        className={`serial-drawer ${barOpen ? "is-open" : ""}`}
+        role="complementary"
+        aria-label="Tools"
+      >
+        <div className="serial-drawer__inner">
+          <nav className="drawer-nav" aria-label="Section">
+            <a href="/legacy/index.html">Home</a>
+            <a href="/legacy/creative.html">Issues</a>
+            <a href="/legacy/about.html">About</a>
+            <a href="/legacy/visualarts.html">VisualArts</a>
+          </nav>
+        </div>
+      </aside>
 
-  <aside className={`serial-drawer ${barOpen ? "is-open" : ""}`} role="complementary" aria-label="Tools">
-    <div className="serial-drawer__inner">
-      <nav className="drawer-nav" aria-label="Section">
-        <a href="/legacy/index.html">Home</a>
-        <a href="/legacy/creative.html">Issues</a>
-        <a href="/legacy/about.html">About</a>
-        <a href="/legacy/visualarts.html">VisualArts</a>
-      </nav>
+      {/* Tab / Asset that rides with the drawer edge */}
+      <button
+        className={`drawer-tab ${barOpen ? "is-open" : ""}`}
+        aria-label={barOpen ? "Close tools" : "Open tools"}
+        aria-expanded={barOpen}
+        onClick={() => setBarOpen((v) => !v)}
+      >
+        {/* replace with your SVG/PNG */}
+        <img src="../../legacy/assets/logos/indigologowhite.png" alt="" />
+      </button>
+
+      {/* Your existing view switcher */}
+      <div className={`content-stage ${animClass}`}>
+        {view === "scroll" ? (
+          <ScrollSections ref={scrollerRef} items={data} />
+        ) : (
+          <GridGallery items={data} />
+        )}
+      </div>
     </div>
-  </aside>
-
-  {/* Tab / Asset that rides with the drawer edge */}
-  <button
-    className={`drawer-tab ${barOpen ? "is-open" : ""}`}
-    aria-label={barOpen ? "Close tools" : "Open tools"}
-    aria-expanded={barOpen}
-    onClick={() => setBarOpen(v => !v)}
-  >
-    {/* replace with your SVG/PNG */}
-    <img src="../../legacy/assets/logos/indigologowhite.png" alt="" />
-  </button> 
-
-   
-
-    {/* Your existing view switcher */}
-    <div className={`content-stage ${animClass}`}>
-      {view === "scroll" ? (
-        <ScrollSections ref={scrollerRef} items={data} />
-      ) : (
-        <GridGallery items={data} />
-      )}
-    </div>
-  </div>
   );
 }
-
 
 // ScrollSections: swap the src & add a conditional class
 const ScrollSections = forwardRef(function ScrollSections({ items }, ref) {
@@ -310,7 +325,6 @@ function GridGallery({ items }) {
 
           <div className="card-meta">
             {it.comingSoon && <span className="badge">Coming soon</span>}
-           
           </div>
         </article>
       ))}
@@ -318,11 +332,12 @@ function GridGallery({ items }) {
   );
 }
 
-
 function MetaOverlay({ item }) {
   return (
     <div className="meta">
-      <div className="bullet" aria-hidden="true"><img src="" alt="" /></div>
+      <div className="bullet" aria-hidden="true">
+        <img src="" alt="" />
+      </div>
       <h2 className="title">{item.title}</h2>
       <p className="desc">{item.description}</p>
       {item.tags?.length ? (
