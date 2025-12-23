@@ -14,6 +14,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArticlesSerialYoucantwisttimeRouteImport } from './routes/articles/serial/youcantwisttime'
 import { Route as ArticlesSerialWesternRouteImport } from './routes/articles/serial/western'
 import { Route as ArticlesSerialStomachacheRouteImport } from './routes/articles/serial/stomachache'
+import { Route as ArticlesSerialLifeinparadiseRouteImport } from './routes/articles/serial/lifeinparadise'
 import { Route as ArticlesSerialKeyboardsRouteImport } from './routes/articles/serial/keyboards'
 import { Route as ArticlesSerialIndigoosRouteImport } from './routes/articles/serial/indigoos'
 import { Route as ArticlesSerialIloveshoppingRouteImport } from './routes/articles/serial/iloveshopping'
@@ -45,6 +46,12 @@ const ArticlesSerialStomachacheRoute =
   ArticlesSerialStomachacheRouteImport.update({
     id: '/articles/serial/stomachache',
     path: '/articles/serial/stomachache',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ArticlesSerialLifeinparadiseRoute =
+  ArticlesSerialLifeinparadiseRouteImport.update({
+    id: '/articles/serial/lifeinparadise',
+    path: '/articles/serial/lifeinparadise',
     getParentRoute: () => rootRouteImport,
   } as any)
 const ArticlesSerialKeyboardsRoute = ArticlesSerialKeyboardsRouteImport.update({
@@ -83,6 +90,7 @@ export interface FileRoutesByFullPath {
   '/articles/serial/iloveshopping': typeof ArticlesSerialIloveshoppingRoute
   '/articles/serial/indigoos': typeof ArticlesSerialIndigoosRoute
   '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
+  '/articles/serial/lifeinparadise': typeof ArticlesSerialLifeinparadiseRoute
   '/articles/serial/stomachache': typeof ArticlesSerialStomachacheRoute
   '/articles/serial/western': typeof ArticlesSerialWesternRoute
   '/articles/serial/youcantwisttime': typeof ArticlesSerialYoucantwisttimeRoute
@@ -95,6 +103,7 @@ export interface FileRoutesByTo {
   '/articles/serial/iloveshopping': typeof ArticlesSerialIloveshoppingRoute
   '/articles/serial/indigoos': typeof ArticlesSerialIndigoosRoute
   '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
+  '/articles/serial/lifeinparadise': typeof ArticlesSerialLifeinparadiseRoute
   '/articles/serial/stomachache': typeof ArticlesSerialStomachacheRoute
   '/articles/serial/western': typeof ArticlesSerialWesternRoute
   '/articles/serial/youcantwisttime': typeof ArticlesSerialYoucantwisttimeRoute
@@ -108,6 +117,7 @@ export interface FileRoutesById {
   '/articles/serial/iloveshopping': typeof ArticlesSerialIloveshoppingRoute
   '/articles/serial/indigoos': typeof ArticlesSerialIndigoosRoute
   '/articles/serial/keyboards': typeof ArticlesSerialKeyboardsRoute
+  '/articles/serial/lifeinparadise': typeof ArticlesSerialLifeinparadiseRoute
   '/articles/serial/stomachache': typeof ArticlesSerialStomachacheRoute
   '/articles/serial/western': typeof ArticlesSerialWesternRoute
   '/articles/serial/youcantwisttime': typeof ArticlesSerialYoucantwisttimeRoute
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/articles/serial/iloveshopping'
     | '/articles/serial/indigoos'
     | '/articles/serial/keyboards'
+    | '/articles/serial/lifeinparadise'
     | '/articles/serial/stomachache'
     | '/articles/serial/western'
     | '/articles/serial/youcantwisttime'
@@ -134,6 +145,7 @@ export interface FileRouteTypes {
     | '/articles/serial/iloveshopping'
     | '/articles/serial/indigoos'
     | '/articles/serial/keyboards'
+    | '/articles/serial/lifeinparadise'
     | '/articles/serial/stomachache'
     | '/articles/serial/western'
     | '/articles/serial/youcantwisttime'
@@ -146,6 +158,7 @@ export interface FileRouteTypes {
     | '/articles/serial/iloveshopping'
     | '/articles/serial/indigoos'
     | '/articles/serial/keyboards'
+    | '/articles/serial/lifeinparadise'
     | '/articles/serial/stomachache'
     | '/articles/serial/western'
     | '/articles/serial/youcantwisttime'
@@ -159,6 +172,7 @@ export interface RootRouteChildren {
   ArticlesSerialIloveshoppingRoute: typeof ArticlesSerialIloveshoppingRoute
   ArticlesSerialIndigoosRoute: typeof ArticlesSerialIndigoosRoute
   ArticlesSerialKeyboardsRoute: typeof ArticlesSerialKeyboardsRoute
+  ArticlesSerialLifeinparadiseRoute: typeof ArticlesSerialLifeinparadiseRoute
   ArticlesSerialStomachacheRoute: typeof ArticlesSerialStomachacheRoute
   ArticlesSerialWesternRoute: typeof ArticlesSerialWesternRoute
   ArticlesSerialYoucantwisttimeRoute: typeof ArticlesSerialYoucantwisttimeRoute
@@ -199,6 +213,13 @@ declare module '@tanstack/react-router' {
       path: '/articles/serial/stomachache'
       fullPath: '/articles/serial/stomachache'
       preLoaderRoute: typeof ArticlesSerialStomachacheRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/articles/serial/lifeinparadise': {
+      id: '/articles/serial/lifeinparadise'
+      path: '/articles/serial/lifeinparadise'
+      fullPath: '/articles/serial/lifeinparadise'
+      preLoaderRoute: typeof ArticlesSerialLifeinparadiseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/articles/serial/keyboards': {
@@ -247,6 +268,7 @@ const rootRouteChildren: RootRouteChildren = {
   ArticlesSerialIloveshoppingRoute: ArticlesSerialIloveshoppingRoute,
   ArticlesSerialIndigoosRoute: ArticlesSerialIndigoosRoute,
   ArticlesSerialKeyboardsRoute: ArticlesSerialKeyboardsRoute,
+  ArticlesSerialLifeinparadiseRoute: ArticlesSerialLifeinparadiseRoute,
   ArticlesSerialStomachacheRoute: ArticlesSerialStomachacheRoute,
   ArticlesSerialWesternRoute: ArticlesSerialWesternRoute,
   ArticlesSerialYoucantwisttimeRoute: ArticlesSerialYoucantwisttimeRoute,
