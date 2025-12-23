@@ -77,7 +77,7 @@ export default function LifeInParadise() {
                 playsInline
                 className={styles.backgroundVideo}
             >
-                <source src="/backgrounds/group9vid.mp4" type="video/mp4" />
+                <source src="https://raw.githubusercontent.com/indigomagazine/website_images/aacaf7cb745a668672aad04efaa99aae2eae98c0/videos/group9vid.mp4" type="video/mp4" />
             </video>
             <div 
                 className={styles.imageContainer} 
@@ -109,6 +109,5 @@ export default function LifeInParadise() {
                 )}
             </div>
         </div>
-        
     );
 }
