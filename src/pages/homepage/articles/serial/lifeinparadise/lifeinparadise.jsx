@@ -10,7 +10,6 @@ import page6 from "../../../../../assets/serial photos/group9/page 6.png";
 import page7 from "../../../../../assets/serial photos/group9/page 7.png";
 import page8 from "../../../../../assets/serial photos/group9/page 8.png";
 import backcover from "../../../../../assets/serial photos/group9/back cover.png";
-import backgroundVideo from "../../../../../assets/serial photos/group9/group9vid.mp4"; 
 
 const images = [
     cover,
@@ -78,7 +77,7 @@ export default function LifeInParadise() {
                 playsInline
                 className={styles.backgroundVideo}
             >
-                <source src={backgroundVideo} type="video/mp4" />
+                <source src="/backgrounds/group9vid.mp4" type="video/mp4" />
             </video>
             <div 
                 className={styles.imageContainer} 
