@@ -875,8 +875,10 @@ video::-webkit-media-controls {
   src: url(assets/fonts/Praktika-Light.otf);
 
   font-family: "Cardinal";
-  src: url(assets/fonts/Cardinal.ttf)
+  src: url(assets/fonts/Cardinal.ttf);
 
+  font-family: "Shine Typewriter";
+  src: url("/fonts/shine-typewriter/Shine-Typewriter.ttf") format("truetype");
 }
 
 .header-link {

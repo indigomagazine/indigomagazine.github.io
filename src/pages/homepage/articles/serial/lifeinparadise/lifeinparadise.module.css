@@ -1,64 +1,272 @@
 .viewer {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    background-color: whitesmoke; 
-    overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: whitesmoke;
+  overflow: hidden;
 }
 
 .backgroundVideo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    object-fit: cover;
-    opacity: 0.5;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.45;
 }
 
 .imageContainer {
-    position: relative;
-    z-index: 1;
-    max-width: 90%;
-    max-height: 90vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    user-select: none;
-    transform: rotate(-3deg); 
+  position: relative;
+  z-index: 1;
+  max-width: 92%;
+  max-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 2000px;
+  user-select: none;
+  transform: rotate(-3deg);
 }
 
 .singleImage {
-    max-width: 100%;
-    max-height: 90vh;
-    object-fit: contain;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.45),
+    inset 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
 .doubleImage {
-    display: flex;
-    gap: 0;
-    max-height: 90vh;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  max-height: 90vh;
+  contain: layout paint;
+  will-change: transform;
+  transform-style: preserve-3d;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.45),
+    inset 0 0 20px rgba(0, 0, 0, 0.25);
 }
+
+.doubleImage {
+  --stack: 6;
+}
+
+.doubleImage {
+  position: relative;
+}
+
+
+.doubleImage::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  inset:
+    calc(var(--stack) * 0.6px)
+    calc(var(--stack) * -0.6px)
+    calc(var(--stack) * -0.6px)
+    calc(var(--stack) * 0.6px);
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.12),
+    rgba(0,0,0,0.05) 30%,
+    rgba(255,255,255,0.25)
+  );
+
+  border-radius: 2px;
+
+  box-shadow:
+    0 calc(var(--stack) * 0.5px) 0 rgba(0,0,0,0.12),
+    0 calc(var(--stack) * 1px) 0 rgba(0,0,0,0.10),
+    0 calc(var(--stack) * 1.5px) 0 rgba(0,0,0,0.08),
+    0 calc(var(--stack) * 2px) 0 rgba(0,0,0,0.06),
+    0 calc(var(--stack) * 2.5px) 0 rgba(0,0,0,0.04);
+}
+
+
+
 
 .halfImage {
-    max-width: 45vw;
-    max-height: 90vh;
-    object-fit: contain;
+    isolation: isolate;
+  position: relative;
+  max-width: 45vw;
+  max-height: 90vh;
+  object-fit: contain;
+
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+
+  background-color: #fdfcf8;
+
+  /* paper texture */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,0.015),
+      rgba(0,0,0,0.015) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,0,0,0.01),
+      rgba(0,0,0,0.01) 1px,
+      transparent 1px,
+      transparent 4px
+    );
 }
 
+
 .leftPage {
-    border-right: 1px solid #ddd;
+  border-right: 1px solid #ddd;
 }
 
 .rightPage {
-    border-left: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+
+/* Page shadows */
+.leftPage::after,
+.rightPage::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 25px;
+  pointer-events: none;
+}
+
+.leftPage::after {
+  right: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.15), transparent);
+}
+
+.rightPage::after {
+  left: 0;
+  background: linear-gradient(to left, rgba(0,0,0,0.15), transparent);
+}
+
+.flipping {
+  z-index: 5;
+  will-change: transform, opacity;
+}
+
+.flipping::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.flipping::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.flipRight.flipping::after {
+  opacity: 1;
+  background: radial-gradient(
+    circle at left center,
+    rgba(0,0,0,0.18),
+    rgba(0,0,0,0.10) 25%,
+    rgba(0,0,0,0.05) 40%,
+    transparent 65%
+  );
+}
+
+.flipLeft.flipping::after {
+  opacity: 1;
+  background: radial-gradient(
+    circle at right center,
+    rgba(0,0,0,0.18),
+    rgba(0,0,0,0.10) 25%,
+    rgba(0,0,0,0.05) 40%,
+    transparent 65%
+  );
+}
+
+/* Curl highlight */
+.flipping::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.flipRight.flipping::before {
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0.55),
+    rgba(255,255,255,0.25) 8%,
+    rgba(0,0,0,0.18) 18%,
+    transparent 42%
+  );
+}
+
+
+.flipLeft.flipping::before {
+  background: linear-gradient(
+    to left,
+    rgba(255,255,255,0.55),
+    rgba(255,255,255,0.25) 8%,
+    rgba(0,0,0,0.18) 18%,
+    transparent 42%
+  );
+}
+
+
+
+.flipping {
+  filter: saturate(0.98) contrast(1.02);
+}
+
+
+
+.flipRight {
+  animation-name: flipRight;
+  transform-origin: 8% center;
+}
+
+.flipLeft {
+  animation-name: flipLeft;
+  transform-origin: 92% center;
+}
+
+
+
+.flipRight,
+.flipLeft {
+  animation-duration: 0.55s;
+  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes flipRight {
+  0% {
+    transform: rotateY(0deg) translateZ(18px) skewY(0deg);
+  }
+  100% {
+    transform: rotateY(-65deg) translateZ(18px) skewY(-2deg);
+  }
+}
+
+@keyframes flipLeft {
+  0% {
+    transform: rotateY(0deg) translateZ(18px) skewY(0deg);
+  }
+  100% {
+    transform: rotateY(65deg) translateZ(18px) skewY(2deg);
+  }
 }

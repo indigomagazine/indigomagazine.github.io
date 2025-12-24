@@ -3,11 +3,23 @@ import { useEffect, useRef, forwardRef } from "react";
 import { useState, useMemo } from "react";
 import "./serial.css";
 import keyboardsImage from "../../../../assets/serial photos/group 3/nolan.png";
+import lifeInParadiseCover from "../../../../assets/serial photos/group9/IMG_5926.JPG"
+
 
 /* Where you will add article data */
 /* Make sure to add new item at the top of the list so it appears first */
 /* Will add more feilds to allow custom colors for titles and tags.  */
 const items = [
+  {
+    id: "article10",
+    title: "Life in Paradise",
+    description: "By: Kertin Turpin",
+    tags: ["INTERACTIVE", "VISUAL", "MAGAZINE"],
+    image: lifeInParadiseCover,
+    to: "/articles/serial/lifeinparadise",
+    coverPos: "center center",
+  },
+
   {
     id: "article-7",
     title: "ctrl + c",
