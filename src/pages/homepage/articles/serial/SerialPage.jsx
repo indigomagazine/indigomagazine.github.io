@@ -3,7 +3,7 @@ import { useEffect, useRef, forwardRef } from "react";
 import { useState, useMemo } from "react";
 import "./serial.css";
 import keyboardsImage from "../../../../assets/serial photos/group 3/nolan.png";
-import lifeInParadiseCover from "../../../../assets/serial photos/group9/IMG_5926.JPG"
+import lifeInParadiseCover from "../../../../assets/serial photos/group9/cover.png"
 
 
 /* Where you will add article data */
