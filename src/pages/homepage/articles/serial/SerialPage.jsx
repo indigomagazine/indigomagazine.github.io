@@ -3,12 +3,12 @@ import { useEffect, useRef, forwardRef } from "react";
 import { useState, useMemo } from "react";
 import "./serial.css";
 import keyboardsImage from "../../../../assets/serial photos/group 3/nolan.png";
-import lifeInParadiseCover from "../../../../assets/serial photos/group9/cover.png"
+import lifeInParadiseCover from "../../../../assets/serial photos/group9/group9cover.png";
 
 
 /* Where you will add article data */
 /* Make sure to add new item at the top of the list so it appears first */
-/* Will add more feilds to allow custom colors for titles and tags.  */
+/* Will add more fields to allow custom colors for titles and tags.  */
 const items = [
   {
     id: "article10",
