@@ -13,7 +13,7 @@ const items = [
   {
     id: "article10",
     title: "Life in Paradise",
-    description: "By: Kertin Turpin",
+    description: "By: Kertin T. & Manjiri C.",
     tags: ["INTERACTIVE", "VISUAL", "MAGAZINE"],
     image: lifeInParadiseCover,
     to: "/articles/serial/lifeinparadise",
@@ -24,7 +24,7 @@ const items = [
     id: "article-7",
     title: "ctrl + c",
     description: "By: Zenah I.",
-    tags: ["immersive"],
+    tags: ["IMMERSIVE"],
     // Replace with your local asset paths or URLs
     image:
       "https://res.cloudinary.com/dyj46skdc/image/upload/v1765339839/facestretch_sadc29.png",
