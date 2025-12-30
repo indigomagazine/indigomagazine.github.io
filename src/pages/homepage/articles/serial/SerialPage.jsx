@@ -13,7 +13,7 @@ const items = [
   {
     id: "article10",
     title: "Life in Paradise",
-    description: "By: Kertin T. & Manjiri C.",
+    description: "By: Kerstin T. & Manjiri C.",
     tags: ["INTERACTIVE", "VISUAL", "MAGAZINE"],
     image: lifeInParadiseCover,
     to: "/articles/serial/lifeinparadise",
